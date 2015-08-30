@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MSAIL - Michigan Student Artificial Intelligence Lab</title>
+    <title>Schedule - MSAIL</title>
 
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -42,23 +42,26 @@
     <link rel="canonical" href="http://www.example.com/">
     -->
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" href="material.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+
+    </style>
   </head>
   <body>
-  <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
       <header class="mdl-layout__header mdl-layout__header--transparent">
         <div class="mdl-layout__header-row">
-          <!-- Title -->
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
           <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="index.html">Home</a>
             <a class="mdl-navigation__link" href="About_us.html">About Us</a>
-            <a class="mdl-navigation__link" href="schedule.html">Schedule</a>
+            <a class="mdl-navigation__link active" href="schedule.html">Schedule</a>
             <a class="mdl-navigation__link" href="activities.html">activities</a>
             <a class="mdl-navigation__link" href="">FAQ</a>
             <a class="mdl-navigation__link" href="">Resources</a>
@@ -69,7 +72,7 @@
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">MSAIL</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Home</a>
+            <a class="mdl-navigation__link" href="index.html">Home</a>
             <a class="mdl-navigation__link" href="About_us.html">About Us</a>
             <a class="mdl-navigation__link" href="schedule.html">Schedule</a>
             <a class="mdl-navigation__link" href="activities.html">activities</a>
@@ -80,43 +83,27 @@
       </div>
       <main class="mdl-layout__content">
       </main>
-    </div>
-    <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
+    </div>  
+    <div class="demo-blog demo-blog--blogpost mdl-layout mdl-js-layout has-drawer is-upgraded">
       <main class="mdl-layout__content">
         <div class="demo-blog__posts mdl-grid">
-          <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-            <div class="mdl-card__title">
-              <h2 class="mdl-card__title-text">What is MSAIL?</h2>
+          <!-- MSAIL Explanation -->
+          <div class="section">
+            <div class="mdl-cell mdl-cell--12-col">
+              <div class="header1">Schedule</div>
             </div>
-            <div class="mdl-card__supporting-text">
-              We are an organization that seeks to grow the Machine Learning and Artificial Intelligence community between undergraduates, graduate students, and faculty at the University of Michigan. 
+            <div class="mdl-cell mdl-cell--12-col">
+              <div class="header2">Calendar</div>
             </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                Apply Now
-              </a>
+            <div class="mdl-cell mdl-cell--12-col">
+              <div class="content">We will place the calendar here once we have one. For the time being, let me tell you the tale of Ishmael and Ahab from the Great American classic, <i>Moby Dick</i>. Ahab is a mad man bent on destroying Moby Dick, a whale. It represents all that is evil in the world, something no one person can understand. Moby Dick is God, or some being of higher order. Herman Melville never describes the whale in its entirety, its enormity covered by the punishing waves that the <i>Pequod</i>. Eventually <i>Spoilers: </i>Ahab is killed by his own hubris. Ishmael is the last known survivor. </div>
             </div>
           </div>
-        </div>
+
       </main>
       <div class="mdl-layout__obfuscator"></div>
     </div>
     <a href="https://github.com/google/material-design-lite/blob/master/templates/blog/" target="_blank" id="apply-now" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Apply Now</a>
     <script src="material.min.js"></script>
   </body>
-  <script>
-    Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
-      var link = el.querySelector('a');
-      if(!link) {
-        return;
-      }
-      var target = link.getAttribute('href');
-      if(!target) {
-        return;
-      }
-      el.addEventListener('click', function() {
-        location.href = target;
-      });
-    });
-  </script>
 </html>
