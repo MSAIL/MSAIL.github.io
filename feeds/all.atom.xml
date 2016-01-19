@@ -16,4 +16,21 @@
 &lt;li&gt;The algorithm is presented from several different points of view, which will hopefully lead to good discussion.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;This is a &lt;strong&gt;difficult&lt;/strong&gt; paper, but don't worry!  We're here to help.  Especially if you're new to this, the hope is that you will get practice reading papers, even if you don't understand everything.  We certainly don't!  At the meeting, we'll work through the paper together and try to build up some intuition.  The best thing to do is ask lots of questions!&lt;/p&gt;
-&lt;p&gt;This semester, we are experimenting with a new format.  There will be a longer, 10-20 minute presentation at the start of each meeting, followed by the usual discussion.  We hope that the longer presentation will help those who struggle with reading academic papers to see how more experienced members approach reading papers.&lt;/p&gt;</summary></entry><entry><title>K-Means Clustering</title><link href="http://msail.github.io/events/tutorial/2016/Jan/19/k-means-clustering" rel="alternate"></link><updated>2016-01-19T17:30:00-05:00</updated><author><name>MSAIL</name></author><id>tag:msail.github.io,2016-01-19:events/tutorial/2016/Jan/19/k-means-clustering</id><summary type="html">&lt;p&gt;The problem is computationally difficult (NP-hard); however, there are efficient heuristic algorithms that are commonly employed and converge quickly to a local optimum. These are usually similar to the expectation-maximization algorithm for mixtures of Gaussian distributions via an iterative refinement approach employed by both algorithms. Additionally, they both use cluster centers to model the data; however, k-means clustering tends to find clusters of comparable spatial extent, while the expectation-maximization mechanism allows clusters to have different shapes.&lt;/p&gt;</summary></entry></feed>
+&lt;p&gt;This semester, we are experimenting with a new format.  There will be a longer, 10-20 minute presentation at the start of each meeting, followed by the usual discussion.  We hope that the longer presentation will help those who struggle with reading academic papers to see how more experienced members approach reading papers.&lt;/p&gt;</summary></entry><entry><title>Clustering the Iris Dataset via K-Means</title><link href="http://msail.github.io/events/tutorial/2016/Jan/19/clustering-the-iris-dataset-via-k-means" rel="alternate"></link><updated>2016-01-19T17:30:00-05:00</updated><author><name>MSAIL</name></author><id>tag:msail.github.io,2016-01-19:events/tutorial/2016/Jan/19/clustering-the-iris-dataset-via-k-means</id><summary type="html">&lt;p&gt;&lt;strong&gt;Interested in Machine Learning?  Don't know where to start?  Never fear!!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This Tuesday, join &lt;strong&gt;Aaron Pollack&lt;/strong&gt; and &lt;strong&gt;Samuel Tenka&lt;/strong&gt; for an overview of machine learning and a brief survey of its various applications. Then we'll dive into
+a hands-on Machine Learning project, in which we'll:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;visualize a dataset of flower measurements,&lt;/li&gt;
+&lt;li&gt;wonder how to group the data-points into species,&lt;/li&gt;
+&lt;li&gt;formalize this wonder as a problem in "Clustering",&lt;/li&gt;
+&lt;li&gt;invent a fully-automatic Clustering algorithm,&lt;/li&gt;
+&lt;li&gt;implement that algorithm using standard packages, and&lt;/li&gt;
+&lt;li&gt;analyze algorithm performance.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By the end of our session, you'll have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A Mental map of Machine Learning's lay of the land.&lt;/li&gt;
+&lt;li&gt;Experience using standard packages to analyze real data.&lt;/li&gt;
+&lt;li&gt;Enthusiasm to participate in more of MSAIL's activities!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The problem is computationally difficult (NP-hard); however, there are efficient heuristic algorithms that are commonly employed and converge quickly to a local optimum. These are usually similar to the expectation-maximization algorithm for mixtures of Gaussian distributions via an iterative refinement approach employed by both algorithms. Additionally, they both use cluster centers to model the data; however, k-means clustering tends to find clusters of comparable spatial extent, while the expectation-maximization mechanism allows clusters to have different shapes.&lt;/p&gt;</summary></entry></feed>
