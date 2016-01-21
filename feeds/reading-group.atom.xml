@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>MSAIL</title><link href="http://msail.github.io/" rel="alternate"></link><link href="http://msail.github.io/feeds/reading-group.atom.xml" rel="self"></link><id>http://msail.github.io/</id><updated>2016-01-19T19:00:00-05:00</updated><entry><title>Spectral Clustering</title><link href="http://msail.github.io/events/reading-group/2016/Jan/19/spectral-clustering" rel="alternate"></link><updated>2016-01-19T19:00:00-05:00</updated><author><name>MSAIL</name></author><id>tag:msail.github.io,2016-01-19:events/reading-group/2016/Jan/19/spectral-clustering</id><summary type="html">&lt;h3&gt;Core Paper&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>MSAIL</title><link href="http://msail.github.io/" rel="alternate"></link><link href="http://msail.github.io/feeds/reading-group.atom.xml" rel="self"></link><id>http://msail.github.io/</id><updated>2016-01-26T19:00:00-05:00</updated><entry><title>Intro to Statistical Learning Theory</title><link href="http://msail.github.io/events/reading-group/2016/Jan/26/intro-to-statistical-learning-theory" rel="alternate"></link><updated>2016-01-26T19:00:00-05:00</updated><author><name>MSAIL</name></author><id>tag:msail.github.io,2016-01-26:events/reading-group/2016/Jan/26/intro-to-statistical-learning-theory</id><summary type="html">&lt;h3&gt;Core Paper&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Kulkarni &amp;amp; Harman 2011, &lt;a href="http://www.princeton.edu/~harman/Papers/SLT-tutorial.pdf"&gt;"Statistical Learning Theory:  A Tutorial"&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Additional Resources&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Paper&lt;/strong&gt;:  Anthony 1993, &lt;a href="http://www.sciencedirect.com/science/article/pii/0166218X93901269"&gt;"A Result of Vapnik with Applications"&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slides&lt;/strong&gt;:  &lt;a href="http://www-stat.wharton.upenn.edu/~rakhlin/ml_summer_school.pdf"&gt;"MLSS:  Statistical Learning Theory"&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lectures&lt;/strong&gt;:  &lt;a href="http://work.caltech.edu/lectures.html#lectures"&gt;"Caltech:  Learning from Data"&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Summary&lt;/h3&gt;
+&lt;p&gt;Is learning possible?  Yes...  in some cases.  This week we'll investigate when and why machines are able to generalize, viewing the standard machine learning algorithms we know and love under the lens of statistical learning theory, which allows us to understand the strengths and limitations of the algorithms we use every day.  We'll cover important theoretical concepts like VC dimension and PAC learning.&lt;/p&gt;
+&lt;p&gt;This semester, we are experimenting with a new format.  There will be a longer, 10-20 minute presentation at the start of each meeting, followed by the usual discussion.  We hope that the longer presentation will help those who struggle with reading academic papers to see how more experienced members approach reading papers.&lt;/p&gt;</summary></entry><entry><title>Spectral Clustering</title><link href="http://msail.github.io/events/reading-group/2016/Jan/19/spectral-clustering" rel="alternate"></link><updated>2016-01-19T19:00:00-05:00</updated><author><name>MSAIL</name></author><id>tag:msail.github.io,2016-01-19:events/reading-group/2016/Jan/19/spectral-clustering</id><summary type="html">&lt;h3&gt;Core Paper&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Luxburg 2007, &lt;a href="http://www.kyb.mpg.de/fileadmin/user_upload/files/publications/attachments/Luxburg07_tutorial_4488%5b0%5d.pdf"&gt;"A Tutorial on Spectral Clustering"&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
