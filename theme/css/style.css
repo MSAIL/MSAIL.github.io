@@ -270,15 +270,16 @@ a.event-title:hover {
 
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%;
 }
 
 th, td {
     text-align: center;
-    padding: 4px;
+    padding: 6px;
 }
 
-tr:nth-child(even){background-color: #eae8e8}
+tr:nth-child(even) {background-color: #eae8e8}
+td:first-child {font-weight: bold}
 
 th {
     background-color: #00274c;
