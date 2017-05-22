@@ -265,3 +265,22 @@ a.event-title:hover {
 #page-footer a {
     color: #999;
 }
+
+/* Table --------------------------------------------------------------------*/
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+}
+
+th, td {
+    text-align: center;
+    padding: 4px;
+}
+
+tr:nth-child(even){background-color: #eae8e8}
+
+th {
+    background-color: #00274c;
+    color: #ffcb05;
+}
