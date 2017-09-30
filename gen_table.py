@@ -2,7 +2,7 @@
     changed: 2017-09-29
     created: 2017-09-29
     description: generation HTML table given CSV file
-    usage: python gen_table.py events.csv events.out
+    usage: python gen_table.py events.csv events.html
 '''
 
 import sys
