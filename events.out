@@ -1,0 +1,252 @@
+<table align="center">
+    <tr>
+        <th> No </th>
+        <th> Date </th>
+        <th> Topic </th>
+    </tr>
+    <tr>
+        <th> 0 </th>
+        <th> 2015-09-25 </th>
+        <th> Optimality of Naive Bayes </th>
+    </tr>
+    <tr>
+        <th> 1 </th>
+        <th> 2015-10-08 </th>
+        <th> Recurrent Neural Networks </th>
+    </tr>
+    <tr>
+        <th> 2 </th>
+        <th> 2015-10-15 </th>
+        <th> Restricted Boltzman Machines </th>
+    </tr>
+    <tr>
+        <th> 3 </th>
+        <th> 2015-10-29 </th>
+        <th> Applications of Neural Networks </th>
+    </tr>
+    <tr>
+        <th> 4 </th>
+        <th> 2015-11-05 </th>
+        <th> Texture Modeling with MRFs </th>
+    </tr>
+    <tr>
+        <th> 5 </th>
+        <th> 2015-11-12 </th>
+        <th> The Music of Hidden Markov Models </th>
+    </tr>
+    <tr>
+        <th> 6 </th>
+        <th> 2015-11-19 </th>
+        <th> Latent Dirichlet Allocation </th>
+    </tr>
+    <tr>
+        <th> 7 </th>
+        <th> 2015-12-03 </th>
+        <th> Markov Chain Monte Carlo </th>
+    </tr>
+    <tr>
+        <th> 8 </th>
+        <th> 2015-12-10 </th>
+        <th> Variational Autoencoders </th>
+    </tr>
+    <tr>
+        <th> 0 </th>
+        <th> 2016-01-19 </th>
+        <th> Tutorial: K-Means Clustering </th>
+    </tr>
+    <tr>
+        <th> 1 </th>
+        <th> 2016-01-26 </th>
+        <th> Tutorial: GMMs & Density Estimation </th>
+    </tr>
+    <tr>
+        <th> 2 </th>
+        <th> 2016-02-02 </th>
+        <th> Tutorial: Clustering Wrap-Up </th>
+    </tr>
+    <tr>
+        <th> 3 </th>
+        <th> 2016-02-09 </th>
+        <th> Tutorial: Regression </th>
+    </tr>
+    <tr>
+        <th> 4 </th>
+        <th> 2016-02-17 </th>
+        <th> Tutorial: More Regression </th>
+    </tr>
+    <tr>
+        <th> 5 </th>
+        <th> 2016-03-08 </th>
+        <th> Tutorial: Support Vector Machines </th>
+    </tr>
+    <tr>
+        <th> 6 </th>
+        <th> 2016-03-15 </th>
+        <th> Tutorial: Decision Trees </th>
+    </tr>
+    <tr>
+        <th> 7 </th>
+        <th> 2016-03-22 </th>
+        <th> Tutorial: Monte Carlo Methods </th>
+    </tr>
+    <tr>
+        <th> 8 </th>
+        <th> 2016-03-29 </th>
+        <th> Tutorial: Neural Networks </th>
+    </tr>
+    <tr>
+        <th> 0 </th>
+        <th> 2016-01-19 </th>
+        <th> Spectral Clustering </th>
+    </tr>
+    <tr>
+        <th> 1 </th>
+        <th> 2016-01-26 </th>
+        <th> Statistical Learning Theory </th>
+    </tr>
+    <tr>
+        <th> 2 </th>
+        <th> 2016-02-02 </th>
+        <th> t-SNE </th>
+    </tr>
+    <tr>
+        <th> 3 </th>
+        <th> 2016-02-09 </th>
+        <th> Curriculum Learning </th>
+    </tr>
+    <tr>
+        <th> 4 </th>
+        <th> 2016-02-17 </th>
+        <th> Error-Correcting Output Codes </th>
+    </tr>
+    <tr>
+        <th> 5 </th>
+        <th> 2016-03-08 </th>
+        <th> Reinforcement Learning </th>
+    </tr>
+    <tr>
+        <th> 6 </th>
+        <th> 2016-03-15 </th>
+        <th> Image Processing with PDEs </th>
+    </tr>
+    <tr>
+        <th> 7 </th>
+        <th> 2016-03-29 </th>
+        <th> Bag of Little Bootstraps </th>
+    </tr>
+    <tr>
+        <th> 8 </th>
+        <th> 2016-04-05 </th>
+        <th> Telephone Slides </th>
+    </tr>
+    <tr>
+        <th> 0 </th>
+        <th> 2016-09-28 </th>
+        <th> Machine Learning: A Bird's-Eye View </th>
+    </tr>
+    <tr>
+        <th> 1 </th>
+        <th> 2016-10-05 </th>
+        <th> Text Classification: A Comparison of Methods </th>
+    </tr>
+    <tr>
+        <th> 2 </th>
+        <th> 2016-10-12 </th>
+        <th> Gradient Descent: Method and Subtleties </th>
+    </tr>
+    <tr>
+        <th> 3 </th>
+        <th> 2016-10-26 </th>
+        <th> Active Learning and Global Optimization </th>
+    </tr>
+    <tr>
+        <th> 4 </th>
+        <th> 2016-11-02 </th>
+        <th> Stochastic Sorting </th>
+    </tr>
+    <tr>
+        <th> 5 </th>
+        <th> 2016-11-09 </th>
+        <th> Generative Adversarial Networks </th>
+    </tr>
+    <tr>
+        <th> 6 </th>
+        <th> 2016-11-16 </th>
+        <th> What does "Probably Approximately Correct" Mean? </th>
+    </tr>
+    <tr>
+        <th> 7 </th>
+        <th> 2016-11-30 </th>
+        <th> Manifold Learning </th>
+    </tr>
+    <tr>
+        <th> 0 </th>
+        <th> 2017-01-18 </th>
+        <th> Stein's Paradox and Shrinkage Estimators </th>
+    </tr>
+    <tr>
+        <th> 1 </th>
+        <th> 2017-01-25 </th>
+        <th> Reusable Holdout Sets aka Machine Ignorance </th>
+    </tr>
+    <tr>
+        <th> 2 </th>
+        <th> 2017-02-01 </th>
+        <th> LSTMs in Natural Language Processing </th>
+    </tr>
+    <tr>
+        <th> 3 </th>
+        <th> 2017-02-08 </th>
+        <th> 3D Convolutional Neural Networks </th>
+    </tr>
+    <tr>
+        <th> 4 </th>
+        <th> 2017-03-08 </th>
+        <th> Causal Inference in Statistics </th>
+    </tr>
+    <tr>
+        <th> 5 </th>
+        <th> 2017-03-22 </th>
+        <th> Personal Projects Potluck </th>
+    </tr>
+    <tr>
+        <th> 6 </th>
+        <th> 2017-04-05 </th>
+        <th> Foundations of Machine Learning </th>
+    </tr>
+    <tr>
+        <th> 7 </th>
+        <th> 2017-04-19 </th>
+        <th> Telephone Slides </th>
+    </tr>
+    <tr>
+        <th> 0 </th>
+        <th> 2017-09-12 </th>
+        <th> Statistical Learning Theory </th>
+    </tr>
+    <tr>
+        <th> 1 </th>
+        <th> 2017-09-19 </th>
+        <th> Deep Learning Theory </th>
+    </tr>
+    <tr>
+        <th> 2 </th>
+        <th> 2017-09-26 </th>
+        <th> Hierarchical Dirichlet Processes </th>
+    </tr>
+    <tr>
+        <th> 3 </th>
+        <th> 2017-10-03 </th>
+        <th> Neural Machine Translation </th>
+    </tr>
+    <tr>
+        <th> 4 </th>
+        <th> 2017-10-10 </th>
+        <th> Deep Q-Learning </th>
+    </tr>
+    <tr>
+        <th> 5 </th>
+        <th> 2017-10-17 </th>
+        <th> ... to be determined ... </th>
+    </tr>
+</table>

@@ -1,0 +1,56 @@
+No ;   Date       ;   Topic 
+
+ 0 ;   2015-09-25 ;   Optimality of Naive Bayes               
+ 1 ;   2015-10-08 ;   Recurrent Neural Networks               
+ 2 ;   2015-10-15 ;   Restricted Boltzman Machines            
+ 3 ;   2015-10-29 ;   Applications of Neural Networks         
+ 4 ;   2015-11-05 ;   Texture Modeling with MRFs              
+ 5 ;   2015-11-12 ;   The Music of Hidden Markov Models       
+ 6 ;   2015-11-19 ;   Latent Dirichlet Allocation             
+ 7 ;   2015-12-03 ;   Markov Chain Monte Carlo                
+ 8 ;   2015-12-10 ;   Variational Autoencoders                
+ 
+ 0 ;   2016-01-19 ;   Tutorial: K-Means Clustering            
+ 1 ;   2016-01-26 ;   Tutorial: GMMs & Density Estimation     
+ 2 ;   2016-02-02 ;   Tutorial: Clustering Wrap-Up            
+ 3 ;   2016-02-09 ;   Tutorial: Regression                    
+ 4 ;   2016-02-17 ;   Tutorial: More Regression               
+ 5 ;   2016-03-08 ;   Tutorial: Support Vector Machines       
+ 6 ;   2016-03-15 ;   Tutorial: Decision Trees                
+ 7 ;   2016-03-22 ;   Tutorial: Monte Carlo Methods           
+ 8 ;   2016-03-29 ;   Tutorial: Neural Networks               
+ 
+ 0 ;   2016-01-19 ;   Spectral Clustering                     
+ 1 ;   2016-01-26 ;   Statistical Learning Theory             
+ 2 ;   2016-02-02 ;   t-SNE                                   
+ 3 ;   2016-02-09 ;   Curriculum Learning                     
+ 4 ;   2016-02-17 ;   Error-Correcting Output Codes           
+ 5 ;   2016-03-08 ;   Reinforcement Learning                  
+ 6 ;   2016-03-15 ;   Image Processing with PDEs              
+ 7 ;   2016-03-29 ;   Bag of Little Bootstraps                
+ 8 ;   2016-04-05 ;   Telephone Slides                        
+ 
+ 0 ;   2016-09-28 ;   Machine Learning: A Bird's-Eye View     
+ 1 ;   2016-10-05 ;   Text Classification: A Comparison of Methods
+ 2 ;   2016-10-12 ;   Gradient Descent: Method and Subtleties 
+ 3 ;   2016-10-26 ;   Active Learning and Global Optimization  
+ 4 ;   2016-11-02 ;   Stochastic Sorting                      
+ 5 ;   2016-11-09 ;   Generative Adversarial Networks         
+ 6 ;   2016-11-16 ;   What does "Probably Approximately Correct" Mean? 
+ 7 ;   2016-11-30 ;   Manifold Learning                       
+ 
+ 0 ;   2017-01-18 ;   Stein's Paradox and Shrinkage Estimators  
+ 1 ;   2017-01-25 ;   Reusable Holdout Sets aka Machine Ignorance
+ 2 ;   2017-02-01 ;   LSTMs in Natural Language Processing 
+ 3 ;   2017-02-08 ;   3D Convolutional Neural Networks
+ 4 ;   2017-03-08 ;   Causal Inference in Statistics 
+ 5 ;   2017-03-22 ;   Personal Projects Potluck                                       
+ 6 ;   2017-04-05 ;   Foundations of Machine Learning
+ 7 ;   2017-04-19 ;   Telephone Slides
+
+ 0 ;   2017-09-12 ;   Statistical Learning Theory
+ 1 ;   2017-09-19 ;   Deep Learning Theory
+ 2 ;   2017-09-26 ;   Hierarchical Dirichlet Processes 
+ 3 ;   2017-10-03 ;   Neural Machine Translation 
+ 4 ;   2017-10-10 ;   Deep Q-Learning 
+ 5 ;   2017-10-17 ;   ... to be determined ...
