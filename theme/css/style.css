@@ -209,6 +209,47 @@ a.event-title:hover {
     color:  #080808;
 }
 
+/* Blog Styles (TODO:  Move to separate file) ---------------------------------*/
+
+#blog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-top: 40px;
+}
+
+.blog-box {
+    width: 180px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.blog-portrait {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.blog-portrait img {
+    width: 100%;
+}
+
+.blog-name {
+    text-align: center;
+    font-weight:  bold;
+    font-size: 18px;
+}
+
+.blog-info {
+    text-align: center;
+    color: #080808;
+    font-style: italic;
+}
+
 /* Leadership (TODO:  Move to separate file) ---------------------------------*/
 
 #leadership {
@@ -286,29 +327,4 @@ th {
     color: #ffcb05;
 }
 
-/* Blog Styles (TODO:  Move to separate file) ---------------------------------*/
-
-#blog {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    
-    margin-top: 40px;
-}
-
-.blog-box {
-    width: 180px;
-    padding: 0 20px;
-    margin-bottom: 20px;
-}
-
-.blog-bubble {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 10px auto;
-    border-radius: 50%;
-    overflow: hidden;
-}
 
