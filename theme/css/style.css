@@ -15,7 +15,7 @@ h1, h2, h3, h4 {
 }
 
 blockquote {
-    color: #060606;
+    color: #080808;
     font-style: italic;
 }
 
@@ -130,8 +130,8 @@ blockquote .quote {
     padding:  10px 0;
     overflow: hidden;
     
-    border-right:  3px solid #008080; 
-    background-color:  #408080;
+    border-right:  3px solid #00C0C0; 
+    background-color:  #80C0C0;
 }
 
 .event-icon {
@@ -139,7 +139,7 @@ blockquote .quote {
     height: 60px;
     margin: 15px auto;
     border-radius:  30px;
-    background-color:  #008080;
+    background-color:  #00C0C0;
 }
 
 .event-main {
@@ -190,7 +190,7 @@ a.event-title:hover {
 .fancy-monthday {
     font-size: 22px;
     line-height: 18px;
-    color: #060606;
+    color: #080808;
 }
 
 /* Posts ---------------------------------------------------------------------*/
@@ -206,7 +206,7 @@ a.event-title:hover {
 
 .post-info {
     font-size: 16px;
-    color:  #060606;
+    color:  #080808;
 }
 
 /* Leadership (TODO:  Move to separate file) ---------------------------------*/
@@ -247,7 +247,7 @@ a.event-title:hover {
 
 .leader-info {
     text-align: center;
-    color: #060606;
+    color: #080808;
     font-style: italic;
 }
 
@@ -256,14 +256,14 @@ a.event-title:hover {
 #page-footer {
     margin: 50px 0 20px 0;
     padding: 10px;
-    border-top:  1px solid #090909;
-    color: #090909;
+    border-top:  1px solid #080808;
+    color: #080808;
     text-align: right;
     font-size: 10pt;
 }
 
 #page-footer a {
-    color: #090909;
+    color: #080808;
 }
 
 /* Table --------------------------------------------------------------------*/
