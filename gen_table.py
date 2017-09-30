@@ -18,7 +18,7 @@ def table_from_rows(rows, outnm):
     for row in rows:
         body += '%s<tr>\n' % (4*' ')
         for el in row:
-            body += '%s<th> %s </th>\n' % (8*' ', el)
+            body += '%s<td> %s </td>\n' % (8*' ', el)
         body += '%s</tr>\n' % (4*' ')
     with open(outnm, 'w') as f:
         f.write(head+body+foot) 
