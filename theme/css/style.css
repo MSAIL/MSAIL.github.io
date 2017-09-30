@@ -285,3 +285,30 @@ th {
     background-color: #00274c;
     color: #ffcb05;
 }
+
+/* Blog Styles (TODO:  Move to separate file) ---------------------------------*/
+
+#blog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+    margin-top: 40px;
+}
+
+.blog-box {
+    width: 180px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.blog-bubble {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
