@@ -1,32 +1,32 @@
 @  No  ;   Date       ;   Topic                                       ;   Resources 
 
 @  0.0 ;   2015-09-25 ;   Optimality of Naive Bayes                   ;
-| $ paper http://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf
+| $ (The Optimality of Naive Bayes) http://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf
 @  0.1 ;   2015-10-08 ;   Recurrent Neural Networks                   ;
-| $ Generating Sequences with Recurrent Neural Networks http://arxiv.org/pdf/1308.0850v5.pdf
-| $ Long Short-Term Memory http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf
-| $ Backpropagation Through Time: What It Does and How to Do It" https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/pdfs/Werbos.backprop.pdf
-| $ Recurrent Neural Network Handwriting Generation http://www.cs.toronto.edu/~graves/handwriting.html
-| $ The Unreasonable Effectiveness of Recurrent Neural Networks http://karpathy.github.io/2015/05/21/rnn-effectiveness/
-| $ The Unreasonable Effectiveness of Character-level Language Models http://nbviewer.ipython.org/gist/yoavg/d76121dfde2618422139 
-| $ Neural Networks: A Systematic Introduction http://page.mi.fu-berlin.de/rojas/neural/ 
-| $ Hacker’s Guide to Neural Networks http://karpathy.github.io/neuralnets/  
+| $ (Generating Sequences with Recurrent Neural Networks) http://arxiv.org/pdf/1308.0850v5.pdf
+| $ (Long Short-Term Memory) http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf
+| $ (Backpropagation Through Time: What It Does and How to Do It) https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/pdfs/Werbos.backprop.pdf
+| $ (Recurrent Neural Network Handwriting Generation) http://www.cs.toronto.edu/~graves/handwriting.html
+| $ (The Unreasonable Effectiveness of Recurrent Neural Networks) http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+| $ (The Unreasonable Effectiveness of Character-level Language Models) http://nbviewer.ipython.org/gist/yoavg/d76121dfde2618422139 
+| $ (Neural Networks: A Systematic Introduction) http://page.mi.fu-berlin.de/rojas/neural/ 
+| $ (Hacker’s Guide to Neural Networks) http://karpathy.github.io/neuralnets/  
 @  0.2 ;   2015-10-15 ;   Restricted Boltzman Machines                ;
-| $ Classification using Discriminative Restricted Boltzmann Machines http://machinelearning.org/archive/icml2008/papers/601.pdf
-| $ A Practical Guide to Training Restricted Boltzmann Machines http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf
-| $ Rectified Linear Units Improve Restricted Boltzmann Machines http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_NairH10.pdf
-| $ Introduction to Restricted Boltzmann Machines http://blog.echen.me/2011/07/18/introduction-to-restricted-boltzmann-machines/
-| $ RBM Tutorial http://deeplearning.net/tutorial/rbm.html 
-| $ Can someone explain Gibbs Sampling in very simple words? http://stats.stackexchange.com/questions/10213/can-someone-explain-gibbs-sampling-in-very-simple-words 
+| $ (Classification using Discriminative Restricted Boltzmann Machines) http://machinelearning.org/archive/icml2008/papers/601.pdf
+| $ (A Practical Guide to Training Restricted Boltzmann Machines) http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf
+| $ (Rectified Linear Units Improve Restricted Boltzmann Machines) http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_NairH10.pdf
+| $ (Introduction to Restricted Boltzmann Machines) http://blog.echen.me/2011/07/18/introduction-to-restricted-boltzmann-machines/
+| $ (RBM Tutorial) http://deeplearning.net/tutorial/rbm.html 
+| $ (Can someone explain Gibbs Sampling in very simple words?) http://stats.stackexchange.com/questions/10213/can-someone-explain-gibbs-sampling-in-very-simple-words 
 @  0.3 ;   2015-10-29 ;   Applications of Neural Networks             ;   
-| $ A Neural Algorithm of Artistic Style http://arxiv.org/abs/1508.06576 
-| $ Robust Object Tracking via Convolutional Neural Networks http://arxiv.org/pdf/1501.04505.pdf
-| $ Distributed Representations of Words and Phrasesand their Compositionality http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf
-| $ A Neural Probabilistic Language Model http://jmlr.csail.mit.edu/papers/volume3/bengio03a/bengio03a.pdf
-| $ Convolutional Neural Networks http://cs231n.github.io/convolutional-networks/
-| $ The Unreasonable Effectiveness of Recurrent Neural Networks http://karpathy.github.io/2015/05/21/rnn-effectiveness/
-| $ Convolutional Neural Networks http://ufldl.stanford.edu/tutorial/supervised/ExerciseConvolutionalNeuralNetwork/
-| $ Inceptionism: Going Deeper into Neural Networks http://googleresearch.blogspot.com/2015/06/inceptionism-going-deeper-into-neural.html
+| $ (A Neural Algorithm of Artistic Style) http://arxiv.org/abs/1508.06576 
+| $ (Robust Object Tracking via Convolutional Neural Networks) http://arxiv.org/pdf/1501.04505.pdf
+| $ (Distributed Representations of Words and Phrases and their Compositionality) http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf
+| $ (A Neural Probabilistic Language Model) http://jmlr.csail.mit.edu/papers/volume3/bengio03a/bengio03a.pdf
+| $ (Convolutional Neural Networks) http://cs231n.github.io/convolutional-networks/
+| $ (The Unreasonable Effectiveness of Recurrent Neural Networks) http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+| $ (Convolutional Neural Networks) http://ufldl.stanford.edu/tutorial/supervised/ExerciseConvolutionalNeuralNetwork/
+| $ (Inceptionism: Going Deeper into Neural Networks) http://googleresearch.blogspot.com/2015/06/inceptionism-going-deeper-into-neural.html
 @  0.4 ;   2015-11-05 ;   Texture Modeling with MRFs                  ;   
 @  0.5 ;   2015-11-12 ;   The Music of Hidden Markov Models           ;   
 @  0.6 ;   2015-11-19 ;   Latent Dirichlet Allocation                 ;   
