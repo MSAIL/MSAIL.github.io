@@ -8,12 +8,13 @@ import sys
 
 def rows_from_csv(csvnm, delimiter=';', line_delimiter='@'):
     with open(csvnm) as f:
-        lines = f.read().split('@') 
+        lines = f.read().split(line_delimiter) 
     return [[w.strip() for w in l.split(delimiter)] for l in lines if l.strip()]
 
 def linkify(element):
-    lines = filter(None, element.split('\n'))
+    lines = filter(None, element.split('|'))
     def link(line):  
+        line = line.strip()
         if line.startswith('$'):
             tokens = filter(None, line[1:].split(' '))
             text = ' '.join(tokens[:-1])

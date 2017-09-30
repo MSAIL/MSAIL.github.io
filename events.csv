@@ -1,18 +1,18 @@
 @  No  ;   Date       ;   Topic                                       ;   Resources 
 
 @  0.0 ;   2015-09-25 ;   Optimality of Naive Bayes                   ;
-@       $ paper http://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf
+       | $ paper http://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf
 @  0.1 ;   2015-10-08 ;   Recurrent Neural Networks                   ;
-@       $ paper http://arxiv.org/pdf/1308.0850v5.pdf
-@       $ paper http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf
-@       $ paper https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/pdfs/Werbos.backprop.pdf
-@       $ paper http://www.cs.toronto.edu/~graves/handwriting.html
-@       $ paper http://karpathy.github.io/2015/05/21/rnn-effectiveness/
-@       $ paper http://nbviewer.ipython.org/gist/yoavg/d76121dfde2618422139 
+       | $ paper http://arxiv.org/pdf/1308.0850v5.pdf
+       | $ paper http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf
+       | $ paper https://www.cs.cmu.edu/~bhiksha/courses/deeplearning/Fall.2015/pdfs/Werbos.backprop.pdf
+       | $ paper http://www.cs.toronto.edu/~graves/handwriting.html
+       | $ paper http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+       | $ paper http://nbviewer.ipython.org/gist/yoavg/d76121dfde2618422139 
 @  0.2 ;   2015-10-15 ;   Restricted Boltzman Machines                ;
-@       $ paper http://machinelearning.org/archive/icml2008/papers/601.pdf
-@       $ paper http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf
-@       $ paper http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_NairH10.pdf
+       | $ paper http://machinelearning.org/archive/icml2008/papers/601.pdf
+       | $ paper http://www.cs.toronto.edu/~hinton/absps/guideTR.pdf
+       | $ paper http://machinelearning.wustl.edu/mlpapers/paper_files/icml2010_NairH10.pdf
 @  0.3 ;   2015-10-29 ;   Applications of Neural Networks             ;   
 @  0.4 ;   2015-11-05 ;   Texture Modeling with MRFs                  ;   
 @  0.5 ;   2015-11-12 ;   The Music of Hidden Markov Models           ;   
