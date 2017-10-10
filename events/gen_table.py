@@ -1,5 +1,5 @@
 ''' author: samtenka
-    changed: 2017-09-29
+    changed: 2017-10-09
     created: 2017-09-29
     description: generation HTML table given CSV file
     usage: python gen_table.py events.csv events.html
@@ -13,6 +13,8 @@ def rows_from_csv(csvnm, delimiter=';', line_delimiter='@'):
     return [[w.strip() for w in l.split(delimiter)] for l in lines if l.strip()]
 
 def linkify(element):
+    if '|' not in element:
+        return element 
     lines = filter(None, element.split('|'))
     def link(line):  
         line = line.strip()
@@ -20,12 +22,12 @@ def linkify(element):
             tokens = filter(None, line[1:].split(' '))
             text = ' '.join(tokens[:-1])
             url = tokens[-1] 
-            return '<a href="%s"> %s </a>' % (url, text)
+            return '<li><a href="%s"> %s </a></li>' % (url, text)
         return line 
-    return ' '.join(link(l) for l in lines)
+    return '<ul>' + ' '.join(link(l) for l in lines) + '</ul>'
      
 def table_from_rows(rows, outnm):
-    head = '<table align="center">\n'
+    head = '<table align="left">\n'
     foot = '</table>\n'
     body = ''
     for row in rows:
