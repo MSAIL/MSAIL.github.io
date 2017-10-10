@@ -327,4 +327,18 @@ th {
     color: #ffcb05;
 }
 
+/* Event Picture --------------------------------------------------------------------*/
+
+div#moo .cirle-class {
+    position: relative !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 auto 10px auto !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+}
+div#moo .circle-class img {
+    height: 100% !important;
+    width: auto !important;
+}
 
