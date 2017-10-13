@@ -124,7 +124,7 @@ blockquote .quote {
     padding: 0 20px;
 }
 
-.event-side {
+.event-side-rg {
     box-sizing: border-box;
     flex: 0 0 100px;
     padding:  10px 0;
@@ -134,12 +134,46 @@ blockquote .quote {
     background-color:  #80C0C0;
 }
 
-.event-icon {
+.event-icon-rg {
     width: 60px;
     height: 60px;
     margin: 15px auto;
     border-radius:  30px;
     background-color:  #00C0C0;
+}
+
+.event-side-tut {
+    box-sizing: border-box;
+    flex: 0 0 100px;
+    padding:  10px 0;
+    overflow: hidden;
+    
+    border-right:  3px solid #C0C000; 
+    background-color:  #C0C080;
+}
+.event-icon-tut {
+    width: 60px;
+    height: 60px;
+    margin: 15px auto;
+    border-radius:  30px;
+    background-color:  #C0C000;
+}
+
+.event-side-proj {
+    box-sizing: border-box;
+    flex: 0 0 100px;
+    padding:  10px 0;
+    overflow: hidden;
+    
+    border-right:  3px solid #C000C0; 
+    background-color:  #C080C0;
+}
+.event-icon-proj {
+    width: 60px;
+    height: 60px;
+    margin: 15px auto;
+    border-radius:  30px;
+    background-color:  #C000C0;
 }
 
 .event-main {
