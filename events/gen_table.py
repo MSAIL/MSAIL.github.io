@@ -33,11 +33,12 @@ def table_from_rows(rows, outnm):
     head = '<table align="left">\n'
     foot = '</table>\n'
     body = ''
-    for row in rows:
-        body += '%s<tr>\n' % (4*' ')
+    for i, row in enumerate(rows):
+        headchar = 'h' if i==0 else 'r'
+        body += '%s<t%s>\n' % (4*' ', headchar)
         for el in row:
-            body += '%s<td> %s </td>\n' % (8*' ', linkify(el))
-        body += '%s</tr>\n' % (4*' ')
+            body += '%s<td align="left"> %s </td>\n' % (8*' ', linkify(el))
+        body += '%s</t%s>\n' % (4*' ', headchar)
     with open(outnm, 'w') as f:
         f.write(head+body+foot) 
 
