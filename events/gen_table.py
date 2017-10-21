@@ -22,11 +22,12 @@ def linkify(element):
             tokens = filter(None, line[1:].split(' '))
             text = ' '.join(tokens[:-1])
             url = tokens[-1] 
-            #return '<li><a href="%s"> %s </a></li>' % (url, text)
             return '<a href="%s"> %s </a>' % (url, text)
         return line 
-    #return '<ul>' + ' '.join(link(l) for l in lines) + '</ul>'
-    return ' '.join(link(l) for l in lines)
+    #return ' '.join(link(l) for l in lines)
+    if len(lines) < 2: 
+        return ' '.join(link(l) for l in lines)
+    return '<ul>' + ' '.join('<li>%s</li>' % link(l) for l in lines) + '</ul>'
      
 def table_from_rows(rows, outnm):
     head = '<table align="left">\n'
