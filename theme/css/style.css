@@ -176,6 +176,23 @@ blockquote .quote {
     background-color:  #C000C0;
 }
 
+.event-side-guest {
+    box-sizing: border-box;
+    flex: 0 0 100px;
+    padding:  10px 0;
+    overflow: hidden;
+    
+    border-right:  3px solid #C40101; 
+    background-color:  #CE566E;
+}
+.event-icon-guest {
+    width: 60px;
+    height: 60px;
+    margin: 15px auto;
+    border-radius:  30px;
+    background-color:  #C40101;
+}
+
 .event-main {
     flex-grow: 1;
     margin-left: 30px;
