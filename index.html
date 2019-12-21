@@ -74,55 +74,6 @@
                     <a href="https://www.mdst.club/">Michigan Data Science Team</a>! 
                     We are both graciously sponsored by the <a href="http://midas.umich.edu/">Michigan Institute for Data Science</a>.
                 </p>
-    
-                <!-- Upcoming Events -->
-                <h1>Upcoming Events</h1>
-                
-                <div class="event-list">
-                    <div class="event-panel">
-                        <!-- Event Side -->
-                        <div class="event-side-rg">
-                            <div class="fancy-date">
-                                <div class="fancy-dayofweek">
-                                    TUE
-                                </div>
-                                <div class="fancy-monthday">
-                                    Oct 08
-                                </div>
-                            </div>
-                            <div class="event-icon-rg"></div>
-                        </div>
-                
-                        <!-- Event Main -->
-                        <div class="event-main">
-                            <div class="event-header">
-                                <!-- Title -->
-                                <div class="event-title">
-                                    <span class="event-type">Reading Group</span>
-                                    <span class="event-name">
-                                        <a href="http://langcog.stanford.edu/papers_new/goodman-2016-tics.pdf">
-                                        Pragmatic Language Interpretation</a>
-                                    </span>
-                                </div>
-                
-                                <!-- Info -->
-                                <div class="event-info">
-                                    Tuesday (2019-10-08) at 18:00 in BBB 3725
-                                </div>
-                            </div>
-                
-                            <div class="event-body">
-                                <p>
-                                    Traditional NLP models view language as a set of fixed conventions.
-                                    Pragmatics is the study of how language is used for communicative purposes.
-                                    We explore the rational speech act (RSA) model, which is a probabilistic model
-                                    that formalizes many intuitive aspects of language and enables us to predict
-                                    human behavior.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 <!-- Recent Events -->
                 <h1>Recent Events</h1>
@@ -134,7 +85,7 @@
                                     TUE
                                 </div>
                                 <div class="fancy-monthday">
-                                    Oct 01
+                                    Dec 03
                                 </div>
                             </div>
                             <div class="event-icon-rg"></div>
@@ -146,28 +97,29 @@
                                 <!-- Title -->
                                 <div class="event-title">
                                     <span class="event-type">Reading Group</span>
-                                    <span class="event-name">Neural Machine Translation</span>
+                                    <span class="event-name"><a href ="https://arxiv.org/pdf/1907.10597v3.pdf" target="_blank">Green AI</a></span>
                                 </div>
                 
                                 <!-- Info -->
                                 <div class="event-info">
-                                    Tuesday (2019-10-01) at 18:00 in BBB 3725
+                                    Tuesday (2019-12-03) at 18:00 in BBB 3725
                                 </div>
                             </div>
                 
                             <div class="event-body">
                                 <p>
-                                    Neural networks are dense, parametric, and continuous, while language is sparse,
-                                    non-parametric, and discrete. So how can the former process the latter?
+                                    Computations required for deep learning research have been doubling every few months,
+                                    resulting in an estimated 300,000x increase from 2012 to 2018. Training a single
+                                    AI model can emit as much carbon as five cars in their lifetime.
 
-                                    Famously, one uses one-hot embeddings and softmax sampling to translate between
-                                    continuous and discrete domains. One uses word embeddings to represent sparse sets
-                                    of words as dense clouds of semantic vectors. One use recurrent neural networks to
-                                    reduce variable-length sequence problems to local, parametric ones.
-                                    
-                                    But there has been another breakthrough recently: one can use Attention Mechanisms
-                                    to model long-distance relationships between words! Attention lies at the core of
-                                    this week's papers.
+                                    In this paper, the Allen Institute hopes to make the distinction between research
+                                    solely focused on improving results (coined Red AI) and those that improve upon results without
+                                    additional computational power required (coined Green AI).
+
+                                    This week we discussed the benefits of making efficiency a more common evaluation 
+                                    criterion for AI papers alongside accuracy and related measures. We deduced it is important
+                                    to increase the prevalence of Green AI so AI development will be accessible to everyone
+                                    not just large corporations and research institutions.
                                 </p>
                             </div>
                         </div>
@@ -181,7 +133,7 @@
                                     TUE
                                 </div>
                                 <div class="fancy-monthday">
-                                    Sep 24
+                                    Nov 19
                                 </div>
                             </div>
                             <div class="event-icon-rg"></div>
@@ -193,27 +145,26 @@
                                 <!-- Title -->
                                 <div class="event-title">
                                     <span class="event-type">Reading Group</span>
-                                    <span class="event-name">Generative Adversarial Networks</span>
+                                    <span class="event-name"><a href="https://arxiv.org/pdf/1908.07898.pdf" target="_blank">Annotator Bias in Natural Language Understanding Datasets</a></span>
                                 </div>
                 
                                 <!-- Info -->
                                 <div class="event-info">
-                                    Tuesday (2019-09-24) at 18:00 in BBB 3725
+                                    Tuesday (2019-11-19) at 18:00 in BBB 3725
                                 </div>
                             </div>
                 
                             <div class="event-body">
                                 <p>
-                                    Discriminative models have several key limitations, namely they cannot model the
-                                    probability of seeing a given input example and therefore cannot generate new examples.
-
-                                    Generative Adversarial Networks (GANs) are an application of generative models in which a generator and discriminator are trained
-                                    to compete against one another in a 2-person game. The generator attempts to create samples
-                                    that deceive the discriminator into believing they are true samples, and the discriminator attempts
-                                    to determine which samples are real and generated.
-
-                                    We explore the motivation behind GANs, basic theory of how they work, and dive into the future of
-                                    generative models.
+                                    In the natural language processing field (chatbots, question-answering, etc), researchers often
+                                    curate large datasets of labelled text from crowdworkers, or people who get paid to label data.
+                                    A common crowdsourcing practice is to recruit a small number of high-quality workers,
+                                    and have them massively generate examples. Having only a few workers generate data can result 
+                                    in skewed data representative of the lack of data diversity. This is a 
+                                    big problem when crowdworkers are freely generating sentences. This paper performs a series of 
+                                    experiments showing these concerns are evident in three recent NLP datasets. These findings suggest 
+                                    that annotator bias should be monitored during dataset creation, and that test set annotators should be disjoint
+                                    from training set annotators.
                                 </p>
                             </div>
                         </div>
@@ -224,10 +175,10 @@
                         <div class="event-side-rg">
                             <div class="fancy-date">
                                 <div class="fancy-dayofweek">
-                                    TUE
+                                    THU
                                 </div>
                                 <div class="fancy-monthday">
-                                    Sep 17
+                                    Nov 14
                                 </div>
                             </div>
                             <div class="event-icon-rg"></div>
@@ -238,24 +189,24 @@
                             <div class="event-header">
                                 <!-- Title -->
                                 <div class="event-title">
-                                    <span class="event-type">Reading Group</span>
-                                    <span class="event-name"><a href="https://arxiv.org/abs/1904.01766">
-                                        VideoBERT: a Joint Model for Video and Language Learning
+                                    <span class="event-type">Tutorial Session</span>
+                                    <span class="event-name"><a href="https://gitlab.eecs.umich.edu/MSAIL/tensorflow-tutorial" target="_blank">
+                                        TensorFlow Tutorial
                                     </a></span>
                                 </div>
-                
                                 <!-- Info -->
                                 <div class="event-info">
-                                    Tuesday (2019-09-17) at 18:00 in BBB 3725
+                                    Tuesday (2019-11-14) at 18:00 in BBB 3725
                                 </div>
                             </div>
                 
                             <div class="event-body">
                                 <p>
-                                    Self-supervised learning has been a key data source for many recent state-of-the-art 
-                                    natural language processing models. We explore a new use case for self-supervised learning
-                                    with VideoBERT, an attempt to jointly train a visual-linguistic model to learn high-level
-                                    features without any explicit supervision.
+                                    This week we led an introduction to TensorFlow tutorial session! TensorFlow is a deep learning 
+                                    framework developed by Google Brain and open-sourced in 2015. TensorFlow is used to easily experiment and iterate on 
+                                    deep learning models. In this tutorial sesson, we covered the basic features of TensorFlow and 
+                                    ran through a coding example to give members some basic experience using it. Feel free to 
+                                    click on the link above to view the presentation and to do the coding exercises!
                                 </p>
                             </div>
                         </div>
