@@ -36,7 +36,7 @@ blockquote .quote {
 }
 
 #header-center {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     color: white;
 }
@@ -104,7 +104,7 @@ blockquote .quote {
 /* Page Content --------------------------------------------------------------*/
 
 #page-wrap {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -303,6 +303,25 @@ a.event-title:hover {
 
 /* Leadership (TODO:  Move to separate file) ---------------------------------*/
 
+#cosine {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cosine-box {
+    position: relative;
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+    margin-top: 40px;
+}
+
 #leadership {
     display: flex;
     flex-wrap: wrap;
@@ -312,8 +331,17 @@ a.event-title:hover {
     margin-top: 40px;
 }
 
+#faculty {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+    margin-top: 40px;
+}
+
 .leader-box {
-    width: 180px;
+    width: 220px;
     padding: 0 20px;
     margin-bottom: 20px;
 }
@@ -340,6 +368,11 @@ a.event-title:hover {
 .leader-info {
     text-align: center;
     color: #080808;
+    font-style: italic;
+}
+
+.leader-email {
+    text-align: center;
     font-style: italic;
 }
 
