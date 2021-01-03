@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MSAIL</title>
+    <link>https://MSAIL.github.io/</link>
+      <atom:link href="https://MSAIL.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <description>MSAIL</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 02 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>MSAIL</title>
+      <link>https://MSAIL.github.io/</link>
+    </image>
+    
+    <item>
+      <title>Conserving Labeling Resources and Mitigating Bias from Skewed Datasets</title>
+      <link>https://MSAIL.github.io/post/conserving_label_musicer/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/post/conserving_label_musicer/</guid>
+      <description>&lt;p&gt;     Say you are a researcher in autonomous vehicles, and as part of a project for a funder, you want to make an algorithm to automatically tell if a frame of video has a sidewalk or not. So you get a dataset of driver-view video that you recently collected, hand it off to your labelers, and a month or so later train the model on the labeled data. You get about 90% accuracy on both your train and test sets, and so you push the code to your team’s GitHub, tell your team you have a working algorithm, and celebrate. When the team uses it, however, they make an unpleasant discovery: the algorithm does not detect sidewalks at all! Your troubleshooting brings you to that labeled dataset, and you hang your head in your hands: 90% of the frames in the dataset don’t have sidewalks in them! Instead of learning meaningful decision-making rules, your model has learned to predict that all images do not contain sidewalks.&lt;/p&gt;
+&lt;p&gt;     Or let’s say you’re working at a security company, and your team is tasked with creating a facial recognition algorithm. You spend a few months labeling a dataset of human faces, where the distribution of ethnicities in the dataset matches the distribution of ethnicities in the United States. According to the US Census from 2010, the dataset will be roughly 75% “white alone” faces and 13% “black or African American” faces (as seen in [1], Tab. P3). Then you tuck the dataset away into some folder somewhere and move on to designing the algorithm. When it comes to test time, your algorithm does significantly worse at recognizing dark-skinned faces. This reflects findings from a paper published in 2018 by Buolamwini and Gebru [2], where three commercial facial recognition algorithms trained on two benchmark datasets consisting of roughly 80% / 85% “white” faces had an astonishing 35% error rate on dark-skinned female faces. The consequences of an algorithm biased like this are not theory; less than an hour away from Ann Arbor, a dark-skinned man in Farmington Hills was wrongfully arrested based on a mistake made by a facial recognition algorithm, forcing him to spend thousands of dollars on an attorney to defend himself for a crime he did not commit [3].&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;obama-white.png&#34; alt=&#34;Obama regeneration&#34;&gt;&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;i&gt;Obama being upsampled into a light-skinned man (&lt;a href=&#34;https://www.theverge.com/21298762/face-depixelizer-ai-machine-learning-tool-pulse-stylegan-obama-bias&#34;&gt;The Verge&lt;/a&gt;)&lt;/i&gt;
+&lt;/p&gt;  
+&lt;p&gt;     In either case, you have a critical failure, and your project manager firmly tells you that the product needs to ship in three weeks. One possible solution is to add more data to “balance out” the different image classes: have your labelers find and label more images with sidewalks, or have them find and label more images of people of color. But labeling the original dataset took months, and with the degree of imbalance that you have, it would take a similar amount of resources to successfully address that. And you only have three weeks! Even if you had more time, how do you tell your boss that you now need the team to spend more resources on more labeling work? If only there was a way that you could have balanced the dataset earlier!&lt;/p&gt;
+&lt;p&gt;     Both of these are motivating examples for the problem I am working on in my lab, the Data Elements from Video using Impartial Algorithm Tools for Extraction lab at the University of Michigan Transportation Research Institute (UMTRI-DEVIATE). This is a subproblem we are trying to solve as part of our broader objective to create tools for the Federal Highway Administration (FHWA) to assist labelers with video data. Specifically in this subproblem, we want to save FHWA labelers time with future research tasks, and we want the models they train to avoid bias. We call this problem the “human sampling problem”.&lt;/p&gt;
+&lt;p&gt;     Labeling lots of data is costly. Hiring labelers requires money, and those labelers need time to accurately label a dataset. When it comes to a non-trivial image / video labeling task (for example, drawing bounding boxes around cell phones in videos of someone driving a vehicle), you also need to create a rubric so that all of your labelers are on the same page.&lt;/p&gt;
+&lt;p&gt;     In addition, you may not want to use all that data. If a large dataset is skewed, an algorithm trained on that dataset will in turn be skewed towards making a particular decision. This is the root of both of the failures in the examples presented above – a sidewalk detector trained on skewed data cannot recognize sidewalks, and a facial recognition algorithm trained on skewed data struggles to identify the faces of dark-skinned women.&lt;/p&gt;
+&lt;p&gt;     Considering both of these problems, one possible remedy would be to sample a subset of your original dataset before handing it over to the labelers such that the subset we select is as informative as possible. We hypothesize that a subset with maximum information will not be skewed, i.e. we think a dataset of 10 cats and 90 dogs will probably have less information than a dataset with 50 cats and 50 dogs. The way we have framed this is that we want to maximize &lt;em&gt;gain in information&lt;/em&gt; per &lt;em&gt;unit of cost in terms of labeler time&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;     In short, we want to reduce labeling time as much as possible while minimizing loss in accuracy by sampling a subset of our dataset that contains as much information as possible.&lt;/p&gt;
+&lt;p&gt;     At this point, we are still investigating possible solutions. We are currently testing our ideas on images, with plans to transfer our work to applications on video data. Here’s what we’ve already done and what we’re working on right now:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Sanity checks&lt;/strong&gt;: We first confirmed that skewed datasets tend to have lower accuracy. Using the Stanford Cars and the FGCV-Aircraft datasets, we looked at samples of 50 of one class versus 150 of the other and compared the results of a model trained on those samples to a model trained on 100 of each. We confirmed that the model trained on the balanced sample tended to outperform the model trained on the skewed samples.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;stanford-cars.png&#34; alt=&#34;Stanford Cars&#34;&gt;&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;i&gt;Some examples from the &lt;a href=&#34;https://ai.stanford.edu/~jkrause/cars/car_dataset.html&#34;&gt;Stanford Cars dataset&lt;/a&gt;&lt;/i&gt;
+&lt;/p&gt;  
+&lt;p&gt;     The rest of our techniques essentially attempt to learn some representation of each example image in our dataset, then find a sampling strategy such that the examples we sample into our subset are as dissimilar as possible.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSD&lt;/strong&gt;: We tried using SSD (sum of square differences) as a distance between every pair of images in our dataset and sampling a subset that maximizes the sum of SSDs between images in the dataset. We did not find a correlation between sum of SSDs in a dataset and model accuracy, because SSD does not encode relevant information. Moreover, we would have to solve an NP-hard problem to accurately maximize the sum of SSDs in a sampled subset, making this strategy unviable on large datasets.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Keypoint/descriptors-based methods&lt;/strong&gt;: Algorithms like SIFT, SURF, and ORB detect some number of keypoints that describe an image, along with descriptors for each of those keypoints. We first tried getting a single value for each sample image by summing the squared sums of descriptor components, but this did not produce correlations because we lost the spatial information from the keypoints. We are currently using k-means clustering to separate example images into k different image classes determined via unsupervised learning.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;sift.png&#34; alt=&#34;SIFT Descriptors&#34;&gt;&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+&lt;i&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/Scale-invariant_feature_transform&#34;&gt;scale-invariant feature transform &lt;/a&gt; (SIFT) algorithm in action&lt;/i&gt;
+&lt;/p&gt;  
+&lt;p&gt;&lt;strong&gt;Edge detection&lt;/strong&gt;: Edges can imply what content is in an image, and a dataset whose images have varying amounts of horizontal and vertical edges may have more information than a dataset whose images’ horizontal and vertical edges are not as varied. We are currently investigating ways to implement and evaluate this idea.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Unsupervised feature encoding with neural networks&lt;/strong&gt;: By having a neural network (possibly sequence model, GAN) attempt to perform a task, it will learn the features of the data it attempts to perform that task on; we can use those learned features to describe our examples. This is likely appropriate to our problem, but we have not started investigating this yet. I personally think that this approach has merit simply because of how much recent work there has been on this subject, but I wonder if using a learning algorithm to address a problem with a learning algorithm may recurse the problem back into the solution.&lt;/p&gt;
+&lt;p&gt;     For DEVIATE, successfully solving the human sampling problem means we’ll have found a way to reduce labeler workload while also mitigating problems with accuracy and bias that accompany skewed datasets. Our hope is that creating such a tool will let organizations train more effective models with fewer resources, allowing them to invest effort elsewhere in their projects.&lt;/p&gt;
+&lt;p&gt;     If working on this problem interests you, consider following up with me (&lt;a href=&#34;mailto:musicer@umich.edu&#34;&gt;musicer@umich.edu&lt;/a&gt;) or the advisor for the subteam working on this problem, Dr. Carol Flannagan (&lt;a href=&#34;mailto:cacf@umich.edu&#34;&gt;cacf@umich.edu&lt;/a&gt;).&lt;/p&gt;
+&lt;h3 id=&#34;citations&#34;&gt;Citations:&lt;/h3&gt;
+&lt;p&gt;[1]	U.S. Government, “2010 Census Summary File 1,” U.S. Census Bureau, United States, SF1/10-4 RV, 2010.&lt;br&gt;
+[2] 	J. Buolamwini and T. Gebru, “Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification”, presented at the 1st  Conference on Fairness, Accountability, and Transparency, New York, NY, United States, February 23-24, 2018.&lt;br&gt;
+[3]	A. Winn, “A Local Case Amplifies Opposition To Facial Recognition Technology”, Hour Detroit, Sept. 14, 2020. [Online]. Available: &lt;a href=&#34;https://www.hourdetroit.com&#34;&gt;https://www.hourdetroit.com&lt;/a&gt;. [Accessed Oct. 25, 2020].&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Situated Language Processing and Embodied Dialogue</title>
+      <link>https://MSAIL.github.io/talk/chai_120120/</link>
+      <pubDate>Tue, 01 Dec 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/chai_120120/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://web.eecs.umich.edu/~chaijy/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Joyce Chai&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Situated Language Processing Towards Interactive Task Learning&lt;/p&gt;
+&lt;p&gt;Prof. Chai discussed some of her research on situated language processing, which is a field describing the interaction of language and visual/motor processing in embodied, situated, and language-for-action research traditions. This research also aims to unite converging and complementary evidence from behavioral, neuroscientific, neuropsychological and computational methods.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/play/oR3KFi74WzqD5dZfPiV6MdUzaKV1CDhoAgJjFDY7CxZp_AFiF1Wadd9L9L8Av4VkDEWI6nOSLORlS93H.szI6WWrlkDpkAJN-?continueMode=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of her talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.ijcai.org/Proceedings/2018/0001.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language to Action: Towards Interactive Task Learning with Physical Agents&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://sled-group.eecs.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Situated Language and Embodied Dialogue (SLED) Group&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Prediction Markets and More</title>
+      <link>https://MSAIL.github.io/talk/kutty_111720/</link>
+      <pubDate>Tue, 17 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/kutty_111720/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://scholar.google.com/citations?user=8duCIlcAAAAJ&amp;amp;hl=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Sindhu Kutty&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Prediction Markets, Recommender Systems, Fairness in AI&lt;/p&gt;
+&lt;p&gt;Dr. Kutty discussed some of her research on 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Prediction_market&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;prediction markets&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Recommender_system&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recommender systems&lt;/a&gt;, and fairness in AI. The talk mostly focused on some derivations for prediction markets, such as scoring functions for data collection.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Dr. Kutty asked us not to post the recording for this talk. We apologize for any inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Scoring_rule&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scoring Rules&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1402.5458.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Information Aggregation in Exponential Family Markets&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Text Summarization with Deep Learning</title>
+      <link>https://MSAIL.github.io/talk/textsummarization_111020/</link>
+      <pubDate>Tue, 10 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/textsummarization_111020/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Yashmeet Gambhir&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Text Summarization with Deep Learning&lt;/p&gt;
+&lt;p&gt;Yash discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Automatic_summarization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;text summarization&lt;/a&gt;, where the goal is to&amp;hellip; summarize text. More specifically, he discussed abstractive summarization, of which the goal is to generate &lt;em&gt;novel&lt;/em&gt; sentences using natural language generation techniques. One such method for doing this is using pointer-generator networks. After discussing PGNs, he went on to discuss a paper describing extreme summarization to combat model hallucination for this task. The papers discussed are linked below.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1GCeGWfC_9jF6BDlLalEpKt9-KIlq_Hvv/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt; &lt;em&gt;Unfortunately this only includes the second half of the talk about abstractive summarization, because we forgot to record starting at the beginning.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.aclweb.org/anthology/P17-1099/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Get To The Point: Summarization with Pointer-Generator Networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.173/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On Faithfulness and Factuality in Abstractive Summarization&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Networks</title>
+      <link>https://MSAIL.github.io/education/cnn/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/cnn/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Convolutional Neural Networks&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;This lesson covered convolutional neural networks, which serve as the backbone for many modern-day deep learning applications. Most commonly, convolutional neural networks are used for vision tasks (although not exclusively).&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1522OsXalZScvuUxXrOTbUZuISZUY-HqO&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides on CNNs&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://docs.google.com/presentation/d/16TMR2sM9T75qALw3CCigUF_JxMQ5gceM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides on Neural Networks&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Brain-Inspired AI</title>
+      <link>https://MSAIL.github.io/talk/brain_insp_110320/</link>
+      <pubDate>Tue, 03 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/brain_insp_110320/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://johnmday.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;John Day&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Brain-inspired AI&lt;/p&gt;
+&lt;p&gt;John started his talk by discussing brain-inspired AI in general, which involves studies like 
+&lt;a href=&#34;https://www.nature.com/articles/531S16a&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;neural modeling&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Artificial_consciousness#:~:text=Artificial%20consciousness%20%28AC%29%2C%20also,artificial%20intelligence%20and%20cognitive%20robotics.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;artificial consciousness&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Spiking_neural_network&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;spiking neural nets&lt;/a&gt;, and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cognitive_architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cognitive architectures&lt;/a&gt;. Afterwards, he focused on deep predictive coding networks.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1Gly--En531JIa4F_h15TWAftKrJPEd5W/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.cell.com/neuron/pdf/S0896-6273%2817%2930509-3.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brain-inspired AI&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://klab.tch.harvard.edu/publications/PDFs/gk7591_Lotteretal_ICLR2017.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Predictive Coding Networks for Video Prediction and Unsupervised Learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1802.04762.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Predictive Coding Network for Object Recognition&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Cognitive Architecture</title>
+      <link>https://MSAIL.github.io/talk/laird_102720/</link>
+      <pubDate>Tue, 27 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/laird_102720/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://laird.engin.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. John Laird&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Cognitive Architecture&lt;/p&gt;
+&lt;p&gt;Prof. Laird discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cognitive_architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cognitive architecture&lt;/a&gt; - more specifically, he discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Soar_%28cognitive_architecture%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SOAR&lt;/a&gt;, a cognitive architecture that his research group has been developing and maintaining for decades. SOAR is simultaneously a theory of cognition and an architecture, with the ultimate goal of enabling general intelligent agents to realize the full cognitive capabilities of humans.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/play/xpQbSA8ooD3VTlgpYftgsBvs6TKQq_koP99yQB-9XJe7j8uCThXNSpM97ZrOl_5FqgTKl3m7vIg7km00.wfAogdFskLYFR6UW?continueMode=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://soar.eecs.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SOAR Group Homepage&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://mitpress.mit.edu/books/soar-cognitive-architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The SOAR Cognitive Architecture, written by John E. Laird&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=VM1PGpvCEHI&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A similar talk given to MSAIL back in 2011!&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Image-to-Image Translation with Conditional Adversarial Networks</title>
+      <link>https://MSAIL.github.io/talk/cgan_102020/</link>
+      <pubDate>Tue, 20 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/cgan_102020/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Andrew Awad&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: 
+&lt;a href=&#34;https://arxiv.org/abs/1611.07004&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Andrew presented on a CVPR 2017 paper by Isola et al. This paper aimed to investigate conditional adversarial networks as a general-purpose solution to image-to-image translation problems. These networks not only learn the mapping from input image to output image, but also learn a loss function to train this mapping. The networks in question were 
+&lt;a href=&#34;https://arxiv.org/abs/1411.1784&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CGANs&lt;/a&gt;, proposed earlier by Mirza et al. Isola et al. also proposed the 
+&lt;a href=&#34;https://paperswithcode.com/method/patchgan&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatchGAN&lt;/a&gt; discriminator.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A certain forgetful lead admin forgot to record this discussion. We apologize for the inconvenience&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1611.07004&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1411.1784&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CGAN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Other&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://paperswithcode.com/method/patchgan&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatchGAN&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://phillipi.github.io/pix2pix/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pix2pix GitHub Page&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/gan-pix2pix-generative-model-c9bf5d691bac&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium article on pix2pix&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning Applied to COVID-19 Optimization Problems</title>
+      <link>https://MSAIL.github.io/talk/rlcovid_101320/</link>
+      <pubDate>Tue, 13 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/rlcovid_101320/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nikhil Devraj&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Reinforcement Learning for COVID-19 Optimization Problems&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re not living under a rock, you know that COVID-19 is ravaging current-day society and requires monumental efforts on all scales, be it from individuals or from entire governments. In particular, governments play a major role in helping control the spread of COVID-19 by instituting policies to help with efforts such as lockdown enforcement and vaccine distribution. During this talk Nikhil talked about some previously proposed approaches to modeling such policy problems as control problems that could be solved with reinforcement learning.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1Xi2tofO321kWTMz_2pD9ltuAc-XqHTnY/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.04647.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;COVID-19 Pandemic Cyclic Lockdown Optimization Using Reinforcement Learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://journals.sagepub.com/doi/full/10.1177/0165551520959798&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Optimal policy learning for COVID-19 prevention using reinforcement learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.06602.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VacSIM: LEARNING EFFECTIVE STRATEGIES FOR COVID-19 VACCINE DISTRIBUTION USING REINFORCEMENT LEARNING&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Article(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/reinforcement-learning-for-covid-19-simulation-and-optimal-policy-b90719820a7f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reinforcement learning for Covid-19: Simulation and Optimal Policy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Regression, Part 2 (Application)</title>
+      <link>https://MSAIL.github.io/education/regression_2/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/regression_2/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Applications of Regression &lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
+&lt;p&gt;This lesson covered some interesting applications of regression.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://colab.research.google.com/drive/12nmYKp5IcUdUiZmrHaUK7YsUu1vIOXkj?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Colab notebook&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Human-Centered Autonomous Vehicles</title>
+      <link>https://MSAIL.github.io/talk/av_100620/</link>
+      <pubDate>Tue, 06 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/av_100620/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Patrick Morgan&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Human-Centered Autonomous Vehicles&lt;/p&gt;
+&lt;p&gt;Patrick focused on discussing 
+&lt;a href=&#34;https://arxiv.org/pdf/1810.01835.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Human-Centered Autonomous Vehicle Systems: Principles of Effective Shared Autonomy&lt;/a&gt;. This paper proposes that we should build autonomous vehicles with humans in mind, and that getting humans and artificial intelligence systems to collaborate effectively is an achievable and worthy goal. In this light, they propose a human-centered paradigm for engineering shared autonomy systems in the car that erase the boundary between human and machine in the way the driving task is experienced. The researchers propose a 7 principle engineering design process that will make autonomous vehicles safer and greatly lower the cost of development. This discussion also ended up touching on other fundamental issues in AI, such as data privacy.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1fZvu5nDO3qhgwwc1X85aDmQ44RHD9bWF/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1810.01835.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Human-Centered Autonomous Vehicle Systems: Principles of Effective Shared Autonomy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AlphaZero and its Impact on the World of Chess</title>
+      <link>https://MSAIL.github.io/talk/alphazero_chess_092920/</link>
+      <pubDate>Tue, 29 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/alphazero_chess_092920/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Kevin Wang&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: AlphaZero and its Impact on Chess&lt;/p&gt;
+&lt;p&gt;The world was appalled when 
+&lt;a href=&#34;https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaGo&lt;/a&gt; first 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;played Lee Sedol in Go&lt;/a&gt;, winning 4 matches to 1. DeepMind subsequently released 
+&lt;a href=&#34;https://deepmind.com/blog/article/alphago-zero-starting-scratch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaGo Zero&lt;/a&gt;, an iteration on AlphaGo that beat it 100-1. Going even further, they released 
+&lt;a href=&#34;https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaZero&lt;/a&gt;, which learned how to play games such as Shogi and Chess. Kevin, an avid chess enthusiast, wanted to discuss what this meant for the Chess world.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1jETQcqIZqp24drl8ARH4bABuv963g0Ah/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.04374.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Assessing Game Balance with AlphaZero: Exploring Alternative Rule Sets in Chess&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1712.01815.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mastering Chess and Shogi by Self-Play with a General RL Algorithm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video(s):&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=7L2sUGcOgh0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video From DeepMind&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=mOqmLYlFdBo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaZero VS AlphaZero || THE PERFECT GAME&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Regression, Part 1 (Theory and Implementation)</title>
+      <link>https://MSAIL.github.io/education/regression_1/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/regression_1/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Theory and Implementation of Regression&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
+&lt;p&gt;This lesson covered the theory behind and implementation of a linear regression model with gradient descent.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/share/94fSO_w_AT68Td2e0Qr_kckIVBepdNLecMn5mTvFOH994JWIkKSZLl3u9xpFr6J6.oj49dWOJeBFBzPA2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1VHWuE_lqbKnDKZ8HKbVcLArbe8cMWKsd_61FY4FTn-E/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/drive/18MoSHNwUnEKwvokZAZA1AcLc6AJ3Bs81?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson Colab notebook&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Strategic Reasoning in Dynamic Environments</title>
+      <link>https://MSAIL.github.io/talk/wellman_092220/</link>
+      <pubDate>Tue, 22 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/wellman_092220/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;http://strategicreasoning.org/michael-p-wellman/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Michael Wellman&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Strategic Reasoning in Dynamic Environments&lt;/p&gt;
+&lt;p&gt;Dr. Wellman presented about his group&amp;rsquo;s research, which generally specializes in game theory and multi-agent reasoning in dynamic environments. Much of his work lies in the domain of markets and commerce. You can find his 
+&lt;a href=&#34;https://strategicreasoning.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;group&amp;rsquo;s page here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Prof. Wellman asked us not to post the recording publicly. A recording is available within our Slack channel, so please search in there if you&amp;rsquo;re interested. We apologize for any inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Article(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/empirical-game-theoretic-analysis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Empirical Game-Theoretic Analysis&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/computational-finance/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computational Finance&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/world-with-autonomous-agents/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World with Autonomous Agents&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video(s):&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=SnTf-iWUTpk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Artificially Intelligent Decision Makers in the Real World&amp;rdquo; with Michael Wellman &amp;amp; Bill Powers&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Classification with Logistic Regression</title>
+      <link>https://MSAIL.github.io/education/classification_logreg/</link>
+      <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/classification_logreg/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Classification with Logistic Regression&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;Kevin taught some members of MSAIL some basics of machine learning, culminating in building out a classification model for MNIST from scratch using logistic regression. Classification is the process of categorizing data into predetermined groups, and logistic regression is a means to build a classifier (though certainly not the only means to do so).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;We couldn&amp;rsquo;t find the recording of this session, but be sure to check out the supplemental materials.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1YVw4T0E_f6m0NovhS3YbwAMLns0tQfFE/edit#slide=id.p1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/drive/1Cein0r-J9N2vX1xh24cRLEHgBkJx3p7w?authuser=1#scrollTo=ubgi9PVZDDgU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson Colab notebook&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://builtin.com/data-science/basic-linear-algebra-deep-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basic matrix operations&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.kaggle.com/learn/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basic Python programming&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Trend Towards Large Language Models</title>
+      <link>https://MSAIL.github.io/talk/gpt3_091520/</link>
+      <pubDate>Tue, 15 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/gpt3_091520/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Sean Stapleton&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: GPT-3 and its Implications&lt;/p&gt;
+&lt;p&gt;In recent years, we’ve seen 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Natural_language_processing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;natural language processing&lt;/a&gt; (NLP) performance accelerate drastically across a number of tasks, including text completion, 
+&lt;a href=&#34;https://paperswithcode.com/task/machine-translation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;machine translation&lt;/a&gt;, and 
+&lt;a href=&#34;https://paperswithcode.com/task/question-answering&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;question answering&lt;/a&gt;. Much of this performance gain has been attributed to two trends in the NLP community, namely the introduction of transformers, and the increase in model size (and consequent need for intense computational power). Capitalizing on these trends, 
+&lt;a href=&#34;https://openai.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenAI&lt;/a&gt; recently released a transformer-based model called 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/gpt-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GPT-3&lt;/a&gt; with 175 billion parameters, that was trained on roughly 500 billion tokens scraped from the internet.
+This MSAIL discussion focused predominantly on three questions addressed in the paper:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Does a substantial increase in model size actually lead to better performance in downstream tasks?&lt;/li&gt;
+&lt;li&gt;Can language models effectively model intelligent and adaptable thought?&lt;/li&gt;
+&lt;li&gt;What are the biases and risks associated with training a language model on the entire internet?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sean also covered the transformer and GPT-3 model architectures, though the focus of the discussion was not on this aspect of the paper.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/12beS3Er1AuiCbmxNR0rAiiot43xTkw_n/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find the recording of this talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/2005.14165&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language Models are Few-Shot Learners (Brown et al.)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Articles:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated Transformer&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-gpt2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated GPT-2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bloomberg Tech Talk: Applied Named Entity Recognition</title>
+      <link>https://MSAIL.github.io/talk/ner_090920/</link>
+      <pubDate>Wed, 09 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/ner_090920/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://www.preotiuc.ro/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Daniel Preotiuc-Pietro&lt;/a&gt; and 
+&lt;a href=&#34;https://scholar.google.com/citations?user=ycBuNT0AAAAJ&amp;amp;hl=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mayank Kulkarni&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Applied Named Entity Recognition&lt;/p&gt;
+&lt;p&gt;During this talk, two senior research scientists from 
+&lt;a href=&#34;https://www.techatbloomberg.com/ai/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bloomberg&amp;rsquo;s AI Group&lt;/a&gt; presented on some of their work on Applied 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Named-entity_recognition&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Named Entity Recognition&lt;/a&gt;. Their discussion focused on applications of NER at Bloomberg, multi-domain NER, and analysis of NER using temporal data.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Due to restrictions from Bloomberg, we were unable to record this session. We apologize for the inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers from Bloomberg AI&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.680/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Temporally-Informed Analysis of Named Entity Recognition&lt;/a&gt;, ACL 2020&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.750/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multi-Domain Named Entity Recognition with Genre-Aware and Agnostic Inference&lt;/a&gt;, ACL 2020&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/P19-1587/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Semi-Markov Structured Support Vector Machine Model for High-Precision Named Entity Recognition&lt;/a&gt;, ACL 2019&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Slides from Bloomberg AI&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://slideslive.com/38929187/multidomain-named-entity-recognition-with-genreaware-and-agnostic-inference&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multi-Domain NER&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Joining MSAIL</title>
+      <link>https://MSAIL.github.io/join/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/join/</guid>
+      <description>&lt;p&gt;Add yourself to the email list on 
+&lt;a href=&#34;https://mcommunity.umich.edu/#group:Michigan%20Student%20AI%20Lab&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MCommunity&lt;/a&gt; by logging in and then clicking &amp;ldquo;Join Group&amp;rdquo; in the top-left corner of the panel (see the image below). After doing this, you will receive emails from us.&lt;/p&gt;
+&lt;p&gt;Also, don&amp;rsquo;t forget to 
+&lt;a href=&#34;%22https://join.slack.com/t/msail-team/shared_invite/zt-370t1ktg-UfVTkVwftihyIQ0ZJNNeLw%22&#34;&gt;join our Slack group&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;mcommunity.png&#34; alt=&#34;MSAIL MCommunity Page&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;leaving-msail&#34;&gt;Leaving MSAIL&lt;/h2&gt;
+&lt;p&gt;If you later wish to leave, simply go to the MCommunity page and click &amp;ldquo;Resign&amp;rdquo;, which will be in the top left corner in place of &amp;ldquo;Join Group&amp;rdquo; in the above photo.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MSAIL Governance: A Brief Constitution</title>
+      <link>https://MSAIL.github.io/constitution/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/constitution/</guid>
+      <description>&lt;p&gt;&lt;em&gt;[Last updated on 2017-10-02]&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt; Terminology &lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Cosine&lt;/strong&gt;: The lead admin.&lt;br&gt;
+&lt;strong&gt;Sine&lt;/strong&gt;: A member of the admin team.&lt;/p&gt;
+&lt;h2&gt;Article 0: MSAIL seeks to increase its members&#39; Machine Learning knowledge.&lt;/h2&gt;
+&lt;p&gt;Indeed.  MSAIL will maintain a list of Members, defined as participants in at least one major communications channels such as Slack or a mailing list.  MSAIL will strive to discuss Machine Learning literature regularly throughout each school year.
+&lt;p&gt;Upon joining the organization, all members agree not to undermine the purpose or mission of MSAIL.
+&lt;p&gt;It falls to the Cosine to execute this Article.
+&lt;h2&gt;Article 1: Legislative powers lie in the Sines.&lt;/h2&gt;
+&lt;p&gt;The body of Sines possesses complete power: a simple majority of Sines will suffice to amend this Constitution, to appoint a Cosine, to override any decision of the Cosine, or to act in place of the Cosine.  Sines who are informed of a decision to be made but offer no prompt response are not counted in the denominator of the &#34;simple majority&#34;.
+&lt;p&gt;The Sines will not allow the number of Cosines to fall below 1.  By default, the Sines lie dormant and all powers and responsibilities lie with the Cosine. 
+&lt;h2&gt;Article 2: Executive powers lie in the Cosine.&lt;/h2&gt;
+&lt;p&gt;Specifically, the Cosine is responsible for the day-to-day functioning of MSAIL, and to that end may act and delegate arbitrarily within Constitutional bounds.  It is traditional for the Cosine to distribute significant short-term tasks among the Sines.  The Cosine will report to the Sines, and the Sines will vote promptly on presented issues.
+&lt;p&gt;The Cosine may appoint new Sines with the advice and consent of the old Sines.  The Cosine will not allow the number of Sines to fall below 3.  The Cosine shall break ties among the Sines.  The Cosine may be a Sine.
+&lt;h2&gt;Article 3: MSAIL may also have Faculty Mentors.&lt;/h2&gt;
+&lt;p&gt;A faculty mentor can help us just by association.  MSAIL may mention their names on its official communications.  MSAIL shall inform each Faculty Mentor of its activities via brief weekly emails with no reply needed.
+&lt;p&gt;Faculty mentors can point us to literature.  Faculty mentors are always welcome to share cool papers.  MSAIL may also request recommendations within a specific topic.
+&lt;p&gt;A Faculty Mentor need not take on additional responsibilities, but may choose to do so if requested.
+&lt;p&gt;The Sines and Cosine will endeavor to use Faculty Mentors’ time effectively.  Faculty Mentors need not make any administrative decisions.  Faculty Mentors are always welcome but never obliged to attend MSAIL meetings.
+&lt;h2&gt;Article 4: MSAIL is committed to inclusivity and transparency.&lt;/h2&gt;
+&lt;p&gt;MSAIL will not discriminate based on academic affiliation(s) or lack thereof, age, breastfeeding or lack thereof, career status, color, criminal record, disability or lack thereof, ethnicity, employment status, gender expression, gender identity, HIV status, marital status, national origin, parental status, personal association, physical features such as height and weight, political activity, pregnancy or lack thereof, race, religion or lack thereof, sex, sexual orientation, socioeconomic background, or veteran status.
+&lt;p&gt;MSAIL will, moreover, actively include members, no matter the properties listed above.  The creation and maintenance of an inclusive environment touches all aspects of our activities, from communications to recruitment and from discussion topics to leadership positions.  
+&lt;p&gt;MSAIL’s motto will be &#34;the more, the merrier&#34;; a corollary is that information such as planning discussions will be available to all members, so long as it does not conflict with privacy concerns.
+&lt;p&gt;To rephrase a subset of the above in a university-required formula: MSAIL is committed to a policy of equal opportunity for all persons and does not discriminate on the basis of race, color, national origin, age, marital status, sex, sexual orientation, gender identity, gender expression, disability, religion, height, weight, or veteran status in its membership or activities unless permitted by university policy for gender specific organizations.
+&lt;p&gt;It falls to the Cosine to execute this Article.
+&lt;h2&gt;Article 5: This Constitution may be amended by the Sines.&lt;/h2&gt;
+&lt;p&gt;Any Member may propose an amendment’s text.  See Article 1 for voting details.
+&lt;h2&gt;Article 6: This Constitution will be MSAIL&#39;s supreme law.&lt;/h2&gt;
+&lt;p&gt;(Modulo University Policy.)
+&lt;h2&gt;Article 7: This Constitution will be ratified by the Sines.&lt;/h2&gt;
+&lt;p&gt;This Constitution will be re-written and ratified at least once in any 1024-day window.  See Article 1 for voting details.
+</description>
+    </item>
+    
+    <item>
+      <title>Resources for MSAIL Members</title>
+      <link>https://MSAIL.github.io/resources/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/resources/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This page will be updated periodically with new resources. Keep an eye out!&lt;/em&gt;&lt;br&gt;
+Feel free to send any resource requests that you&amp;rsquo;d like listed here to 
+&lt;a href=&#34;mailto:msail-admin@umich.edu&#34;&gt;msail-admin@umich.edu&lt;/a&gt;.&lt;br&gt;
+Furthermore, if you are a resource owner and would like links to your work removed from this page, contact us at the email above.&lt;/p&gt;
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#learning-concepts&#34;&gt;Learning Concepts&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#deep-learning&#34;&gt;Deep Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#campus-involvement&#34;&gt;Campus Involvement&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--
+  + [Natural Language Processing](#natural-language-processing)
+  + [Computer Vision](#computer-vision)  
+  + [Reinforcement Learning](#reinforcement-learning)  
+  + [Classical Methods in AI](#classical-methods-in-ai)
+--&gt;
+&lt;h2 id=&#34;about-this-page&#34;&gt;About this page&lt;/h2&gt;
+&lt;p&gt;This page serves as a conglomeration of resources for MSAIL members to gain access to knowledge regarding AI. This includes 
+&lt;a href=&#34;#learning-concepts&#34;&gt;technical content&lt;/a&gt;, 
+&lt;a href=&#34;#campus-involvement&#34;&gt;ways to get involved on campus&lt;/a&gt;, 
+&lt;a href=&#34;#opportunities&#34;&gt;opportunities for research, jobs, and networking&lt;/a&gt;, and 
+&lt;a href=&#34;#method-and-mindset&#34;&gt;other advice regarding involvement in the field&lt;/a&gt;.&lt;br&gt;
+We intend to continually update this page with more resources and will occasionally restructure it to provide better depth.&lt;/p&gt;
+&lt;h2 id=&#34;learning-concepts&#34;&gt;Learning Concepts&lt;/h2&gt;
+&lt;p&gt;It&amp;rsquo;s important to know that AI is a broad field spanning the past century. We shouldn&amp;rsquo;t simply think of AI as &amp;ldquo;deep learning&amp;rdquo;, because it&amp;rsquo;s not. We&amp;rsquo;re listing resources regarding the most popular topics first because we understand they&amp;rsquo;re likely what initially grabbed your interest, but do note that there&amp;rsquo;s plenty of research being carried out on topics that we&amp;rsquo;ve probably never even heard of.&lt;/p&gt;
+&lt;p&gt;Sam Finlayson from Harvard/MIT has a fantastic 
+&lt;a href=&#34;https://sgfin.github.io/learning-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page on resources you can use to dive into ML&lt;/a&gt;. It&amp;rsquo;s quite advanced but provides a good starting point for those looking for a comprehensive list. We&amp;rsquo;ll be using some of these resources in our own lists.&lt;/p&gt;
+&lt;h3 id=&#34;deep-learning&#34;&gt;Deep Learning&lt;/h3&gt;
+&lt;p&gt;Understanding deep learning to a satisfactory degree requires working familiarity (but not necessarily mastery) with the following prerequisite topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Vector and Matrix Operations&lt;/li&gt;
+&lt;li&gt;Calculus (Partial and total derivatives, gradients)&lt;/li&gt;
+&lt;li&gt;Probability&lt;/li&gt;
+&lt;li&gt;Basic statistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Check out the slides/recordings from our 
+&lt;a href=&#34;https://MSAIL.github.io/education/&#34;&gt;education sessions&lt;/a&gt;, where some of these concepts are explained.&lt;/p&gt;
+&lt;p&gt;For a more thorough introduction to the field, we suggest the following resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://course.fast.ai/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fast AI&amp;rsquo;s Deep Learning course&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 498/598 - Deep Learning for Computer Vision @ University of Michigan&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://cs231n.stanford.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CS231n - Convolutional Neural Networks for Visual Recognition @ Stanford University&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In particular, the second listed resource (EECS 498/598) is a course offered here every Fall. It is very similar to CS231n, so just one of the two would be satisfactory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;We&amp;rsquo;re in the process of adding more learning resources!&lt;/strong&gt;&lt;/p&gt;
+&lt;!--
+### Computer Vision
+EECS 598 and CS231n (linked above) are a good start for getting involved with vision, so they&#39;re probably one of your best bets to get started
+
+### Natural Language Processing
+
+### Reinforcement Learning
+
+### Robotics
+
+### Classical Methods in AI
+Note that this section&#39;s header is a major generalization. As noted above, AI is a broad field, and we should note that NLP, CV, and RL are as much fields of study as they are *methods* (loosely speaking). They are a means to an end. As to what end you wish to pursue - that falls to you. 
+--&gt;
+&lt;h2 id=&#34;campus-involvement&#34;&gt;Campus involvement&lt;/h2&gt;
+&lt;p&gt;Getting involved during your time on campus is the fastest way to learn about AI. You should definitely take relevant courses, but we also recommend joining a research group or relevant team to get more practice and familiarity with relevant topics. This includes participating in MSAIL-sponsored projects.
+MSAIL has a reading group, but it&amp;rsquo;s hard to balance all the different subfields of AI in just ~15 sessions in a semester. We highly recommend joining reading groups for more depth regarding the topics you&amp;rsquo;re interested in.&lt;/p&gt;
+&lt;h3 id=&#34;classes&#34;&gt;Classes&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Last updated on 1/2/21.&lt;/em&gt;
+This is a listing of courses related to AI (from a technical perspective) here at the University of Michigan. We tried to be as comprehensive as possible, but there are far too many courses to sift through, so we may have missed some. More information is available on the 
+&lt;a href=&#34;https://www.lsa.umich.edu/cg/default.aspx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LSA course guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;As a side note, there are many courses that we can argue are related to AI from a less technical perspective. For example, take classes in the cognitive sciences - the development of human-like AI is heavily motivated by studies in this field. We leave these classes out for brevity&amp;rsquo;s sake.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Undergraduate-level Classes&lt;/strong&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Class Code&lt;/th&gt;
+&lt;th&gt;Class Name&lt;/th&gt;
+&lt;th&gt;Last offered?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 442&lt;/td&gt;
+&lt;td&gt;Computer Vision&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 445&lt;/td&gt;
+&lt;td&gt;Machine Learning&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 492&lt;/td&gt;
+&lt;td&gt;Intro to AI&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 467&lt;/td&gt;
+&lt;td&gt;Autonomous Robotics (MDE)&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 367&lt;/td&gt;
+&lt;td&gt;Intro to Autonomous Robotics&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ROB 464&lt;/td&gt;
+&lt;td&gt;Hands-on Robotics&lt;/td&gt;
+&lt;td&gt;W20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Graduate-level Classes&lt;/strong&gt;:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Class Code&lt;/th&gt;
+&lt;th&gt;Class Name&lt;/th&gt;
+&lt;th&gt;Last offered?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 545&lt;/td&gt;
+&lt;td&gt;Machine Learning&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 568/ROB 530&lt;/td&gt;
+&lt;td&gt;Mobile Robotics&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 592&lt;/td&gt;
+&lt;td&gt;Foundations of AI&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 692&lt;/td&gt;
+&lt;td&gt;Advanced Artificial Intelligence&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 504&lt;/td&gt;
+&lt;td&gt;Foundations of Computer Vision&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 542&lt;/td&gt;
+&lt;td&gt;Advanced Topics in Computer Vision&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LING 541/EECS 595&lt;/td&gt;
+&lt;td&gt;Natural Language Processing&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 551&lt;/td&gt;
+&lt;td&gt;Matrix Methods for Signal Processing, Data Analysis, and Machine Learning&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;Special Topics Classes&lt;/strong&gt;:&lt;br&gt;
+Each of these classes is listed under EECS 498, 598 or both - you will need to select the relevant section when registering.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Class Code&lt;/th&gt;
+&lt;th&gt;Class Name&lt;/th&gt;
+&lt;th&gt;Last offered?&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498&lt;/td&gt;
+&lt;td&gt;Intro to Natural Language Processing&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498/598&lt;/td&gt;
+&lt;td&gt;Ethics for AI and Robotics&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498/598&lt;/td&gt;
+&lt;td&gt;Applied Machine Learning for Affective Computing&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Statistical Learning Theory&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Unsupervised Visual Learning&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Adversarial Machine Learning&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Systems for AI&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 556/598&lt;/td&gt;
+&lt;td&gt;Image Processing&lt;/td&gt;
+&lt;td&gt;W21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498&lt;/td&gt;
+&lt;td&gt;Intro to Algorithmic Robotics&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498&lt;/td&gt;
+&lt;td&gt;Conversational AI&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498/598&lt;/td&gt;
+&lt;td&gt;Deep Learning for Computer Vision&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Reinforcement Learning Theory&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Deep Learning for NLP&lt;/td&gt;
+&lt;td&gt;F20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Situated Language Processing for Embodied AI Agents&lt;/td&gt;
+&lt;td&gt;W20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;The Ecological Approach to Vision&lt;/td&gt;
+&lt;td&gt;W20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Human-Computer Interaction&lt;/td&gt;
+&lt;td&gt;W20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;research-labs&#34;&gt;Research Labs&lt;/h3&gt;
+&lt;p&gt;A list of professors is available on the 
+&lt;a href=&#34;https://ai.engin.umich.edu/people/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Michigan AI Lab faculty page&lt;/a&gt;. Each professor&amp;rsquo;s lab will be linked to on their homepage.&lt;/p&gt;
+&lt;h3 id=&#34;reading-groups&#34;&gt;Reading Groups&lt;/h3&gt;
+&lt;p&gt;Right now, we are aware of two (soon to be three) relevant reading groups that allow for public participation. Many research labs have internal reading groups as well.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Group Name&lt;/th&gt;
+&lt;th&gt;Page&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Computer Vision Reading Group&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/umich.edu/cv-reading-group/home&#34;&gt;https://sites.google.com/umich.edu/cv-reading-group/home&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Natural Language Processing Reading Group&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://lit.eecs.umich.edu/reading_group.html&#34;&gt;https://lit.eecs.umich.edu/reading_group.html&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Reinforcement Learning Reading Group&lt;/td&gt;
+&lt;td&gt;Coming soon!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/h2&gt;
+&lt;h3 id=&#34;conducting-research&#34;&gt;Conducting Research&lt;/h3&gt;
+&lt;p&gt;Richard Hamming: 
+&lt;a href=&#34;http://www.cs.virginia.edu/~robins/YouAndYourResearch.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;“You and your research”&lt;/a&gt;&lt;br&gt;
+Michael Nielsen: 
+&lt;a href=&#34;https://michaelnielsen.org/blog/principles-of-effective-research/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;“Principles of Effective Research”&lt;/a&gt;&lt;br&gt;
+John Schulman: 
+&lt;a href=&#34;http://joschu.net/blog/opinionated-guide-ml-research.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;“An Opinionated Guide to ML Research”&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;reading-research-papers&#34;&gt;Reading research papers&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.eecs.harvard.edu/~michaelm/postscripts/ReadPaper.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.eecs.harvard.edu/~michaelm/postscripts/ReadPaper.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;giving-talks&#34;&gt;Giving Talks&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://web.eecs.umich.edu/~cscott/talk_advice.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://web.eecs.umich.edu/~cscott/talk_advice.htm&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Who are we?</title>
+      <link>https://MSAIL.github.io/aboutus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/aboutus/</guid>
+      <description>&lt;p&gt;MSAIL is a large organization of over 400 members, and as such requires our Admin Team to help keep operations running smoothly. Our Admin Team is advised by faculty mentors involved in AI research at the University of Michigan.&lt;/p&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;style.css&#34;&gt;
+&lt;h2&gt;Faculty Mentors&lt;/h2&gt;
+These astounding professors make MSAIL possible with their advice and support.
+&lt;div id=&#34;faculty&#34;&gt;
+&lt;!-- Laura Balzano --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+     &lt;a href=&#34;https://web.eecs.umich.edu/~girasole/&#34;&gt;
+    &lt;img src=&#34;portraits/laura_balzano.jpg&#34;&gt;
+    &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; &lt;a href=&#34;https://web.eecs.umich.edu/~girasole/&#34;&gt; Laura Balzano &lt;/a&gt; &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Associate Professor, EECS &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; girasole@&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Danai Koutra --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+    &lt;a href=&#34;https://web.eecs.umich.edu/~dkoutra/&#34;&gt;
+    &lt;img src=&#34;portraits/danai_koutra.jpg&#34;&gt;
+    &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;  &lt;a href=&#34;https://web.eecs.umich.edu/~dkoutra/&#34;&gt; Danai Koutra &lt;/a&gt; &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Assistant Professor, EECS &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; dkoutra@&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Sindhu Kutty --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+    &lt;img src=&#34;portraits/sindhu_kutty.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Sindhu Kutty &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Lecturer III, EECS &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; skutty@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Jenna Wiens --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+    &lt;a href=&#34;http://www-personal.umich.edu/~wiensj/&#34;&gt;
+    &lt;img src=&#34;portraits/jenna_wiens.png&#34;&gt;
+    &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; &lt;a href=&#34;http://www-personal.umich.edu/~wiensj/&#34;&gt; Jenna Wiens &lt;/a&gt; &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Associate Professor, EECS &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; wiensj@ &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt; Admin Team &lt;/h2&gt;
+Our administrative team is responsible for planning MSAIL&#39;s activities
+and holding the organization together. If you would like to help out as
+well, contact Nikhil via email (devrajn@).
+Our &lt;a href=&#34;https://MSAIL.github.io/constitution/&#34;&gt;constitution&lt;/a&gt; codifies our
+roles. The following details our current admin team&#39;s roles and emails (at umich.edu).
+&lt;!-- &lt;div id=&#34;leader&#34;&gt; &lt;/div&gt; --&gt;
+&lt;div id=&#34;leadership&#34;&gt;
+&lt;!-- Robert Aung --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/robert_aung.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Robert Aung&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Education &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; aung@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Andrew Awad --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+      &lt;img src=&#34;portraits/andrew_awad.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Andrew Awad&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Industry Relations &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; anawad@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Kierra Davis --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/kierra_davis.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Kierra Davis &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Blog, DEI &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; kiedavis@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Nikhil Devraj --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/nikhil_devraj.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Nikhil Devraj &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Lead Admin &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; devrajn@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Anthony Liang --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/anthony_liang.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Anthony Liang &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Blog, Education &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; aliangdw@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Patrick Morgan --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/patrick_morgan.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Patrick Morgan &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Speakers &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; pmorg@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Chloe Snyders --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/chloe_snyders.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Chloe Snyders &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; DEI &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; csnyders@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Ashwin Sreevatsa --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/ashwin_sreevatsa.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Ashwin Sreevatsa &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Projects &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; asreeva@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Sean Stapleton --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/sean_stapleton.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Sean Stapleton &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; DEI, Administrative &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; seancs@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Kevin Wang --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/kevin_wang.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Kevin Wang &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Education &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; musicer@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

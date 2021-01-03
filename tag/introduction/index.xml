@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/introduction/</link>
+      <atom:link href="https://MSAIL.github.io/tag/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <description>Introduction</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 08 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Introduction</title>
+      <link>https://MSAIL.github.io/tag/introduction/</link>
+    </image>
+    
+    <item>
+      <title>Regression, Part 2 (Application)</title>
+      <link>https://MSAIL.github.io/education/regression_2/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/regression_2/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Applications of Regression &lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
+&lt;p&gt;This lesson covered some interesting applications of regression.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://colab.research.google.com/drive/12nmYKp5IcUdUiZmrHaUK7YsUu1vIOXkj?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Colab notebook&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Regression, Part 1 (Theory and Implementation)</title>
+      <link>https://MSAIL.github.io/education/regression_1/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/regression_1/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Theory and Implementation of Regression&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
+&lt;p&gt;This lesson covered the theory behind and implementation of a linear regression model with gradient descent.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/share/94fSO_w_AT68Td2e0Qr_kckIVBepdNLecMn5mTvFOH994JWIkKSZLl3u9xpFr6J6.oj49dWOJeBFBzPA2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1VHWuE_lqbKnDKZ8HKbVcLArbe8cMWKsd_61FY4FTn-E/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/drive/18MoSHNwUnEKwvokZAZA1AcLc6AJ3Bs81?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson Colab notebook&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Classification with Logistic Regression</title>
+      <link>https://MSAIL.github.io/education/classification_logreg/</link>
+      <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/classification_logreg/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Classification with Logistic Regression&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;Kevin taught some members of MSAIL some basics of machine learning, culminating in building out a classification model for MNIST from scratch using logistic regression. Classification is the process of categorizing data into predetermined groups, and logistic regression is a means to build a classifier (though certainly not the only means to do so).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;We couldn&amp;rsquo;t find the recording of this session, but be sure to check out the supplemental materials.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1YVw4T0E_f6m0NovhS3YbwAMLns0tQfFE/edit#slide=id.p1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/drive/1Cein0r-J9N2vX1xh24cRLEHgBkJx3p7w?authuser=1#scrollTo=ubgi9PVZDDgU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson Colab notebook&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://builtin.com/data-science/basic-linear-algebra-deep-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basic matrix operations&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.kaggle.com/learn/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basic Python programming&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

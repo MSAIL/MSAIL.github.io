@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>John Laird | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/john-laird/</link>
+      <atom:link href="https://MSAIL.github.io/tag/john-laird/index.xml" rel="self" type="application/rss+xml" />
+    <description>John Laird</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 27 Oct 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>John Laird</title>
+      <link>https://MSAIL.github.io/tag/john-laird/</link>
+    </image>
+    
+    <item>
+      <title>Faculty Talk: Cognitive Architecture</title>
+      <link>https://MSAIL.github.io/talk/laird_102720/</link>
+      <pubDate>Tue, 27 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/laird_102720/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://laird.engin.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. John Laird&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Cognitive Architecture&lt;/p&gt;
+&lt;p&gt;Prof. Laird discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cognitive_architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cognitive architecture&lt;/a&gt; - more specifically, he discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Soar_%28cognitive_architecture%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SOAR&lt;/a&gt;, a cognitive architecture that his research group has been developing and maintaining for decades. SOAR is simultaneously a theory of cognition and an architecture, with the ultimate goal of enabling general intelligent agents to realize the full cognitive capabilities of humans.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/play/xpQbSA8ooD3VTlgpYftgsBvs6TKQq_koP99yQB-9XJe7j8uCThXNSpM97ZrOl_5FqgTKl3m7vIg7km00.wfAogdFskLYFR6UW?continueMode=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://soar.eecs.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SOAR Group Homepage&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://mitpress.mit.edu/books/soar-cognitive-architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The SOAR Cognitive Architecture, written by John E. Laird&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=VM1PGpvCEHI&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A similar talk given to MSAIL back in 2011!&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

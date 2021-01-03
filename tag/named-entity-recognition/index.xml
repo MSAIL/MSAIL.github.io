@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Named Entity Recognition | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/named-entity-recognition/</link>
+      <atom:link href="https://MSAIL.github.io/tag/named-entity-recognition/index.xml" rel="self" type="application/rss+xml" />
+    <description>Named Entity Recognition</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 09 Sep 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Named Entity Recognition</title>
+      <link>https://MSAIL.github.io/tag/named-entity-recognition/</link>
+    </image>
+    
+    <item>
+      <title>Bloomberg Tech Talk: Applied Named Entity Recognition</title>
+      <link>https://MSAIL.github.io/talk/ner_090920/</link>
+      <pubDate>Wed, 09 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/ner_090920/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://www.preotiuc.ro/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Daniel Preotiuc-Pietro&lt;/a&gt; and 
+&lt;a href=&#34;https://scholar.google.com/citations?user=ycBuNT0AAAAJ&amp;amp;hl=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mayank Kulkarni&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Applied Named Entity Recognition&lt;/p&gt;
+&lt;p&gt;During this talk, two senior research scientists from 
+&lt;a href=&#34;https://www.techatbloomberg.com/ai/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bloomberg&amp;rsquo;s AI Group&lt;/a&gt; presented on some of their work on Applied 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Named-entity_recognition&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Named Entity Recognition&lt;/a&gt;. Their discussion focused on applications of NER at Bloomberg, multi-domain NER, and analysis of NER using temporal data.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Due to restrictions from Bloomberg, we were unable to record this session. We apologize for the inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers from Bloomberg AI&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.680/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Temporally-Informed Analysis of Named Entity Recognition&lt;/a&gt;, ACL 2020&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.750/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multi-Domain Named Entity Recognition with Genre-Aware and Agnostic Inference&lt;/a&gt;, ACL 2020&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/P19-1587/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Semi-Markov Structured Support Vector Machine Model for High-Precision Named Entity Recognition&lt;/a&gt;, ACL 2019&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Slides from Bloomberg AI&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://slideslive.com/38929187/multidomain-named-entity-recognition-with-genreaware-and-agnostic-inference&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multi-Domain NER&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

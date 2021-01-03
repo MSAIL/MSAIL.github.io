@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Natural Language Processing | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/natural-language-processing/</link>
+      <atom:link href="https://MSAIL.github.io/tag/natural-language-processing/index.xml" rel="self" type="application/rss+xml" />
+    <description>Natural Language Processing</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Dec 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Natural Language Processing</title>
+      <link>https://MSAIL.github.io/tag/natural-language-processing/</link>
+    </image>
+    
+    <item>
+      <title>Faculty Talk: Situated Language Processing and Embodied Dialogue</title>
+      <link>https://MSAIL.github.io/talk/chai_120120/</link>
+      <pubDate>Tue, 01 Dec 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/chai_120120/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://web.eecs.umich.edu/~chaijy/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Joyce Chai&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Situated Language Processing Towards Interactive Task Learning&lt;/p&gt;
+&lt;p&gt;Prof. Chai discussed some of her research on situated language processing, which is a field describing the interaction of language and visual/motor processing in embodied, situated, and language-for-action research traditions. This research also aims to unite converging and complementary evidence from behavioral, neuroscientific, neuropsychological and computational methods.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/play/oR3KFi74WzqD5dZfPiV6MdUzaKV1CDhoAgJjFDY7CxZp_AFiF1Wadd9L9L8Av4VkDEWI6nOSLORlS93H.szI6WWrlkDpkAJN-?continueMode=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of her talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.ijcai.org/Proceedings/2018/0001.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language to Action: Towards Interactive Task Learning with Physical Agents&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://sled-group.eecs.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Situated Language and Embodied Dialogue (SLED) Group&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Text Summarization with Deep Learning</title>
+      <link>https://MSAIL.github.io/talk/textsummarization_111020/</link>
+      <pubDate>Tue, 10 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/textsummarization_111020/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Yashmeet Gambhir&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Text Summarization with Deep Learning&lt;/p&gt;
+&lt;p&gt;Yash discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Automatic_summarization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;text summarization&lt;/a&gt;, where the goal is to&amp;hellip; summarize text. More specifically, he discussed abstractive summarization, of which the goal is to generate &lt;em&gt;novel&lt;/em&gt; sentences using natural language generation techniques. One such method for doing this is using pointer-generator networks. After discussing PGNs, he went on to discuss a paper describing extreme summarization to combat model hallucination for this task. The papers discussed are linked below.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1GCeGWfC_9jF6BDlLalEpKt9-KIlq_Hvv/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt; &lt;em&gt;Unfortunately this only includes the second half of the talk about abstractive summarization, because we forgot to record starting at the beginning.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.aclweb.org/anthology/P17-1099/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Get To The Point: Summarization with Pointer-Generator Networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.173/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On Faithfulness and Factuality in Abstractive Summarization&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Trend Towards Large Language Models</title>
+      <link>https://MSAIL.github.io/talk/gpt3_091520/</link>
+      <pubDate>Tue, 15 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/gpt3_091520/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Sean Stapleton&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: GPT-3 and its Implications&lt;/p&gt;
+&lt;p&gt;In recent years, we’ve seen 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Natural_language_processing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;natural language processing&lt;/a&gt; (NLP) performance accelerate drastically across a number of tasks, including text completion, 
+&lt;a href=&#34;https://paperswithcode.com/task/machine-translation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;machine translation&lt;/a&gt;, and 
+&lt;a href=&#34;https://paperswithcode.com/task/question-answering&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;question answering&lt;/a&gt;. Much of this performance gain has been attributed to two trends in the NLP community, namely the introduction of transformers, and the increase in model size (and consequent need for intense computational power). Capitalizing on these trends, 
+&lt;a href=&#34;https://openai.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenAI&lt;/a&gt; recently released a transformer-based model called 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/gpt-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GPT-3&lt;/a&gt; with 175 billion parameters, that was trained on roughly 500 billion tokens scraped from the internet.
+This MSAIL discussion focused predominantly on three questions addressed in the paper:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Does a substantial increase in model size actually lead to better performance in downstream tasks?&lt;/li&gt;
+&lt;li&gt;Can language models effectively model intelligent and adaptable thought?&lt;/li&gt;
+&lt;li&gt;What are the biases and risks associated with training a language model on the entire internet?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sean also covered the transformer and GPT-3 model architectures, though the focus of the discussion was not on this aspect of the paper.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/12beS3Er1AuiCbmxNR0rAiiot43xTkw_n/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find the recording of this talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/2005.14165&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language Models are Few-Shot Learners (Brown et al.)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Articles:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated Transformer&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-gpt2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated GPT-2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,73 @@
+#cosine {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.cosine-box {
+    position: relative;
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+    margin-top: 40px;
+}
+
+#leadership {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    
+    margin-top: 40px;
+}
+
+#faculty {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;    
+    margin-top: 40px;
+}
+
+.leader-box {
+    width: 250px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.leader-portrait {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.leader-portrait img {
+    width: 100%;
+    margin: auto;
+}
+
+.leader-name {
+    text-align: center;
+    font-weight:  bold;
+    font-size: 18px;
+}
+
+.leader-info {
+    text-align: center;
+    color: #080808;
+    font-style: italic;
+    font-size: 16px;
+}
+
+.leader-email {
+    text-align: center;
+    font-size: 16px;
+}

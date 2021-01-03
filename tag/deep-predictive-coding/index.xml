@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Predictive Coding | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/deep-predictive-coding/</link>
+      <atom:link href="https://MSAIL.github.io/tag/deep-predictive-coding/index.xml" rel="self" type="application/rss+xml" />
+    <description>Deep Predictive Coding</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 03 Nov 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Deep Predictive Coding</title>
+      <link>https://MSAIL.github.io/tag/deep-predictive-coding/</link>
+    </image>
+    
+    <item>
+      <title>Brain-Inspired AI</title>
+      <link>https://MSAIL.github.io/talk/brain_insp_110320/</link>
+      <pubDate>Tue, 03 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/brain_insp_110320/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://johnmday.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;John Day&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Brain-inspired AI&lt;/p&gt;
+&lt;p&gt;John started his talk by discussing brain-inspired AI in general, which involves studies like 
+&lt;a href=&#34;https://www.nature.com/articles/531S16a&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;neural modeling&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Artificial_consciousness#:~:text=Artificial%20consciousness%20%28AC%29%2C%20also,artificial%20intelligence%20and%20cognitive%20robotics.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;artificial consciousness&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Spiking_neural_network&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;spiking neural nets&lt;/a&gt;, and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cognitive_architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cognitive architectures&lt;/a&gt;. Afterwards, he focused on deep predictive coding networks.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1Gly--En531JIa4F_h15TWAftKrJPEd5W/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.cell.com/neuron/pdf/S0896-6273%2817%2930509-3.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brain-inspired AI&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://klab.tch.harvard.edu/publications/PDFs/gk7591_Lotteretal_ICLR2017.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Predictive Coding Networks for Video Prediction and Unsupervised Learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1802.04762.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Predictive Coding Network for Object Recognition&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recent &amp; Upcoming Talks | MSAIL</title>
+    <link>https://MSAIL.github.io/talk/</link>
+      <atom:link href="https://MSAIL.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent &amp; Upcoming Talks</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Dec 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Recent &amp; Upcoming Talks</title>
+      <link>https://MSAIL.github.io/talk/</link>
+    </image>
+    
+    <item>
+      <title>Faculty Talk: Situated Language Processing and Embodied Dialogue</title>
+      <link>https://MSAIL.github.io/talk/chai_120120/</link>
+      <pubDate>Tue, 01 Dec 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/chai_120120/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://web.eecs.umich.edu/~chaijy/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Joyce Chai&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Situated Language Processing Towards Interactive Task Learning&lt;/p&gt;
+&lt;p&gt;Prof. Chai discussed some of her research on situated language processing, which is a field describing the interaction of language and visual/motor processing in embodied, situated, and language-for-action research traditions. This research also aims to unite converging and complementary evidence from behavioral, neuroscientific, neuropsychological and computational methods.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/play/oR3KFi74WzqD5dZfPiV6MdUzaKV1CDhoAgJjFDY7CxZp_AFiF1Wadd9L9L8Av4VkDEWI6nOSLORlS93H.szI6WWrlkDpkAJN-?continueMode=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of her talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.ijcai.org/Proceedings/2018/0001.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language to Action: Towards Interactive Task Learning with Physical Agents&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://sled-group.eecs.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Situated Language and Embodied Dialogue (SLED) Group&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Prediction Markets and More</title>
+      <link>https://MSAIL.github.io/talk/kutty_111720/</link>
+      <pubDate>Tue, 17 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/kutty_111720/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://scholar.google.com/citations?user=8duCIlcAAAAJ&amp;amp;hl=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Sindhu Kutty&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Prediction Markets, Recommender Systems, Fairness in AI&lt;/p&gt;
+&lt;p&gt;Dr. Kutty discussed some of her research on 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Prediction_market&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;prediction markets&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Recommender_system&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recommender systems&lt;/a&gt;, and fairness in AI. The talk mostly focused on some derivations for prediction markets, such as scoring functions for data collection.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Dr. Kutty asked us not to post the recording for this talk. We apologize for any inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Scoring_rule&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scoring Rules&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1402.5458.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Information Aggregation in Exponential Family Markets&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Text Summarization with Deep Learning</title>
+      <link>https://MSAIL.github.io/talk/textsummarization_111020/</link>
+      <pubDate>Tue, 10 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/textsummarization_111020/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Yashmeet Gambhir&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Text Summarization with Deep Learning&lt;/p&gt;
+&lt;p&gt;Yash discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Automatic_summarization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;text summarization&lt;/a&gt;, where the goal is to&amp;hellip; summarize text. More specifically, he discussed abstractive summarization, of which the goal is to generate &lt;em&gt;novel&lt;/em&gt; sentences using natural language generation techniques. One such method for doing this is using pointer-generator networks. After discussing PGNs, he went on to discuss a paper describing extreme summarization to combat model hallucination for this task. The papers discussed are linked below.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1GCeGWfC_9jF6BDlLalEpKt9-KIlq_Hvv/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt; &lt;em&gt;Unfortunately this only includes the second half of the talk about abstractive summarization, because we forgot to record starting at the beginning.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.aclweb.org/anthology/P17-1099/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Get To The Point: Summarization with Pointer-Generator Networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.173/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On Faithfulness and Factuality in Abstractive Summarization&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Brain-Inspired AI</title>
+      <link>https://MSAIL.github.io/talk/brain_insp_110320/</link>
+      <pubDate>Tue, 03 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/brain_insp_110320/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://johnmday.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;John Day&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Brain-inspired AI&lt;/p&gt;
+&lt;p&gt;John started his talk by discussing brain-inspired AI in general, which involves studies like 
+&lt;a href=&#34;https://www.nature.com/articles/531S16a&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;neural modeling&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Artificial_consciousness#:~:text=Artificial%20consciousness%20%28AC%29%2C%20also,artificial%20intelligence%20and%20cognitive%20robotics.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;artificial consciousness&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Spiking_neural_network&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;spiking neural nets&lt;/a&gt;, and 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cognitive_architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cognitive architectures&lt;/a&gt;. Afterwards, he focused on deep predictive coding networks.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1Gly--En531JIa4F_h15TWAftKrJPEd5W/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.cell.com/neuron/pdf/S0896-6273%2817%2930509-3.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brain-inspired AI&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://klab.tch.harvard.edu/publications/PDFs/gk7591_Lotteretal_ICLR2017.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Predictive Coding Networks for Video Prediction and Unsupervised Learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1802.04762.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Predictive Coding Network for Object Recognition&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Cognitive Architecture</title>
+      <link>https://MSAIL.github.io/talk/laird_102720/</link>
+      <pubDate>Tue, 27 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/laird_102720/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://laird.engin.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. John Laird&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Cognitive Architecture&lt;/p&gt;
+&lt;p&gt;Prof. Laird discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Cognitive_architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cognitive architecture&lt;/a&gt; - more specifically, he discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Soar_%28cognitive_architecture%29&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SOAR&lt;/a&gt;, a cognitive architecture that his research group has been developing and maintaining for decades. SOAR is simultaneously a theory of cognition and an architecture, with the ultimate goal of enabling general intelligent agents to realize the full cognitive capabilities of humans.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/play/xpQbSA8ooD3VTlgpYftgsBvs6TKQq_koP99yQB-9XJe7j8uCThXNSpM97ZrOl_5FqgTKl3m7vIg7km00.wfAogdFskLYFR6UW?continueMode=true&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://soar.eecs.umich.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SOAR Group Homepage&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://mitpress.mit.edu/books/soar-cognitive-architecture&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The SOAR Cognitive Architecture, written by John E. Laird&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=VM1PGpvCEHI&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A similar talk given to MSAIL back in 2011!&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Image-to-Image Translation with Conditional Adversarial Networks</title>
+      <link>https://MSAIL.github.io/talk/cgan_102020/</link>
+      <pubDate>Tue, 20 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/cgan_102020/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Andrew Awad&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: 
+&lt;a href=&#34;https://arxiv.org/abs/1611.07004&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Andrew presented on a CVPR 2017 paper by Isola et al. This paper aimed to investigate conditional adversarial networks as a general-purpose solution to image-to-image translation problems. These networks not only learn the mapping from input image to output image, but also learn a loss function to train this mapping. The networks in question were 
+&lt;a href=&#34;https://arxiv.org/abs/1411.1784&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CGANs&lt;/a&gt;, proposed earlier by Mirza et al. Isola et al. also proposed the 
+&lt;a href=&#34;https://paperswithcode.com/method/patchgan&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatchGAN&lt;/a&gt; discriminator.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A certain forgetful lead admin forgot to record this discussion. We apologize for the inconvenience&lt;/em&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1611.07004&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Image-to-Image Translation with Conditional Adversarial Networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1411.1784&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CGAN&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Other&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://paperswithcode.com/method/patchgan&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PatchGAN&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://phillipi.github.io/pix2pix/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pix2pix GitHub Page&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/gan-pix2pix-generative-model-c9bf5d691bac&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium article on pix2pix&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning Applied to COVID-19 Optimization Problems</title>
+      <link>https://MSAIL.github.io/talk/rlcovid_101320/</link>
+      <pubDate>Tue, 13 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/rlcovid_101320/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nikhil Devraj&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Reinforcement Learning for COVID-19 Optimization Problems&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re not living under a rock, you know that COVID-19 is ravaging current-day society and requires monumental efforts on all scales, be it from individuals or from entire governments. In particular, governments play a major role in helping control the spread of COVID-19 by instituting policies to help with efforts such as lockdown enforcement and vaccine distribution. During this talk Nikhil talked about some previously proposed approaches to modeling such policy problems as control problems that could be solved with reinforcement learning.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1Xi2tofO321kWTMz_2pD9ltuAc-XqHTnY/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.04647.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;COVID-19 Pandemic Cyclic Lockdown Optimization Using Reinforcement Learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://journals.sagepub.com/doi/full/10.1177/0165551520959798&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Optimal policy learning for COVID-19 prevention using reinforcement learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.06602.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VacSIM: LEARNING EFFECTIVE STRATEGIES FOR COVID-19 VACCINE DISTRIBUTION USING REINFORCEMENT LEARNING&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Article(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/reinforcement-learning-for-covid-19-simulation-and-optimal-policy-b90719820a7f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reinforcement learning for Covid-19: Simulation and Optimal Policy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Human-Centered Autonomous Vehicles</title>
+      <link>https://MSAIL.github.io/talk/av_100620/</link>
+      <pubDate>Tue, 06 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/av_100620/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Patrick Morgan&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Human-Centered Autonomous Vehicles&lt;/p&gt;
+&lt;p&gt;Patrick focused on discussing 
+&lt;a href=&#34;https://arxiv.org/pdf/1810.01835.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Human-Centered Autonomous Vehicle Systems: Principles of Effective Shared Autonomy&lt;/a&gt;. This paper proposes that we should build autonomous vehicles with humans in mind, and that getting humans and artificial intelligence systems to collaborate effectively is an achievable and worthy goal. In this light, they propose a human-centered paradigm for engineering shared autonomy systems in the car that erase the boundary between human and machine in the way the driving task is experienced. The researchers propose a 7 principle engineering design process that will make autonomous vehicles safer and greatly lower the cost of development. This discussion also ended up touching on other fundamental issues in AI, such as data privacy.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1fZvu5nDO3qhgwwc1X85aDmQ44RHD9bWF/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1810.01835.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Human-Centered Autonomous Vehicle Systems: Principles of Effective Shared Autonomy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>AlphaZero and its Impact on the World of Chess</title>
+      <link>https://MSAIL.github.io/talk/alphazero_chess_092920/</link>
+      <pubDate>Tue, 29 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/alphazero_chess_092920/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Kevin Wang&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: AlphaZero and its Impact on Chess&lt;/p&gt;
+&lt;p&gt;The world was appalled when 
+&lt;a href=&#34;https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaGo&lt;/a&gt; first 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;played Lee Sedol in Go&lt;/a&gt;, winning 4 matches to 1. DeepMind subsequently released 
+&lt;a href=&#34;https://deepmind.com/blog/article/alphago-zero-starting-scratch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaGo Zero&lt;/a&gt;, an iteration on AlphaGo that beat it 100-1. Going even further, they released 
+&lt;a href=&#34;https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaZero&lt;/a&gt;, which learned how to play games such as Shogi and Chess. Kevin, an avid chess enthusiast, wanted to discuss what this meant for the Chess world.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1jETQcqIZqp24drl8ARH4bABuv963g0Ah/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.04374.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Assessing Game Balance with AlphaZero: Exploring Alternative Rule Sets in Chess&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1712.01815.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mastering Chess and Shogi by Self-Play with a General RL Algorithm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video(s):&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=7L2sUGcOgh0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video From DeepMind&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=mOqmLYlFdBo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaZero VS AlphaZero || THE PERFECT GAME&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Faculty Talk: Strategic Reasoning in Dynamic Environments</title>
+      <link>https://MSAIL.github.io/talk/wellman_092220/</link>
+      <pubDate>Tue, 22 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/wellman_092220/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;http://strategicreasoning.org/michael-p-wellman/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Michael Wellman&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Strategic Reasoning in Dynamic Environments&lt;/p&gt;
+&lt;p&gt;Dr. Wellman presented about his group&amp;rsquo;s research, which generally specializes in game theory and multi-agent reasoning in dynamic environments. Much of his work lies in the domain of markets and commerce. You can find his 
+&lt;a href=&#34;https://strategicreasoning.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;group&amp;rsquo;s page here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Prof. Wellman asked us not to post the recording publicly. A recording is available within our Slack channel, so please search in there if you&amp;rsquo;re interested. We apologize for any inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Article(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/empirical-game-theoretic-analysis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Empirical Game-Theoretic Analysis&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/computational-finance/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computational Finance&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/world-with-autonomous-agents/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World with Autonomous Agents&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video(s):&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=SnTf-iWUTpk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Artificially Intelligent Decision Makers in the Real World&amp;rdquo; with Michael Wellman &amp;amp; Bill Powers&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Trend Towards Large Language Models</title>
+      <link>https://MSAIL.github.io/talk/gpt3_091520/</link>
+      <pubDate>Tue, 15 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/gpt3_091520/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Sean Stapleton&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: GPT-3 and its Implications&lt;/p&gt;
+&lt;p&gt;In recent years, we’ve seen 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Natural_language_processing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;natural language processing&lt;/a&gt; (NLP) performance accelerate drastically across a number of tasks, including text completion, 
+&lt;a href=&#34;https://paperswithcode.com/task/machine-translation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;machine translation&lt;/a&gt;, and 
+&lt;a href=&#34;https://paperswithcode.com/task/question-answering&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;question answering&lt;/a&gt;. Much of this performance gain has been attributed to two trends in the NLP community, namely the introduction of transformers, and the increase in model size (and consequent need for intense computational power). Capitalizing on these trends, 
+&lt;a href=&#34;https://openai.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenAI&lt;/a&gt; recently released a transformer-based model called 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/gpt-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GPT-3&lt;/a&gt; with 175 billion parameters, that was trained on roughly 500 billion tokens scraped from the internet.
+This MSAIL discussion focused predominantly on three questions addressed in the paper:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Does a substantial increase in model size actually lead to better performance in downstream tasks?&lt;/li&gt;
+&lt;li&gt;Can language models effectively model intelligent and adaptable thought?&lt;/li&gt;
+&lt;li&gt;What are the biases and risks associated with training a language model on the entire internet?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sean also covered the transformer and GPT-3 model architectures, though the focus of the discussion was not on this aspect of the paper.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/12beS3Er1AuiCbmxNR0rAiiot43xTkw_n/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find the recording of this talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/2005.14165&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language Models are Few-Shot Learners (Brown et al.)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Articles:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated Transformer&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-gpt2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated GPT-2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Bloomberg Tech Talk: Applied Named Entity Recognition</title>
+      <link>https://MSAIL.github.io/talk/ner_090920/</link>
+      <pubDate>Wed, 09 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/ner_090920/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://www.preotiuc.ro/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Daniel Preotiuc-Pietro&lt;/a&gt; and 
+&lt;a href=&#34;https://scholar.google.com/citations?user=ycBuNT0AAAAJ&amp;amp;hl=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mayank Kulkarni&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Applied Named Entity Recognition&lt;/p&gt;
+&lt;p&gt;During this talk, two senior research scientists from 
+&lt;a href=&#34;https://www.techatbloomberg.com/ai/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bloomberg&amp;rsquo;s AI Group&lt;/a&gt; presented on some of their work on Applied 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Named-entity_recognition&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Named Entity Recognition&lt;/a&gt;. Their discussion focused on applications of NER at Bloomberg, multi-domain NER, and analysis of NER using temporal data.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Due to restrictions from Bloomberg, we were unable to record this session. We apologize for the inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers from Bloomberg AI&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.680/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Temporally-Informed Analysis of Named Entity Recognition&lt;/a&gt;, ACL 2020&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.750/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multi-Domain Named Entity Recognition with Genre-Aware and Agnostic Inference&lt;/a&gt;, ACL 2020&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/P19-1587/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Semi-Markov Structured Support Vector Machine Model for High-Precision Named Entity Recognition&lt;/a&gt;, ACL 2019&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Slides from Bloomberg AI&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://slideslive.com/38929187/multidomain-named-entity-recognition-with-genreaware-and-agnostic-inference&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Multi-Domain NER&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

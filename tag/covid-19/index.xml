@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>COVID-19 | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/covid-19/</link>
+      <atom:link href="https://MSAIL.github.io/tag/covid-19/index.xml" rel="self" type="application/rss+xml" />
+    <description>COVID-19</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 13 Oct 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>COVID-19</title>
+      <link>https://MSAIL.github.io/tag/covid-19/</link>
+    </image>
+    
+    <item>
+      <title>Reinforcement Learning Applied to COVID-19 Optimization Problems</title>
+      <link>https://MSAIL.github.io/talk/rlcovid_101320/</link>
+      <pubDate>Tue, 13 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/rlcovid_101320/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nikhil Devraj&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Reinforcement Learning for COVID-19 Optimization Problems&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re not living under a rock, you know that COVID-19 is ravaging current-day society and requires monumental efforts on all scales, be it from individuals or from entire governments. In particular, governments play a major role in helping control the spread of COVID-19 by instituting policies to help with efforts such as lockdown enforcement and vaccine distribution. During this talk Nikhil talked about some previously proposed approaches to modeling such policy problems as control problems that could be solved with reinforcement learning.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1Xi2tofO321kWTMz_2pD9ltuAc-XqHTnY/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.04647.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;COVID-19 Pandemic Cyclic Lockdown Optimization Using Reinforcement Learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://journals.sagepub.com/doi/full/10.1177/0165551520959798&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Optimal policy learning for COVID-19 prevention using reinforcement learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.06602.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VacSIM: LEARNING EFFECTIVE STRATEGIES FOR COVID-19 VACCINE DISTRIBUTION USING REINFORCEMENT LEARNING&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Article(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/reinforcement-learning-for-covid-19-simulation-and-optimal-policy-b90719820a7f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reinforcement learning for Covid-19: Simulation and Optimal Policy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

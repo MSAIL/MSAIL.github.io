@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OpenAI | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/openai/</link>
+      <atom:link href="https://MSAIL.github.io/tag/openai/index.xml" rel="self" type="application/rss+xml" />
+    <description>OpenAI</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 15 Sep 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>OpenAI</title>
+      <link>https://MSAIL.github.io/tag/openai/</link>
+    </image>
+    
+    <item>
+      <title>The Trend Towards Large Language Models</title>
+      <link>https://MSAIL.github.io/talk/gpt3_091520/</link>
+      <pubDate>Tue, 15 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/gpt3_091520/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Sean Stapleton&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: GPT-3 and its Implications&lt;/p&gt;
+&lt;p&gt;In recent years, we’ve seen 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Natural_language_processing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;natural language processing&lt;/a&gt; (NLP) performance accelerate drastically across a number of tasks, including text completion, 
+&lt;a href=&#34;https://paperswithcode.com/task/machine-translation&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;machine translation&lt;/a&gt;, and 
+&lt;a href=&#34;https://paperswithcode.com/task/question-answering&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;question answering&lt;/a&gt;. Much of this performance gain has been attributed to two trends in the NLP community, namely the introduction of transformers, and the increase in model size (and consequent need for intense computational power). Capitalizing on these trends, 
+&lt;a href=&#34;https://openai.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;OpenAI&lt;/a&gt; recently released a transformer-based model called 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/gpt-3&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;GPT-3&lt;/a&gt; with 175 billion parameters, that was trained on roughly 500 billion tokens scraped from the internet.
+This MSAIL discussion focused predominantly on three questions addressed in the paper:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Does a substantial increase in model size actually lead to better performance in downstream tasks?&lt;/li&gt;
+&lt;li&gt;Can language models effectively model intelligent and adaptable thought?&lt;/li&gt;
+&lt;li&gt;What are the biases and risks associated with training a language model on the entire internet?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sean also covered the transformer and GPT-3 model architectures, though the focus of the discussion was not on this aspect of the paper.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/12beS3Er1AuiCbmxNR0rAiiot43xTkw_n/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find the recording of this talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/2005.14165&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Language Models are Few-Shot Learners (Brown et al.)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Articles:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated Transformer&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/illustrated-gpt2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Illustrated GPT-2&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

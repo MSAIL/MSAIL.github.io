@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Autonomous Vehicles | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/autonomous-vehicles/</link>
+      <atom:link href="https://MSAIL.github.io/tag/autonomous-vehicles/index.xml" rel="self" type="application/rss+xml" />
+    <description>Autonomous Vehicles</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 06 Oct 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Autonomous Vehicles</title>
+      <link>https://MSAIL.github.io/tag/autonomous-vehicles/</link>
+    </image>
+    
+    <item>
+      <title>Human-Centered Autonomous Vehicles</title>
+      <link>https://MSAIL.github.io/talk/av_100620/</link>
+      <pubDate>Tue, 06 Oct 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/av_100620/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Patrick Morgan&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Human-Centered Autonomous Vehicles&lt;/p&gt;
+&lt;p&gt;Patrick focused on discussing 
+&lt;a href=&#34;https://arxiv.org/pdf/1810.01835.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Human-Centered Autonomous Vehicle Systems: Principles of Effective Shared Autonomy&lt;/a&gt;. This paper proposes that we should build autonomous vehicles with humans in mind, and that getting humans and artificial intelligence systems to collaborate effectively is an achievable and worthy goal. In this light, they propose a human-centered paradigm for engineering shared autonomy systems in the car that erase the boundary between human and machine in the way the driving task is experienced. The researchers propose a 7 principle engineering design process that will make autonomous vehicles safer and greatly lower the cost of development. This discussion also ended up touching on other fundamental issues in AI, such as data privacy.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1fZvu5nDO3qhgwwc1X85aDmQ44RHD9bWF/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1810.01835.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Human-Centered Autonomous Vehicle Systems: Principles of Effective Shared Autonomy&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

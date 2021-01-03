@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nikhil Devraj | MSAIL</title>
+    <link>https://MSAIL.github.io/author/nikhil-devraj/</link>
+      <atom:link href="https://MSAIL.github.io/author/nikhil-devraj/index.xml" rel="self" type="application/rss+xml" />
+    <description>Nikhil Devraj</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Nikhil Devraj</title>
+      <link>https://MSAIL.github.io/author/nikhil-devraj/</link>
+    </image>
+    
+  </channel>
+</rss>

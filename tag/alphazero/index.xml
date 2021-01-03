@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AlphaZero | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/alphazero/</link>
+      <atom:link href="https://MSAIL.github.io/tag/alphazero/index.xml" rel="self" type="application/rss+xml" />
+    <description>AlphaZero</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 29 Sep 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>AlphaZero</title>
+      <link>https://MSAIL.github.io/tag/alphazero/</link>
+    </image>
+    
+    <item>
+      <title>AlphaZero and its Impact on the World of Chess</title>
+      <link>https://MSAIL.github.io/talk/alphazero_chess_092920/</link>
+      <pubDate>Tue, 29 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/alphazero_chess_092920/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Kevin Wang&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: AlphaZero and its Impact on Chess&lt;/p&gt;
+&lt;p&gt;The world was appalled when 
+&lt;a href=&#34;https://ai.googleblog.com/2016/01/alphago-mastering-ancient-game-of-go.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaGo&lt;/a&gt; first 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;played Lee Sedol in Go&lt;/a&gt;, winning 4 matches to 1. DeepMind subsequently released 
+&lt;a href=&#34;https://deepmind.com/blog/article/alphago-zero-starting-scratch&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaGo Zero&lt;/a&gt;, an iteration on AlphaGo that beat it 100-1. Going even further, they released 
+&lt;a href=&#34;https://deepmind.com/blog/article/alphazero-shedding-new-light-grand-games-chess-shogi-and-go&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaZero&lt;/a&gt;, which learned how to play games such as Shogi and Chess. Kevin, an avid chess enthusiast, wanted to discuss what this meant for the Chess world.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1jETQcqIZqp24drl8ARH4bABuv963g0Ah/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this discussion here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2009.04374.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Assessing Game Balance with AlphaZero: Exploring Alternative Rule Sets in Chess&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1712.01815.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mastering Chess and Shogi by Self-Play with a General RL Algorithm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video(s):&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=7L2sUGcOgh0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video From DeepMind&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=mOqmLYlFdBo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaZero VS AlphaZero || THE PERFECT GAME&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

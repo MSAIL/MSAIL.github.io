@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Michael Wellman | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/michael-wellman/</link>
+      <atom:link href="https://MSAIL.github.io/tag/michael-wellman/index.xml" rel="self" type="application/rss+xml" />
+    <description>Michael Wellman</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 22 Sep 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Michael Wellman</title>
+      <link>https://MSAIL.github.io/tag/michael-wellman/</link>
+    </image>
+    
+    <item>
+      <title>Faculty Talk: Strategic Reasoning in Dynamic Environments</title>
+      <link>https://MSAIL.github.io/talk/wellman_092220/</link>
+      <pubDate>Tue, 22 Sep 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/wellman_092220/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;http://strategicreasoning.org/michael-p-wellman/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Prof. Michael Wellman&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Strategic Reasoning in Dynamic Environments&lt;/p&gt;
+&lt;p&gt;Dr. Wellman presented about his group&amp;rsquo;s research, which generally specializes in game theory and multi-agent reasoning in dynamic environments. Much of his work lies in the domain of markets and commerce. You can find his 
+&lt;a href=&#34;https://strategicreasoning.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;group&amp;rsquo;s page here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Prof. Wellman asked us not to post the recording publicly. A recording is available within our Slack channel, so please search in there if you&amp;rsquo;re interested. We apologize for any inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Article(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/empirical-game-theoretic-analysis/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Empirical Game-Theoretic Analysis&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/computational-finance/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computational Finance&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://strategicreasoning.org/world-with-autonomous-agents/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World with Autonomous Agents&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Video(s):&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=SnTf-iWUTpk&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Artificially Intelligent Decision Makers in the Real World&amp;rdquo; with Michael Wellman &amp;amp; Bill Powers&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

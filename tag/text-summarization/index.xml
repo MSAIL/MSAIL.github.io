@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Text Summarization | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/text-summarization/</link>
+      <atom:link href="https://MSAIL.github.io/tag/text-summarization/index.xml" rel="self" type="application/rss+xml" />
+    <description>Text Summarization</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 10 Nov 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Text Summarization</title>
+      <link>https://MSAIL.github.io/tag/text-summarization/</link>
+    </image>
+    
+    <item>
+      <title>Text Summarization with Deep Learning</title>
+      <link>https://MSAIL.github.io/talk/textsummarization_111020/</link>
+      <pubDate>Tue, 10 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/textsummarization_111020/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Yashmeet Gambhir&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Text Summarization with Deep Learning&lt;/p&gt;
+&lt;p&gt;Yash discussed 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Automatic_summarization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;text summarization&lt;/a&gt;, where the goal is to&amp;hellip; summarize text. More specifically, he discussed abstractive summarization, of which the goal is to generate &lt;em&gt;novel&lt;/em&gt; sentences using natural language generation techniques. One such method for doing this is using pointer-generator networks. After discussing PGNs, he went on to discuss a paper describing extreme summarization to combat model hallucination for this task. The papers discussed are linked below.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1GCeGWfC_9jF6BDlLalEpKt9-KIlq_Hvv/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of his talk here.&lt;/a&gt; &lt;em&gt;Unfortunately this only includes the second half of the talk about abstractive summarization, because we forgot to record starting at the beginning.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.aclweb.org/anthology/P17-1099/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Get To The Point: Summarization with Pointer-Generator Networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.aclweb.org/anthology/2020.acl-main.173/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;On Faithfulness and Factuality in Abstractive Summarization&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

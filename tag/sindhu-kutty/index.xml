@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sindhu Kutty | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/sindhu-kutty/</link>
+      <atom:link href="https://MSAIL.github.io/tag/sindhu-kutty/index.xml" rel="self" type="application/rss+xml" />
+    <description>Sindhu Kutty</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 17 Nov 2020 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Sindhu Kutty</title>
+      <link>https://MSAIL.github.io/tag/sindhu-kutty/</link>
+    </image>
+    
+    <item>
+      <title>Faculty Talk: Prediction Markets and More</title>
+      <link>https://MSAIL.github.io/talk/kutty_111720/</link>
+      <pubDate>Tue, 17 Nov 2020 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/kutty_111720/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://scholar.google.com/citations?user=8duCIlcAAAAJ&amp;amp;hl=en&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Sindhu Kutty&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Prediction Markets, Recommender Systems, Fairness in AI&lt;/p&gt;
+&lt;p&gt;Dr. Kutty discussed some of her research on 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Prediction_market&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;prediction markets&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Recommender_system&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;recommender systems&lt;/a&gt;, and fairness in AI. The talk mostly focused on some derivations for prediction markets, such as scoring functions for data collection.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Dr. Kutty asked us not to post the recording for this talk. We apologize for any inconvenience.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Scoring_rule&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scoring Rules&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1402.5458.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Information Aggregation in Exponential Family Markets&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
