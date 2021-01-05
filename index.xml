@@ -484,6 +484,8 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;a href=&#34;#deep-learning&#34;&gt;Deep Learning&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;a href=&#34;#computer-vision&#34;&gt;Computer Vision&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#natural-language-processing&#34;&gt;Natural Language Processing&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -492,7 +494,6 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;a href=&#34;#meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!--
-  + [Natural Language Processing](#natural-language-processing)
   + [Reinforcement Learning](#reinforcement-learning)  
   + [Classical Methods in AI](#classical-methods-in-ai)
 --&gt;
@@ -525,7 +526,7 @@ We intend to continually update this page with more resources and will occasiona
 &lt;li&gt;
 &lt;a href=&#34;https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 498/598 - Deep Learning for Computer Vision @ University of Michigan&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;a href=&#34;http://cs231n.stanford.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CS231n - Convolutional Neural Networks for Visual Recognition @ Stanford University&lt;/a&gt;&lt;/li&gt;
+&lt;a href=&#34;https://cs231n.stanford.edu/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CS231n - Convolutional Neural Networks for Visual Recognition @ Stanford University&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;In particular, the second listed resource (EECS 498/598) is a course offered here every Fall. It is very similar to CS231n, so just one of the two would be satisfactory. These two courses are extremely well designed and we recommend them as a starting point.&lt;/p&gt;
 &lt;h3 id=&#34;computer-vision&#34;&gt;Computer Vision&lt;/h3&gt;
@@ -534,10 +535,40 @@ We intend to continually update this page with more resources and will occasiona
 &lt;p&gt;
 &lt;a href=&#34;https://github.com/jbhuang0604/awesome-computer-vision#readme&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Here&amp;rsquo;s a massive resource list called Awesome Computer Vision&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The reason we link those courses above is because they cover a good breadth of topics in vision. You will know what you need to in order to make proper searches for your own research and projects once you&amp;rsquo;ve gone through one of them.&lt;/p&gt;
+&lt;h3 id=&#34;natural-language-processing&#34;&gt;Natural Language Processing&lt;/h3&gt;
+&lt;p&gt;NLP also has a few courses worth looking at:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://web.stanford.edu/class/cs224n/index.html#schedule&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CS224n - NLP with Deep Learning @ Stanford University&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://web.eecs.umich.edu/~wangluxy/courses/eecs598_fa2020/eecs598_fa2020.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 598 - NLP with Deep Learning @ University of Michigan&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This class was a seminar. It was less focused on educational material and more focused on contemporary research. So scroll this page if you&amp;rsquo;re looking for interesting papers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://github.com/keon/awesome-nlp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Awesome NLP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Similar to Awesome CV linked in the previous section, this is a massive list of resources to get acquainted with the field.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NLP Textbook by Jacob Eisenstein&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://jalammar.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Jay Alammar&amp;rsquo;s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://nlp.seas.harvard.edu/2018/04/03/attention.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;The Annotated Transformer&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This is a really nice guide going through a &amp;ldquo;line by line&amp;rdquo; implementation of 
+&lt;a href=&#34;https://arxiv.org/abs/1706.03762&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Attention is All You Need&lt;/a&gt; (the seminal transformer paper)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;We&amp;rsquo;re in the process of adding more learning resources!&lt;/strong&gt;&lt;/p&gt;
 &lt;!--
-### Natural Language Processing
-
 ### Reinforcement Learning
 
 ### Robotics
