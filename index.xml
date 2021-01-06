@@ -481,11 +481,13 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;a href=&#34;#learning-concepts&#34;&gt;Learning Concepts&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;a href=&#34;#deep-learning&#34;&gt;Deep Learning&lt;/a&gt;&lt;/li&gt;
+&lt;a href=&#34;#intro-to-deep-learning&#34;&gt;Intro to Deep Learning&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;a href=&#34;#computer-vision&#34;&gt;Computer Vision&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;a href=&#34;#natural-language-processing&#34;&gt;Natural Language Processing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
@@ -494,7 +496,7 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;a href=&#34;#meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!--
-  + [Reinforcement Learning](#reinforcement-learning)  
+
   + [Classical Methods in AI](#classical-methods-in-ai)
 --&gt;
 &lt;h2 id=&#34;about-this-page&#34;&gt;About this page&lt;/h2&gt;
@@ -504,12 +506,20 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;a href=&#34;#opportunities&#34;&gt;opportunities for research, jobs, and networking&lt;/a&gt;, and 
 &lt;a href=&#34;#method-and-mindset&#34;&gt;other advice regarding involvement in the field&lt;/a&gt;.&lt;br&gt;
 We intend to continually update this page with more resources and will occasionally restructure it to provide better depth.&lt;/p&gt;
+&lt;!--
+uh I need to finish this but didn&#39;t have time - ND
+### There are too many resources! How do I approach this???
+The very first thing we recommend you do is to understand why you want to learn from this page and about AI in general. And this isn&#39;t just saying &#34;I think AI is the future, with endless possibilities&#34;. Yes, that&#39;s a good way to hype yourself up about it. But it&#39;s important to really align it with your personal goals so you can pursue it further. Do you see yourself working on AI research and/or engineering? Are you trying to use it as part of research in a different subject area? Are you scoping the field to determine if you&#39;re even truly interested? Asking these questions will help you identify what resources to look at.
+
+That being said, you don&#39;t need to know the exact path you&#39;re going to go in. PhD candidates in AI usually don&#39;t know their exact research direction. In fact, one of our admins spoke to one of the vision professors here at Michigan and the professor said &#34;I became a professor so I could figure out what I was interested in.&#34; So the advice here is to understand your general motivation and worry about the details as time goes 
+
+--&gt;
 &lt;h2 id=&#34;learning-concepts&#34;&gt;Learning Concepts&lt;/h2&gt;
 &lt;p&gt;It&amp;rsquo;s important to know that AI is a broad field spanning the past century. We shouldn&amp;rsquo;t simply think of AI as &amp;ldquo;deep learning&amp;rdquo;, because it&amp;rsquo;s not. We&amp;rsquo;re listing resources regarding the most popular topics first because we understand they&amp;rsquo;re likely what initially grabbed your interest, but do note that there&amp;rsquo;s plenty of research being carried out on topics that we&amp;rsquo;ve probably never even heard of.&lt;/p&gt;
 &lt;p&gt;Sam Finlayson from Harvard/MIT has a fantastic 
 &lt;a href=&#34;https://sgfin.github.io/learning-resources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;page on resources you can use to dive into ML&lt;/a&gt;. It&amp;rsquo;s quite advanced but provides a good starting point for those looking for a comprehensive list. We&amp;rsquo;ll be using some of these resources in our own lists.&lt;/p&gt;
-&lt;p&gt;Finally, keep in mind that just because we link a large list doesn&amp;rsquo;t mean you should be going through the entire thing. There&amp;rsquo;s way too much stuff to look at. The links within links within links are all meant to provide options; choose a specific topic that interests you (for example, generative models) and slowly explore it.&lt;/p&gt;
-&lt;h3 id=&#34;deep-learning&#34;&gt;Deep Learning&lt;/h3&gt;
+&lt;p&gt;Keep in mind that just because we link a large list doesn&amp;rsquo;t mean you should be going through the entire thing. There&amp;rsquo;s way too much stuff to look at. The links within links within links are all meant to provide options; choose a specific topic that interests you (for example, generative models) and slowly explore it.&lt;/p&gt;
+&lt;h3 id=&#34;intro-to-deep-learning&#34;&gt;Intro to Deep Learning&lt;/h3&gt;
 &lt;p&gt;Understanding deep learning to a satisfactory degree requires working familiarity (but not necessarily mastery) with the following prerequisite topics:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Vector and Matrix Operations&lt;/li&gt;
@@ -567,9 +577,49 @@ We intend to continually update this page with more resources and will occasiona
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h3&gt;
+&lt;p&gt;Here are some courses you can look at to learn about reinforcement learning:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://rail.eecs.berkeley.edu/deeprlcourse/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CS 285 - Deep Reinforcement Learning @ UC Berkeley&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=FgzM3zpZ55o&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CS 234 - Reinforcement Learning @ Stanford University&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This links to a series of lecture videos because the course website was taken down for some reason.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Open AI put a ton of effort into creating a comprehensive resource for people to learn RL:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://spinningup.openai.com/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Spinning Up in Deep RL&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://github.com/aikorea/awesome-rl&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Awesome RL&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Similar to Awesome CV/NLP linked in the previous sections, this is a massive list of resources to get acquainted with the field.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://deepmind.com/learning-resources&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Resources from DeepMind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sutton &amp;amp; Barto - Intro to RL Textbook&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;This is the de facto textbook for people to self-study RL. We can&amp;rsquo;t guarantee that this link will always work, but if it&amp;rsquo;s taken down, &amp;ldquo;Sutton and Barto&amp;rdquo; is all you&amp;rsquo;d need to search up.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://lilianweng.github.io/lil-log/tag/reinforcement-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lilian Weng&amp;rsquo;s Lil&amp;rsquo; Log&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Her blog contains more than just RL, but her RL posts are thorough and accessible (provided you have a basic ML background). In general, we really recommend blog posts from professionals because they&amp;rsquo;re easy to read yet rife with information.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Finally, we also have the reinforcement learning theory course (EECS 598) here at Michigan. However, materials aren&amp;rsquo;t posted online and enrollment is, as usual, heavily limited - so we recommend looking at the materials from other courses in the meantime.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;We&amp;rsquo;re in the process of adding more learning resources!&lt;/strong&gt;&lt;/p&gt;
 &lt;!--
-### Reinforcement Learning
 
 ### Robotics
 
@@ -814,6 +864,27 @@ John Schulman:
 &lt;h3 id=&#34;giving-talks&#34;&gt;Giving Talks&lt;/h3&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://web.eecs.umich.edu/~cscott/talk_advice.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://web.eecs.umich.edu/~cscott/talk_advice.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;grad-school&#34;&gt;Grad School&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://www.cs.cmu.edu/~harchol/gradschooltalk.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Mor Harschol-Balter (CMU): Applying to CS PhD programs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://docs.google.com/document/u/1/d/11D3kHElzS2HQxTwPqcaTnU5HCJ8WGE5brTXI4KLf4dM/mobilebasic&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Eric Gilbert (Umich CSE, SI): Advice to his students&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://ruder.io/10-tips-for-research-and-a-phd/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Sebastian Ruder (Deepmind): 10 Tips for Research and a PhD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.cs.unc.edu/~azuma/hitch4.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ronald Azuma (UNC): “So long, and thanks for the Ph.D.!”&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://karpathy.github.io/2016/09/07/phd/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andrej Karpathy (Tesla, OpenAI): A Survival Guide to a PhD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://web.archive.org/web/20201219060833/https://pg.ucsd.edu/early-stage-PhD-advice.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Philip Guo (UCSD): Advice for early-stage Ph.D. students&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Recently archived, but contains plenty of useful information. So we included the link to this page via the Wayback Machine.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.andreykurenkov.com/writing/life/lessons-learned-from-failures/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andrey Kurenkov (Stanford): Lessons Learned the Hard Way in Grad School&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
