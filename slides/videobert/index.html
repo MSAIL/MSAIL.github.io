@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  
+  
+
+  
+  
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu375f79164c84f854e796aee07b5a9104_39302_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu375f79164c84f854e796aee07b5a9104_39302_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://MSAIL.github.io/slides/videobert/">
+
+  <title>VideoBERT Revised | MSAIL</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/css/reveal.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/css/theme/white.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous">
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/reveal_custom.min.css">
+
+  
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/css/print/pdf.css' : 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+
+</head>
+<body>
+
+  
+<div class="reveal">
+  <div class="slides">
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+    <section>
+    
+      <h1 id="videobert">VideoBERT</h1>
+<h2 id="c-sun-et-al">C. Sun et al.</h2>
+<h3 id="google-research">Google Research</h3>
+<p>Presented by: Nikhil Devraj</p>
+<p style="color:grey"> MSAIL </p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="motivation">Motivation</h2>
+<ul>
+<li>Representations of video data generally capture only low-level features and not semantic data</li>
+</ul>
+<center>
+<img src="/slides/low_level.png" alt="Low-level features" height="200"/>
+</center>
+<ul>
+<li>
+<a href="https://arxiv.org/abs/1810.04805" target="_blank" rel="noopener">BERT</a> performs really well on language modeling tasks</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="contributions">Contributions</h2>
+<ul>
+<li>Combined 
+<a href="https://en.wikipedia.org/wiki/Speech_recognition" target="_blank" rel="noopener">ASR</a>, 
+<a href="https://en.wikipedia.org/wiki/Vector_quantization" target="_blank" rel="noopener">Vector Quantization</a>, and BERT to learn high-level features over long time spans in video tasks</li>
+<li>A first step in the direction of learning high-level joint representations</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<p><img src="/slides/videobert_flow.png" alt="VideoBERT Flow"></p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h1 id="background">Background</h1>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="bert">BERT</h2>
+<ul>
+<li>Pretrained language model used to generate a probability distribution of tokens</li>
+<li>Obtained by training model on &ldquo;masking&rdquo; task</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<center>
+<img src="/slides/bert.png" alt="BERT" height="600"/>
+</center>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="supervised-learning">Supervised Learning</h2>
+<ul>
+<li>Expensive to get labeled data</li>
+<li>Short term events in video data</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="unsupervised-learning">Unsupervised Learning</h2>
+<ul>
+<li>Learns from unlabeled data</li>
+<li>Normal approaches used latent variables (i.e. GAN, VAE)
+<ul>
+<li>differ from BERT</li>
+</ul>
+</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="self-supervised-learning">Self-supervised Learning</h2>
+<p><img src="/slides/self-sup-lecun.png" alt="Self-supervised example"></p>
+<p>
+<a href="https://lilianweng.github.io/lil-log/2019/11/10/self-supervised-learning.html" target="_blank" rel="noopener">More on self supervised learning</a></p>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="cross-modal-learning">Cross-Modal Learning</h2>
+<ul>
+<li>Synchronized audio and visual signals allow them to supervise each other</li>
+<li>Use ASR as a source of crossmodal supervision</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="instructional-video-datasets">Instructional Video Datasets</h2>
+<ul>
+<li>Papers used LMs to analyze these videos with manually provided data</li>
+<li>Datasets were too small</li>
+</ul>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h1 id="method">Method</h1>
+
+    </section>
+    
+
+    
+    
+    
+    <section>
+    
+      
+<h2 id="omitted-the-rest">Omitted the rest</h2>
+<p>You get the principles I&rsquo;m getting at though right?</p>
+
+    </section>
+    
+
+    
+    
+  </div>
+</div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.8.0/js/reveal.min.js"></script>
+
+  <script>
+    window.revealPlugins = { dependencies: [
+      
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/plugin/zoom-js/zoom.js', async: true },
+      
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/plugin/math/math.js', async: true },
+      
+      { src: 'https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/reveal.js\/3.8.0/plugin/print-pdf/print-pdf.js', async: true },
+      
+      { src: '\/js\/vendor\/reveal.js\/plugin\/notes\/notes.js', async: true }
+    ]};
+
+    let revealDefaults = { center: true, controls: true, history: true, progress: true, transition: 'slide', mouseWheel: true };
+    let revealOptions = Object.assign({}, revealDefaults, revealPlugins);
+    Reveal.initialize(revealOptions);
+  </script>
+
+</body>
+</html>

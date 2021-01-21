@@ -419,7 +419,7 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
       <guid>https://MSAIL.github.io/contact/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Contact us at 
 &lt;a href=&#34;msail-admin@umich.edu&#34;&gt;msail-admin@umich.edu&lt;/a&gt;!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;You can find our professors&amp;rsquo; and admin team&amp;rsquo;s individual emails 
+&lt;p&gt;You can find our professors&#39; and admin team&amp;rsquo;s individual emails 
 &lt;a href=&#34;https://MSAIL.github.io/aboutus/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
@@ -517,7 +517,7 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;a href=&#34;#learning-concepts&#34;&gt;technical content&lt;/a&gt;, 
 &lt;a href=&#34;#campus-involvement&#34;&gt;ways to get involved on campus&lt;/a&gt;, 
 &lt;a href=&#34;#opportunities&#34;&gt;opportunities for research, jobs, and networking&lt;/a&gt;, and 
-&lt;a href=&#34;#method-and-mindset&#34;&gt;other advice regarding involvement in the field&lt;/a&gt;.&lt;br&gt;
+&lt;a href=&#34;#meta-skills-and-mindset&#34;&gt;other advice regarding involvement in the field&lt;/a&gt;.&lt;br&gt;
 We intend to continually update this page with more resources and will occasionally restructure it to provide better depth.&lt;/p&gt;
 &lt;!--
 uh I need to finish this but didn&#39;t have time - ND
@@ -624,7 +624,7 @@ That being said, you don&#39;t need to know the exact path you&#39;re going to g
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;a href=&#34;https://lilianweng.github.io/lil-log/tag/reinforcement-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lilian Weng&amp;rsquo;s Lil&amp;rsquo; Log&lt;/a&gt;
+&lt;a href=&#34;https://lilianweng.github.io/lil-log/tag/reinforcement-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lilian Weng&amp;rsquo;s Lil&#39; Log&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;Her blog contains more than just RL, but her RL posts are thorough and accessible (provided you have a basic ML background). In general, we really recommend blog posts from professionals because they&amp;rsquo;re easy to read yet rife with information.&lt;/li&gt;
 &lt;/ul&gt;
@@ -898,6 +898,91 @@ John Schulman:
 &lt;li&gt;
 &lt;a href=&#34;https://www.andreykurenkov.com/writing/life/lessons-learned-from-failures/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andrey Kurenkov (Stanford): Lessons Learned the Hard Way in Grad School&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VideoBERT Revised</title>
+      <link>https://MSAIL.github.io/slides/videobert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/slides/videobert/</guid>
+      <description>&lt;h1 id=&#34;videobert&#34;&gt;VideoBERT&lt;/h1&gt;
+&lt;h2 id=&#34;c-sun-et-al&#34;&gt;C. Sun et al.&lt;/h2&gt;
+&lt;h3 id=&#34;google-research&#34;&gt;Google Research&lt;/h3&gt;
+&lt;p&gt;Presented by: Nikhil Devraj&lt;/p&gt;
+&lt;p style=&#34;color:grey&#34;&gt; MSAIL &lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Representations of video data generally capture only low-level features and not semantic data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://MSAIL.github.io/slides/low_level.png&#34; alt=&#34;Low-level features&#34; height=&#34;200&#34;/&gt;
+&lt;/center&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://arxiv.org/abs/1810.04805&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;BERT&lt;/a&gt; performs really well on language modeling tasks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;contributions&#34;&gt;Contributions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Combined 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Speech_recognition&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ASR&lt;/a&gt;, 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Vector_quantization&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vector Quantization&lt;/a&gt;, and BERT to learn high-level features over long time spans in video tasks&lt;/li&gt;
+&lt;li&gt;A first step in the direction of learning high-level joint representations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;img src=&#34;https://MSAIL.github.io/slides/videobert_flow.png&#34; alt=&#34;VideoBERT Flow&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;bert&#34;&gt;BERT&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Pretrained language model used to generate a probability distribution of tokens&lt;/li&gt;
+&lt;li&gt;Obtained by training model on &amp;ldquo;masking&amp;rdquo; task&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;center&gt;
+&lt;img src=&#34;https://MSAIL.github.io/slides/bert.png&#34; alt=&#34;BERT&#34; height=&#34;600&#34;/&gt;
+&lt;/center&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;supervised-learning&#34;&gt;Supervised Learning&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Expensive to get labeled data&lt;/li&gt;
+&lt;li&gt;Short term events in video data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;unsupervised-learning&#34;&gt;Unsupervised Learning&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Learns from unlabeled data&lt;/li&gt;
+&lt;li&gt;Normal approaches used latent variables (i.e. GAN, VAE)
+&lt;ul&gt;
+&lt;li&gt;differ from BERT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;self-supervised-learning&#34;&gt;Self-supervised Learning&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://MSAIL.github.io/slides/self-sup-lecun.png&#34; alt=&#34;Self-supervised example&#34;&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://lilianweng.github.io/lil-log/2019/11/10/self-supervised-learning.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;More on self supervised learning&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cross-modal-learning&#34;&gt;Cross-Modal Learning&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Synchronized audio and visual signals allow them to supervise each other&lt;/li&gt;
+&lt;li&gt;Use ASR as a source of crossmodal supervision&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;instructional-video-datasets&#34;&gt;Instructional Video Datasets&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Papers used LMs to analyze these videos with manually provided data&lt;/li&gt;
+&lt;li&gt;Datasets were too small&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;method&#34;&gt;Method&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;omitted-the-rest&#34;&gt;Omitted the rest&lt;/h2&gt;
+&lt;p&gt;You get the principles I&amp;rsquo;m getting at though right?&lt;/p&gt;
 </description>
     </item>
     
