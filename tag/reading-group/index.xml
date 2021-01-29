@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reading Group | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/reading-group/</link>
+      <atom:link href="https://MSAIL.github.io/tag/reading-group/index.xml" rel="self" type="application/rss+xml" />
+    <description>Reading Group</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Reading Group</title>
+      <link>https://MSAIL.github.io/tag/reading-group/</link>
+    </image>
+    
+    <item>
+      <title>Presenting in a Reading Group</title>
+      <link>https://MSAIL.github.io/post/presenting_reading_group/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/post/presenting_reading_group/</guid>
+      <description>&lt;p&gt;If you&amp;rsquo;re involved in research, you&amp;rsquo;re probably going to give a reading group presentation at some point. Many professors push their PhD students to give talks. Giving these talks helps researchers build the ability to read and understand papers quickly, and the ability to communicate findings effectively.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Volunteer or be volunTOLD.&lt;/p&gt;
+&lt;p&gt;— &lt;cite&gt;Prof. David Fouhey&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Dr. Fouhey told this joke multiple times during the 
+&lt;a href=&#34;https://sites.google.com/umich.edu/cv-reading-group/home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;computer vision reading group&lt;/a&gt; last semester and the other professors agreed. It succinctly summarizes the emphasis placed on giving these talks.&lt;/p&gt;
+&lt;h2 id=&#34;whats-a-reading-group&#34;&gt;What&amp;rsquo;s a reading group?&lt;/h2&gt;
+&lt;p&gt;Reading groups regularly meet to discuss topics in research. Most of the time, the group will focus on one specific paper detailing an important finding. In AI, many of these reading groups may be focused on award-winning papers from recent conferences or on methods relevant to the participants&#39; research.&lt;/p&gt;
+&lt;p&gt;Reading groups exist mainly to enrich the participants&#39; knowledge. Sometimes the talks will focus on a broader topic as an introduction and sometimes the talks will focus on a specific method in a specific paper. The more niche the audience of the reading group, the more advanced the topic tends to be. At MSAIL, we tend to focus on introductory topics and rarely, if ever, dive into the nitty-gritty technical details. This just makes it easier for our younger, more general audience to understand the content.&lt;/p&gt;
+&lt;h2 id=&#34;choosing-a-topic&#34;&gt;Choosing a topic&lt;/h2&gt;
+&lt;p&gt;Choosing a topic may be the hardest part of the presentation process. Generally, you can present any topic you want, given that it hasn&amp;rsquo;t already been presented recently. Present on something that grabs your interest immediately, or something you have some familiarity with - it&amp;rsquo;ll make the preparation process more bearable. If you&amp;rsquo;re open to topics and are confident you can adapt, then just go to a conference or journal page and search through some of the accepted papers that catch your eye (at the time of writing, I&amp;rsquo;ve been looking at ICLR 2021 papers).&lt;/p&gt;
+&lt;p&gt;In my opinion, the main question you should ask yourself when you&amp;rsquo;ve identified a potential topic is:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Am I willing to read about this topic in depth, even to the extent of falling into a rabbit hole?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You obviously don&amp;rsquo;t need to know everything about the topic you choose (no one does), but persistence is the key to having a strong presentation. The more comfy you are with the overall subject area, the more natural your presentation will flow and the less likely you are to trip up. (For MSAIL, however, if you&amp;rsquo;re a newcomer and haven&amp;rsquo;t really done a reading group presentation before, we&amp;rsquo;ll help you out!)&lt;/p&gt;
+&lt;p&gt;Here are some questions you should ask yourself when looking at a paper or topic that you&amp;rsquo;re about to choose:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why is the topic important? What do I hope to get out of it?
+&lt;ul&gt;
+&lt;li&gt;If it&amp;rsquo;s not clearly important or you don&amp;rsquo;t gain anything from knowledge of the topic itself, you&amp;rsquo;ll just be wasting time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Is this interesting to the naked eye?
+&lt;ul&gt;
+&lt;li&gt;Important for getting people to attend your talk, and also helpful in gauging whether your audience will stay engaged. If they aren&amp;rsquo;t engaged in the beginning how can they be expected to in the end?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can I learn about this topic within a reasonable amount of time?
+&lt;ul&gt;
+&lt;li&gt;A &amp;ldquo;reasonable amount of time&amp;rdquo; is generally a week or so.&lt;/li&gt;
+&lt;li&gt;You need to choose papers of reasonable length. We often suggest presenting on conference papers because they&amp;rsquo;re less than 10 pages on average. Longer papers and topics are more feasible down the line when you&amp;rsquo;ve become comfortable with these types of presentations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For the examples in this post, I will go through the process of choosing a topic for one of my previous talks. I&amp;rsquo;ve given plenty of talks on uninteresting topics and papers, but some were received particularly well. I will talk about my process for presenting 
+&lt;a href=&#34;https://arxiv.org/pdf/1904.01766.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VideoBERT&lt;/a&gt;, which I presented way back in Fall 2019. This was actually my first ever MSAIL talk, and at the time I had only recently become acquainted with AI research. The talk had plenty of faults, which I&amp;rsquo;ll try to use as examples.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;videobert_flow.png&#34; alt=&#34;VideoBERT Flow Diagram&#34;&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;i&gt;The central flow diagram from the VideoBERT paper by Sun et al.&lt;/i&gt;
+&lt;/center&gt;
+&lt;h2 id=&#34;reading-relevant-sources&#34;&gt;Reading relevant sources&lt;/h2&gt;
+&lt;h3 id=&#34;for-a-specific-paper&#34;&gt;For a specific paper&lt;/h3&gt;
+&lt;p&gt;Even if you choose one paper, that paper is probably not the only source you&amp;rsquo;re looking at to understand all the content.
+When you first read through the paper itself, you should annotate the key points (this is just a common reading skill, but it&amp;rsquo;s easy to forget!) and note the portions that confuse you. Depending on your background, you may or may not be able to finish the first pass. You should aim to have a big picture understanding of the paper, so maybe about 30%. If you can&amp;rsquo;t reach that level on your first read - don&amp;rsquo;t fret. You need to go read some supplementary materials. In particular, any decent paper will reference prior/related work in a section near the introduction - this is where you can dive into their citations and read up on the things that confuse you. Alternatively, I&amp;rsquo;ve found that Medium posts are particularly helpful as well for understanding more basic content.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;related-work.png&#34; alt=&#34;Related Work&#34;&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;i&gt; Related Work section in VideoBERT paper. &lt;/i&gt;
+&lt;/center&gt;
+&lt;br&gt;
+&lt;p&gt;Note the underlined portions here from the Related Work section of the VideoBERT paper. These highlight topics that might be worth searching up. You don&amp;rsquo;t need to dive into everything, but having a general understanding of what cross-modal learning and BERT are would help to better understand this paper.&lt;/p&gt;
+&lt;p&gt;If after all that, you still can&amp;rsquo;t understand 30% of the material in the paper, then I&amp;rsquo;m afraid you probably need to read further on basic material and possibly postpone your talk. I don&amp;rsquo;t expect this to happen because the pool of people who choose to present is self-selecting (as in, you&amp;rsquo;re more likely to want to present in a reading group if you already have basic background), but just in case, don&amp;rsquo;t be afraid to start at the beginning. I too have had to withdraw after signing up for a reading group before because I just did not understand what I was reading at all.&lt;/p&gt;
+&lt;p&gt;After the first pass, you have an idea of what the paper&amp;rsquo;s central ideas are. You can then start outlining what you want to talk about. Any subsequent passes will simply be to reinforce your understanding of the paper.&lt;/p&gt;
+&lt;h3 id=&#34;for-a-broader-topic&#34;&gt;For a broader topic&lt;/h3&gt;
+&lt;p&gt;For a broader topic, you should still choose to focus on a few papers in order to narrow the scope of your presentation. If you choose this, you likely have an idea in mind for how you wish to synthesize the ideas in the papers. Knowing this, you should focus your reading based on which points you hope to elucidate most. The process will very much feel like the process in the above section, except you&amp;rsquo;ll spend less time focusing on the intricate details of any one paper and you&amp;rsquo;ll focus more on the key ideas that you can use to build toward whatever main idea you&amp;rsquo;re focusing on.&lt;/p&gt;
+&lt;p&gt;In general, giving these types of talks is difficult. Even professors struggle to present so much content in a clear way. If you intend to give a talk like this, make sure to spend extra time in advance to really nail a cohesive argument. Otherwise, just stick to one paper since usually the time you have is only enough for one.&lt;/p&gt;
+&lt;p&gt;An example of a decent talk that synthesizes ideas in multiple papers is 
+&lt;a href=&#34;https://web.eecs.umich.edu/~justincj/slides/eecs498/FA2020/598_FA2020_lecture15.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Justin Johnson&amp;rsquo;s lecture on Object Segmentation&lt;/a&gt;. This is obviously not a reading group talk and is an entire course lecture - but the principles are relatively similar since the topics presented here are from recent papers. Another good example is the talk 
+&lt;a href=&#34;https://MSAIL.github.io/talk/chai_120120/&#34;&gt;Dr. Chai gave us in Fall 2020&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some of our own, more tame talks presenting multiple papers include 
+&lt;a href=&#34;https://MSAIL.github.io/talk/brain_insp_110320/&#34;&gt;John Day&amp;rsquo;s Brain-Inspired AI talk&lt;/a&gt;, 
+&lt;a href=&#34;https://MSAIL.github.io/talk/textsummarization_111020/&#34;&gt;Yash Gambhir&amp;rsquo;s Text Summarization talk&lt;/a&gt;, and 
+&lt;a href=&#34;https://MSAIL.github.io/talk/rlcovid_101320/&#34;&gt;my talk on using reinforcement learning for optimization in COVID-19 problems&lt;/a&gt;. If you watch them you&amp;rsquo;ll notice some of the difficulties we had with balancing our content and finishing in time.&lt;/p&gt;
+&lt;h2 id=&#34;creating-slides&#34;&gt;Creating slides&lt;/h2&gt;
+&lt;p&gt;Most of the time you&amp;rsquo;ll be preparing slides to assist you in your talk. Organizing your slides properly is the key to getting a good presentation going.&lt;/p&gt;
+&lt;p&gt;Something that helps me is using a general slide outline and then identifying where in the paper I can get the information for a specific section. Then I fill in the sections and occasionally add subsections based on the subtitles in the paper.&lt;/p&gt;
+&lt;p&gt;In general, you want to introduce the following points in any regular paper presentation. You can change the order to suit your preferred flow, but the one presented here works well normally. Note that you can use any number of slides for each section:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Motivation
+&lt;ul&gt;
+&lt;li&gt;Why did the authors explore this topic? Who and how does it help solve a big problem?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Major Contributions
+&lt;ul&gt;
+&lt;li&gt;What are the authors proposing or introducing?&lt;/li&gt;
+&lt;li&gt;Make this clear at the beginning. Then your audience will know what to expect.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Background
+&lt;ul&gt;
+&lt;li&gt;What does your audience need to know (at a high level) before you dive into the details of the topic?&lt;/li&gt;
+&lt;li&gt;This is not always necessary, but if you&amp;rsquo;re presenting something technically challenging you may want to briefly introduce this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Method/Theory
+&lt;ul&gt;
+&lt;li&gt;This is the novel part of the paper. What did the authors do and how did they do it?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Results/Experiments
+&lt;ul&gt;
+&lt;li&gt;How did they validate their methods and what did they compare it to? What are the deliverables?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Discussion/Takeaways/Future Work
+&lt;ul&gt;
+&lt;li&gt;Restate the major contributions. Also, talk about the implications for the future.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;general-principles&#34;&gt;General Principles&lt;/h3&gt;
+&lt;p&gt;You&amp;rsquo;ve probably presented to someone before. In that case, you should be well aware of standard principles, but I&amp;rsquo;ll write some in case you aren&amp;rsquo;t:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low amount of text on any one slide
+&lt;ul&gt;
+&lt;li&gt;This is a technical talk. Please don&amp;rsquo;t make your readers lose you.&lt;/li&gt;
+&lt;li&gt;Personally, I tend to put around 2 lines of text on a slide and then explain the rest verbally. Putting less text and explaining it instead helps me better understand the content too!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tables, images, diagrams, and videos wherever possible
+&lt;ul&gt;
+&lt;li&gt;I don&amp;rsquo;t need to tell you that a picture is worth a thousand words, but they&amp;rsquo;ll help a ton. You can usually just steal these from the paper and its supplementary materials. If they don&amp;rsquo;t have any and you feel that one would be appropriate, don&amp;rsquo;t be afraid to create one!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Avoid equations when you can
+&lt;ul&gt;
+&lt;li&gt;Sometimes the talk is devoted to an equation or the theory you&amp;rsquo;re discussing is heavily reliant on equations (I can&amp;rsquo;t imagine some reinforcement learning papers without Bellman&amp;rsquo;s equation.). But if the paper has a lot of equations, try only to include the most important ones.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Take a look at my 
+&lt;a href=&#34;https://docs.google.com/presentation/d/1ObLuNm1A8ZWVInmuYeAd1NPIYrYsm3jLb7OPvSoC6kk/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VideoBERT slides&lt;/a&gt; and note that I absolutely did not follow these principles and the above listed structure during that talk. I consider my VideoBERT talk to be of poor quality. Don&amp;rsquo;t worry about the technical content. (Note that this link is Michigan only)&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://MSAIL.github.io/slides/videobert/&#34;&gt;Here are a few sample slides depicting how I would&amp;rsquo;ve roughly modified my VideoBERT talk to be easier to follow and listen to.&lt;/a&gt; I only wrote up to the methods section, because I just wanted to depict some of the principles in action. Again, don&amp;rsquo;t worry about the technical content. (This link is open to everyone)&lt;/p&gt;
+&lt;p&gt;Also, feel free to take a look at 
+&lt;a href=&#34;https://www.princeton.edu/~archss/webpdfs08/BaharMartonosi.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this slidedeck for general tips&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;presenting-your-slides&#34;&gt;Presenting your slides&lt;/h2&gt;
+&lt;p&gt;Presentation is very important for a technical talk. I&amp;rsquo;m pretty sure most presenters don&amp;rsquo;t want to bore their audience. During one reading group a while ago, I delivered a one hour talk that included even professors in the audience. After that talk I didn&amp;rsquo;t receive a single question. I can only speculate whether they got lost, whether we were out of time, or whether I just completely bored them. Let&amp;rsquo;s hope that doesn&amp;rsquo;t happen to you.&lt;/p&gt;
+&lt;p&gt;Here are some steps you can take to reduce the chance of losing your audience:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reiterating the importance of preparing your slides properly. Prepare them as if you were presenting them, and then practice presenting them at least once before your talk.&lt;/li&gt;
+&lt;li&gt;This is a given - you should be speaking and never reading.&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t go on diversions. Save them till the end.&lt;/li&gt;
+&lt;li&gt;Leave room for questions during your presentation. I doubt most people will remember their questions by the end. A good rule might be to ask for questions every 5 minutes.&lt;/li&gt;
+&lt;li&gt;Similarly, you should be gauging understanding as you go along. If the audience can attest to understand what you&amp;rsquo;re saying, you&amp;rsquo;re fine.&lt;/li&gt;
+&lt;li&gt;Speak slowly. I don&amp;rsquo;t know about you, but I&amp;rsquo;d rather have my entire audience understand 80% of my presentation and not finish within time than finishing and not having anyone understand anything. I sometimes break this rule without realizing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are probably many more principles to follow, but in reading groups these are the ones I&amp;rsquo;ve found to be the most blatant errors that I wish I corrected.&lt;/p&gt;
+&lt;h2 id=&#34;can-i-forgo-preparing-slides&#34;&gt;Can I forgo preparing slides?&lt;/h2&gt;
+&lt;p&gt;If you don&amp;rsquo;t want to prepare slides, you can either:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Walk through the paper itself&lt;/li&gt;
+&lt;li&gt;Prepare questions and facilitate a discussion rather than giving a talk&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I wouldn&amp;rsquo;t advise a newcomer (or anyone, for that matter) to choose the first option. The point of preparing slides is to make material more presentable and to help you, the presenter, understand the paper better. I&amp;rsquo;ve only experienced people presenting straight from the paper when they knew what they were talking about but had last minute obligations come up. For reference, the last two times I saw this done were from a student who &lt;em&gt;wrote&lt;/em&gt; the paper he was presenting on, and from a senior research scientist at Google Brain. It is generally okay, however, to supplement your slides during your talk by briefly visiting the paper to discuss something like a figure or a table, or to answer questions.&lt;/p&gt;
+&lt;p&gt;The second option is far more feasible, and at MSAIL we actually recommend this format. Discussion questions help the audience engage with the material more. However, good discussions usually occur around people with background, so be wary of your audience. You&amp;rsquo;ll usually be presenting &lt;em&gt;something&lt;/em&gt; in addition to the questions - for example, last Winter we had a discussion about using vision to analyze CT scans for the purpose of detecting COVID-19. All we did was play a video prepared by another organization and then discussed it in detail. This is perfectly fine, given that you have an interesting topic.&lt;/p&gt;
+&lt;h2 id=&#34;going-forward&#34;&gt;Going forward&lt;/h2&gt;
+&lt;p&gt;Yeah, preparing to present at a reading group is a lot of work the first time around. After a while, you&amp;rsquo;ll be comfortable enough with both approaching novel technical content and with your presentation skills, so you&amp;rsquo;ll be able to take shortcuts and structure things as you wish. You&amp;rsquo;ll also just become faster. In the long term, this skill will certainly help you as a researcher.&lt;/p&gt;
+&lt;p&gt;Gone are the days when the MSAIL Admin team was scrambling to prepare entire talks within 5 hours on the day of (we were quite notorious for this during the &amp;lsquo;19-&amp;lsquo;20 school year). This happened because we had very few speakers, but we&amp;rsquo;re much better off now. I hope you never prepare a talk within such a constraint because I can guarantee that the talk will fail miserably. The further along you go as a researcher, the later you&amp;rsquo;ll be able to start preparing reading group presentations, but you&amp;rsquo;ll still wish you started earlier.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re ready to try your hand at a talk, sign up with your reading group(s). For University of Michigan students, here are some reading groups you might be interested in:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Group Name&lt;/th&gt;
+&lt;th&gt;Page&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;MSAIL Reading Group&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://msail.github.io/join/&#34;&gt;https://msail.github.io/join/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Computer Vision Reading Group&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/umich.edu/cv-reading-group/home&#34;&gt;https://sites.google.com/umich.edu/cv-reading-group/home&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Natural Language Processing Reading Group&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://lit.eecs.umich.edu/reading_group.html&#34;&gt;https://lit.eecs.umich.edu/reading_group.html&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Reach out to us at 
+&lt;a href=&#34;mailto:msail-admin@umich.edu&#34;&gt;msail-admin@umich.edu&lt;/a&gt; if you&amp;rsquo;re interested in giving a talk at MSAIL or for help with preparing a talk. Happy presenting!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
