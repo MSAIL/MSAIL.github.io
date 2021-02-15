@@ -4,16 +4,71 @@
   
   <url>
     <loc>https://MSAIL.github.io/authors/</loc>
-    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/meta-skills/</loc>
-    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
+    <loc>https://MSAIL.github.io/tag/computer-vision/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/education/computer_vision/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/convolutional-neural-networks/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/deep-learning/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/education/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/ml/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://MSAIL.github.io/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/msail/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tags/</loc>
+    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/introduction/</loc>
+    <lastmod>2021-02-12T17:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/education/intro_dl_basics/</loc>
+    <lastmod>2021-02-12T17:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/neural-networks/</loc>
+    <lastmod>2021-02-12T17:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/meta-skills/</loc>
     <lastmod>2021-01-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -39,11 +94,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/reading-group/</loc>
-    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tags/</loc>
     <lastmod>2021-01-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -79,11 +129,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/joyce-chai/</loc>
-    <lastmod>2020-12-01T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/author/msail/</loc>
     <lastmod>2020-12-01T18:00:00-04:00</lastmod>
   </url>
   
@@ -158,32 +203,12 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/computer-vision/</loc>
-    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/tag/convolutional-neural-network/</loc>
     <lastmod>2020-11-05T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://MSAIL.github.io/education/cnn/</loc>
-    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/deep-learning/</loc>
-    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/education/</loc>
-    <lastmod>2020-11-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/ml/</loc>
     <lastmod>2020-11-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -299,11 +324,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/gradient-descent/</loc>
-    <lastmod>2020-10-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/introduction/</loc>
     <lastmod>2020-10-08T00:00:00+00:00</lastmod>
   </url>
   

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Neural Networks | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/neural-networks/</link>
+      <atom:link href="https://MSAIL.github.io/tag/neural-networks/index.xml" rel="self" type="application/rss+xml" />
+    <description>Neural Networks</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 12 Feb 2021 17:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Neural Networks</title>
+      <link>https://MSAIL.github.io/tag/neural-networks/</link>
+    </image>
+    
+    <item>
+      <title>Introduction and Basics of Deep Learning</title>
+      <link>https://MSAIL.github.io/education/intro_dl_basics/</link>
+      <pubDate>Fri, 12 Feb 2021 17:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/intro_dl_basics/</guid>
+      <description>&lt;p&gt;​
+&lt;strong&gt;Topic&lt;/strong&gt;: Introduction to AI Research and Basics of Deep Learning&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang  ​&lt;/p&gt;
+&lt;p&gt;This lesson introduced the format of lessons for the winter 2021 semester, briefly introducing the topics to be presented in the coming weeks. We then gave a high-level overview of neural networks, which form the basis of deep learning and drive much of AI research today. ​&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1lNhpuuxNhW5nHDLavDLqlLOKv-DYfMhO/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;​&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1SkI0i1Y_Dp1lZTCJjJD91f0DVf_CXfB4FMBy8jLweeg/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
