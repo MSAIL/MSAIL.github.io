@@ -5,12 +5,49 @@
     <link>https://MSAIL.github.io/tag/reinforcement-learning/</link>
       <atom:link href="https://MSAIL.github.io/tag/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>Reinforcement Learning</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 13 Oct 2020 18:00:00 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 16 Feb 2021 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Reinforcement Learning</title>
       <link>https://MSAIL.github.io/tag/reinforcement-learning/</link>
     </image>
+    
+    <item>
+      <title>Deep RL for Robotics: A Short Overview</title>
+      <link>https://MSAIL.github.io/talk/deeprlrobotics_021621/</link>
+      <pubDate>Tue, 16 Feb 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/deeprlrobotics_021621/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nikhil Devraj&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: A Brief Overview of Deep RL in Robotics&lt;/p&gt;
+&lt;p&gt;Deep reinforcement learning (RL) has emerged as a promising approach for autonomously acquiring complex behaviors from low level sensor observations. Although a large portion of deep RL research has focused on applications in video games and simulated control, which does not connect with the constraints of learning in real environments, deep RL has also demonstrated promise in enabling physical robots to learn complex skills in the real world.&lt;br&gt;
+This discussion focused predominantly on the following questions: &lt;br&gt;
+(1) What is deep RL and how does it relate to robotics?&lt;br&gt;
+(2) What are some examples of studies done with Deep RL in robotics?&lt;br&gt;
+(3) What are major challenges faced by researchers who apply deep RL to robotics?&lt;/p&gt;
+&lt;p&gt;This discussion is heavily inspired by 
+&lt;a href=&#34;https://arxiv.org/pdf/2102.02915.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ibarz et al.&lt;/a&gt;, although it does not dive into that level of detail.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/17vYF9mOG_vp9JI65UXdzKzLu6rOw7Ui_/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find the recording of this talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2102.02915.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;How to Train Your Robot with Deep Reinforcement Learning - Lessons We&amp;rsquo;ve Learned&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1610.00633&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep Reinforcement Learning for Robotic Manipulation with Asynchronous Off-Policy Updates&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://journals.sagepub.com/doi/abs/10.1177/0278364913495721&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Reinforcement learning in robotics: a survey&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Articles:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://medium.com/@vmayoral/reinforcement-learning-in-robotics-d2609702f71b&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Medium: Reinforcement learning in robotics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Other&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;https://ieor8100.github.io/rl/docs/RL%20in%20Robotics.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Better slides (in our presenter&amp;rsquo;s opinion)&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=GX_RonOFe1U&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep RL Towards Robotics by Shane Gu (Google Brain)&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=luzOblzznIc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Deep RL in Robotics with NVIDIA Jetson&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Reinforcement Learning Applied to COVID-19 Optimization Problems</title>
