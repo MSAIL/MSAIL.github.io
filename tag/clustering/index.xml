@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clustering | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/clustering/</link>
+      <atom:link href="https://MSAIL.github.io/tag/clustering/index.xml" rel="self" type="application/rss+xml" />
+    <description>Clustering</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 20 Feb 2021 15:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Clustering</title>
+      <link>https://MSAIL.github.io/tag/clustering/</link>
+    </image>
+    
+    <item>
+      <title>Unsupervised Learning</title>
+      <link>https://MSAIL.github.io/education/unsupervised/</link>
+      <pubDate>Sat, 20 Feb 2021 15:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/unsupervised/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Unsupervised Learning&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;This lesson went over the unsupervised side of AI, where labels don&amp;rsquo;t exist and models are left on their own to learn useful information. We presented machine learning approaches with and without deep learning that tackle unsupervised problems.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1WXBrrbNDryufUYkzQS1aLwrEcJRbo-xS/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1H77BDYebNusyelevFe5-AHZzYCaOB1tid-Vqtmm13oI/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
