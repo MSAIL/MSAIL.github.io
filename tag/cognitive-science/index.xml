@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CNN | MSAIL</title>
-    <link>https://MSAIL.github.io/tag/cnn/</link>
-      <atom:link href="https://MSAIL.github.io/tag/cnn/index.xml" rel="self" type="application/rss+xml" />
-    <description>CNN</description>
+    <title>Cognitive Science | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/cognitive-science/</link>
+      <atom:link href="https://MSAIL.github.io/tag/cognitive-science/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cognitive Science</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 23 Feb 2021 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
-      <title>CNN</title>
-      <link>https://MSAIL.github.io/tag/cnn/</link>
+      <title>Cognitive Science</title>
+      <link>https://MSAIL.github.io/tag/cognitive-science/</link>
     </image>
     
     <item>
@@ -24,22 +24,6 @@
 &lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
 
 &lt;a href=&#34;https://www.researchgate.net/profile/Lex-Fridman/publication/324658835_Cognitive_Load_Estimation_in_the_Wild/links/5bf0ba3092851c6b27c74bd1/Cognitive-Load-Estimation-in-the-Wild.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cognitive Load Estimation in the Wild&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Convolutional Neural Networks</title>
-      <link>https://MSAIL.github.io/education/cnn/</link>
-      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/cnn/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Convolutional Neural Networks&lt;br&gt;
-&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
-&lt;p&gt;This lesson covered convolutional neural networks, which serve as the backbone for many modern-day deep learning applications. Most commonly, convolutional neural networks are used for vision tasks (although not exclusively).&lt;/p&gt;
-&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://docs.google.com/presentation/d/1522OsXalZScvuUxXrOTbUZuISZUY-HqO&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides on CNNs&lt;/a&gt;&lt;br&gt;
-
-&lt;a href=&#34;https://docs.google.com/presentation/d/16TMR2sM9T75qALw3CCigUF_JxMQ5gceM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides on Neural Networks&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
