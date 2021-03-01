@@ -5,12 +5,44 @@
     <link>https://MSAIL.github.io/tag/deep-learning/</link>
       <atom:link href="https://MSAIL.github.io/tag/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>Deep Learning</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 20 Feb 2021 15:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 27 Feb 2021 15:00:00 +0000</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Deep Learning</title>
       <link>https://MSAIL.github.io/tag/deep-learning/</link>
     </image>
+    
+    <item>
+      <title>Lightning Round -- Assorted AI Topics</title>
+      <link>https://MSAIL.github.io/education/lightning/</link>
+      <pubDate>Sat, 27 Feb 2021 15:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/lightning/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Lightning Round &amp;ndash; Assorted AI Topics&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;Here, we talk about a wide range of topics in AI that haven&amp;rsquo;t received their own slide decks &amp;ndash; the list includes reinforcement learning, optimization, adversarial machine learning, meta learning, active learning, multi-agent systems, and more. We hope that showcasing the breadth of AI research inspires you to dig deeper on your own and find what interests you!&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/169IpCxkST0Fjp7LjQgpdfiDz-Ccs1K-v/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1uQzkFpr4LyslagkloUHs5lnCQ3wNmVLfuaa7UsbTaGA/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ethics</title>
+      <link>https://MSAIL.github.io/education/ethics/</link>
+      <pubDate>Fri, 26 Feb 2021 17:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/ethics/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Ethics in AI Research&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;We discuss the various ethical problems AI research presents, including well-known problems like bias and weaponized AI and less publicized problems like interpretability and environmental impact of large machine learning models. We also talk about some of the solutions that researchers are attempting to implement and what we can do to contribute.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1C-bWWrhh_hK6ZwNmLEYK95uLJ6eiCbi1/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1KUUqzdz-Te1oNS4AMnxxPqO_mFUpmkDNokr0As9rCHQ/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Unsupervised Learning</title>
