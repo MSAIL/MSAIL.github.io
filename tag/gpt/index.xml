@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Neural Network | MSAIL</title>
-    <link>https://MSAIL.github.io/tag/neural-network/</link>
-      <atom:link href="https://MSAIL.github.io/tag/neural-network/index.xml" rel="self" type="application/rss+xml" />
-    <description>Neural Network</description>
+    <title>GPT | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/gpt/</link>
+      <atom:link href="https://MSAIL.github.io/tag/gpt/index.xml" rel="self" type="application/rss+xml" />
+    <description>GPT</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Mar 2021 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
-      <title>Neural Network</title>
-      <link>https://MSAIL.github.io/tag/neural-network/</link>
+      <title>GPT</title>
+      <link>https://MSAIL.github.io/tag/gpt/</link>
     </image>
     
     <item>

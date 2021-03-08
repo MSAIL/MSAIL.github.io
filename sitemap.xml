@@ -18,7 +18,12 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/talk/generative_language_modeling/</loc>
+    <loc>https://MSAIL.github.io/tag/gpt/</loc>
+    <lastmod>2021-03-01T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/language-models/</loc>
     <lastmod>2021-03-01T18:00:00-04:00</lastmod>
   </url>
   
@@ -43,7 +48,7 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/skill-learning/</loc>
+    <loc>https://MSAIL.github.io/talk/generative_language_modeling/</loc>
     <lastmod>2021-03-01T18:00:00-04:00</lastmod>
   </url>
   
@@ -209,6 +214,11 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/robotics/</loc>
+    <lastmod>2021-02-16T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/skill-learning/</loc>
     <lastmod>2021-02-16T18:00:00-04:00</lastmod>
   </url>
   
@@ -564,11 +574,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/bert/</loc>
-    <lastmod>2020-09-15T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/language-models/</loc>
     <lastmod>2020-09-15T18:00:00-04:00</lastmod>
   </url>
   
