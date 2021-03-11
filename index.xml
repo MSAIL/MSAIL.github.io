@@ -1488,6 +1488,15 @@ roles. The following details our current admin team&#39;s roles and emails (at u
     &lt;div class=&#34;leader-info&#34;&gt; Lead Admin &lt;/div&gt;
     &lt;div class=&#34;leader-email&#34;&gt; devrajn@ &lt;/div&gt;
 &lt;/div&gt;
+&lt;!-- Nina Li --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/nina_li.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Nina Li &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Communications &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; nlnina@ &lt;/div&gt;
+&lt;/div&gt;
 &lt;!-- Anthony Liang --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
