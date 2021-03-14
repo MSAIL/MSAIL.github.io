@@ -5,12 +5,29 @@
     <link>https://MSAIL.github.io/tag/deep-learning/</link>
       <atom:link href="https://MSAIL.github.io/tag/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <description>Deep Learning</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Mar 2021 18:00:00 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 09 Mar 2021 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Deep Learning</title>
       <link>https://MSAIL.github.io/tag/deep-learning/</link>
     </image>
+    
+    <item>
+      <title>Using Transformers for Vision</title>
+      <link>https://MSAIL.github.io/talk/image-worth-16x16-words/</link>
+      <pubDate>Tue, 09 Mar 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/image-worth-16x16-words/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Andrew Awad and Drake Svoboda&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Using Transformers for Computer Vision&lt;/p&gt;
+&lt;p&gt;In recent years we&amp;rsquo;ve seen the rise of transformers in natural language processing research, burgeoning the field to incredible heights. However, these very same transformers were seldom applied to computer vision tasks until recently. Andrew and Drake discussed how transformers have been used in vision tasks in recent years in a presentation covering two papers. The first, An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale (via Google Brain), is the &amp;ldquo;Attention is All You Need&amp;rdquo; of vision. Namely, this paper covers how one can construct a vision architecture devoid of the commonly applied CNN and still achieve comparable or better performance results while possibly cutting down computing resources. The second paper, End-to-End Object Detection with Transformers (via FAIR), formalizes the object detection task in a unique way that affords the usage of transformers.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/2010.11929.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://arxiv.org/pdf/2005.12872.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;End-to-End Object Detection with Transformers&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Proving Theorems with Generative Language Models</title>

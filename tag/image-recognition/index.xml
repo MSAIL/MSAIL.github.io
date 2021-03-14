@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Neural Network | MSAIL</title>
-    <link>https://MSAIL.github.io/tag/neural-network/</link>
-      <atom:link href="https://MSAIL.github.io/tag/neural-network/index.xml" rel="self" type="application/rss+xml" />
-    <description>Neural Network</description>
+    <title>Image Recognition | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/image-recognition/</link>
+      <atom:link href="https://MSAIL.github.io/tag/image-recognition/index.xml" rel="self" type="application/rss+xml" />
+    <description>Image Recognition</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 09 Mar 2021 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
-      <title>Neural Network</title>
-      <link>https://MSAIL.github.io/tag/neural-network/</link>
+      <title>Image Recognition</title>
+      <link>https://MSAIL.github.io/tag/image-recognition/</link>
     </image>
     
     <item>
@@ -26,21 +26,6 @@
 &lt;a href=&#34;https://arxiv.org/pdf/2010.11929.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AN IMAGE IS WORTH 16X16 WORDS: TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;
 &lt;a href=&#34;https://arxiv.org/pdf/2005.12872.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;End-to-End Object Detection with Transformers&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Proving Theorems with Generative Language Models</title>
-      <link>https://MSAIL.github.io/talk/generative_language_modeling/</link>
-      <pubDate>Mon, 01 Mar 2021 18:00:00 -0400</pubDate>
-      <guid>https://MSAIL.github.io/talk/generative_language_modeling/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Ashwin Sreevatsa&lt;br&gt;
-&lt;strong&gt;Topic&lt;/strong&gt;: Generative Language Modeling for Automated Theorem Proving Presentation&lt;/p&gt;
-&lt;p&gt;In the past decade, deep learning and artificial neural networks have been incredibly successful at a variety of tasks such as computer vision, translation, game playing, and robotics among others. However, there have been less examples of deep learning making progress with reasoning related tasks- such as automated theorem proving, the task of proving mathematical theorems using computer programs. This paper explores the use of transformer-based models to automated theorem proving and presents GPT-f, a deep learning-based automated prover and proof assistant.&lt;/p&gt;
-&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;Papers:&lt;/strong&gt;&lt;br&gt;
-
-&lt;a href=&#34;https://arxiv.org/pdf/2009.03393.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Generative Language Modeling for Automated Theorem Proving Presentation&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
