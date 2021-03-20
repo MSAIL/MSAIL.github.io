@@ -5,12 +5,83 @@
     <link>https://MSAIL.github.io/</link>
       <atom:link href="https://MSAIL.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>MSAIL</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 09 Mar 2021 18:00:00 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 14 Mar 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>MSAIL</title>
       <link>https://MSAIL.github.io/</link>
     </image>
+    
+    <item>
+      <title>What could AI do for developing countries?</title>
+      <link>https://MSAIL.github.io/post/developing_countries/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/post/developing_countries/</guid>
+      <description>&lt;p&gt;10% of the world’s population lives in extreme poverty. This means that around 700 million people are living on less than $1.90 a day (1). And while $1.90 is the standard set by the World Bank defining the international poverty line (2), by no means does it imply that a person earning more than this amount has anywhere near suitable standards of living. Poorer populations in countries such as South Sudan, Bolivia, and India (2) still struggle to access basic features that are usually taken for granted in more developed countries, such as clean water, sanitation, education, and healthcare. 2.1 billion people in the world do not have access to safe drinking water (3). Around 1.8 billion people do not have access to adequate sanitation (4). And a report from the World Health Organization and the World Bank found that 400 million do not have access to essential health services (5).&lt;/p&gt;
+&lt;p&gt;Much work is already being undertaken in attempts to address these key issues, but more is still needed. Artificial intelligence (AI) is one such area where there is potential in alleviating some of the problems accompanying poverty. AI encompasses areas such as natural language processing and robotics, and has seen success in recent years with technology like autonomous vehicles, disease diagnosis, and recommendation algorithms. It is a powerful tool that also has the potential to be applied in ways beneficial to those dealing with the circumstances and living standards that typically go with poverty, especially in the realms of sanitation and education.&lt;/p&gt;
+&lt;h2 id=&#34;sanitation&#34;&gt;Sanitation&lt;/h2&gt;
+&lt;p&gt;Issues of sanitation for impoverished regions encompass topics such as lack of clean water, proper toilet systems, and waste management.&lt;/p&gt;
+&lt;p&gt;One initiative attempting to address the problem of unsafe drinking water comes from an organization called Clean Water AI. Developers created a device that uses a “deep learning neural network to detect dangerous bacteria and harmful particles in water” (6). This technology employs computer vision to continuously monitor water quality and observe at a microscopic level. Widespread adoption of such an application could be beneficial for avoiding illnesses that arise from consumption of unsafe drinking water, such as cholera, typhoid, and polio (11).&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a short video detailing what Clean Water AI does:
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/Df1X1Km9riQ&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;Lack of proper waste management is another huge issue for underdeveloped regions. Without systems in place to take care of waste, it has become common for garbage to be thrown out in the surrounding areas or tossed into nearby water sources, where it sometimes becomes a playground for the neighboring children (7). While the establishment and utilization of governmental systems and resources could help manage this waste problem, there are also innovations in the AI sector that could be applied to target the problem. Recycling is an important process for these communities, and a robot designed by engineers from Simon Fraser University could help distinguish waste from recyclable materials (8). Growing company CleanRobotics is also taking steps to aid the waste management process with an autonomous system called TrashBot, which uses “robotics, computer vision and artificial intelligence to detect and separate landfill from recyclables” (12). Establishing automated systems for removing trash build-up could make the process easier in underdeveloped regions that lack the proper systems, and this could be crucial for lowering rates of disease caused by unhygienic environments. Such use of artificial intelligence could also potentially improve financial outlooks for the citizens in these areas through reuse and repurposing of recyclable materials.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;assembly_recycle.png&#34; alt=&#34;Recycling&#34;&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;i&gt;Credit: Arvinder Singh&lt;/i&gt;
+&lt;/center&gt;
+&lt;h2 id=&#34;education&#34;&gt;Education&lt;/h2&gt;
+&lt;p&gt;The standard of education and the availability of educational resources also suffer in impoverished regions. Improved educational resources correlates positively with poverty statistics, as better education can benefit a region overall and positively impact its economy; “Education promotes economic growth because it provides skills that increase employment opportunities and income” (13)(14).  It is no surprise, then, that poorer regions have less access to proper education and fewer members of the community acquire an education. Lack of nearby schools, teachers, transportation, and time are all contributors to this problem.&lt;/p&gt;
+&lt;p&gt;Universal education is a popular initiative and there is work being done with the AI field to progress this goal. The rise of the internet has provided opportunities for bringing education into the home with the growing format of online schooling. Having the capability to view pre-taught lessons online is an important development in tackling the aforementioned impediments to education in underdeveloped regions. While there already exist many online resources that provide information on a variety of subjects for anyone to browse, language barriers still persist. The Presentation Translator from Microsoft is one such tool involving AI that is attempting to address language barriers (15). It uses speech recognition and translation to create subtitles of presentations in the desired language, which users can access through the tool’s affiliated app or browser. Google’s translation application can also be used for reading, writing, and speaking translations. There are many other recent developments in the field of natural language processing that can help tackle language barriers, and further expansion of available languages in these applications would be advantageous for poorer regions with lesser-known tongues.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;translation.png&#34; alt=&#34;Learning&#34;&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;i&gt;Credit: Arvinder Singh&lt;/i&gt;
+&lt;/center&gt;
+&lt;h2 id=&#34;challenges-to-ai-access&#34;&gt;Challenges to AI Access&lt;/h2&gt;
+&lt;p&gt;There is much more growth happening in the AI field than what has been discussed here, and these technological advancements may be useful for targeting the persisting problems of poverty. But a major obstacle of using these tools to benefit developing countries is that many of these regions do not have the necessary structures in place to even implement such technologies.&lt;/p&gt;
+&lt;p&gt;If specialists are needed for the establishment and maintenance of these AI applications, it is unlikely there will be someone in these areas who can fulfill that role, especially with the lack of access to education. It could become even more costly to hire outside help for maintaining these applications than it already is just to instate them. It must also be determined who will fund these tools – if the creators of these applications are not providing them for free, who will the responsibility fall upon for payment? The impoverished region presumably cannot bear that burden. Governmental assistance is often what is needed in these situations, but these are developing areas and governmental instability is a common feature, as well as the fact that the developing economy often does not yet supply the financial resources needed to establish such systems. Lack of internet access is another deterrent to providing these AI tools. When the poorer regions of Asia and Africa are the ones more likely to have fewer people using the internet (16), and less than 5% of people are online in the poorest countries (10), this creates difficulty in making use of resources such as online education.&lt;/p&gt;
+&lt;p&gt;Some initiatives seeking to resolve these obstacles are in the works, but they encounter their own obstacles in the sheer size of the issue and lack of financial resources (like Project Loon, which was attempting to provide worldwide internet access through essential parts of cell towers attached to balloons (10) but has since shut down in January of 2021, stating they “haven’t found a way to get the costs low enough to build a long-term, sustainable business” (17)). The barriers to technological access in underdeveloped areas are widespread and persistent, and it is difficult for one well-meaning company or organization to solve them. These significant concerns will need to be addressed if artificial intelligence is to play a role in reducing poverty in our world.&lt;/p&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;p&gt;[1]: 
+&lt;a href=&#34;https://lifewater.org/blog/9-world-poverty-statistics-to-know-today/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World Poverty Statistics via lifewater.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[2]: 
+&lt;a href=&#34;https://www.worldbank.org/en/topic/poverty#:~:text=Today%2C%20less%20than%2010%20percent,less%20than%20%241.90%20a%20day.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;World Bank&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[3]: 
+&lt;a href=&#34;https://ourworldindata.org/water-access&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Water Access Data&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[4]: 
+&lt;a href=&#34;https://www.cdc.gov/healthywater/global/wash_statistics.html#:~:text=An%20estimated%20790%20million%20people,to%20an%20improved%20water%20supply.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CDC Wash Statistics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[5]: 
+&lt;a href=&#34;https://www.who.int/mediacentre/news/releases/2015/uhc-report/en/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;New report shows that 400 million do not have access to essential health services via WHO&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[6]: 
+&lt;a href=&#34;https://cleanwaterai.com/#intro&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Clean Water AI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[7]: 
+&lt;a href=&#34;https://www.pbs.org/newshour/world/in-worlds-poorest-slums-landfills-and-polluted-rivers-become-a-childs-playground&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;via PBS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[8]: 
+&lt;a href=&#34;https://www.sfu.ca/sfunews/stories/2019/07/artificial-intelligence-robot-reduces-waste-contamination-at-sfu.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Artificial intelligence robot reduces waste contamination at SFU&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[9]: 
+&lt;a href=&#34;https://loon.com/technology/flight-systems/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flight systems via Loon&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[10]: 
+&lt;a href=&#34;https://ourworldindata.org/internet&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Internet Access&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[11]: 
+&lt;a href=&#34;https://www.who.int/news-room/fact-sheets/detail/drinking-water#:~:text=Contaminated%20water%20can%20transmit%20diseases,000%20diarrhoeal%20deaths%20each%20year&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Contaminated water can transmit diseases&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[12]: 
+&lt;a href=&#34;https://cleanrobotics.com/trashbot/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TrashBot via CleanRobotics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[13]: 
+&lt;a href=&#34;https://www.globalcitizen.org/en/content/poverty-education-satistics-facts/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Poverty Education Statistics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[14]: 
+&lt;a href=&#34;https://www.un.org/sustainabledevelopment/blog/2017/06/millions-could-escape-poverty-by-finishing-secondary-education-says-un-cultural-agency/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Millions could escape poverty by finishing secondary education&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[15]: 
+&lt;a href=&#34;https://www.microsoft.com/en-us/translator/APPS/PRESENTATION-TRANSLATOR/#:~:text=About%20Presentation%20Translator,-Presentation%20Translator%20subtitles&amp;amp;text=As%20you%20speak%2C%20Presentation%20Translator,deaf%20or%20hard%20of%20hearing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Microsoft Presentation Translator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[16]: 
+&lt;a href=&#34;https://www.pewresearch.org/global/2016/02/22/internet-access-growing-worldwide-but-remains-higher-in-advanced-economies/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Internet access growing worldwide but remains higher in advanced economies via Pew Research&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;[17]: 
+&lt;a href=&#34;https://medium.com/loon-for-all/loon-draft-c3fcebc11f3f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Loon for all&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Using Transformers for Vision</title>
