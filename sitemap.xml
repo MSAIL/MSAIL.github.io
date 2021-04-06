@@ -4,7 +4,62 @@
   
   <url>
     <loc>https://MSAIL.github.io/authors/</loc>
-    <lastmod>2021-03-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/bias/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/ethical-ai/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/harmful_bias_nlg/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/language-models/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/msail/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/natural-language-generation/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/neural-network/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/nlp/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tags/</loc>
+    <lastmod>2021-03-30T18:00:00-04:00</lastmod>
   </url>
   
   <url>
@@ -28,17 +83,7 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/</loc>
-    <lastmod>2021-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/post/</loc>
-    <lastmod>2021-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tags/</loc>
     <lastmod>2021-03-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -59,26 +104,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/image-recognition/</loc>
-    <lastmod>2021-03-09T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/language-models/</loc>
-    <lastmod>2021-03-09T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/author/msail/</loc>
-    <lastmod>2021-03-09T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/neural-network/</loc>
-    <lastmod>2021-03-09T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/talk/</loc>
     <lastmod>2021-03-09T18:00:00-04:00</lastmod>
   </url>
   
@@ -370,11 +395,6 @@
   <url>
     <loc>https://MSAIL.github.io/tag/sindhu-kutty/</loc>
     <lastmod>2020-11-17T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/natural-language-generation/</loc>
-    <lastmod>2020-11-10T18:00:00-04:00</lastmod>
   </url>
   
   <url>
