@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Mining | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/data-mining/</link>
+      <atom:link href="https://MSAIL.github.io/tag/data-mining/index.xml" rel="self" type="application/rss+xml" />
+    <description>Data Mining</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 13 Apr 2021 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Data Mining</title>
+      <link>https://MSAIL.github.io/tag/data-mining/</link>
+    </image>
+    
+    <item>
+      <title>How We Built This: TDM Studio and Sentiment Analysis</title>
+      <link>https://MSAIL.github.io/talk/proquest_041321/</link>
+      <pubDate>Tue, 13 Apr 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/proquest_041321/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Dan Hepp and John Dillon&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: How We Built This: TDM Studio and Sentiment Analysis&lt;/p&gt;
+&lt;p&gt;Dan Hepp is a Data Scientist Lead at ProQuest. Dan has thirty years of experience in research and production settings developing complex systems. He has a demonstrated track record of finding creative solutions to difficult technical problems and making them effective in real-world situations. Dan has expertise in machine learning, data
+mining, information extraction, pattern recognition, information retrieval, natural language processing, computer vision, artificial intelligence, and optical character recognition.&lt;/p&gt;
+&lt;p&gt;John Dillon, Ph.D., is the Text and Data Mining Product Manager at ProQuest. His work focuses on pairing computational text analysis methods with traditional Humanities and Cultural Studies disciplines. He has published papers on Machine Learning and Sentiment Analysis and has worked previously as a postdoctoral researcher with the University of Notre Dame, USAID, and IBM Research.&lt;/p&gt;
+&lt;p&gt;This presentation consisted of two parts: The first part provided a history and overview of what it took to build TDM Studio from a product development standpoint. TDM Studio is a text and data mining solution offered by ProQuest. In the first part of the presentation, they gave us some practical insights into what to do and what not to do when trying to create a startup-esque product within a mid-sized company. The second portion of the presentation dug a little deeper into one aspect of TDM Studio, sentiment analysis. They discussed their work with the 2020 MDP Sentiment Analysis team and the results of their approach to the problem.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1VwbknZPyXw20qxhKnMmnaw6gxaIYNjK7/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://tdmstudio.proquest.com/home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;TDM Studio&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://mdp.engin.umich.edu/sponsor_teams/proquest-ocr/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MDP Team Description&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

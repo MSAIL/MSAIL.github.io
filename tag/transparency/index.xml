@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Transparency | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/transparency/</link>
+      <atom:link href="https://MSAIL.github.io/tag/transparency/index.xml" rel="self" type="application/rss+xml" />
+    <description>Transparency</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 05 Apr 2021 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Transparency</title>
+      <link>https://MSAIL.github.io/tag/transparency/</link>
+    </image>
+    
+    <item>
+      <title>Intelligent Politics: How AI Can Improve Our Political Institutions and Systems</title>
+      <link>https://MSAIL.github.io/talk/politics_ai_systems_040521/</link>
+      <pubDate>Mon, 05 Apr 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/politics_ai_systems_040521/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: 
+&lt;a href=&#34;https://andongluis.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andong Luis Li Zhao&lt;/a&gt;&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Intelligent Politics: How AI Can Improve Our Political Institutions and Systems&lt;/p&gt;
+&lt;p&gt;Andong Luis Li Zhao is a Computer Science PhD student at Northwestern University, working in the C3 Lab under Prof. Kristian Hammond. His main research focus is modernizing our political systems through AI. He is currently working on making political information more transparent by building systems that can understand vaguely-articulated questions, obtain the correct data analysis, and identify the most appropriate representation of that analysis.&lt;/p&gt;
+&lt;p&gt;While his specific focus is currently on providing the public with access to information about our political system, this work is part of a broader goal of improving how society functions through socially-conscious AI grounded in real systems. Too often technologists abdicate their social responsibility by focusing on technical development. Instead, by developing human-centered AI technology that helps inform people and uncover novel insights, we can focus on the betterment of social, political, and economic systems and their impact.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1AvjuKSlNVVurQWtyFg6qUh1F8ZB6X9ft/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of his talk here.&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://scales-okn.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SCALES: Transforming the Accessibility and Transparency of Federal Courts&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://sites.northwestern.edu/c3lab/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;C3 Lab&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
