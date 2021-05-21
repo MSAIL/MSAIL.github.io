@@ -56,16 +56,16 @@
 &lt;p&gt;For the examples in this post, I will go through the process of choosing a topic for one of my previous talks. I&amp;rsquo;ve given plenty of talks on uninteresting topics and papers, but some were received particularly well. I will talk about my process for presenting 
 &lt;a href=&#34;https://arxiv.org/pdf/1904.01766.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VideoBERT&lt;/a&gt;, which I presented way back in Fall 2019. This was actually my first ever MSAIL talk, and at the time I had only recently become acquainted with AI research. The talk had plenty of faults, which I&amp;rsquo;ll try to use as examples.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;videobert_flow.png&#34; alt=&#34;VideoBERT Flow Diagram&#34;&gt;&lt;/p&gt;
-&lt;center&gt;
-&lt;i&gt;The central flow diagram from the VideoBERT paper by Sun et al.&lt;/i&gt;
+&lt;center style=&#34;font-size:15px;&#34;&gt;
+The central flow diagram from the VideoBERT paper by Sun et al.
 &lt;/center&gt;
 &lt;h2 id=&#34;reading-relevant-sources&#34;&gt;Reading relevant sources&lt;/h2&gt;
 &lt;h3 id=&#34;for-a-specific-paper&#34;&gt;For a specific paper&lt;/h3&gt;
 &lt;p&gt;Even if you choose one paper, that paper is probably not the only source you&amp;rsquo;re looking at to understand all the content.
 When you first read through the paper itself, you should annotate the key points (this is just a common reading skill, but it&amp;rsquo;s easy to forget!) and note the portions that confuse you. Depending on your background, you may or may not be able to finish the first pass. You should aim to have a big picture understanding of the paper, so maybe about 30%. If you can&amp;rsquo;t reach that level on your first read - don&amp;rsquo;t fret. You need to go read some supplementary materials. In particular, any decent paper will reference prior/related work in a section near the introduction - this is where you can dive into their citations and read up on the things that confuse you. Alternatively, I&amp;rsquo;ve found that Medium posts are particularly helpful as well for understanding more basic content.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;related-work.png&#34; alt=&#34;Related Work&#34;&gt;&lt;/p&gt;
-&lt;center&gt;
-&lt;i&gt; Related Work section in VideoBERT paper. &lt;/i&gt;
+&lt;center style=&#34;font-size:15px;&#34;&gt;
+Related Work section in VideoBERT paper. 
 &lt;/center&gt;
 &lt;br&gt;
 &lt;p&gt;Note the underlined portions here from the Related Work section of the VideoBERT paper. These highlight topics that might be worth searching up. You don&amp;rsquo;t need to dive into everything, but having a general understanding of what cross-modal learning and BERT are would help to better understand this paper.&lt;/p&gt;
