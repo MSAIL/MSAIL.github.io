@@ -1217,6 +1217,10 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;li&gt;
 &lt;a href=&#34;#campus-involvement&#34;&gt;Campus Involvement&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
+&lt;a href=&#34;#conferences&#34;&gt;Conferences&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#medium-blog-articles&#34;&gt;Medium/Blog articles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
 &lt;a href=&#34;#meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!--
@@ -1235,7 +1239,7 @@ uh I need to finish this but didn&#39;t have time - ND
 ### There are too many resources! How do I approach this???
 The very first thing we recommend you do is to understand why you want to learn from this page and about AI in general. And this isn&#39;t just saying &#34;I think AI is the future, with endless possibilities&#34;. Yes, that&#39;s a good way to hype yourself up about it. But it&#39;s important to really align it with your personal goals so you can pursue it further. Do you see yourself working on AI research and/or engineering? Are you trying to use it as part of research in a different subject area? Are you scoping the field to determine if you&#39;re even truly interested? Asking these questions will help you identify what resources to look at.
 
-That being said, you don&#39;t need to know the exact path you&#39;re going to go in. PhD candidates in AI usually don&#39;t know their exact research direction. In fact, one of our admins spoke to one of the vision professors here at Michigan and the professor said &#34;I became a professor so I could figure out what I was interested in.&#34; So the advice here is to understand your general motivation and worry about the details as time goes 
+That being said, you don&#39;t need to know the exact path you&#39;re going to go in. PhD candidates in AI usually don&#39;t know their exact research direction. In fact, one of our admins spoke to one of the vision professors here at Michigan and the professor said &#34;I became a professor so I could figure out what I was interested in.&#34; So the advice here is to understand your general motivation and worry about the details as time goes on.
 
 --&gt;
 &lt;h2 id=&#34;learning-concepts&#34;&gt;Learning Concepts&lt;/h2&gt;
@@ -1572,6 +1576,59 @@ Each of these classes is listed under EECS 498, 598 or both - you will need to s
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h2 id=&#34;conferences&#34;&gt;Conferences&lt;/h2&gt;
+&lt;p&gt;AI researchers nowadays usually write papers with the goal of submitting them to a conference. Conferences are a great way to meet other people in the field, get feedback on your work, and discuss ideas about further research. These are usually good places to start if you want to look for recent literature on a given topic.&lt;/p&gt;
+&lt;p&gt;Listed below are links to the pages of some highly-ranked machine learning conferences. Note that most of these links are for specific years (mostly 2021 because that&amp;rsquo;s when this list was first made); use Google to look up pages for other years.&lt;/p&gt;
+&lt;p&gt;This is not intended to be a complete list of AI/ML conferences. Usually, your first paper will be at a lower-tier conference as you get used to publishing.&lt;/p&gt;
+&lt;h3 id=&#34;general-ml-conferences&#34;&gt;General ML Conferences&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://icml.cc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ICML&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://iclr.cc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ICLR&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://neurips.cc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NeurIPS&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;computer-vision-conferences&#34;&gt;Computer Vision Conferences&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://cvpr2021.thecvf.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CVPR&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://iccv2021.thecvf.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ICCV&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;natural-language-processing-conferences&#34;&gt;Natural Language Processing Conferences&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://2021.emnlp.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EMNLP&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://2021.aclweb.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ACL&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://naacl.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NAACL&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mediumblog-articles&#34;&gt;Medium/Blog Articles&lt;/h2&gt;
+&lt;!-- this is just meant to be a start to this section. I haven&#39;t read every Medium article in existence. --&gt;
+&lt;p&gt;Medium articles are nice because they tend to be much shorter and easier to read than bona fide research papers. However, not all Medium
+articles are high quality. As such, we have provided a selection of high-quality Medium articles and blog posts in the vein of a Medium article.
+MSAIL also publishes its own 
+&lt;a href=&#34;https://MSAIL.github.io/post/&#34;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Under construction &amp;ndash; we will be adding more articles in the near future!&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;introductory&#34;&gt;Introductory&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://medium.com/machine-learning-in-practice/a-gentle-introduction-to-machine-learning-concepts-cfe710910eb&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;A Gentle Introduction to Machine Learning Concepts (Robbie Allen)&amp;quot;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;computer-vision-1&#34;&gt;Computer Vision&lt;/h3&gt;
+&lt;p&gt;Overview of GANS (Zak Jost): 
+&lt;a href=&#34;https://blog.zakjost.com/post/gans_overview_1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Part 1 (GAN)&amp;quot;&lt;/a&gt;, 
+&lt;a href=&#34;https://blog.zakjost.com/post/gans_overview_2/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Part 2 (DCGAN)&amp;quot;&lt;/a&gt;, 
+&lt;a href=&#34;https://blog.zakjost.com/post/gans_overview_3/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Part 3 (InfoGAN)&amp;quot;&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Understanding Variational Autoencoders (VAES) (Joseph Rocca)&amp;quot;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;nlp&#34;&gt;NLP&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;http://jalammar.github.io/illustrated-transformer/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;The Illustrated Transformer (Jay Alammar)&amp;quot;&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://jalammar.github.io/how-gpt3-works-visualizations-animations/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;How GPT3 Works - Visualizations and Animations (Jay Alammar)&amp;quot;&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://kazemnejad.com/blog/transformer_architecture_positional_encoding/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Transformer Architecture: The Positional Encoding&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+&lt;!-- ### RL --&gt;
+&lt;h3 id=&#34;uncategorized&#34;&gt;Uncategorized&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://theaisummer.com/graph-convolutional-networks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;How Graph Neural Networks (GNN) work: introduction to graph convolutions from scratch (Nikolas Adaloglou)&amp;quot;&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/understanding-latent-space-in-machine-learning-de5a7c687d8d&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;&amp;ldquo;Understanding Latent Space in Machine Learning (Ekin Tiu)&amp;quot;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/h2&gt;
 &lt;h3 id=&#34;conducting-research&#34;&gt;Conducting Research&lt;/h3&gt;
 &lt;p&gt;Richard Hamming: 
