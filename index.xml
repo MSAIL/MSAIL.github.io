@@ -1124,6 +1124,76 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
     </item>
     
     <item>
+      <title>Alumni</title>
+      <link>https://MSAIL.github.io/alumni/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/alumni/</guid>
+      <description>&lt;p&gt;MSAIL dates back to 2008 and has a history of many students who went on to do great things in the tech industry. We&amp;rsquo;d like to showcase as many of our alumni here as possible. If you are a previous member of MSAIL and would like to be featured on this page, please 
+&lt;a href=&#34;https://MSAIL.github.io/contact/&#34;&gt;let the admin team know!&lt;/a&gt;&lt;/p&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;style.css&#34;&gt;
+&lt;div id=&#34;leadership&#34;&gt;
+&lt;!-- Robert Aung --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/robert_aung.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Robert Aung&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Fall 2020 &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Andrew Awad --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+      &lt;img src=&#34;portraits/andrew_awad.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Andrew Awad&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Winter 2021 &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Kierra Davis --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/kierra_davis.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Kierra Davis &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Winter 2021 &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Anthony Liang --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/anthony_liang.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Anthony Liang &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Winter 2020 (BS), Winter 2021 (MS) &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Patrick Morgan --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/patrick_morgan.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Patrick Morgan &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Winter 2021 &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Sean Stapleton --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/sean_stapleton.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Sean Stapleton &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Fall 2020 &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- &lt;\!-- Kevin Wang -\-&gt; --&gt;
+&lt;!-- &lt;div class=&#34;leader-box&#34;&gt; --&gt;
+&lt;!--     &lt;div class=&#34;leader-portrait&#34;&gt; --&gt;
+&lt;!-- 	&lt;img src=&#34;portraits/kevin_wang.png&#34;&gt; --&gt;
+&lt;!--     &lt;/div&gt; --&gt;
+&lt;!--     &lt;div class=&#34;leader-name&#34;&gt; Kevin Wang &lt;/div&gt; --&gt;
+&lt;!--     &lt;div class=&#34;leader-info&#34;&gt; Education &lt;/div&gt; --&gt;
+&lt;!--     &lt;div class=&#34;leader-email&#34;&gt; musicer@ &lt;/div&gt; --&gt;
+&lt;!-- &lt;/div&gt; --&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Contact Us</title>
       <link>https://MSAIL.github.io/contact/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1815,106 +1885,84 @@ Our &lt;a href=&#34;https://MSAIL.github.io/constitution/&#34;&gt;constitution&l
 roles. The following details our current admin team&#39;s roles and emails (at umich.edu).
 &lt;!-- &lt;div id=&#34;leader&#34;&gt; &lt;/div&gt; --&gt;
 &lt;div id=&#34;leadership&#34;&gt;
-&lt;!-- Robert Aung --&gt;
+&lt;!-- Ashwin Sreevatsa --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/robert_aung.png&#34;&gt;
+	&lt;img src=&#34;portraits/ashwin_sreevatsa.png&#34;&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt;Robert Aung&lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Education &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; aung@ &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- Andrew Awad --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-      &lt;img src=&#34;portraits/andrew_awad.png&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt;Andrew Awad&lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Industry Relations &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; anawad@ &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- Kierra Davis --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/kierra_davis.png&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Kierra Davis &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Blog, DEI &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; kiedavis@ &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Ashwin Sreevatsa&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Lead Admin &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; asreeva@ &lt;/div&gt;
 &lt;/div&gt;
 &lt;!-- Nikhil Devraj --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
 	&lt;img src=&#34;portraits/nikhil_devraj.jpg&#34;&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Nikhil Devraj &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Lead Admin &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; devrajn@ &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Nikhil Devraj&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Blog &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; devrajn@ &lt;/div&gt;
 &lt;/div&gt;
-&lt;!-- Nina Li --&gt;
+&lt;!-- Isaac Fung --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/isaac_fung.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Isaac Fung&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Mentorship, Speakers &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; ifung@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Asad Khan --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/asad_khan.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Asad Khan&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Education, Cohort &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; asadk@ &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Nina Li  --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
 	&lt;img src=&#34;portraits/nina_li.png&#34;&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Nina Li &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Communications &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; nlnina@ &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Nina Li&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Funding &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; nlnina@ &lt;/div&gt;
 &lt;/div&gt;
-&lt;!-- Anthony Liang --&gt;
+&lt;!-- Nathan Reichenbach --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/anthony_liang.jpg&#34;&gt;
+	&lt;img src=&#34;portraits/nathan_reichenbach.png&#34;&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Anthony Liang &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Blog, Education &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; aliangdw@ &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- Patrick Morgan --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/patrick_morgan.jpg&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Patrick Morgan &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Speakers &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; pmorg@ &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Nathan Reichenbach&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Speakers, Recruiting &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; nreichen@ &lt;/div&gt;
 &lt;/div&gt;
 &lt;!-- Chloe Snyders --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
 	&lt;img src=&#34;portraits/chloe_snyders.png&#34;&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Chloe Snyders &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; DEI &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; csnyders@ &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;Chloe Snyders&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; DEI, Mentorship &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; csnyders@ &lt;/div&gt;	
 &lt;/div&gt;
-&lt;!-- Ashwin Sreevatsa --&gt;
+&lt;!-- William Wang --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/ashwin_sreevatsa.png&#34;&gt;
+	&lt;img src=&#34;portraits/william_wang.jpg&#34;&gt;
     &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Ashwin Sreevatsa &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Projects &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; asreeva@ &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt;William Wang&lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Education, Cohort &lt;/div&gt;
+	&lt;div class=&#34;leader-info&#34;&gt; wangwi@ &lt;/div&gt;
 &lt;/div&gt;
-&lt;!-- Sean Stapleton --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/sean_stapleton.jpg&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Sean Stapleton &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; DEI, Administrative &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; seancs@ &lt;/div&gt;
 &lt;/div&gt;
-&lt;!-- Kevin Wang --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/kevin_wang.png&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Kevin Wang &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Education &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; musicer@ &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;h2 id=&#34;members&#34;&gt;Members&lt;/h2&gt;
+&lt;p&gt;Coming soon!&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://MSAIL.github.io/alumni/&#34;&gt;Here are some of our graduated members.&lt;/a&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>
