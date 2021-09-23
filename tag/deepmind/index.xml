@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DeepMind | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/deepmind/</link>
+      <atom:link href="https://MSAIL.github.io/tag/deepmind/index.xml" rel="self" type="application/rss+xml" />
+    <description>DeepMind</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 20 Sep 2021 19:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>DeepMind</title>
+      <link>https://MSAIL.github.io/tag/deepmind/</link>
+    </image>
+    
+    <item>
+      <title>AlphaFold 2 and the Protein Folding Problem</title>
+      <link>https://MSAIL.github.io/talk/alphafold_2_092021/</link>
+      <pubDate>Mon, 20 Sep 2021 19:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/alphafold_2_092021/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Ashwin Sreevatsa&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: AlphaFold 2&lt;/p&gt;
+&lt;p&gt;The protein folding problem is one of the central challenges of biology over the past 50 years. The challenge is to identify the 3D structure of a protein given its amino acid sequence. Recently, DeepMind released a deep learning model called AlphaFold 2 that outperformed the state-of-the-art computational methods and predicted the 3D structures of proteins so accurately that many in the field now consider protein folding to be &amp;lsquo;solved&amp;rsquo;. This talk discussed a brief history of the protein folding problem, the architecture behind AlphaFold 2, and the next steps for protein folding and computational biology as a whole.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.nature.com/articles/s41586-021-03819-2.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaFold 2 Paper in Nature&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://github.com/deepmind/alphafold/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaFold 2 Source Code on Github&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://deepmind.com/blog/article/AlphaFold-Using-AI-for-scientific-discovery&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DeepMind blog post on the initial AlphaFold&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DeepMind blog post on AlphaFold 2&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=nGVFbPKrRWQ&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Video: AlphaFold and the Grand Challenge to solve protein folding by Arxiv Insights&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/github/deepmind/alphafold/blob/main/notebooks/AlphaFold.ipynb#scrollTo=woIxeCPygt7K&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AlphaFold 2 Example on Google Colab&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
