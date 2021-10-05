@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computational Biochemistry | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/computational-biochemistry/</link>
+      <atom:link href="https://MSAIL.github.io/tag/computational-biochemistry/index.xml" rel="self" type="application/rss+xml" />
+    <description>Computational Biochemistry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 27 Sep 2021 19:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Computational Biochemistry</title>
+      <link>https://MSAIL.github.io/tag/computational-biochemistry/</link>
+    </image>
+    
+    <item>
+      <title>Learning Effective Representations for Small Molecules</title>
+      <link>https://MSAIL.github.io/talk/chemdesc_092721/</link>
+      <pubDate>Mon, 27 Sep 2021 19:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/chemdesc_092721/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Mukundh Murthy&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Bioactivity Descriptors for Uncharacterized Chemical Compounds&lt;/p&gt;
+&lt;p&gt;Quantitative structure-activity modeling (QSAR) in computational chemistry is a task that involves predicting the binding affinity of a small molecule to a protein target given solely its molecular structure. Now, however, we are also interested in predicting more downstream properties including toxicity, side effects, and effects on gene expression – properties that concern both the biological and chemical properties of a molecule. This talk discussed the paper &amp;ldquo;Bioactivity Descriptors for uncharacterized chemical compounds,&amp;rdquo; which revolves around learning a generalizable and multi-modal representation for small molecules that can be applied across a large array of drug-discovery related tasks through integration of 25 small molecule datasets and a triplet network training task.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1sHALTeoucfLeO1aZGyhrLL6SYBXRgovI/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this talk here (UM only).&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2020.07.21.214197v1.full&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bioactivity Descriptors for Uncharacterized Chemical Compounds&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.notion.so/Computational-Biochemistry-e57c4194c4234a898ecf2db36bb74015&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computational Biochemistry Primer by Mukundh Murthy and Michael Trinh&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://pubs.acs.org/doi/pdf/10.1021/acs.accounts.0c00699&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ML for Molecular Property Prediction&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1703.00564.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MoleculeNet&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

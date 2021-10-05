@@ -3,12 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://MSAIL.github.io/talk/alphafold_2_092021/</loc>
-    <lastmod>2021-09-20T19:00:00-04:00</lastmod>
+    <loc>https://MSAIL.github.io/authors/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/authors/</loc>
+    <loc>https://MSAIL.github.io/tag/computational-biochemistry/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/chemdesc_092721/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/msail/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/representation-learning/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tags/</loc>
+    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/alphafold_2_092021/</loc>
     <lastmod>2021-09-20T19:00:00-04:00</lastmod>
   </url>
   
@@ -19,26 +54,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/deepmind/</loc>
-    <lastmod>2021-09-20T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/</loc>
-    <lastmod>2021-09-20T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/author/msail/</loc>
-    <lastmod>2021-09-20T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/talk/</loc>
-    <lastmod>2021-09-20T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tags/</loc>
     <lastmod>2021-09-20T19:00:00-04:00</lastmod>
   </url>
   

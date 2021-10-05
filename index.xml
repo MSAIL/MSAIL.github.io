@@ -5,12 +5,34 @@
     <link>https://MSAIL.github.io/</link>
       <atom:link href="https://MSAIL.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>MSAIL</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 20 Sep 2021 19:00:00 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 27 Sep 2021 19:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>MSAIL</title>
       <link>https://MSAIL.github.io/</link>
     </image>
+    
+    <item>
+      <title>Learning Effective Representations for Small Molecules</title>
+      <link>https://MSAIL.github.io/talk/chemdesc_092721/</link>
+      <pubDate>Mon, 27 Sep 2021 19:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/chemdesc_092721/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Mukundh Murthy&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Bioactivity Descriptors for Uncharacterized Chemical Compounds&lt;/p&gt;
+&lt;p&gt;Quantitative structure-activity modeling (QSAR) in computational chemistry is a task that involves predicting the binding affinity of a small molecule to a protein target given solely its molecular structure. Now, however, we are also interested in predicting more downstream properties including toxicity, side effects, and effects on gene expression – properties that concern both the biological and chemical properties of a molecule. This talk discussed the paper &amp;ldquo;Bioactivity Descriptors for uncharacterized chemical compounds,&amp;rdquo; which revolves around learning a generalizable and multi-modal representation for small molecules that can be applied across a large array of drug-discovery related tasks through integration of 25 small molecule datasets and a triplet network training task.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1sHALTeoucfLeO1aZGyhrLL6SYBXRgovI/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can find a recording of this talk here (UM only).&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2020.07.21.214197v1.full&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Bioactivity Descriptors for Uncharacterized Chemical Compounds&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.notion.so/Computational-Biochemistry-e57c4194c4234a898ecf2db36bb74015&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Computational Biochemistry Primer by Mukundh Murthy and Michael Trinh&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://pubs.acs.org/doi/pdf/10.1021/acs.accounts.0c00699&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ML for Molecular Property Prediction&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/pdf/1703.00564.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MoleculeNet&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>AlphaFold 2 and the Protein Folding Problem</title>
@@ -1461,7 +1483,7 @@ Note that this section&#39;s header is a major generalization. As noted above, A
 &lt;p&gt;Getting involved during your time on campus is the fastest way to learn about AI. You should definitely take relevant courses, but we also recommend joining a research group or relevant team to get more practice and familiarity with relevant topics. This includes participating in MSAIL-sponsored projects.
 MSAIL has a reading group, but it&amp;rsquo;s hard to balance all the different subfields of AI in just ~15 sessions in a semester. We highly recommend joining reading groups for more depth regarding the topics you&amp;rsquo;re interested in.&lt;/p&gt;
 &lt;h3 id=&#34;classes&#34;&gt;Classes&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Last updated on 1/2/21.&lt;/em&gt;
+&lt;p&gt;&lt;em&gt;Last updated on 9/23/21.&lt;/em&gt;
 This is a listing of courses related to AI (from a technical perspective) here at the University of Michigan. We tried to be as comprehensive as possible, but there are far too many courses to sift through, so we may have missed some. More information is available on the 
 &lt;a href=&#34;https://www.lsa.umich.edu/cg/default.aspx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LSA course guide&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As a side note, there are many courses that we can argue are related to AI from a less technical perspective. For example, take classes in the cognitive sciences - the development of human-like AI is heavily motivated by studies in this field. We leave these classes out for brevity&amp;rsquo;s sake.&lt;/p&gt;
@@ -1476,32 +1498,50 @@ This is a listing of courses related to AI (from a technical perspective) here a
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 442&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20442&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 442&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Computer Vision&lt;/td&gt;
-&lt;td&gt;W21&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 445&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20445&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 445&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Machine Learning&lt;/td&gt;
-&lt;td&gt;W21&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 492&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20492&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 492&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Intro to AI&lt;/td&gt;
-&lt;td&gt;W21&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 467&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20467&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 467&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Autonomous Robotics (MDE)&lt;/td&gt;
-&lt;td&gt;W21&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 367&lt;/td&gt;
-&lt;td&gt;Intro to Autonomous Robotics&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/LING%20441/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LING 441&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Introduction to Computational Linguistics&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/ROB%20102/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ROB 102&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Introduction to Robotics Algorithms and Programming&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20367&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 367&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Introduction to Autonomous Robotics&lt;/td&gt;
 &lt;td&gt;F20&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;ROB 464&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/ROB%20464&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ROB 464&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Hands-on Robotics&lt;/td&gt;
 &lt;td&gt;W20&lt;/td&gt;
 &lt;/tr&gt;
@@ -1518,43 +1558,69 @@ This is a listing of courses related to AI (from a technical perspective) here a
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 545&lt;/td&gt;
-&lt;td&gt;Machine Learning&lt;/td&gt;
-&lt;td&gt;W21&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20505/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 505&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Computational Data Science and Machine Learning&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 568/ROB 530&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20545&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 545&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Machine Learning&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20592/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 592&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Foundations of AI&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20542/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 542&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Advanced Topics in Computer Vision&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20551/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 551&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Matrix Methods for Signal Processing, Data Analysis, and Machine Learning&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20595/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 595/LING 541&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Natural Language Processing&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/ROB%20535/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ROB 535&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Self Driving Cars: Perception and Control&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/AEROSP%20567/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AEROSP 567&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;AEROSP 567: Inference Estimation and Learning&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/ROB%20530/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 568/ROB 530&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Mobile Robotics&lt;/td&gt;
 &lt;td&gt;W21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 592&lt;/td&gt;
-&lt;td&gt;Foundations of AI&lt;/td&gt;
-&lt;td&gt;W21&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;EECS 692&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20692/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 692&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Advanced Artificial Intelligence&lt;/td&gt;
 &lt;td&gt;W21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 504&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://atlas.ai.umich.edu/course/EECS%20504/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;EECS 504&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;Foundations of Computer Vision&lt;/td&gt;
-&lt;td&gt;F20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;EECS 542&lt;/td&gt;
-&lt;td&gt;Advanced Topics in Computer Vision&lt;/td&gt;
-&lt;td&gt;F20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;LING 541/EECS 595&lt;/td&gt;
-&lt;td&gt;Natural Language Processing&lt;/td&gt;
-&lt;td&gt;F20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;EECS 551&lt;/td&gt;
-&lt;td&gt;Matrix Methods for Signal Processing, Data Analysis, and Machine Learning&lt;/td&gt;
 &lt;td&gt;F20&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1570,6 +1636,31 @@ Each of these classes is listed under EECS 498, 598 or both - you will need to s
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498&lt;/td&gt;
+&lt;td&gt;Principles of Machine Learning&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Randomized Numerical Linear Algebra for Machine Learning&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498&lt;/td&gt;
+&lt;td&gt;Intro to Algorithmic Robotics&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 498&lt;/td&gt;
+&lt;td&gt;Conversational AI&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EECS 598&lt;/td&gt;
+&lt;td&gt;Human-Computer Interaction&lt;/td&gt;
+&lt;td&gt;F21&lt;/td&gt;
+&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;EECS 498&lt;/td&gt;
 &lt;td&gt;Intro to Natural Language Processing&lt;/td&gt;
@@ -1611,16 +1702,6 @@ Each of these classes is listed under EECS 498, 598 or both - you will need to s
 &lt;td&gt;W21&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;EECS 498&lt;/td&gt;
-&lt;td&gt;Intro to Algorithmic Robotics&lt;/td&gt;
-&lt;td&gt;F20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;EECS 498&lt;/td&gt;
-&lt;td&gt;Conversational AI&lt;/td&gt;
-&lt;td&gt;F20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td&gt;EECS 498/598&lt;/td&gt;
 &lt;td&gt;Deep Learning for Computer Vision&lt;/td&gt;
 &lt;td&gt;F20&lt;/td&gt;
@@ -1645,18 +1726,13 @@ Each of these classes is listed under EECS 498, 598 or both - you will need to s
 &lt;td&gt;The Ecological Approach to Vision&lt;/td&gt;
 &lt;td&gt;W20&lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;EECS 598&lt;/td&gt;
-&lt;td&gt;Human-Computer Interaction&lt;/td&gt;
-&lt;td&gt;W20&lt;/td&gt;
-&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id=&#34;research-labs&#34;&gt;Research Labs&lt;/h3&gt;
 &lt;p&gt;A list of professors is available on the 
 &lt;a href=&#34;https://ai.engin.umich.edu/people/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Michigan AI Lab faculty page&lt;/a&gt;. Each professor&amp;rsquo;s lab will be linked to on their homepage.&lt;/p&gt;
 &lt;h3 id=&#34;reading-groups&#34;&gt;Reading Groups&lt;/h3&gt;
-&lt;p&gt;Right now, we are aware of two (soon to be three) relevant reading groups that allow for public participation. Many research labs have internal reading groups as well.&lt;/p&gt;
+&lt;p&gt;Right now, we are aware of three relevant reading groups that allow for public participation. Many research labs have internal reading groups as well.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1675,7 +1751,7 @@ Each of these classes is listed under EECS 498, 598 or both - you will need to s
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Reinforcement Learning Reading Group&lt;/td&gt;
-&lt;td&gt;Coming soon!&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/umich.edu/rl-reading-group&#34;&gt;https://sites.google.com/umich.edu/rl-reading-group&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1760,10 +1836,10 @@ John Schulman:
 &lt;a href=&#34;https://www.cs.unc.edu/~azuma/hitch4.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ronald Azuma (UNC): “So long, and thanks for the Ph.D.!”&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;a href=&#34;http://karpathy.github.io/2016/09/07/phd/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andrej Karpathy (Tesla, OpenAI): A Survival Guide to a PhD&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
+&lt;li&gt;&lt;s&gt;
 &lt;a href=&#34;https://web.archive.org/web/20201219060833/https://pg.ucsd.edu/early-stage-PhD-advice.htm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Philip Guo (UCSD): Advice for early-stage Ph.D. students&lt;/a&gt;
 &lt;ul&gt;
-&lt;li&gt;Recently archived, but contains plenty of useful information. So we included the link to this page via the Wayback Machine.&lt;/li&gt;
+&lt;li&gt;Recently archived, but contains plenty of useful information. So we included the link to this page via the Wayback Machine.&lt;/s&gt; Looks like this page isn&amp;rsquo;t available anymore :/&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
