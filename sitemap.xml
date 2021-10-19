@@ -3,8 +3,53 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://MSAIL.github.io/tag/affective-computing/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://MSAIL.github.io/authors/</loc>
-    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/emotion-recognition/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/hierarchical-nn/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/msail/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/speech/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/speech_emotion_recog_100421/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tags/</loc>
+    <lastmod>2021-10-04T19:00:00-04:00</lastmod>
   </url>
   
   <url>
@@ -18,27 +63,7 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/</loc>
-    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/author/msail/</loc>
-    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/talk/</loc>
-    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/tag/representation-learning/</loc>
-    <lastmod>2021-09-27T19:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tags/</loc>
     <lastmod>2021-09-27T19:00:00-04:00</lastmod>
   </url>
   
