@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Latent Semantic Analysis | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/latent-semantic-analysis/</link>
+      <atom:link href="https://MSAIL.github.io/tag/latent-semantic-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <description>Latent Semantic Analysis</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 25 Oct 2021 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Latent Semantic Analysis</title>
+      <link>https://MSAIL.github.io/tag/latent-semantic-analysis/</link>
+    </image>
+    
+    <item>
+      <title>Latent Semantic Analysis</title>
+      <link>https://MSAIL.github.io/talk/lsa_102521/</link>
+      <pubDate>Mon, 25 Oct 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/lsa_102521/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nisreen Bahrainwala&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Latent Semantic Analysis: An Overview&lt;/p&gt;
+&lt;p&gt;Latent Semantic Analysis is one of the many methods used to help computers &amp;ldquo;understand&amp;rdquo; meaning behind words and phrases, aiding with tasks such as search response relevance. This discussion will introduce the concept of LSA, some of the methods used during its development, and then explore how this technology has shaped modern NLP methods.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.333.7403&amp;amp;rep=rep1&amp;amp;type=pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Solution to Plato&amp;rsquo;s Problem: The Latent Semantic Analysis Theory of Acquisition, Induction, and Representation of Knowledge&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://lsa.colorado.edu/papers/dp1.LSAintro.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An Introduction to Latent Semantic Analysis&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

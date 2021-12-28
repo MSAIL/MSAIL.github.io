@@ -5,12 +5,43 @@
     <link>https://MSAIL.github.io/tag/natural-language-processing/</link>
       <atom:link href="https://MSAIL.github.io/tag/natural-language-processing/index.xml" rel="self" type="application/rss+xml" />
     <description>Natural Language Processing</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 19 Feb 2021 17:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 06 Dec 2021 20:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Natural Language Processing</title>
       <link>https://MSAIL.github.io/tag/natural-language-processing/</link>
     </image>
+    
+    <item>
+      <title>Human-in-the-Loop Natural Language Processing</title>
+      <link>https://MSAIL.github.io/talk/jkk_120621/</link>
+      <pubDate>Mon, 06 Dec 2021 20:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/jkk_120621/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Dr. Jonathan Kummerfeld&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Human-in-the-Loop Natural Language Processing&lt;/p&gt;
+&lt;p&gt;Dr. Kummerfeld works on NLP, with many projects crossing into HCI, either in the process of creating datasets or developing systems. In this talk, he gave a brief introduction to NLP and Crowdsourcing + Human Computation, and then dove into two research projects. First, he discussed work on task-oriented dialogue (e.g. Siri), where his team developed new ways to collect more diverse data, which in turn leads to more robust models. Second, he discussed work on understanding a set of conversations occurring in a shared channel (e.g. in Slack).&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://jkk.name/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Kummerfeld&amp;rsquo;s Website&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Latent Semantic Analysis</title>
+      <link>https://MSAIL.github.io/talk/lsa_102521/</link>
+      <pubDate>Mon, 25 Oct 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/lsa_102521/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nisreen Bahrainwala&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Latent Semantic Analysis: An Overview&lt;/p&gt;
+&lt;p&gt;Latent Semantic Analysis is one of the many methods used to help computers &amp;ldquo;understand&amp;rdquo; meaning behind words and phrases, aiding with tasks such as search response relevance. This discussion will introduce the concept of LSA, some of the methods used during its development, and then explore how this technology has shaped modern NLP methods.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.333.7403&amp;amp;rep=rep1&amp;amp;type=pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Solution to Plato&amp;rsquo;s Problem: The Latent Semantic Analysis Theory of Acquisition, Induction, and Representation of Knowledge&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://lsa.colorado.edu/papers/dp1.LSAintro.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An Introduction to Latent Semantic Analysis&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Natural Language Processing</title>

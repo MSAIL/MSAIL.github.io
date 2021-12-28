@@ -5,12 +5,108 @@
     <link>https://MSAIL.github.io/talk/</link>
       <atom:link href="https://MSAIL.github.io/talk/index.xml" rel="self" type="application/rss+xml" />
     <description>Past Talks</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 04 Oct 2021 19:00:00 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 06 Dec 2021 20:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Past Talks</title>
       <link>https://MSAIL.github.io/talk/</link>
     </image>
+    
+    <item>
+      <title>Human-in-the-Loop Natural Language Processing</title>
+      <link>https://MSAIL.github.io/talk/jkk_120621/</link>
+      <pubDate>Mon, 06 Dec 2021 20:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/jkk_120621/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Dr. Jonathan Kummerfeld&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Human-in-the-Loop Natural Language Processing&lt;/p&gt;
+&lt;p&gt;Dr. Kummerfeld works on NLP, with many projects crossing into HCI, either in the process of creating datasets or developing systems. In this talk, he gave a brief introduction to NLP and Crowdsourcing + Human Computation, and then dove into two research projects. First, he discussed work on task-oriented dialogue (e.g. Siri), where his team developed new ways to collect more diverse data, which in turn leads to more robust models. Second, he discussed work on understanding a set of conversations occurring in a shared channel (e.g. in Slack).&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://jkk.name/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Kummerfeld&amp;rsquo;s Website&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Michigan AI Alumni Panel</title>
+      <link>https://MSAIL.github.io/talk/alumni_panel111521/</link>
+      <pubDate>Mon, 15 Nov 2021 20:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/alumni_panel111521/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Anthony Zheng, Kiran Prasad, Andong Li Zhao, Christian Kavouras&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Michigan AI Alumni Panel&lt;/p&gt;
+&lt;p&gt;We hosted a virtual speaker panel with a few UMich alumni who are currently doing very exciting work with AI in industry and academia.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Anthony Zheng is an Apple research engineer working on search algorithms for Apple Media Products&lt;/li&gt;
+&lt;li&gt;Kiran Prasad is an Applied Scientist at Microsoft working on NLP models for Microsoft products and was at CMU for his MS in AI and Innovation&lt;/li&gt;
+&lt;li&gt;Andong Li Zhao is a CS PhD student at Northwestern working on making information more democratically accessible&lt;/li&gt;
+&lt;li&gt;Christian Kavouras is a former Applied Scientist intern at Amazon working on ML/NLP applications and graduated from UWashington for his MS in Computational Linguistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/10JTvSD_VORdCg-E9IYoPhS1mZczLmKywwfkfXWlhOek/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andong&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://docs.google.com/presentation/d/1rKEofg8u7B7gRVuciozTMA2Ob6ykUszGJV6DhDuEmDI/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Anthony&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://drive.google.com/file/d/1QpWAzvGtJbur6sh08Yyru6h6KD2bgVVR/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Christian&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://drive.google.com/file/d/1kmj0a64CNVaoNex9-sCpBqAn-PVUGbEB/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kiran&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+Check Slack or 
+&lt;a href=&#34;https://MSAIL.github.io/contact/&#34;&gt;contact us&lt;/a&gt; if you&amp;rsquo;re interested in getting their contact info!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Understanding MLOps for Computer Vision Pipelines</title>
+      <link>https://MSAIL.github.io/talk/datature_110821/</link>
+      <pubDate>Mon, 08 Nov 2021 19:30:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/datature_110821/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Datature Team&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Understanding MLOps for Computer Vision Pipelines&lt;/p&gt;
+&lt;p&gt;We hosted an industry talk with Datature, a no-code platform that allows teams and enterprises to build computer vision models. In this session, they covered key MLOps practices and the shift from &amp;lsquo;model-centric AI&amp;rsquo; development to a &amp;lsquo;data-centric&amp;rsquo; approach in the context of computer vision. There was also a &amp;lsquo;hands-on&amp;rsquo; aspect where students were able to build a facemask detection / chess piece detection model in under 30 minutes using Datature&amp;rsquo;s no-code platform.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;We have a link with a tutorial for using Datature&amp;rsquo;s MLOps platform, but it is UMich only. If you are a UMich student interested in seeing it, please reach out to the 
+&lt;a href=&#34;https://MSAIL.github.io/contact/&#34;&gt;MSAIL admin team&lt;/a&gt; and we will happily pass it along.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://ml-ops.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MLOps Website&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://blogs.nvidia.com/blog/2020/09/03/what-is-mlops/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NVIDIA MLOps Blog Post&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contrastive Learning with Hard Negative Samples</title>
+      <link>https://MSAIL.github.io/talk/contrastive_hns_110121/</link>
+      <pubDate>Mon, 01 Nov 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/contrastive_hns_110121/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Kevin Wang&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Contrastive Learning with Hard Negative Samples&lt;/p&gt;
+&lt;p&gt;Kevin talked about the paper 
+&lt;a href=&#34;https://arxiv.org/abs/2010.04592v2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Contrastive Learning with Hard Negative Samples&lt;/a&gt;, by Joshua Robinson, Ching-Yao Chuang, Suvrit Sra, Stefanie Jegelka. In the past two years, contrastive learning has emerged as a powerful unsupervised computer vision technique for learning effective representations of data for downstream tasks. This theory-focused paper proposes a technique for sampling &amp;ldquo;hard&amp;rdquo; negative examples in contrastive learning. The authors note improved performance on downstream tasks compared to SimCLR and faster training.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://lilianweng.github.io/lil-log/2021/05/31/contrastive-representation-learning.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lilian Weng&amp;rsquo;s blog post on contrastive representation learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/understanding-contrastive-learning-d5b19fd96607&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ekin Tiu&amp;rsquo;s post on contrastive learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://ai.googleblog.com/2020/04/advancing-self-supervised-and-semi.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google SimCLR&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Latent Semantic Analysis</title>
+      <link>https://MSAIL.github.io/talk/lsa_102521/</link>
+      <pubDate>Mon, 25 Oct 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/lsa_102521/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Nisreen Bahrainwala&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Latent Semantic Analysis: An Overview&lt;/p&gt;
+&lt;p&gt;Latent Semantic Analysis is one of the many methods used to help computers &amp;ldquo;understand&amp;rdquo; meaning behind words and phrases, aiding with tasks such as search response relevance. This discussion will introduce the concept of LSA, some of the methods used during its development, and then explore how this technology has shaped modern NLP methods.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Paper(s)&lt;/strong&gt;:&lt;br&gt;
+
+&lt;a href=&#34;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.333.7403&amp;amp;rep=rep1&amp;amp;type=pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A Solution to Plato&amp;rsquo;s Problem: The Latent Semantic Analysis Theory of Acquisition, Induction, and Representation of Knowledge&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;http://lsa.colorado.edu/papers/dp1.LSAintro.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An Introduction to Latent Semantic Analysis&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Speech Emotion Recognition with ML</title>

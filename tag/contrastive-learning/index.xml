@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Contrastive Learning | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/contrastive-learning/</link>
+      <atom:link href="https://MSAIL.github.io/tag/contrastive-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>Contrastive Learning</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 01 Nov 2021 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Contrastive Learning</title>
+      <link>https://MSAIL.github.io/tag/contrastive-learning/</link>
+    </image>
+    
+    <item>
+      <title>Contrastive Learning with Hard Negative Samples</title>
+      <link>https://MSAIL.github.io/talk/contrastive_hns_110121/</link>
+      <pubDate>Mon, 01 Nov 2021 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/contrastive_hns_110121/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Kevin Wang&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Contrastive Learning with Hard Negative Samples&lt;/p&gt;
+&lt;p&gt;Kevin talked about the paper 
+&lt;a href=&#34;https://arxiv.org/abs/2010.04592v2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Contrastive Learning with Hard Negative Samples&lt;/a&gt;, by Joshua Robinson, Ching-Yao Chuang, Suvrit Sra, Stefanie Jegelka. In the past two years, contrastive learning has emerged as a powerful unsupervised computer vision technique for learning effective representations of data for downstream tasks. This theory-focused paper proposes a technique for sampling &amp;ldquo;hard&amp;rdquo; negative examples in contrastive learning. The authors note improved performance on downstream tasks compared to SimCLR and faster training.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://lilianweng.github.io/lil-log/2021/05/31/contrastive-representation-learning.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lilian Weng&amp;rsquo;s blog post on contrastive representation learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://towardsdatascience.com/understanding-contrastive-learning-d5b19fd96607&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Ekin Tiu&amp;rsquo;s post on contrastive learning&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://ai.googleblog.com/2020/04/advancing-self-supervised-and-semi.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Google SimCLR&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

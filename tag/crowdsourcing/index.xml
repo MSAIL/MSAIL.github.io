@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crowdsourcing | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/crowdsourcing/</link>
+      <atom:link href="https://MSAIL.github.io/tag/crowdsourcing/index.xml" rel="self" type="application/rss+xml" />
+    <description>Crowdsourcing</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 06 Dec 2021 20:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Crowdsourcing</title>
+      <link>https://MSAIL.github.io/tag/crowdsourcing/</link>
+    </image>
+    
+    <item>
+      <title>Human-in-the-Loop Natural Language Processing</title>
+      <link>https://MSAIL.github.io/talk/jkk_120621/</link>
+      <pubDate>Mon, 06 Dec 2021 20:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/jkk_120621/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Dr. Jonathan Kummerfeld&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Human-in-the-Loop Natural Language Processing&lt;/p&gt;
+&lt;p&gt;Dr. Kummerfeld works on NLP, with many projects crossing into HCI, either in the process of creating datasets or developing systems. In this talk, he gave a brief introduction to NLP and Crowdsourcing + Human Computation, and then dove into two research projects. First, he discussed work on task-oriented dialogue (e.g. Siri), where his team developed new ways to collect more diverse data, which in turn leads to more robust models. Second, he discussed work on understanding a set of conversations occurring in a shared channel (e.g. in Slack).&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://jkk.name/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dr. Kummerfeld&amp;rsquo;s Website&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

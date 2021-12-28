@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Industry | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/industry/</link>
+      <atom:link href="https://MSAIL.github.io/tag/industry/index.xml" rel="self" type="application/rss+xml" />
+    <description>Industry</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 15 Nov 2021 20:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Industry</title>
+      <link>https://MSAIL.github.io/tag/industry/</link>
+    </image>
+    
+    <item>
+      <title>Michigan AI Alumni Panel</title>
+      <link>https://MSAIL.github.io/talk/alumni_panel111521/</link>
+      <pubDate>Mon, 15 Nov 2021 20:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/alumni_panel111521/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Anthony Zheng, Kiran Prasad, Andong Li Zhao, Christian Kavouras&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Michigan AI Alumni Panel&lt;/p&gt;
+&lt;p&gt;We hosted a virtual speaker panel with a few UMich alumni who are currently doing very exciting work with AI in industry and academia.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Anthony Zheng is an Apple research engineer working on search algorithms for Apple Media Products&lt;/li&gt;
+&lt;li&gt;Kiran Prasad is an Applied Scientist at Microsoft working on NLP models for Microsoft products and was at CMU for his MS in AI and Innovation&lt;/li&gt;
+&lt;li&gt;Andong Li Zhao is a CS PhD student at Northwestern working on making information more democratically accessible&lt;/li&gt;
+&lt;li&gt;Christian Kavouras is a former Applied Scientist intern at Amazon working on ML/NLP applications and graduated from UWashington for his MS in Computational Linguistics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/10JTvSD_VORdCg-E9IYoPhS1mZczLmKywwfkfXWlhOek/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Andong&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://docs.google.com/presentation/d/1rKEofg8u7B7gRVuciozTMA2Ob6ykUszGJV6DhDuEmDI/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Anthony&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://drive.google.com/file/d/1QpWAzvGtJbur6sh08Yyru6h6KD2bgVVR/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Christian&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://drive.google.com/file/d/1kmj0a64CNVaoNex9-sCpBqAn-PVUGbEB/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kiran&amp;rsquo;s Slides&lt;/a&gt;&lt;br&gt;
+Check Slack or 
+&lt;a href=&#34;https://MSAIL.github.io/contact/&#34;&gt;contact us&lt;/a&gt; if you&amp;rsquo;re interested in getting their contact info!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Understanding MLOps for Computer Vision Pipelines</title>
+      <link>https://MSAIL.github.io/talk/datature_110821/</link>
+      <pubDate>Mon, 08 Nov 2021 19:30:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/datature_110821/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Speaker(s)&lt;/strong&gt;: Datature Team&lt;br&gt;
+&lt;strong&gt;Topic&lt;/strong&gt;: Understanding MLOps for Computer Vision Pipelines&lt;/p&gt;
+&lt;p&gt;We hosted an industry talk with Datature, a no-code platform that allows teams and enterprises to build computer vision models. In this session, they covered key MLOps practices and the shift from &amp;lsquo;model-centric AI&amp;rsquo; development to a &amp;lsquo;data-centric&amp;rsquo; approach in the context of computer vision. There was also a &amp;lsquo;hands-on&amp;rsquo; aspect where students were able to build a facemask detection / chess piece detection model in under 30 minutes using Datature&amp;rsquo;s no-code platform.&lt;/p&gt;
+&lt;h3 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h3&gt;
+&lt;p&gt;We have a link with a tutorial for using Datature&amp;rsquo;s MLOps platform, but it is UMich only. If you are a UMich student interested in seeing it, please reach out to the 
+&lt;a href=&#34;https://MSAIL.github.io/contact/&#34;&gt;MSAIL admin team&lt;/a&gt; and we will happily pass it along.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://ml-ops.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MLOps Website&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://blogs.nvidia.com/blog/2020/09/03/what-is-mlops/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NVIDIA MLOps Blog Post&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
