@@ -5,12 +5,67 @@
     <link>https://MSAIL.github.io/tag/neural-networks/</link>
       <atom:link href="https://MSAIL.github.io/tag/neural-networks/index.xml" rel="self" type="application/rss+xml" />
     <description>Neural Networks</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 26 Feb 2021 17:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 12 Apr 2022 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Neural Networks</title>
       <link>https://MSAIL.github.io/tag/neural-networks/</link>
     </image>
+    
+    <item>
+      <title>An Overview of Binarized Neural Networks</title>
+      <link>https://MSAIL.github.io/talk/bnn_041222/</link>
+      <pubDate>Tue, 12 Apr 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/bnn_041222/</guid>
+      <description>&lt;p&gt;Binarized neural networks (BNNs) are an extreme version of quantized neural networks where all weights and activations are quantized to +/- 1. A key motivation for such a network is to enable one to run powerful neural networks on small battery-powered devices. This talk introduced BNNs, explained how one can train such a network and reviewed some recent work in the area.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://arxiv.org/abs/1602.02830&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Binarized Neural Networks: Training Deep Neural Networks with Weights and Activations Constrained to +1 or -1, by Courbariaux et al.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.mdpi.com/2079-9292/8/6/661&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;A review of Binarized Neural Networks, by Simons et al.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://openreview.net/pdf?id=rJfUCoR5KX&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;An Empirical Study of Binarized Neural Networks&#39; Optimization, by Alizadeh et al.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An Overview of Attention and Transformer Mechanisms for NLP</title>
+      <link>https://MSAIL.github.io/talk/attention_031522/</link>
+      <pubDate>Tue, 15 Mar 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/attention_031522/</guid>
+      <description>&lt;p&gt;Nisreen explained the technical aspects of attention and self attention mechanisms, as well as explored how attention is used in the transformer architecture in order to aid in machine translation tasks.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://arxiv.org/abs/1409.0473&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Neural Machine Translation by Jointly Learning to Align and Translate, Bahdanau et al.&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1706.03762&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Attention is all you Need, Vaswani et al.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scaling Neural Tangent Kernels via Sketching and Random Features</title>
+      <link>https://MSAIL.github.io/talk/ntk_020122/</link>
+      <pubDate>Tue, 01 Feb 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/ntk_020122/</guid>
+      <description>&lt;p&gt;Kevin presented 
+&lt;a href=&#34;https://arxiv.org/pdf/2106.07880.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scaling Neural Tangent Kernels via Sketching and Random Features&lt;/a&gt;, which uses sketching and random feature generation to speed up neural tangent kernels (NTKs). This presentation was really all about introducing the NTK, a mechanism for analyzing the behavior of very wide / infinitely wide neural networks. NTKs made a huge splash in machine learning theory in 2018 for offering a novel approach to analyzing the behavior of neural networks, and there&amp;rsquo;s plenty of ground left to cover with them in research.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kernel trick&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=DObobAnELkU&amp;amp;feature=youtu.be&amp;amp;ab_channel=SoheilFeizi&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Professor Feizi&amp;rsquo;s lecture&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://rajatvd.github.io/NTK/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rajat&amp;rsquo;s blog post&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1806.07572&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper #1, introduces NTKs&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1904.11955&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper #2, polynomial bounds NTK complexity and introduces CNTK&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1911.00809&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper #3, enhanced CNTK&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Ethics</title>

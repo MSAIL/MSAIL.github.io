@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cheminformatics | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/cheminformatics/</link>
+      <atom:link href="https://MSAIL.github.io/tag/cheminformatics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Cheminformatics</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 25 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Cheminformatics</title>
+      <link>https://MSAIL.github.io/tag/cheminformatics/</link>
+    </image>
+    
+    <item>
+      <title>Generating Molecular Conformations via Normalizing Flows and Neural ODEs</title>
+      <link>https://MSAIL.github.io/post/molecular_iclr_2022/</link>
+      <pubDate>Fri, 25 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/post/molecular_iclr_2022/</guid>
+      <description>&lt;p&gt;This post was an accepted submission from MSAIL to the 
+&lt;a href=&#34;https://iclr-blog-track.github.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ICLR 2022 Blog Track&lt;/a&gt;. You can find the original post 
+&lt;a href=&#34;https://iclr-blog-track.github.io/2022/03/25/conformation-generation/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In this post, we provide an in-depth overview of methods outlined in the paper &amp;ldquo;Learning Neural Generative Dynamics for Molecular Conformation Generation,&amp;rdquo; discuss the impact of the work in the context of other conformation generation approaches, and additionally discuss future potential applications to improve the diversity and stability of generated conformations.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#generative-overview&#34;&gt;An Overview of the Deep Generative Approach&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#distances&#34;&gt;Modeling distributions of distances&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#conformations&#34;&gt;Modeling distributions of conformations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#sampling&#34;&gt;Sampling&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#future-work&#34;&gt;Future Work&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;In drug discovery, generating molecular conformations is useful across a variety of applications. For example, docking of various molecular 3D conformations to a specific protein allows drug hunters to decide whether a small molecule binds to a specific pocket in a multitude of conformations or a select few.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;vina.jpg&#34; style=&#34;width: 300px&#34;&gt;
+  &lt;b&gt;Figure 1:&lt;/b&gt; Autodock Vina is a computer program that takes a given 3D conformation of a molecule and protein and predicts the binding free energy. An algorithm like the one discussed in this blog could generate a wide variety of conformations for Autodock Vina to test. (&lt;a href=&#34;https://vina.scripps.edu/&#34;&gt;Source&lt;/a&gt;)
+&lt;/p&gt;
+&lt;p&gt;It may be helpful to define what we mean when we talk about conformations, whether we are talking about a small organic molecule or a macromolecule like a protein. We start off with a graph, with atoms as nodes connected by bonds as edges that represent intramolecular interactions. In essence, we are starting with a specified connectivity defining how atoms are connected to each other. This two-dimensional representation, however, doesn&amp;rsquo;t capture the three-dimensional coordinates of the atoms and how they are spatially arranged.&lt;/p&gt;
+&lt;p&gt;Therefore, in theory, one molecular graph could capture an astronomical number of conformations capturing all possible permutations and combinations of spatial arrangements of atoms. However, not all of these possible spatial arrangements are relevant as some may be so unstable that they may not occur. The spatial proximity of bulky organic groups – more formally known as “steric clashing” – reduces the number of degrees of freedom when it comes down to which bonds can rotate and how much they can rotate. Therefore, we are only interested in conformations that fall in stable low energy minima.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Levinthal%27s_paradox#:~:text=Levinthal%27s%20paradox%20is%20a%20thought,astronomical%20number%20of%20possible%20conformations.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Levinthal’s Paradox&lt;/a&gt; is a principle stating that if a protein were to sample all of its possible molecular conformations before arriving in its native state, it would take longer than the age of the universe. Though it may seem excessive to directly extend this analogy to small molecules, which are orders of magnitude less complex than proteins, it becomes intuitive that computationally simulating all of the possible conformations for a large molecule with a large number of rotatable bonds is highly infeasible. For every single bond and the associated substituents, if there are three stable conformations, then there is a maximum bound of $3^n$ stable conformations for a molecule with $n$ bonds. For example, a molecule with ten rotatable bonds could have a maximum of 59,049 conformations.
+Now, we’ve arrived at the question that drives this blog post and the work that we’re about to discuss: &lt;strong&gt;Given a molecular graph and its associated connectivity constraints, can we generate a set of low energy stable molecular conformations (a multimodal distribution) that capture the relative spatial positions of atoms in three-dimensional space?&lt;/strong&gt;
+There are two subtle components to the question above that address some deficiencies in prior attempts to solve this problem:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A multimodal distribution – there are multiple low energy minima when it comes to the joint distribution of distances between atoms that defines a conformation. In approaches where distances between pairs of atoms or 3D coordinates are randomly sampled to construct a conformation, dependencies and correlations between atomic spatial positions are not captured and the corresponding joint distribution is inaccurate.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Relative spatial positions – some approaches use 
+&lt;a href=&#34;https://distill.pub/2021/gnn-intro/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;graph neural networks&lt;/a&gt; directly on molecular graphs to compute representations for the individual nodes (atoms). These nodes can be further fed into other feedforward networks to predict the 3D coordinates of the atoms in a specified conformation. However, directly predicting the 3D coordinates does not capture the idea that a conformation is defined by the relative spatial arrangement and distances between atoms in 3D space. Put another way, if a rotation or translation transformation was applied to the 3D coordinates, the model should not classify that as an entirely different conformation (rotation/translation invariance is not captured). Distances, rather than 3D coordinates could also be predicted; however (mirroring the bullet point above), since distances are predicted independently of each other, there could only be one predicted conformational mode.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;an-overview-of-the-deep-generative-approach&#34;&gt;An Overview of the Deep Generative Approach&lt;/h2&gt;
+&lt;p&gt;In “Learning Neural Generative Dynamics for Molecular Conformation Generation,” Xu et. al approach the above deficiencies, generating low energy conformations while modeling dependencies between atoms.&lt;/p&gt;
+&lt;p&gt;Let’s keep in mind – the final goal is to optimize a set of parameters $\theta$ to predict the likelihood of a conformation $R$ given a graph $G$. (i.e. to find $ p_\theta(R|G) $).&lt;/p&gt;
+&lt;p&gt;To model this distribution, it is necessary to model intermediate distributions and marginalize over one of the variables:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We also need to find $p_\theta(d|G)$ (the distribution of distances $d_{uv}$ between pairs of atoms $u$ and $v$ in the graph).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally, we need to find $p_\theta(\boldsymbol{R}|d,G)$  – the probability of a conformation (specified by a set of 3D coordinates given a set of intramolecular distances and an underlying graph).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With these two distributions, we can find our intended distribution by integrating over the possible distances.&lt;/p&gt;
+&lt;p&gt;$$\int{p(\boldsymbol{R}|d,G)*p(d|G)dd}$$&lt;/p&gt;
+&lt;p&gt;Let’s walk through the approaches to modeling each of these individual distributions.&lt;/p&gt;
+&lt;h2 id=&#34;modeling-distributions-of-distances&#34;&gt;Modeling Distributions of Distances&lt;/h2&gt;
+&lt;p&gt;In this approach, the distribution of distances given a graph is modeled using a continuous normalizing flow. To understand this approach, we need to define its sub-techniques and understand how they interact with each other.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Normalizing flows: We initially sample $z_0$  from a starting distribution $p(z_0)$ and a series of invertible transformations transform the initial density function. Here’s a strong 
+&lt;a href=&#34;https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;primer&lt;/a&gt; on flows.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In this work, $z(t)$ represents our distances between pairs of atoms $d(t)$. The initial distances are pulled from a normal distribution with mean zero and variance one (for all distances). Correspondingly, the initial probability density function $p(z_0)$ is represented by the initial distribution of distances $N(0, \mathbf{I})$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://arxiv.org/pdf/1806.07366.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Neural ODE systems&lt;/a&gt;: In a neural ODE, we specify an initial value problem that uses a neural network to specify the “dynamics” of the system (or the derivative of the “state” with respect to time). More concretely, we have that $y(0) = y_0$ and that $\frac{dy}{dt} = f(y(t), t, \theta)$. Using an ODE solver such as &lt;code&gt;odeint&lt;/code&gt;, we can calculate the value of $y$ at any time $t$ as in any initial value problem. &lt;br&gt; In fact, y can be thought of as a 
+&lt;a href=&#34;http://implicit-layers-tutorial.org/neural_odes/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;residual network&lt;/a&gt; where we take the limit with respect to the number of layers.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Correspondingly, in this work, the purpose of instantiating an ODE is to be able to predict $d(t)$ – the distances between each pair of atoms at any time point. $\frac{d\mathbf{d}}{dt}$ can be predicted at any time point given $d(t)$, the time point, $t$, the molecular graph, and the parameters of the assigned neural network (in our case an MPNN).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;$$\boldsymbol{d} = F_\theta(\boldsymbol{d}(t_0), \mathcal{G}) = \boldsymbol{d}(t_0) + \int_{t_0}^{t_1} f_\theta(\boldsymbol{d}(t), t; \mathcal{G})dt$$&lt;/p&gt;
+&lt;p&gt;To combine the two methods above: We take $z_0$ and define it as the initial value. $\frac{dz}{dt}$ is calculated using a neural network that takes in $z(t)$, $t$, and $\theta$. With $z_0$ and a function $f$ to calculate $\frac{dz}{dt}$ at any time point, $z(t)$ can be calculated as per the traditional initial value problem formulation. The ODESolver also predicts the $\textrm{log}(p(z(t))$ at any time point, thereby encoding the density function for $z(t)$ in addition to just the values of $z(t)$ alone (Figure 2).&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;ode.png&#34;&gt;
+  &lt;b&gt; Figure 2: &lt;/b&gt; The neural ODE system computes $\boldsymbol{d}(t)$ and $\textrm{log}(p(\boldsymbol{d}(t))$ at various time points in order to try and approximate the actual functions for $\boldsymbol{d}(t)$ and $\textrm{log}(p(\boldsymbol{d}(t))$.
+&lt;/p&gt;
+&lt;p&gt;In this case, our $z(t)$ is $\boldsymbol{d}(t)$, a function that outputs a vector with pairwise intramolecular distances. The “continuous-time dynamics&amp;quot; is a function that takes in neural network parameters, the time, and the current state to output the derivative of the distances with respect to time. The neural network is a graph 
+&lt;a href=&#34;https://paperswithcode.com/method/mpnn&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;message passing neural network&lt;/a&gt; (MPNN) that calculates node and edge representations and aggregates the node and edge representations for each bond to calculate $\frac{dd_{uv}}{dt}$ – the change of the distance between two atoms with respect to time (Figure 3).&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;mpnn.png&#34;&gt;
+  &lt;b&gt; Figure 3: &lt;/b&gt; First, the individual nodes and edges are embedded using feedforward networks and sent through message passing layers. For every single bond, the final embeddings for the edge and atoms on each (atoms $u$ and $v$) end are concatenated and sent into a final feedforward network to result in a prediction for $\frac{dd_{uv}}{dt}$.
+&lt;/p&gt;
+&lt;p&gt;At a higher level, by combining normalizing flows (Figure 4a) with an ODE system, the authors intended to effectively create a normalizing flow with an infinite number of transformations (in the limit) that can therefore model very long-range dependencies between atoms in all the transformations that occur from time $t_0$ to $t_1$ (Figure 4b).&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;nflow.png&#34;&gt;
+  &lt;b&gt; Figure 4a (Left): &lt;/b&gt; Traditional normalizing flow. &lt;b&gt; Figure 4b (Right): &lt;/b&gt; Continuous normalizing flow with $z(t)$ as $d(t)$.
+&lt;/p&gt;
+&lt;h2 id=&#34;modeling-distributions-of-conformations&#34;&gt;Modeling Distributions of Conformations&lt;/h2&gt;
+&lt;p&gt;After the distances are sampled and predicted based on the graph, the conformations can be sampled so as to minimize the difference between the a priori distances generated by the continuous graph normalizing flow (CGNF) and the pairwise distances in the sampled conformation.&lt;/p&gt;
+&lt;p&gt;$$p(\boldsymbol{R}|d, \mathcal{G}) = \frac{1}{Z}\textrm{exp}{-\sum_{e_{uv}\in{\mathcal{E}}} a_{uv}(\lVert r_u - r_v \rVert_2 - d_{uv})^2}$$&lt;/p&gt;
+&lt;p&gt;The euclidean norm of the difference between the position vectors represents the distance between two atoms in a sampled conformation ($\lVert r_u - r_v \rVert_2$). The distance associated with the edge between atoms u and v from the distribution modeled using the CGNF is ($d_{uv}$). The lower the difference between these two values, the higher the numerator. The higher the numerator, the higher the probability of the conformation given the proposed distances and molecular graph.&lt;/p&gt;
+&lt;p&gt;In the way that 
+&lt;a href=&#34;http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LeCun et. al&lt;/a&gt; initially describe energy-based models, they describe the energy-based function $E(X, Y)$ to calculate the “goodness” or the “badness” of the possible configurations of $X$ and $Y$ or the “degree of compatibility” between the values of $X$ and $Y$. The same idea can be applied when considering the meaning of the energy function taking in a molecular conformation and a graph as input.&lt;/p&gt;
+&lt;p&gt;The loss function with which the energy-based model (EBM) is optimized provides additional insight into how it helps guide the generation of conformations.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;nce_loss.png&#34;&gt;
+&lt;/p&gt;
+&lt;p&gt;Here, $p_{data}$ and  $p_{\theta}$ are two different distributions that generate distances between pairs of atoms. $p_{data}$ pulls from vectors of true distances between atoms in actual conformations, while $p_{\theta}$ pulls from vectors of generated distances from the continuous flow. Therefore, the conformations represented in the second term on the right-hand side of this equation are noisier than the conformations represented in the first term. By being trained against this objective function, the model learns to distinguish real conformations based on true distances from unreal noisy conformations.&lt;/p&gt;
+&lt;h2 id=&#34;sampling&#34;&gt;Sampling&lt;/h2&gt;
+&lt;p&gt;Conformations are sampled by pulling an initial vector of distances from a normal distribution, passing it through the continuous graph normalizing flow, and finding an initial conformation $R_0$ that minimizes the energy. Then, conformations are sampled using two steps of stochastic gradient 
+&lt;a href=&#34;https://henripal.github.io/blog/langevin&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Langevin Dynamics&lt;/a&gt;. As in traditional stochastic gradient descent, we subtract the gradient of a secondary energy function that uses both the initial EBM parameters and CGNF parameters from the coordinates from the prior iteration. The “Langevin” part of this stochastic gradient descent implies there is a noise term ($w$) added, the variance of which is equal to the square root of the step size ($\epsilon$). This noise term, and Langevin dynamics more generally, are inspired by modeling 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Brownian_motion&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Brownian motion&lt;/a&gt; in particles and have been repurposed for sampling in molecular dynamics.&lt;/p&gt;
+&lt;p&gt;The secondary function takes into account both the initial energy function and the $\textrm{log}(p(\boldsymbol{R}|\mathcal{G}))$. Minimizing $E_{\theta, \phi}(R|\mathcal{G})$ involves $E_{\phi}(R|\mathcal{G})$ and simultaneously minimizing $p(\boldsymbol{R}|\mathcal{G})$.&lt;/p&gt;
+&lt;p&gt;$$R_k = R_{k-1} - \frac{\epsilon}{2}\nabla_RE_{\theta, \phi}(R|\mathcal{G}) + \sqrt{\epsilon}\omega, \omega \sim \mathcal{N}(0, \mathcal{I})$$&lt;/p&gt;
+&lt;h2 id=&#34;future-work&#34;&gt;Future Work&lt;/h2&gt;
+&lt;p&gt;One could explore different variations on the approach used to compute the continuous-time dynamic – for example, 
+&lt;a href=&#34;https://arxiv.org/abs/2010.09885&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;large-scale pretrained transformers applied on SMILES strings&lt;/a&gt; – to compare how different architectures that are also able to capture long-range dependencies between atoms perform in generating distance distributions and subsequently conformations. Similar to the way that message passing allows for encoding of long-range dependencies, attention also allows for the same. In fact, attention applied to protein sequences has been shown to recover high-level elements of a three-dimensional structural organization; attention weights are a well-calibrated estimator of the probability that two amino acids are in contact in three-dimensional space (Vig et. al).&lt;/p&gt;
+&lt;p&gt;One caveat to note concerning the idea above is many models pretrained on protein sequences include evolutionary information regarding the sequences through featurizations such as multiple sequence alignments
+(
+&lt;a href=&#34;https://www.ebi.ac.uk/Tools/msa/#:~:text=Multiple%20Sequence%20Alignment%20%28MSA%29%20is,relationships%20between%20the%20sequences%20studied.&amp;amp;text=Suitable%20for%20medium%2Dlarge%20alignments.&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MSA&lt;/a&gt;) and position-specific scoring matrices (
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Position_weight_matrix&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PSSM&lt;/a&gt;) (Rao et. al). There are currently no featurizations for small molecules that encode their  “structural evolution.”&lt;/p&gt;
+&lt;p&gt;One could also verify the ability of the different molecular conformation generation methods to generate more stable conformations. Towards the end of the paper, the authors proposed that the EBM shifts generation towards more stable conformations. Developing a metric or computational experiment – for example, calculating the free energy of generated molecules – would verify if this is the case. Or we could potentially even ask the question – is there an architectural or algorithmic knob that we could turn to control the tradeoff the algorithm makes between choosing conformational stability over diversity? To evaluate the model’s ability to especially generate low energy stable conformations, one could re-calculate all metrics solely across reference conformations for molecules bound to a protein in the protein data bank (PDB) (Figure 5) or 
+&lt;a href=&#34;https://www.ccdc.cam.ac.uk/solutions/csd-core/components/csd/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Cambridge Structural Database&lt;/a&gt; (CSD) in a solid-state crystal structure.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;mol.png&#34; style=&#34;width: 300px&#34;&gt;
+  &lt;b&gt; Figure 5: &lt;/b&gt; Example of conformational variability for a single PDB ligand between different protein structures (Source: Hawkins et. al).
+&lt;/p&gt;
+&lt;p&gt;Finally, Hawkins et. al make the distinction between systematic methods and stochastic methods for molecular conformation generation. Systematic methods involve a deterministic brute force search through all possible pairwise distances and torsion angles while stochastic methods involve random sampling and are not deterministic. Rather, in stochastic methods, the final generated conformation is in part determined by some initially sampled random variable). Under these definitions, the current method proposed in this work is stochastic, as the generated conformations are a function of the initial $d(t_0)$’s sampled from a normal distribution.&lt;/p&gt;
+&lt;p&gt;For stochastic approaches to finding multiple local minima, it is necessary to have multiple “starts” in order to cover all local minima. To evaluate the efficiency of the approach, one could measure the number of starts it takes to get a certain threshold of coverage over significant low-energy conformations.&lt;/p&gt;
+&lt;p&gt;All in all, the approach that Xu et. al employ to generate 3D conformers from a 2D molecular graph is part of a recent frontier in research that involves fewer brute-force physical simulations and more convenient ML-guided predictions that can help accelerate drug discovery.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Chen, R. T. Q., Rubanova, Y., Bettencourt, J., &amp;amp; Duvenaud, D. (2019). Neural Ordinary Differential Equations. arXiv [cs.LG]. Opgehaal van &lt;a href=&#34;http://arxiv.org/abs/1806.07366&#34;&gt;http://arxiv.org/abs/1806.07366&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Hawkins, P. C. D. (2017). Conformation Generation: The State of the Art. Journal of Chemical Information and Modeling, 57(8), 1747–1756. doi:10.1021/acs.jcim.7b00221&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Madani, A., Krause, B., Greene, E. R., Subramanian, S., Mohr, B. P., Holton, J. M., … Naik, N. (2021). Deep neural language modeling enables functional protein generation across families. bioRxiv. doi:10.1101/2021.07.18.452833&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rao, R., Bhattacharya, N., Thomas, N., Duan, Y., Chen, X., Canny, J., … Song, Y. S. (2019). Evaluating Protein Transfer Learning with TAPE. arXiv [cs.LG]. Opgehaal van &lt;a href=&#34;http://arxiv.org/abs/1906.08230&#34;&gt;http://arxiv.org/abs/1906.08230&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vig, J., Madani, A., Varshney, L. R., Xiong, C., Socher, R., &amp;amp; Rajani, N. F. (2020). BERTology Meets Biology: Interpreting Attention in Protein Language Models. bioRxiv. doi:10.1101/2020.06.26.174417&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Weng, L. (2018). Flow-based Deep Generative Models. lilianweng. github. io/lil-log. Opgehaal van &lt;a href=&#34;http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&#34;&gt;http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Xu, M., Luo, S., Bengio, Y., Peng, J., &amp;amp; Tang, J. (2021). Learning Neural Generative Dynamics for Molecular Conformation Generation. arXiv [cs.LG]. Opgehaal van &lt;a href=&#34;http://arxiv.org/abs/2102.10240&#34;&gt;http://arxiv.org/abs/2102.10240&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Yann LeCun, Sumit Chopra, Raia Hadsell, M Ranzato, and F Huang. A tutorial on energy-based learning. Predicting structured data, 1(0), 2006.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

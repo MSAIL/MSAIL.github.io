@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Super-Resolution | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/super-resolution/</link>
+      <atom:link href="https://MSAIL.github.io/tag/super-resolution/index.xml" rel="self" type="application/rss+xml" />
+    <description>Super-Resolution</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 29 Mar 2022 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Super-Resolution</title>
+      <link>https://MSAIL.github.io/tag/super-resolution/</link>
+    </image>
+    
+    <item>
+      <title>The Devil is in the Details: Spatial and Temporal Super-Resolution of Global Climate Models using Adversarial Deep Learning</title>
+      <link>https://MSAIL.github.io/talk/climate_adversarial_032922/</link>
+      <pubDate>Tue, 29 Mar 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/climate_adversarial_032922/</guid>
+      <description>&lt;p&gt;Physics-based global climate simulations are computationally expensive and limited to low spatial and temporal resolutions, making it difficult to predict and track highly localized extreme weather phenomena. To overcome these limitations, we present a novel application of super-resolution using deep convolutional generative adversarial networks (GANs) to increase the resolution of global climate models in both space and time. In this project, we demonstrate the potential to reduce climate simulation computation and storage requirements by two orders of magnitude, as well as democratize relevant and actionable climate information for disaster responses. This work won the Best Paper Award in the 2020 ProjectX international ML research competition hosted by the University of Toronto.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1cbwTb7DNe0vRZiN9hg53W5MZdRbXJqsg/view&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper, by Chen et al.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

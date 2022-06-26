@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Medical Imaging | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/medical-imaging/</link>
+      <atom:link href="https://MSAIL.github.io/tag/medical-imaging/index.xml" rel="self" type="application/rss+xml" />
+    <description>Medical Imaging</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 05 Apr 2022 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Medical Imaging</title>
+      <link>https://MSAIL.github.io/tag/medical-imaging/</link>
+    </image>
+    
+    <item>
+      <title>Machine Learning for Intraoperative Diagnosis of Brain Tumors Imaged using Stimulated Raman Histology</title>
+      <link>https://MSAIL.github.io/talk/brain_tumor_040522/</link>
+      <pubDate>Tue, 05 Apr 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/brain_tumor_040522/</guid>
+      <description>&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.nature.com/articles/s41591-019-0715-9&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper 1: Near real-time intraoperative brain tumor diagnosis using stimulated Raman histology and deep neural networks&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://journals.lww.com/neurosurgery/Abstract/9900/Rapid_Automated_Analysis_of_Skull_Base_Tumor.184.aspx&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper 2: Rapid Automated Analysis of Skull Base Tumor Specimens Using Intraoperative Optical Imaging and Artificial Intelligence&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

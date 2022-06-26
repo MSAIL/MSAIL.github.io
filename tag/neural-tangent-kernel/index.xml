@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Neural Tangent Kernel | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/neural-tangent-kernel/</link>
+      <atom:link href="https://MSAIL.github.io/tag/neural-tangent-kernel/index.xml" rel="self" type="application/rss+xml" />
+    <description>Neural Tangent Kernel</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 01 Feb 2022 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Neural Tangent Kernel</title>
+      <link>https://MSAIL.github.io/tag/neural-tangent-kernel/</link>
+    </image>
+    
+    <item>
+      <title>Scaling Neural Tangent Kernels via Sketching and Random Features</title>
+      <link>https://MSAIL.github.io/talk/ntk_020122/</link>
+      <pubDate>Tue, 01 Feb 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/ntk_020122/</guid>
+      <description>&lt;p&gt;Kevin presented 
+&lt;a href=&#34;https://arxiv.org/pdf/2106.07880.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Scaling Neural Tangent Kernels via Sketching and Random Features&lt;/a&gt;, which uses sketching and random feature generation to speed up neural tangent kernels (NTKs). This presentation was really all about introducing the NTK, a mechanism for analyzing the behavior of very wide / infinitely wide neural networks. NTKs made a huge splash in machine learning theory in 2018 for offering a novel approach to analyzing the behavior of neural networks, and there&amp;rsquo;s plenty of ground left to cover with them in research.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kernel trick&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.youtube.com/watch?v=DObobAnELkU&amp;amp;feature=youtu.be&amp;amp;ab_channel=SoheilFeizi&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Professor Feizi&amp;rsquo;s lecture&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://rajatvd.github.io/NTK/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Rajat&amp;rsquo;s blog post&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1806.07572&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper #1, introduces NTKs&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1904.11955&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper #2, polynomial bounds NTK complexity and introduces CNTK&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://arxiv.org/abs/1911.00809&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Paper #3, enhanced CNTK&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

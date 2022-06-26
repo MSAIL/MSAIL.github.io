@@ -5,12 +5,27 @@
     <link>https://MSAIL.github.io/tag/fairness/</link>
       <atom:link href="https://MSAIL.github.io/tag/fairness/index.xml" rel="self" type="application/rss+xml" />
     <description>Fairness</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 17 Nov 2020 18:00:00 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 22 Mar 2022 18:00:00 -0400</lastBuildDate>
     <image>
       <url>https://MSAIL.github.io/media/logo.png</url>
       <title>Fairness</title>
       <link>https://MSAIL.github.io/tag/fairness/</link>
     </image>
+    
+    <item>
+      <title>Fairness in Machine Learning</title>
+      <link>https://MSAIL.github.io/talk/fairness_032222/</link>
+      <pubDate>Tue, 22 Mar 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/fairness_032222/</guid>
+      <description>&lt;p&gt;The purpose of this presentation was to introduce everyone to fairness aspects of machine learning and discuss Serafina&amp;rsquo;s (
+&lt;a href=&#34;https://cse.engin.umich.edu/stories/undergraduate-researcher-takes-first-place-at-acm-competition&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;award-winning!&lt;/a&gt;) research in the area.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://link.springer.com/chapter/10.1007/978-3-030-93736-2_43&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Robustness of Fairness: An Experimental Analysis, by Kamp et al.&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://docs.google.com/presentation/d/1fVakENisRjTh55vB6K25I0JqMMo3Dh77GLBbFJSc-CA/edit#slide=id.g11d502cf596_0_17&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides with additional links and resources&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Faculty Talk: Prediction Markets and More</title>

@@ -1,0 +1,1082 @@
+<!DOCTYPE html><html lang="en-us" >
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="MSAIL">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Post accepted to the ICLR 2022 Blog Track. In this post, we provide an in-depth overview of methods outlined in the paper “Learning Neural Generative Dynamics for Molecular Conformation Generation,” discuss the impact of the work in the context of other conformation generation approaches, and additionally discuss future potential applications to improve the diversity and stability of generated conformations.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://MSAIL.github.io/post/molecular_iclr_2022/">
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#00274c">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+    
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Raleway:wght@300&display=swap">
+    
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+  
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hu375f79164c84f854e796aee07b5a9104_39302_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu375f79164c84f854e796aee07b5a9104_39302_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="https://MSAIL.github.io/post/molecular_iclr_2022/">
+
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="MSAIL">
+  <meta property="og:url" content="https://MSAIL.github.io/post/molecular_iclr_2022/">
+  <meta property="og:title" content="Generating Molecular Conformations via Normalizing Flows and Neural ODEs | MSAIL">
+  <meta property="og:description" content="Post accepted to the ICLR 2022 Blog Track. In this post, we provide an in-depth overview of methods outlined in the paper “Learning Neural Generative Dynamics for Molecular Conformation Generation,” discuss the impact of the work in the context of other conformation generation approaches, and additionally discuss future potential applications to improve the diversity and stability of generated conformations."><meta property="og:image" content="https://MSAIL.github.io/post/molecular_iclr_2022/featured.jpg">
+  <meta property="twitter:image" content="https://MSAIL.github.io/post/molecular_iclr_2022/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2022-03-25T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2022-03-25T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://MSAIL.github.io/post/molecular_iclr_2022/"
+  },
+  "headline": "Generating Molecular Conformations via Normalizing Flows and Neural ODEs",
+  
+  "image": [
+    "https://MSAIL.github.io/post/molecular_iclr_2022/featured.jpg"
+  ],
+  
+  "datePublished": "2022-03-25T00:00:00Z",
+  "dateModified": "2022-03-25T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Mukundh Murthy"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "MSAIL",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://MSAIL.github.io/images/icon_hu375f79164c84f854e796aee07b5a9104_39302_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Post accepted to the ICLR 2022 Blog Track. In this post, we provide an in-depth overview of methods outlined in the paper “Learning Neural Generative Dynamics for Molecular Conformation Generation,” discuss the impact of the work in the context of other conformation generation approaches, and additionally discuss future potential applications to improve the diversity and stability of generated conformations."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Generating Molecular Conformations via Normalizing Flows and Neural ODEs | MSAIL</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+
+  
+  
+  
+  
+    <script>const isSiteThemeDark = false;</script>
+  
+  
+  <script src="/js/load-theme.js"></script>
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">MSAIL</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">MSAIL</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/talk/"><span>Talks</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="/post/"><span>Blog</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/education/"><span>Education</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/resources/"><span>Resources</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/aboutus/"><span>About Us</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+
+        
+        
+        
+        
+
+        
+          
+            
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/contact/"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Generating Molecular Conformations via Normalizing Flows and Neural ODEs</h1>
+
+  
+  <p class="page-subtitle">ICLR 2022 Blog Track</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span >Mukundh Murthy</span>, <span >Nikhil Devraj</span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Mar 25, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    13 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>This post was an accepted submission from MSAIL to the 
+<a href="https://iclr-blog-track.github.io/" target="_blank" rel="noopener">ICLR 2022 Blog Track</a>. You can find the original post 
+<a href="https://iclr-blog-track.github.io/2022/03/25/conformation-generation/" target="_blank" rel="noopener">here</a>.</p>
+<p>In this post, we provide an in-depth overview of methods outlined in the paper &ldquo;Learning Neural Generative Dynamics for Molecular Conformation Generation,&rdquo; discuss the impact of the work in the context of other conformation generation approaches, and additionally discuss future potential applications to improve the diversity and stability of generated conformations.</p>
+<ol>
+<li>
+<a href="#introduction">Introduction</a></li>
+<li>
+<a href="#generative-overview">An Overview of the Deep Generative Approach</a></li>
+<li>
+<a href="#distances">Modeling distributions of distances</a></li>
+<li>
+<a href="#conformations">Modeling distributions of conformations</a></li>
+<li>
+<a href="#sampling">Sampling</a></li>
+<li>
+<a href="#future-work">Future Work</a></li>
+<li>
+<a href="#references">References</a></li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>In drug discovery, generating molecular conformations is useful across a variety of applications. For example, docking of various molecular 3D conformations to a specific protein allows drug hunters to decide whether a small molecule binds to a specific pocket in a multitude of conformations or a select few.</p>
+<p align="center">
+  <img src="vina.jpg" style="width: 300px">
+  <b>Figure 1:</b> Autodock Vina is a computer program that takes a given 3D conformation of a molecule and protein and predicts the binding free energy. An algorithm like the one discussed in this blog could generate a wide variety of conformations for Autodock Vina to test. (<a href="https://vina.scripps.edu/">Source</a>)
+</p>
+<p>It may be helpful to define what we mean when we talk about conformations, whether we are talking about a small organic molecule or a macromolecule like a protein. We start off with a graph, with atoms as nodes connected by bonds as edges that represent intramolecular interactions. In essence, we are starting with a specified connectivity defining how atoms are connected to each other. This two-dimensional representation, however, doesn&rsquo;t capture the three-dimensional coordinates of the atoms and how they are spatially arranged.</p>
+<p>Therefore, in theory, one molecular graph could capture an astronomical number of conformations capturing all possible permutations and combinations of spatial arrangements of atoms. However, not all of these possible spatial arrangements are relevant as some may be so unstable that they may not occur. The spatial proximity of bulky organic groups – more formally known as “steric clashing” – reduces the number of degrees of freedom when it comes down to which bonds can rotate and how much they can rotate. Therefore, we are only interested in conformations that fall in stable low energy minima.</p>
+<p>
+<a href="https://en.wikipedia.org/wiki/Levinthal%27s_paradox#:~:text=Levinthal%27s%20paradox%20is%20a%20thought,astronomical%20number%20of%20possible%20conformations." target="_blank" rel="noopener">Levinthal’s Paradox</a> is a principle stating that if a protein were to sample all of its possible molecular conformations before arriving in its native state, it would take longer than the age of the universe. Though it may seem excessive to directly extend this analogy to small molecules, which are orders of magnitude less complex than proteins, it becomes intuitive that computationally simulating all of the possible conformations for a large molecule with a large number of rotatable bonds is highly infeasible. For every single bond and the associated substituents, if there are three stable conformations, then there is a maximum bound of $3^n$ stable conformations for a molecule with $n$ bonds. For example, a molecule with ten rotatable bonds could have a maximum of 59,049 conformations.
+Now, we’ve arrived at the question that drives this blog post and the work that we’re about to discuss: <strong>Given a molecular graph and its associated connectivity constraints, can we generate a set of low energy stable molecular conformations (a multimodal distribution) that capture the relative spatial positions of atoms in three-dimensional space?</strong>
+There are two subtle components to the question above that address some deficiencies in prior attempts to solve this problem:</p>
+<ul>
+<li>
+<p>A multimodal distribution – there are multiple low energy minima when it comes to the joint distribution of distances between atoms that defines a conformation. In approaches where distances between pairs of atoms or 3D coordinates are randomly sampled to construct a conformation, dependencies and correlations between atomic spatial positions are not captured and the corresponding joint distribution is inaccurate.</p>
+</li>
+<li>
+<p>Relative spatial positions – some approaches use 
+<a href="https://distill.pub/2021/gnn-intro/" target="_blank" rel="noopener">graph neural networks</a> directly on molecular graphs to compute representations for the individual nodes (atoms). These nodes can be further fed into other feedforward networks to predict the 3D coordinates of the atoms in a specified conformation. However, directly predicting the 3D coordinates does not capture the idea that a conformation is defined by the relative spatial arrangement and distances between atoms in 3D space. Put another way, if a rotation or translation transformation was applied to the 3D coordinates, the model should not classify that as an entirely different conformation (rotation/translation invariance is not captured). Distances, rather than 3D coordinates could also be predicted; however (mirroring the bullet point above), since distances are predicted independently of each other, there could only be one predicted conformational mode.</p>
+</li>
+</ul>
+<h2 id="an-overview-of-the-deep-generative-approach">An Overview of the Deep Generative Approach</h2>
+<p>In “Learning Neural Generative Dynamics for Molecular Conformation Generation,” Xu et. al approach the above deficiencies, generating low energy conformations while modeling dependencies between atoms.</p>
+<p>Let’s keep in mind – the final goal is to optimize a set of parameters $\theta$ to predict the likelihood of a conformation $R$ given a graph $G$. (i.e. to find $ p_\theta(R|G) $).</p>
+<p>To model this distribution, it is necessary to model intermediate distributions and marginalize over one of the variables:</p>
+<ul>
+<li>
+<p>We also need to find $p_\theta(d|G)$ (the distribution of distances $d_{uv}$ between pairs of atoms $u$ and $v$ in the graph).</p>
+</li>
+<li>
+<p>Finally, we need to find $p_\theta(\boldsymbol{R}|d,G)$  – the probability of a conformation (specified by a set of 3D coordinates given a set of intramolecular distances and an underlying graph).</p>
+</li>
+</ul>
+<p>With these two distributions, we can find our intended distribution by integrating over the possible distances.</p>
+<p>$$\int{p(\boldsymbol{R}|d,G)*p(d|G)dd}$$</p>
+<p>Let’s walk through the approaches to modeling each of these individual distributions.</p>
+<h2 id="modeling-distributions-of-distances">Modeling Distributions of Distances</h2>
+<p>In this approach, the distribution of distances given a graph is modeled using a continuous normalizing flow. To understand this approach, we need to define its sub-techniques and understand how they interact with each other.</p>
+<ul>
+<li>
+<p>Normalizing flows: We initially sample $z_0$  from a starting distribution $p(z_0)$ and a series of invertible transformations transform the initial density function. Here’s a strong 
+<a href="https://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html" target="_blank" rel="noopener">primer</a> on flows.</p>
+<ul>
+<li>In this work, $z(t)$ represents our distances between pairs of atoms $d(t)$. The initial distances are pulled from a normal distribution with mean zero and variance one (for all distances). Correspondingly, the initial probability density function $p(z_0)$ is represented by the initial distribution of distances $N(0, \mathbf{I})$.</li>
+</ul>
+</li>
+<li>
+<p>
+<a href="https://arxiv.org/pdf/1806.07366.pdf" target="_blank" rel="noopener">Neural ODE systems</a>: In a neural ODE, we specify an initial value problem that uses a neural network to specify the “dynamics” of the system (or the derivative of the “state” with respect to time). More concretely, we have that $y(0) = y_0$ and that $\frac{dy}{dt} = f(y(t), t, \theta)$. Using an ODE solver such as <code>odeint</code>, we can calculate the value of $y$ at any time $t$ as in any initial value problem. <br> In fact, y can be thought of as a 
+<a href="http://implicit-layers-tutorial.org/neural_odes/" target="_blank" rel="noopener">residual network</a> where we take the limit with respect to the number of layers.</p>
+<ul>
+<li>Correspondingly, in this work, the purpose of instantiating an ODE is to be able to predict $d(t)$ – the distances between each pair of atoms at any time point. $\frac{d\mathbf{d}}{dt}$ can be predicted at any time point given $d(t)$, the time point, $t$, the molecular graph, and the parameters of the assigned neural network (in our case an MPNN).</li>
+</ul>
+</li>
+</ul>
+<p>$$\boldsymbol{d} = F_\theta(\boldsymbol{d}(t_0), \mathcal{G}) = \boldsymbol{d}(t_0) + \int_{t_0}^{t_1} f_\theta(\boldsymbol{d}(t), t; \mathcal{G})dt$$</p>
+<p>To combine the two methods above: We take $z_0$ and define it as the initial value. $\frac{dz}{dt}$ is calculated using a neural network that takes in $z(t)$, $t$, and $\theta$. With $z_0$ and a function $f$ to calculate $\frac{dz}{dt}$ at any time point, $z(t)$ can be calculated as per the traditional initial value problem formulation. The ODESolver also predicts the $\textrm{log}(p(z(t))$ at any time point, thereby encoding the density function for $z(t)$ in addition to just the values of $z(t)$ alone (Figure 2).</p>
+<p align="center">
+  <img src="ode.png">
+  <b> Figure 2: </b> The neural ODE system computes $\boldsymbol{d}(t)$ and $\textrm{log}(p(\boldsymbol{d}(t))$ at various time points in order to try and approximate the actual functions for $\boldsymbol{d}(t)$ and $\textrm{log}(p(\boldsymbol{d}(t))$.
+</p>
+<p>In this case, our $z(t)$ is $\boldsymbol{d}(t)$, a function that outputs a vector with pairwise intramolecular distances. The “continuous-time dynamics&quot; is a function that takes in neural network parameters, the time, and the current state to output the derivative of the distances with respect to time. The neural network is a graph 
+<a href="https://paperswithcode.com/method/mpnn" target="_blank" rel="noopener">message passing neural network</a> (MPNN) that calculates node and edge representations and aggregates the node and edge representations for each bond to calculate $\frac{dd_{uv}}{dt}$ – the change of the distance between two atoms with respect to time (Figure 3).</p>
+<p align="center">
+  <img src="mpnn.png">
+  <b> Figure 3: </b> First, the individual nodes and edges are embedded using feedforward networks and sent through message passing layers. For every single bond, the final embeddings for the edge and atoms on each (atoms $u$ and $v$) end are concatenated and sent into a final feedforward network to result in a prediction for $\frac{dd_{uv}}{dt}$.
+</p>
+<p>At a higher level, by combining normalizing flows (Figure 4a) with an ODE system, the authors intended to effectively create a normalizing flow with an infinite number of transformations (in the limit) that can therefore model very long-range dependencies between atoms in all the transformations that occur from time $t_0$ to $t_1$ (Figure 4b).</p>
+<p align="center">
+  <img src="nflow.png">
+  <b> Figure 4a (Left): </b> Traditional normalizing flow. <b> Figure 4b (Right): </b> Continuous normalizing flow with $z(t)$ as $d(t)$.
+</p>
+<h2 id="modeling-distributions-of-conformations">Modeling Distributions of Conformations</h2>
+<p>After the distances are sampled and predicted based on the graph, the conformations can be sampled so as to minimize the difference between the a priori distances generated by the continuous graph normalizing flow (CGNF) and the pairwise distances in the sampled conformation.</p>
+<p>$$p(\boldsymbol{R}|d, \mathcal{G}) = \frac{1}{Z}\textrm{exp}{-\sum_{e_{uv}\in{\mathcal{E}}} a_{uv}(\lVert r_u - r_v \rVert_2 - d_{uv})^2}$$</p>
+<p>The euclidean norm of the difference between the position vectors represents the distance between two atoms in a sampled conformation ($\lVert r_u - r_v \rVert_2$). The distance associated with the edge between atoms u and v from the distribution modeled using the CGNF is ($d_{uv}$). The lower the difference between these two values, the higher the numerator. The higher the numerator, the higher the probability of the conformation given the proposed distances and molecular graph.</p>
+<p>In the way that 
+<a href="http://yann.lecun.com/exdb/publis/pdf/lecun-06.pdf" target="_blank" rel="noopener">LeCun et. al</a> initially describe energy-based models, they describe the energy-based function $E(X, Y)$ to calculate the “goodness” or the “badness” of the possible configurations of $X$ and $Y$ or the “degree of compatibility” between the values of $X$ and $Y$. The same idea can be applied when considering the meaning of the energy function taking in a molecular conformation and a graph as input.</p>
+<p>The loss function with which the energy-based model (EBM) is optimized provides additional insight into how it helps guide the generation of conformations.</p>
+<p align="center">
+  <img src="nce_loss.png">
+</p>
+<p>Here, $p_{data}$ and  $p_{\theta}$ are two different distributions that generate distances between pairs of atoms. $p_{data}$ pulls from vectors of true distances between atoms in actual conformations, while $p_{\theta}$ pulls from vectors of generated distances from the continuous flow. Therefore, the conformations represented in the second term on the right-hand side of this equation are noisier than the conformations represented in the first term. By being trained against this objective function, the model learns to distinguish real conformations based on true distances from unreal noisy conformations.</p>
+<h2 id="sampling">Sampling</h2>
+<p>Conformations are sampled by pulling an initial vector of distances from a normal distribution, passing it through the continuous graph normalizing flow, and finding an initial conformation $R_0$ that minimizes the energy. Then, conformations are sampled using two steps of stochastic gradient 
+<a href="https://henripal.github.io/blog/langevin" target="_blank" rel="noopener">Langevin Dynamics</a>. As in traditional stochastic gradient descent, we subtract the gradient of a secondary energy function that uses both the initial EBM parameters and CGNF parameters from the coordinates from the prior iteration. The “Langevin” part of this stochastic gradient descent implies there is a noise term ($w$) added, the variance of which is equal to the square root of the step size ($\epsilon$). This noise term, and Langevin dynamics more generally, are inspired by modeling 
+<a href="https://en.wikipedia.org/wiki/Brownian_motion" target="_blank" rel="noopener">Brownian motion</a> in particles and have been repurposed for sampling in molecular dynamics.</p>
+<p>The secondary function takes into account both the initial energy function and the $\textrm{log}(p(\boldsymbol{R}|\mathcal{G}))$. Minimizing $E_{\theta, \phi}(R|\mathcal{G})$ involves $E_{\phi}(R|\mathcal{G})$ and simultaneously minimizing $p(\boldsymbol{R}|\mathcal{G})$.</p>
+<p>$$R_k = R_{k-1} - \frac{\epsilon}{2}\nabla_RE_{\theta, \phi}(R|\mathcal{G}) + \sqrt{\epsilon}\omega, \omega \sim \mathcal{N}(0, \mathcal{I})$$</p>
+<h2 id="future-work">Future Work</h2>
+<p>One could explore different variations on the approach used to compute the continuous-time dynamic – for example, 
+<a href="https://arxiv.org/abs/2010.09885" target="_blank" rel="noopener">large-scale pretrained transformers applied on SMILES strings</a> – to compare how different architectures that are also able to capture long-range dependencies between atoms perform in generating distance distributions and subsequently conformations. Similar to the way that message passing allows for encoding of long-range dependencies, attention also allows for the same. In fact, attention applied to protein sequences has been shown to recover high-level elements of a three-dimensional structural organization; attention weights are a well-calibrated estimator of the probability that two amino acids are in contact in three-dimensional space (Vig et. al).</p>
+<p>One caveat to note concerning the idea above is many models pretrained on protein sequences include evolutionary information regarding the sequences through featurizations such as multiple sequence alignments
+(
+<a href="https://www.ebi.ac.uk/Tools/msa/#:~:text=Multiple%20Sequence%20Alignment%20%28MSA%29%20is,relationships%20between%20the%20sequences%20studied.&amp;text=Suitable%20for%20medium%2Dlarge%20alignments." target="_blank" rel="noopener">MSA</a>) and position-specific scoring matrices (
+<a href="https://en.wikipedia.org/wiki/Position_weight_matrix" target="_blank" rel="noopener">PSSM</a>) (Rao et. al). There are currently no featurizations for small molecules that encode their  “structural evolution.”</p>
+<p>One could also verify the ability of the different molecular conformation generation methods to generate more stable conformations. Towards the end of the paper, the authors proposed that the EBM shifts generation towards more stable conformations. Developing a metric or computational experiment – for example, calculating the free energy of generated molecules – would verify if this is the case. Or we could potentially even ask the question – is there an architectural or algorithmic knob that we could turn to control the tradeoff the algorithm makes between choosing conformational stability over diversity? To evaluate the model’s ability to especially generate low energy stable conformations, one could re-calculate all metrics solely across reference conformations for molecules bound to a protein in the protein data bank (PDB) (Figure 5) or 
+<a href="https://www.ccdc.cam.ac.uk/solutions/csd-core/components/csd/" target="_blank" rel="noopener">Cambridge Structural Database</a> (CSD) in a solid-state crystal structure.</p>
+<p align="center">
+  <img src="mol.png" style="width: 300px">
+  <b> Figure 5: </b> Example of conformational variability for a single PDB ligand between different protein structures (Source: Hawkins et. al).
+</p>
+<p>Finally, Hawkins et. al make the distinction between systematic methods and stochastic methods for molecular conformation generation. Systematic methods involve a deterministic brute force search through all possible pairwise distances and torsion angles while stochastic methods involve random sampling and are not deterministic. Rather, in stochastic methods, the final generated conformation is in part determined by some initially sampled random variable). Under these definitions, the current method proposed in this work is stochastic, as the generated conformations are a function of the initial $d(t_0)$’s sampled from a normal distribution.</p>
+<p>For stochastic approaches to finding multiple local minima, it is necessary to have multiple “starts” in order to cover all local minima. To evaluate the efficiency of the approach, one could measure the number of starts it takes to get a certain threshold of coverage over significant low-energy conformations.</p>
+<p>All in all, the approach that Xu et. al employ to generate 3D conformers from a 2D molecular graph is part of a recent frontier in research that involves fewer brute-force physical simulations and more convenient ML-guided predictions that can help accelerate drug discovery.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<p>Chen, R. T. Q., Rubanova, Y., Bettencourt, J., &amp; Duvenaud, D. (2019). Neural Ordinary Differential Equations. arXiv [cs.LG]. Opgehaal van <a href="http://arxiv.org/abs/1806.07366">http://arxiv.org/abs/1806.07366</a></p>
+</li>
+<li>
+<p>Hawkins, P. C. D. (2017). Conformation Generation: The State of the Art. Journal of Chemical Information and Modeling, 57(8), 1747–1756. doi:10.1021/acs.jcim.7b00221</p>
+</li>
+<li>
+<p>Madani, A., Krause, B., Greene, E. R., Subramanian, S., Mohr, B. P., Holton, J. M., … Naik, N. (2021). Deep neural language modeling enables functional protein generation across families. bioRxiv. doi:10.1101/2021.07.18.452833</p>
+</li>
+<li>
+<p>Rao, R., Bhattacharya, N., Thomas, N., Duan, Y., Chen, X., Canny, J., … Song, Y. S. (2019). Evaluating Protein Transfer Learning with TAPE. arXiv [cs.LG]. Opgehaal van <a href="http://arxiv.org/abs/1906.08230">http://arxiv.org/abs/1906.08230</a></p>
+</li>
+<li>
+<p>Vig, J., Madani, A., Varshney, L. R., Xiong, C., Socher, R., &amp; Rajani, N. F. (2020). BERTology Meets Biology: Interpreting Attention in Protein Language Models. bioRxiv. doi:10.1101/2020.06.26.174417</p>
+</li>
+<li>
+<p>Weng, L. (2018). Flow-based Deep Generative Models. lilianweng. github. io/lil-log. Opgehaal van <a href="http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html">http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html</a></p>
+</li>
+<li>
+<p>Xu, M., Luo, S., Bengio, Y., Peng, J., &amp; Tang, J. (2021). Learning Neural Generative Dynamics for Molecular Conformation Generation. arXiv [cs.LG]. Opgehaal van <a href="http://arxiv.org/abs/2102.10240">http://arxiv.org/abs/2102.10240</a></p>
+</li>
+<li>
+<p>Yann LeCun, Sumit Chopra, Raia Hadsell, M Ranzato, and F Huang. A tutorial on energy-based learning. Predicting structured data, 1(0), 2006.</p>
+</li>
+</ol>
+
+    </div>
+
+    
+
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/cheminformatics/">Cheminformatics</a>
+  
+  <a class="badge badge-light" href="/tag/drug-discovery/">Drug Discovery</a>
+  
+  <a class="badge badge-light" href="/tag/normalizing-flows/">Normalizing Flows</a>
+  
+  <a class="badge badge-light" href="/tag/neural-odes/">Neural ODEs</a>
+  
+  <a class="badge badge-light" href="/tag/generative-models/">Generative Models</a>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/talk/climate_adversarial_032922/">The Devil is in the Details: Spatial and Temporal Super-Resolution of Global Climate Models using Adversarial Deep Learning</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.8/mermaid.min.js" integrity="sha256-lyWCDMnMeZiXRi7Zl54sZGKYmgQs4izcT7+tKc+KUBk=" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/python.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.7c0855509a679f5c89322b27a9552a2f.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+  </p>
+
+  
+  
+
+
+
+
+
+
+  <p class="powered-by">
+    
+    Copyright MSAIL 2021. 
+    
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -3,8 +3,198 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://MSAIL.github.io/talk/bnn_041222/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://MSAIL.github.io/authors/</loc>
-    <lastmod>2021-12-06T20:00:00-04:00</lastmod>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/binarized-neural-networks/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/msail/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/neural-networks/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tags/</loc>
+    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/computer-vision/</loc>
+    <lastmod>2022-04-05T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/convolutional-neural-networks/</loc>
+    <lastmod>2022-04-05T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/brain_tumor_040522/</loc>
+    <lastmod>2022-04-05T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/medical-imaging/</loc>
+    <lastmod>2022-04-05T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/representation-learning/</loc>
+    <lastmod>2022-04-05T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/climate/</loc>
+    <lastmod>2022-03-29T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/generative-models/</loc>
+    <lastmod>2022-03-29T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/super-resolution/</loc>
+    <lastmod>2022-03-29T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/climate_adversarial_032922/</loc>
+    <lastmod>2022-03-29T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/cheminformatics/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/drug-discovery/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/post/molecular_iclr_2022/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/mukundh-murthy/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/neural-odes/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/author/nikhil-devraj/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/normalizing-flows/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/post/</loc>
+    <lastmod>2022-03-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/fairness/</loc>
+    <lastmod>2022-03-22T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/fairness_032222/</loc>
+    <lastmod>2022-03-22T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/attention_031522/</loc>
+    <lastmod>2022-03-15T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/attention/</loc>
+    <lastmod>2022-03-15T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/machine-translation/</loc>
+    <lastmod>2022-03-15T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/natural-language-processing/</loc>
+    <lastmod>2022-03-15T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/transformers/</loc>
+    <lastmod>2022-03-15T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/cooperative-ai/</loc>
+    <lastmod>2022-02-22T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/cooperative_022222/</loc>
+    <lastmod>2022-02-22T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/neural-tangent-kernel/</loc>
+    <lastmod>2022-02-01T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/ntk_020122/</loc>
+    <lastmod>2022-02-01T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/agi/</loc>
+    <lastmod>2022-01-25T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/tag/ai-safety/</loc>
+    <lastmod>2022-01-25T18:00:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://MSAIL.github.io/talk/aisafety_012522/</loc>
+    <lastmod>2022-01-25T18:00:00-04:00</lastmod>
   </url>
   
   <url>
@@ -24,31 +214,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/jonathan-kummerfeld/</loc>
-    <lastmod>2021-12-06T20:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/</loc>
-    <lastmod>2021-12-06T20:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/author/msail/</loc>
-    <lastmod>2021-12-06T20:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/natural-language-processing/</loc>
-    <lastmod>2021-12-06T20:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/talk/</loc>
-    <lastmod>2021-12-06T20:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tags/</loc>
     <lastmod>2021-12-06T20:00:00-04:00</lastmod>
   </url>
   
@@ -73,11 +238,6 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/computer-vision/</loc>
-    <lastmod>2021-11-08T19:30:00-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/tag/mlops/</loc>
     <lastmod>2021-11-08T19:30:00-04:00</lastmod>
   </url>
@@ -94,11 +254,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/talk/contrastive_hns_110121/</loc>
-    <lastmod>2021-11-01T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/representation-learning/</loc>
     <lastmod>2021-11-01T18:00:00-04:00</lastmod>
   </url>
   
@@ -199,11 +354,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/federated-learning/</loc>
-    <lastmod>2021-05-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/post/</loc>
     <lastmod>2021-05-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -358,11 +508,6 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/transformers/</loc>
-    <lastmod>2021-03-09T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/talk/image-worth-16x16-words/</loc>
     <lastmod>2021-03-09T18:00:00-04:00</lastmod>
   </url>
@@ -424,11 +569,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/education/ethics/</loc>
-    <lastmod>2021-02-26T17:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/neural-networks/</loc>
     <lastmod>2021-02-26T17:00:00+00:00</lastmod>
   </url>
   
@@ -533,11 +673,6 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/convolutional-neural-networks/</loc>
-    <lastmod>2021-02-13T15:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/tag/introduction/</loc>
     <lastmod>2021-02-12T17:00:00+00:00</lastmod>
   </url>
@@ -549,11 +684,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/tag/meta-skills/</loc>
-    <lastmod>2021-01-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/author/nikhil-devraj/</loc>
     <lastmod>2021-01-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -614,11 +744,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/talk/kutty_111720/</loc>
-    <lastmod>2020-11-17T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/tag/fairness/</loc>
     <lastmod>2020-11-17T18:00:00-04:00</lastmod>
   </url>
   
@@ -773,11 +898,6 @@
   </url>
   
   <url>
-    <loc>https://MSAIL.github.io/tag/ai-safety/</loc>
-    <lastmod>2020-10-06T18:00:00-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://MSAIL.github.io/tag/autonomous-vehicles/</loc>
     <lastmod>2020-10-06T18:00:00-04:00</lastmod>
   </url>
@@ -901,10 +1021,6 @@
   
   <url>
     <loc>https://MSAIL.github.io/join/</loc>
-  </url>
-  
-  <url>
-    <loc>https://MSAIL.github.io/cohort/</loc>
   </url>
   
   <url>

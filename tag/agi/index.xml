@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AGI | MSAIL</title>
+    <link>https://MSAIL.github.io/tag/agi/</link>
+      <atom:link href="https://MSAIL.github.io/tag/agi/index.xml" rel="self" type="application/rss+xml" />
+    <description>AGI</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 25 Jan 2022 18:00:00 -0400</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>AGI</title>
+      <link>https://MSAIL.github.io/tag/agi/</link>
+    </image>
+    
+    <item>
+      <title>Concrete Problems in AI Safety</title>
+      <link>https://MSAIL.github.io/talk/aisafety_012522/</link>
+      <pubDate>Tue, 25 Jan 2022 18:00:00 -0400</pubDate>
+      <guid>https://MSAIL.github.io/talk/aisafety_012522/</guid>
+      <description>&lt;p&gt;Ashwin gave an introduction to the field of AI safety, which studies how to ensure that AI, especially artificial general intelligence and super intelligence, will be safe and trustworthy.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://arxiv.org/pdf/1606.06565.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Concrete Problems in AI Safety, by Amodei et al.&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
