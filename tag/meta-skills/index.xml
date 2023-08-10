@@ -25,8 +25,8 @@
 &lt;p&gt;Dr. Fouhey told this joke multiple times during the 
 &lt;a href=&#34;https://sites.google.com/umich.edu/cv-reading-group/home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;computer vision reading group&lt;/a&gt; last semester and the other professors agreed. It succinctly summarizes the emphasis placed on giving these talks.&lt;/p&gt;
 &lt;h2 id=&#34;whats-a-reading-group&#34;&gt;What&amp;rsquo;s a reading group?&lt;/h2&gt;
-&lt;p&gt;Reading groups regularly meet to discuss topics in research. Most of the time, the group will focus on one specific paper detailing an important finding. In AI, many of these reading groups may be focused on award-winning papers from recent conferences or on methods relevant to the participants&#39; research.&lt;/p&gt;
-&lt;p&gt;Reading groups exist mainly to enrich the participants&#39; knowledge. Sometimes the talks will focus on a broader topic as an introduction and sometimes the talks will focus on a specific method in a specific paper. The more niche the audience of the reading group, the more advanced the topic tends to be. At MSAIL, we try to strike a balance between our younger, less-experienced audience (i.e. underclassmen) and our older, experienced audience (upperclassmen, graduate students, etc.).&lt;/p&gt;
+&lt;p&gt;Reading groups regularly meet to discuss topics in research. Most of the time, the group will focus on one specific paper detailing an important finding. In AI, many of these reading groups may be focused on award-winning papers from recent conferences or on methods relevant to the participants&amp;rsquo; research.&lt;/p&gt;
+&lt;p&gt;Reading groups exist mainly to enrich the participants&amp;rsquo; knowledge. Sometimes the talks will focus on a broader topic as an introduction and sometimes the talks will focus on a specific method in a specific paper. The more niche the audience of the reading group, the more advanced the topic tends to be. At MSAIL, we try to strike a balance between our younger, less-experienced audience (i.e. underclassmen) and our older, experienced audience (upperclassmen, graduate students, etc.).&lt;/p&gt;
 &lt;h2 id=&#34;choosing-a-topic&#34;&gt;Choosing a topic&lt;/h2&gt;
 &lt;p&gt;Choosing a topic may be the hardest part of the presentation process. Generally, you can present any topic you want, given that it hasn&amp;rsquo;t already been presented recently. Present on something that grabs your interest immediately, or something you have some familiarity with - it&amp;rsquo;ll make the preparation process more bearable. If you&amp;rsquo;re open to topics and are confident you can adapt, then just go to a conference or journal page and search through some of the accepted papers that catch your eye (at the time of writing, I&amp;rsquo;ve been looking at ICLR 2021 papers).&lt;/p&gt;
 &lt;p&gt;In my opinion, the main question you should ask yourself when you&amp;rsquo;ve identified a potential topic is:&lt;/p&gt;
@@ -179,15 +179,18 @@ Related Work section in VideoBERT paper.
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;MSAIL Reading Group&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://msail.github.io/join/&#34;&gt;https://msail.github.io/join/&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://msail.github.io/join/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://msail.github.io/join/&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Computer Vision Reading Group&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/umich.edu/cv-reading-group/home&#34;&gt;https://sites.google.com/umich.edu/cv-reading-group/home&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://sites.google.com/umich.edu/cv-reading-group/home&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://sites.google.com/umich.edu/cv-reading-group/home&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;Natural Language Processing Reading Group&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://lit.eecs.umich.edu/reading_group.html&#34;&gt;https://lit.eecs.umich.edu/reading_group.html&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;a href=&#34;https://lit.eecs.umich.edu/reading_group.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://lit.eecs.umich.edu/reading_group.html&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

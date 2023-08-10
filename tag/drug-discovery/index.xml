@@ -145,7 +145,8 @@ There are two subtle components to the question above that address some deficien
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Chen, R. T. Q., Rubanova, Y., Bettencourt, J., &amp;amp; Duvenaud, D. (2019). Neural Ordinary Differential Equations. arXiv [cs.LG]. Opgehaal van &lt;a href=&#34;http://arxiv.org/abs/1806.07366&#34;&gt;http://arxiv.org/abs/1806.07366&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Chen, R. T. Q., Rubanova, Y., Bettencourt, J., &amp;amp; Duvenaud, D. (2019). Neural Ordinary Differential Equations. arXiv [cs.LG]. Opgehaal van 
+&lt;a href=&#34;http://arxiv.org/abs/1806.07366&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://arxiv.org/abs/1806.07366&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Hawkins, P. C. D. (2017). Conformation Generation: The State of the Art. Journal of Chemical Information and Modeling, 57(8), 1747–1756. doi:10.1021/acs.jcim.7b00221&lt;/p&gt;
@@ -154,16 +155,19 @@ There are two subtle components to the question above that address some deficien
 &lt;p&gt;Madani, A., Krause, B., Greene, E. R., Subramanian, S., Mohr, B. P., Holton, J. M., … Naik, N. (2021). Deep neural language modeling enables functional protein generation across families. bioRxiv. doi:10.1101/2021.07.18.452833&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Rao, R., Bhattacharya, N., Thomas, N., Duan, Y., Chen, X., Canny, J., … Song, Y. S. (2019). Evaluating Protein Transfer Learning with TAPE. arXiv [cs.LG]. Opgehaal van &lt;a href=&#34;http://arxiv.org/abs/1906.08230&#34;&gt;http://arxiv.org/abs/1906.08230&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Rao, R., Bhattacharya, N., Thomas, N., Duan, Y., Chen, X., Canny, J., … Song, Y. S. (2019). Evaluating Protein Transfer Learning with TAPE. arXiv [cs.LG]. Opgehaal van 
+&lt;a href=&#34;http://arxiv.org/abs/1906.08230&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://arxiv.org/abs/1906.08230&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Vig, J., Madani, A., Varshney, L. R., Xiong, C., Socher, R., &amp;amp; Rajani, N. F. (2020). BERTology Meets Biology: Interpreting Attention in Protein Language Models. bioRxiv. doi:10.1101/2020.06.26.174417&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Weng, L. (2018). Flow-based Deep Generative Models. lilianweng. github. io/lil-log. Opgehaal van &lt;a href=&#34;http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&#34;&gt;http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Weng, L. (2018). Flow-based Deep Generative Models. lilianweng. github. io/lil-log. Opgehaal van 
+&lt;a href=&#34;http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://lilianweng.github.io/lil-log/2018/10/13/flow-based-deep-generative-models.html&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Xu, M., Luo, S., Bengio, Y., Peng, J., &amp;amp; Tang, J. (2021). Learning Neural Generative Dynamics for Molecular Conformation Generation. arXiv [cs.LG]. Opgehaal van &lt;a href=&#34;http://arxiv.org/abs/2102.10240&#34;&gt;http://arxiv.org/abs/2102.10240&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Xu, M., Luo, S., Bengio, Y., Peng, J., &amp;amp; Tang, J. (2021). Learning Neural Generative Dynamics for Molecular Conformation Generation. arXiv [cs.LG]. Opgehaal van 
+&lt;a href=&#34;http://arxiv.org/abs/2102.10240&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;http://arxiv.org/abs/2102.10240&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Yann LeCun, Sumit Chopra, Raia Hadsell, M Ranzato, and F Huang. A tutorial on energy-based learning. Predicting structured data, 1(0), 2006.&lt;/p&gt;

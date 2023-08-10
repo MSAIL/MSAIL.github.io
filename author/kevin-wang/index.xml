@@ -45,11 +45,14 @@ The &lt;a href=&#34;https://en.wikipedia.org/wiki/Scale-invariant_feature_transf
 &lt;p&gt;&lt;strong&gt;Edge detection&lt;/strong&gt;: Edges can imply what content is in an image, and a dataset whose images have varying amounts of horizontal and vertical edges may have more information than a dataset whose images’ horizontal and vertical edges are not as varied. We are currently investigating ways to implement and evaluate this idea.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Unsupervised feature encoding with neural networks&lt;/strong&gt;: By having a neural network (possibly sequence model, GAN) attempt to perform a task, it will learn the features of the data it attempts to perform that task on; we can use those learned features to describe our examples. This is likely appropriate to our problem, but we have not started investigating this yet. I personally think that this approach has merit simply because of how much recent work there has been on this subject, but I wonder if using a learning algorithm to address a problem with a learning algorithm may recurse the problem back into the solution.&lt;/p&gt;
 &lt;p&gt;     For DEVIATE, successfully solving the human sampling problem means we’ll have found a way to reduce labeler workload while also mitigating problems with accuracy and bias that accompany skewed datasets. Our hope is that creating such a tool will let organizations train more effective models with fewer resources, allowing them to invest effort elsewhere in their projects.&lt;/p&gt;
-&lt;p&gt;     If working on this problem interests you, consider following up with me (&lt;a href=&#34;mailto:musicer@umich.edu&#34;&gt;musicer@umich.edu&lt;/a&gt;) or the advisor for the subteam working on this problem, Dr. Carol Flannagan (&lt;a href=&#34;mailto:cacf@umich.edu&#34;&gt;cacf@umich.edu&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;     If working on this problem interests you, consider following up with me (
+&lt;a href=&#34;mailto:musicer@umich.edu&#34;&gt;musicer@umich.edu&lt;/a&gt;) or the advisor for the subteam working on this problem, Dr. Carol Flannagan (
+&lt;a href=&#34;mailto:cacf@umich.edu&#34;&gt;cacf@umich.edu&lt;/a&gt;).&lt;/p&gt;
 &lt;h3 id=&#34;citations&#34;&gt;Citations:&lt;/h3&gt;
 &lt;p&gt;[1]	U.S. Government, “2010 Census Summary File 1,” U.S. Census Bureau, United States, SF1/10-4 RV, 2010.&lt;br&gt;
 [2] 	J. Buolamwini and T. Gebru, “Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification”, presented at the 1st  Conference on Fairness, Accountability, and Transparency, New York, NY, United States, February 23-24, 2018.&lt;br&gt;
-[3]	A. Winn, “A Local Case Amplifies Opposition To Facial Recognition Technology”, Hour Detroit, Sept. 14, 2020. [Online]. Available: &lt;a href=&#34;https://www.hourdetroit.com&#34;&gt;https://www.hourdetroit.com&lt;/a&gt;. [Accessed Oct. 25, 2020].&lt;/p&gt;
+[3]	A. Winn, “A Local Case Amplifies Opposition To Facial Recognition Technology”, Hour Detroit, Sept. 14, 2020. [Online]. Available: 
+&lt;a href=&#34;https://www.hourdetroit.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.hourdetroit.com&lt;/a&gt;. [Accessed Oct. 25, 2020].&lt;/p&gt;
 </description>
     </item>
     
