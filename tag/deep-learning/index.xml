@@ -111,9 +111,9 @@ Adversarial Attack on Human Visual System [9]
     
     <item>
       <title>Lightning Round -- Assorted AI Topics</title>
-      <link>https://MSAIL.github.io/education/lightning/</link>
+      <link>https://MSAIL.github.io/previous_material/lightning/</link>
       <pubDate>Sat, 27 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/lightning/</guid>
+      <guid>https://MSAIL.github.io/previous_material/lightning/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Lightning Round &amp;ndash; Assorted AI Topics&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;Here, we talk about a wide range of topics in AI that haven&amp;rsquo;t received their own slide decks &amp;ndash; the list includes reinforcement learning, optimization, adversarial machine learning, meta learning, active learning, multi-agent systems, and more. We hope that showcasing the breadth of AI research inspires you to dig deeper on your own and find what interests you!&lt;/p&gt;
@@ -127,9 +127,9 @@ Adversarial Attack on Human Visual System [9]
     
     <item>
       <title>Ethics</title>
-      <link>https://MSAIL.github.io/education/ethics/</link>
+      <link>https://MSAIL.github.io/previous_material/ethics/</link>
       <pubDate>Fri, 26 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/ethics/</guid>
+      <guid>https://MSAIL.github.io/previous_material/ethics/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Ethics in AI Research&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;We discuss the various ethical problems AI research presents, including well-known problems like bias and weaponized AI and less publicized problems like interpretability and environmental impact of large machine learning models. We also talk about some of the solutions that researchers are attempting to implement and what we can do to contribute.&lt;/p&gt;
@@ -143,9 +143,9 @@ Adversarial Attack on Human Visual System [9]
     
     <item>
       <title>Unsupervised Learning</title>
-      <link>https://MSAIL.github.io/education/unsupervised/</link>
+      <link>https://MSAIL.github.io/previous_material/unsupervised/</link>
       <pubDate>Sat, 20 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/unsupervised/</guid>
+      <guid>https://MSAIL.github.io/previous_material/unsupervised/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Unsupervised Learning&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson went over the unsupervised side of AI, where labels don&amp;rsquo;t exist and models are left on their own to learn useful information. We presented machine learning approaches with and without deep learning that tackle unsupervised problems.&lt;/p&gt;
@@ -159,9 +159,9 @@ Adversarial Attack on Human Visual System [9]
     
     <item>
       <title>Natural Language Processing</title>
-      <link>https://MSAIL.github.io/education/nlp/</link>
+      <link>https://MSAIL.github.io/previous_material/nlp/</link>
       <pubDate>Fri, 19 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/nlp/</guid>
+      <guid>https://MSAIL.github.io/previous_material/nlp/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Natural Language Processing&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson gave a high level overview of NLP (natural language processing) and how AI can be used to work with text and speech data. Points of discussion included recurrent neural networks, LSTMs/GRUs, and GPT-3 and other transformer models.&lt;/p&gt;
@@ -212,9 +212,9 @@ This discussion focused predominantly on the following questions: &lt;br&gt;
     
     <item>
       <title>Computer Vision</title>
-      <link>https://MSAIL.github.io/education/computer_vision/</link>
+      <link>https://MSAIL.github.io/previous_material/computer_vision/</link>
       <pubDate>Sat, 13 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/computer_vision/</guid>
+      <guid>https://MSAIL.github.io/previous_material/computer_vision/</guid>
       <description>&lt;p&gt;​
 &lt;strong&gt;Topic&lt;/strong&gt;: An Overview of Computer Vision&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang​&lt;/p&gt;
@@ -229,9 +229,9 @@ This discussion focused predominantly on the following questions: &lt;br&gt;
     
     <item>
       <title>Introduction and Basics of Deep Learning</title>
-      <link>https://MSAIL.github.io/education/intro_dl_basics/</link>
+      <link>https://MSAIL.github.io/previous_material/intro_dl_basics/</link>
       <pubDate>Fri, 12 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/intro_dl_basics/</guid>
+      <guid>https://MSAIL.github.io/previous_material/intro_dl_basics/</guid>
       <description>&lt;p&gt;​
 &lt;strong&gt;Topic&lt;/strong&gt;: Introduction to AI Research and Basics of Deep Learning&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang  ​&lt;/p&gt;
@@ -246,9 +246,9 @@ This discussion focused predominantly on the following questions: &lt;br&gt;
     
     <item>
       <title>Convolutional Neural Networks</title>
-      <link>https://MSAIL.github.io/education/cnn/</link>
+      <link>https://MSAIL.github.io/previous_material/cnn/</link>
       <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/cnn/</guid>
+      <guid>https://MSAIL.github.io/previous_material/cnn/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Convolutional Neural Networks&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson covered convolutional neural networks, which serve as the backbone for many modern-day deep learning applications. Most commonly, convolutional neural networks are used for vision tasks (although not exclusively).&lt;/p&gt;

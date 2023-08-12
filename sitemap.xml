@@ -320,10 +320,7 @@
     <loc>https://MSAIL.github.io/tag/adversarial-ml/</loc>
     <lastmod>2021-02-27T15:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/</loc>
-    <lastmod>2021-02-27T15:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://MSAIL.github.io/education/lightning/</loc>
+    <loc>https://MSAIL.github.io/previous_material/lightning/</loc>
     <lastmod>2021-02-27T15:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/meta-learning/</loc>
@@ -335,13 +332,16 @@
     <loc>https://MSAIL.github.io/tag/optimization/</loc>
     <lastmod>2021-02-27T15:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://MSAIL.github.io/previous_material/</loc>
+    <lastmod>2021-02-27T15:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://MSAIL.github.io/tag/reinforcement-learning/</loc>
     <lastmod>2021-02-27T15:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/ethics/</loc>
     <lastmod>2021-02-26T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/ethics/</loc>
+    <loc>https://MSAIL.github.io/previous_material/ethics/</loc>
     <lastmod>2021-02-26T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/cnn/</loc>
@@ -374,7 +374,7 @@
     <loc>https://MSAIL.github.io/tag/generative-adversarial-network/</loc>
     <lastmod>2021-02-20T15:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/unsupervised/</loc>
+    <loc>https://MSAIL.github.io/previous_material/unsupervised/</loc>
     <lastmod>2021-02-20T15:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/gpt-3/</loc>
@@ -383,7 +383,7 @@
     <loc>https://MSAIL.github.io/tag/lstm/</loc>
     <lastmod>2021-02-19T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/nlp/</loc>
+    <loc>https://MSAIL.github.io/previous_material/nlp/</loc>
     <lastmod>2021-02-19T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/recurrent-neural-network/</loc>
@@ -401,13 +401,13 @@
     <loc>https://MSAIL.github.io/tag/skill-learning/</loc>
     <lastmod>2021-02-16T18:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/computer_vision/</loc>
+    <loc>https://MSAIL.github.io/previous_material/computer_vision/</loc>
     <lastmod>2021-02-13T15:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/introduction/</loc>
     <lastmod>2021-02-12T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/intro_dl_basics/</loc>
+    <loc>https://MSAIL.github.io/previous_material/intro_dl_basics/</loc>
     <lastmod>2021-02-12T17:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/meta-skills/</loc>
@@ -467,7 +467,7 @@
     <loc>https://MSAIL.github.io/talk/textsummarization_111020/</loc>
     <lastmod>2020-11-10T18:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/cnn/</loc>
+    <loc>https://MSAIL.github.io/previous_material/cnn/</loc>
     <lastmod>2020-11-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/neural-nets/</loc>
@@ -536,7 +536,7 @@
     <loc>https://MSAIL.github.io/tag/linear-regression/</loc>
     <lastmod>2020-10-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/regression_2/</loc>
+    <loc>https://MSAIL.github.io/previous_material/regression_2/</loc>
     <lastmod>2020-10-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/autonomous-vehicles/</loc>
@@ -557,7 +557,7 @@
     <loc>https://MSAIL.github.io/tag/chess/</loc>
     <lastmod>2020-09-29T18:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/regression_1/</loc>
+    <loc>https://MSAIL.github.io/previous_material/regression_1/</loc>
     <lastmod>2020-09-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/talk/wellman_092220/</loc>
@@ -575,7 +575,7 @@
     <loc>https://MSAIL.github.io/tag/classification/</loc>
     <lastmod>2020-09-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/education/classification_logreg/</loc>
+    <loc>https://MSAIL.github.io/previous_material/classification_logreg/</loc>
     <lastmod>2020-09-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/linear-classifier/</loc>
@@ -611,9 +611,13 @@
   </url><url>
     <loc>https://MSAIL.github.io/contact/</loc>
   </url><url>
+    <loc>https://MSAIL.github.io/education/</loc>
+  </url><url>
     <loc>https://MSAIL.github.io/join/</loc>
   </url><url>
     <loc>https://MSAIL.github.io/constitution/</loc>
+  </url><url>
+    <loc>https://MSAIL.github.io/projects/</loc>
   </url><url>
     <loc>https://MSAIL.github.io/publication_types/</loc>
   </url><url>

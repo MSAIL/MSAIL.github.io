@@ -780,9 +780,9 @@ Credit: Arvinder Singh
     
     <item>
       <title>Lightning Round -- Assorted AI Topics</title>
-      <link>https://MSAIL.github.io/education/lightning/</link>
+      <link>https://MSAIL.github.io/previous_material/lightning/</link>
       <pubDate>Sat, 27 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/lightning/</guid>
+      <guid>https://MSAIL.github.io/previous_material/lightning/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Lightning Round &amp;ndash; Assorted AI Topics&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;Here, we talk about a wide range of topics in AI that haven&amp;rsquo;t received their own slide decks &amp;ndash; the list includes reinforcement learning, optimization, adversarial machine learning, meta learning, active learning, multi-agent systems, and more. We hope that showcasing the breadth of AI research inspires you to dig deeper on your own and find what interests you!&lt;/p&gt;
@@ -796,9 +796,9 @@ Credit: Arvinder Singh
     
     <item>
       <title>Ethics</title>
-      <link>https://MSAIL.github.io/education/ethics/</link>
+      <link>https://MSAIL.github.io/previous_material/ethics/</link>
       <pubDate>Fri, 26 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/ethics/</guid>
+      <guid>https://MSAIL.github.io/previous_material/ethics/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Ethics in AI Research&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;We discuss the various ethical problems AI research presents, including well-known problems like bias and weaponized AI and less publicized problems like interpretability and environmental impact of large machine learning models. We also talk about some of the solutions that researchers are attempting to implement and what we can do to contribute.&lt;/p&gt;
@@ -883,9 +883,9 @@ The results of AquaCloud: the green line shows the lice outbreak predicted two w
     
     <item>
       <title>Unsupervised Learning</title>
-      <link>https://MSAIL.github.io/education/unsupervised/</link>
+      <link>https://MSAIL.github.io/previous_material/unsupervised/</link>
       <pubDate>Sat, 20 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/unsupervised/</guid>
+      <guid>https://MSAIL.github.io/previous_material/unsupervised/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Unsupervised Learning&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson went over the unsupervised side of AI, where labels don&amp;rsquo;t exist and models are left on their own to learn useful information. We presented machine learning approaches with and without deep learning that tackle unsupervised problems.&lt;/p&gt;
@@ -899,9 +899,9 @@ The results of AquaCloud: the green line shows the lice outbreak predicted two w
     
     <item>
       <title>Natural Language Processing</title>
-      <link>https://MSAIL.github.io/education/nlp/</link>
+      <link>https://MSAIL.github.io/previous_material/nlp/</link>
       <pubDate>Fri, 19 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/nlp/</guid>
+      <guid>https://MSAIL.github.io/previous_material/nlp/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Natural Language Processing&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson gave a high level overview of NLP (natural language processing) and how AI can be used to work with text and speech data. Points of discussion included recurrent neural networks, LSTMs/GRUs, and GPT-3 and other transformer models.&lt;/p&gt;
@@ -952,9 +952,9 @@ This discussion focused predominantly on the following questions: &lt;br&gt;
     
     <item>
       <title>Computer Vision</title>
-      <link>https://MSAIL.github.io/education/computer_vision/</link>
+      <link>https://MSAIL.github.io/previous_material/computer_vision/</link>
       <pubDate>Sat, 13 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/computer_vision/</guid>
+      <guid>https://MSAIL.github.io/previous_material/computer_vision/</guid>
       <description>&lt;p&gt;​
 &lt;strong&gt;Topic&lt;/strong&gt;: An Overview of Computer Vision&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang​&lt;/p&gt;
@@ -969,9 +969,9 @@ This discussion focused predominantly on the following questions: &lt;br&gt;
     
     <item>
       <title>Introduction and Basics of Deep Learning</title>
-      <link>https://MSAIL.github.io/education/intro_dl_basics/</link>
+      <link>https://MSAIL.github.io/previous_material/intro_dl_basics/</link>
       <pubDate>Fri, 12 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/intro_dl_basics/</guid>
+      <guid>https://MSAIL.github.io/previous_material/intro_dl_basics/</guid>
       <description>&lt;p&gt;​
 &lt;strong&gt;Topic&lt;/strong&gt;: Introduction to AI Research and Basics of Deep Learning&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang  ​&lt;/p&gt;
@@ -1275,9 +1275,9 @@ The &lt;a href=&#34;https://en.wikipedia.org/wiki/Scale-invariant_feature_transf
     
     <item>
       <title>Convolutional Neural Networks</title>
-      <link>https://MSAIL.github.io/education/cnn/</link>
+      <link>https://MSAIL.github.io/previous_material/cnn/</link>
       <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/cnn/</guid>
+      <guid>https://MSAIL.github.io/previous_material/cnn/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Convolutional Neural Networks&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson covered convolutional neural networks, which serve as the backbone for many modern-day deep learning applications. Most commonly, convolutional neural networks are used for vision tasks (although not exclusively).&lt;/p&gt;
@@ -1391,9 +1391,9 @@ The &lt;a href=&#34;https://en.wikipedia.org/wiki/Scale-invariant_feature_transf
     
     <item>
       <title>Regression, Part 2 (Application)</title>
-      <link>https://MSAIL.github.io/education/regression_2/</link>
+      <link>https://MSAIL.github.io/previous_material/regression_2/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/regression_2/</guid>
+      <guid>https://MSAIL.github.io/previous_material/regression_2/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Applications of Regression &lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
 &lt;p&gt;This lesson covered some interesting applications of regression.&lt;/p&gt;
@@ -1451,9 +1451,9 @@ The &lt;a href=&#34;https://en.wikipedia.org/wiki/Scale-invariant_feature_transf
     
     <item>
       <title>Regression, Part 1 (Theory and Implementation)</title>
-      <link>https://MSAIL.github.io/education/regression_1/</link>
+      <link>https://MSAIL.github.io/previous_material/regression_1/</link>
       <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/regression_1/</guid>
+      <guid>https://MSAIL.github.io/previous_material/regression_1/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Theory and Implementation of Regression&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
 &lt;p&gt;This lesson covered the theory behind and implementation of a linear regression model with gradient descent.&lt;/p&gt;
@@ -1494,9 +1494,9 @@ The &lt;a href=&#34;https://en.wikipedia.org/wiki/Scale-invariant_feature_transf
     
     <item>
       <title>Classification with Logistic Regression</title>
-      <link>https://MSAIL.github.io/education/classification_logreg/</link>
+      <link>https://MSAIL.github.io/previous_material/classification_logreg/</link>
       <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/classification_logreg/</guid>
+      <guid>https://MSAIL.github.io/previous_material/classification_logreg/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Classification with Logistic Regression&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;Kevin taught some members of MSAIL some basics of machine learning, culminating in building out a classification model for MNIST from scratch using logistic regression. Classification is the process of categorizing data into predetermined groups, and logistic regression is a means to build a classifier (though certainly not the only means to do so).&lt;/p&gt;
@@ -1688,6 +1688,26 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
     </item>
     
     <item>
+      <title>Education</title>
+      <link>https://MSAIL.github.io/education/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/</guid>
+      <description>&lt;p&gt;MSAIL provides different tracks for students of all levels. Explore past material at your own leisure or consider participating in live education sessions taught by our members.&lt;/p&gt;
+&lt;h2 id=&#34;tracks&#34;&gt;Tracks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Beginner&lt;/li&gt;
+&lt;li&gt;Advanced&lt;/li&gt;
+&lt;li&gt;Reinforcement Learning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;previous-material&#34;&gt;Previous Material&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://MSAIL.github.io/previous_material/&#34;&gt;Winter 2021 Education&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Joining MSAIL</title>
       <link>https://MSAIL.github.io/join/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1743,6 +1763,15 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
     </item>
     
     <item>
+      <title>Projects</title>
+      <link>https://MSAIL.github.io/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/projects/</guid>
+      <description>&lt;p&gt;&lt;em&gt;This page will be updated with upcoming projects.&lt;/em&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Resources for MSAIL Members</title>
       <link>https://MSAIL.github.io/resources/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1771,15 +1800,14 @@ Furthermore, if you are a resource owner and would like links to your work remov
 &lt;li&gt;
 &lt;a href=&#34;#conferences&#34;&gt;Conferences&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
+&lt;a href=&#34;https://MSAIL.github.io/talk/&#34;&gt;Past Talks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
 &lt;a href=&#34;#medium-blog-articles&#34;&gt;Medium/Blog articles&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;a href=&#34;#meta-skills-and-mindset&#34;&gt;Meta-skills and Mindset&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;
-&lt;a href=&#34;#&#34; title=&#34;### Intro to Machine Learning&#34;&gt;comment&lt;/a&gt;: # (+ 
-&lt;a href=&#34;#opportunities&#34;&gt;Opportunities&lt;/a&gt;)&lt;/p&gt;
 &lt;!--
-
+  + [comment]: # (+ [Opportunities](#opportunities))
   + [Classical Methods in AI](#classical-methods-in-ai)
 --&gt;
 &lt;h2 id=&#34;about-this-page&#34;&gt;About this page&lt;/h2&gt;
@@ -2211,6 +2239,10 @@ Each of these classes is listed under EECS 498, 598 or both - you will need to s
 &lt;a href=&#34;https://2021.aclweb.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ACL&lt;/a&gt;&lt;br&gt;
 
 &lt;a href=&#34;https://naacl.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NAACL&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;previous-talks&#34;&gt;Previous Talks&lt;/h2&gt;
+&lt;p&gt;MSAIL has hosted a number of 
+&lt;a href=&#34;https://MSAIL.github.io/talk/&#34;&gt;talks&lt;/a&gt; over the years given by Michigan professors and students. You might find
+them insightful in providing a survey of current and past research.&lt;/p&gt;
 &lt;h2 id=&#34;mediumblog-articles&#34;&gt;Medium/Blog Articles&lt;/h2&gt;
 &lt;!-- this is just meant to be a start to this section. I haven&#39;t read every Medium article in existence. --&gt;
 &lt;p&gt;Medium articles are nice because they tend to be much shorter and easier to read than bona fide research papers. However, not all Medium

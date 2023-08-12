@@ -33,9 +33,9 @@
     
     <item>
       <title>Unsupervised Learning</title>
-      <link>https://MSAIL.github.io/education/unsupervised/</link>
+      <link>https://MSAIL.github.io/previous_material/unsupervised/</link>
       <pubDate>Sat, 20 Feb 2021 15:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/unsupervised/</guid>
+      <guid>https://MSAIL.github.io/previous_material/unsupervised/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Unsupervised Learning&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson went over the unsupervised side of AI, where labels don&amp;rsquo;t exist and models are left on their own to learn useful information. We presented machine learning approaches with and without deep learning that tackle unsupervised problems.&lt;/p&gt;

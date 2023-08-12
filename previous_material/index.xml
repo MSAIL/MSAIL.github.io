@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Previous Material | MSAIL</title>
+    <link>https://MSAIL.github.io/previous_material/</link>
+      <atom:link href="https://MSAIL.github.io/previous_material/index.xml" rel="self" type="application/rss+xml" />
+    <description>Previous Material</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 27 Feb 2021 15:00:00 +0000</lastBuildDate>
+    <image>
+      <url>https://MSAIL.github.io/media/logo.png</url>
+      <title>Previous Material</title>
+      <link>https://MSAIL.github.io/previous_material/</link>
+    </image>
+    
+    <item>
+      <title>Lightning Round -- Assorted AI Topics</title>
+      <link>https://MSAIL.github.io/previous_material/lightning/</link>
+      <pubDate>Sat, 27 Feb 2021 15:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/lightning/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Lightning Round &amp;ndash; Assorted AI Topics&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;Here, we talk about a wide range of topics in AI that haven&amp;rsquo;t received their own slide decks &amp;ndash; the list includes reinforcement learning, optimization, adversarial machine learning, meta learning, active learning, multi-agent systems, and more. We hope that showcasing the breadth of AI research inspires you to dig deeper on your own and find what interests you!&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/169IpCxkST0Fjp7LjQgpdfiDz-Ccs1K-v/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1uQzkFpr4LyslagkloUHs5lnCQ3wNmVLfuaa7UsbTaGA/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Ethics</title>
+      <link>https://MSAIL.github.io/previous_material/ethics/</link>
+      <pubDate>Fri, 26 Feb 2021 17:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/ethics/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Ethics in AI Research&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;We discuss the various ethical problems AI research presents, including well-known problems like bias and weaponized AI and less publicized problems like interpretability and environmental impact of large machine learning models. We also talk about some of the solutions that researchers are attempting to implement and what we can do to contribute.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1C-bWWrhh_hK6ZwNmLEYK95uLJ6eiCbi1/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1KUUqzdz-Te1oNS4AMnxxPqO_mFUpmkDNokr0As9rCHQ/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Unsupervised Learning</title>
+      <link>https://MSAIL.github.io/previous_material/unsupervised/</link>
+      <pubDate>Sat, 20 Feb 2021 15:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/unsupervised/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Unsupervised Learning&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;This lesson went over the unsupervised side of AI, where labels don&amp;rsquo;t exist and models are left on their own to learn useful information. We presented machine learning approaches with and without deep learning that tackle unsupervised problems.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1WXBrrbNDryufUYkzQS1aLwrEcJRbo-xS/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1H77BDYebNusyelevFe5-AHZzYCaOB1tid-Vqtmm13oI/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Natural Language Processing</title>
+      <link>https://MSAIL.github.io/previous_material/nlp/</link>
+      <pubDate>Fri, 19 Feb 2021 17:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/nlp/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Natural Language Processing&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;This lesson gave a high level overview of NLP (natural language processing) and how AI can be used to work with text and speech data. Points of discussion included recurrent neural networks, LSTMs/GRUs, and GPT-3 and other transformer models.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1DjwaY3p7vb4N4V7DwvZEBQB2qxjs5okS/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/178FNnk3x8euXO3NHBqQT9VT6-d9FigUVOt56Ru-Lvpo/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Computer Vision</title>
+      <link>https://MSAIL.github.io/previous_material/computer_vision/</link>
+      <pubDate>Sat, 13 Feb 2021 15:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/computer_vision/</guid>
+      <description>&lt;p&gt;​
+&lt;strong&gt;Topic&lt;/strong&gt;: An Overview of Computer Vision&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang​&lt;/p&gt;
+&lt;p&gt;This lesson gave a basic overview of the computer vision problem space. We discussed historically significant developments including convolutional neural networks, AlexNet, ResNet, and more, and we gave a glimpse at ongoing research.​&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/15WxV2hC40Bz4YhcyPVeYqb1gvIViq2Ka/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1MaC9d25kJybNv_pOYQHFv9oNOM1J-65zMkQX2PMlCqg/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Introduction and Basics of Deep Learning</title>
+      <link>https://MSAIL.github.io/previous_material/intro_dl_basics/</link>
+      <pubDate>Fri, 12 Feb 2021 17:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/intro_dl_basics/</guid>
+      <description>&lt;p&gt;​
+&lt;strong&gt;Topic&lt;/strong&gt;: Introduction to AI Research and Basics of Deep Learning&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang  ​&lt;/p&gt;
+&lt;p&gt;This lesson introduced the format of lessons for the winter 2021 semester, briefly introducing the topics to be presented in the coming weeks. We then gave a high-level overview of neural networks, which form the basis of deep learning and drive much of AI research today. ​&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://drive.google.com/file/d/1lNhpuuxNhW5nHDLavDLqlLOKv-DYfMhO/view?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;​&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1SkI0i1Y_Dp1lZTCJjJD91f0DVf_CXfB4FMBy8jLweeg/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Convolutional Neural Networks</title>
+      <link>https://MSAIL.github.io/previous_material/cnn/</link>
+      <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/cnn/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Convolutional Neural Networks&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;This lesson covered convolutional neural networks, which serve as the backbone for many modern-day deep learning applications. Most commonly, convolutional neural networks are used for vision tasks (although not exclusively).&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1522OsXalZScvuUxXrOTbUZuISZUY-HqO&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides on CNNs&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://docs.google.com/presentation/d/16TMR2sM9T75qALw3CCigUF_JxMQ5gceM&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Slides on Neural Networks&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Regression, Part 2 (Application)</title>
+      <link>https://MSAIL.github.io/previous_material/regression_2/</link>
+      <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/regression_2/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Applications of Regression &lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
+&lt;p&gt;This lesson covered some interesting applications of regression.&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://colab.research.google.com/drive/12nmYKp5IcUdUiZmrHaUK7YsUu1vIOXkj?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Colab notebook&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Regression, Part 1 (Theory and Implementation)</title>
+      <link>https://MSAIL.github.io/previous_material/regression_1/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/regression_1/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Theory and Implementation of Regression&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
+&lt;p&gt;This lesson covered the theory behind and implementation of a linear regression model with gradient descent.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://umich.zoom.us/rec/share/94fSO_w_AT68Td2e0Qr_kckIVBepdNLecMn5mTvFOH994JWIkKSZLl3u9xpFr6J6.oj49dWOJeBFBzPA2&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;You can view a recording of this lesson here.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1VHWuE_lqbKnDKZ8HKbVcLArbe8cMWKsd_61FY4FTn-E/edit?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/drive/18MoSHNwUnEKwvokZAZA1AcLc6AJ3Bs81?usp=sharing&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson Colab notebook&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Classification with Logistic Regression</title>
+      <link>https://MSAIL.github.io/previous_material/classification_logreg/</link>
+      <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/previous_material/classification_logreg/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Classification with Logistic Regression&lt;br&gt;
+&lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
+&lt;p&gt;Kevin taught some members of MSAIL some basics of machine learning, culminating in building out a classification model for MNIST from scratch using logistic regression. Classification is the process of categorizing data into predetermined groups, and logistic regression is a means to build a classifier (though certainly not the only means to do so).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;We couldn&amp;rsquo;t find the recording of this session, but be sure to check out the supplemental materials.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;supplemental-resources&#34;&gt;Supplemental Resources&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.google.com/presentation/d/1YVw4T0E_f6m0NovhS3YbwAMLns0tQfFE/edit#slide=id.p1&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson slides&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://colab.research.google.com/drive/1Cein0r-J9N2vX1xh24cRLEHgBkJx3p7w?authuser=1#scrollTo=ubgi9PVZDDgU&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lesson Colab notebook&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://builtin.com/data-science/basic-linear-algebra-deep-learning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basic matrix operations&lt;/a&gt;&lt;br&gt;
+
+&lt;a href=&#34;https://www.kaggle.com/learn/python&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Basic Python programming&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

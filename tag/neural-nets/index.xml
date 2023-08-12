@@ -14,9 +14,9 @@
     
     <item>
       <title>Convolutional Neural Networks</title>
-      <link>https://MSAIL.github.io/education/cnn/</link>
+      <link>https://MSAIL.github.io/previous_material/cnn/</link>
       <pubDate>Thu, 05 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/cnn/</guid>
+      <guid>https://MSAIL.github.io/previous_material/cnn/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Convolutional Neural Networks&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson covered convolutional neural networks, which serve as the backbone for many modern-day deep learning applications. Most commonly, convolutional neural networks are used for vision tasks (although not exclusively).&lt;/p&gt;

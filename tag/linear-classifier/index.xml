@@ -14,9 +14,9 @@
     
     <item>
       <title>Classification with Logistic Regression</title>
-      <link>https://MSAIL.github.io/education/classification_logreg/</link>
+      <link>https://MSAIL.github.io/previous_material/classification_logreg/</link>
       <pubDate>Thu, 17 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/classification_logreg/</guid>
+      <guid>https://MSAIL.github.io/previous_material/classification_logreg/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Classification with Logistic Regression&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;Kevin taught some members of MSAIL some basics of machine learning, culminating in building out a classification model for MNIST from scratch using logistic regression. Classification is the process of categorizing data into predetermined groups, and logistic regression is a means to build a classifier (though certainly not the only means to do so).&lt;/p&gt;

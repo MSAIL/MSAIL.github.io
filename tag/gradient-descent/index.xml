@@ -14,9 +14,9 @@
     
     <item>
       <title>Regression, Part 2 (Application)</title>
-      <link>https://MSAIL.github.io/education/regression_2/</link>
+      <link>https://MSAIL.github.io/previous_material/regression_2/</link>
       <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/regression_2/</guid>
+      <guid>https://MSAIL.github.io/previous_material/regression_2/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Applications of Regression &lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
 &lt;p&gt;This lesson covered some interesting applications of regression.&lt;/p&gt;
@@ -28,9 +28,9 @@
     
     <item>
       <title>Regression, Part 1 (Theory and Implementation)</title>
-      <link>https://MSAIL.github.io/education/regression_1/</link>
+      <link>https://MSAIL.github.io/previous_material/regression_1/</link>
       <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/regression_1/</guid>
+      <guid>https://MSAIL.github.io/previous_material/regression_1/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Theory and Implementation of Regression&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Robert Aung&lt;/p&gt;
 &lt;p&gt;This lesson covered the theory behind and implementation of a linear regression model with gradient descent.&lt;/p&gt;

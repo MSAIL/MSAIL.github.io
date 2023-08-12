@@ -59,9 +59,9 @@
     
     <item>
       <title>Natural Language Processing</title>
-      <link>https://MSAIL.github.io/education/nlp/</link>
+      <link>https://MSAIL.github.io/previous_material/nlp/</link>
       <pubDate>Fri, 19 Feb 2021 17:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/nlp/</guid>
+      <guid>https://MSAIL.github.io/previous_material/nlp/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Topic&lt;/strong&gt;: Natural Language Processing&lt;br&gt;
 &lt;strong&gt;Presenter&lt;/strong&gt;: Kevin Wang&lt;/p&gt;
 &lt;p&gt;This lesson gave a high level overview of NLP (natural language processing) and how AI can be used to work with text and speech data. Points of discussion included recurrent neural networks, LSTMs/GRUs, and GPT-3 and other transformer models.&lt;/p&gt;
