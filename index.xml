@@ -1694,10 +1694,13 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
       <guid>https://MSAIL.github.io/education/</guid>
       <description>&lt;p&gt;MSAIL provides different tracks for students of all levels. Explore past material at your own leisure or consider participating in live education sessions taught by our members.&lt;/p&gt;
 &lt;h2 id=&#34;tracks&#34;&gt;Tracks&lt;/h2&gt;
+&lt;h4 id=&#34;introduction-to-ai-and-natural-language-processing&#34;&gt;Introduction to AI and Natural Language Processing&lt;/h4&gt;
 &lt;ul&gt;
-&lt;li&gt;Beginner&lt;/li&gt;
-&lt;li&gt;Advanced&lt;/li&gt;
-&lt;li&gt;Reinforcement Learning&lt;/li&gt;
+&lt;li&gt;Learn about the basics of AI with a focus on NLP. You&amp;rsquo;ll gain experience by covering seminal papers and implementing generative AI and NLP projects.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Come learn reinforcement learning from scratch with our curated curriculum.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
 &lt;hr&gt;
@@ -1767,7 +1770,11 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
       <link>https://MSAIL.github.io/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://MSAIL.github.io/projects/</guid>
-      <description>&lt;p&gt;&lt;em&gt;This page will be updated with upcoming projects.&lt;/em&gt;&lt;/p&gt;
+      <description>&lt;h4 id=&#34;car-accident-prediction&#34;&gt;Car accident prediction&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Learn how to predict the next car accident in a specific area of the U.S.&lt;/li&gt;
+&lt;li&gt;Have more questions? Contact kevindw@ or andson@&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -2406,6 +2413,15 @@ John Schulman:
 &lt;h2&gt;Faculty Mentors&lt;/h2&gt;
 These astounding professors make MSAIL possible with their advice and support.
 &lt;div id=&#34;faculty&#34;&gt;
+&lt;!-- Sindhu Kutty --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+    &lt;img src=&#34;portraits/sindhu_kutty.jpg&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Sindhu Kutty &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Lecturer III, EECS &lt;/div&gt;
+    &lt;div class=&#34;leader-email&#34;&gt; skutty@ &lt;/div&gt;
+&lt;/div&gt;
 &lt;!-- Laura Balzano --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
     &lt;div class=&#34;leader-portrait&#34;&gt;
@@ -2427,15 +2443,6 @@ These astounding professors make MSAIL possible with their advice and support.
     &lt;div class=&#34;leader-name&#34;&gt;  &lt;a href=&#34;https://web.eecs.umich.edu/~dkoutra/&#34;&gt; Danai Koutra &lt;/a&gt; &lt;/div&gt;
     &lt;div class=&#34;leader-info&#34;&gt; Assistant Professor, EECS &lt;/div&gt;
     &lt;div class=&#34;leader-email&#34;&gt; dkoutra@&lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- Sindhu Kutty --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-    &lt;img src=&#34;portraits/sindhu_kutty.jpg&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt; Sindhu Kutty &lt;/div&gt;
-    &lt;div class=&#34;leader-info&#34;&gt; Lecturer III, EECS &lt;/div&gt;
-    &lt;div class=&#34;leader-email&#34;&gt; skutty@ &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;h2&gt; Admin Team &lt;/h2&gt;
