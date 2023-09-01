@@ -1671,6 +1671,14 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
     &lt;div class=&#34;leader-name&#34;&gt; Nina Li &lt;/div&gt;
     &lt;div class=&#34;leader-info&#34;&gt; Winter 2023 &lt;/div&gt;
 &lt;/div&gt;
+&lt;!-- &lt;\!-- Chloe Snyders -\-&gt; --&gt;
+&lt;div class=&#34;leader-box&#34;&gt;
+    &lt;div class=&#34;leader-portrait&#34;&gt;
+	&lt;img src=&#34;portraits/chloe_snyders.png&#34;&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;leader-name&#34;&gt; Chloe Snyders &lt;/div&gt;
+    &lt;div class=&#34;leader-info&#34;&gt; Winter 2023 &lt;/div&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -2447,9 +2455,7 @@ These astounding professors make MSAIL possible with their advice and support.
 &lt;/div&gt;
 &lt;h2&gt; Admin Team &lt;/h2&gt;
 Our administrative team is responsible for planning MSAIL&#39;s activities
-and holding the organization together. If you would like to help out as
-well, contact Asad via email (asadk@).
-Our &lt;a href=&#34;https://MSAIL.github.io/constitution/&#34;&gt;constitution&lt;/a&gt; codifies our
+and holding the organization together. Our &lt;a href=&#34;https://MSAIL.github.io/constitution/&#34;&gt;constitution&lt;/a&gt; codifies our
 roles. The following details our current admin team&#39;s roles and emails (at umich.edu).
 &lt;!-- &lt;div id=&#34;leader&#34;&gt; &lt;/div&gt; --&gt;
 &lt;div id=&#34;leadership&#34;&gt;
@@ -2479,14 +2485,6 @@ roles. The following details our current admin team&#39;s roles and emails (at u
     &lt;div class=&#34;leader-name&#34;&gt;Michael Moffatt&lt;/div&gt;
     &lt;!-- &lt;div class=&#34;leader-info&#34;&gt; Funding &lt;/div&gt; --&gt;
 	&lt;div class=&#34;leader-info&#34;&gt; mmoffatt@ &lt;/div&gt;
-&lt;/div&gt;
-&lt;!-- Chloe Snyders --&gt;
-&lt;div class=&#34;leader-box&#34;&gt;
-    &lt;div class=&#34;leader-portrait&#34;&gt;
-	&lt;img src=&#34;portraits/chloe_snyders.png&#34;&gt;
-    &lt;/div&gt;
-    &lt;div class=&#34;leader-name&#34;&gt;Chloe Snyders&lt;/div&gt;
-	&lt;div class=&#34;leader-info&#34;&gt; csnyders@ &lt;/div&gt;	
 &lt;/div&gt;
 &lt;!-- Terry Shi --&gt;
 &lt;div class=&#34;leader-box&#34;&gt;
