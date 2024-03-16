@@ -2,28 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://MSAIL.github.io/talk/bnn_041222/</loc>
-    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
+    <loc>https://MSAIL.github.io/tag/alumni/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/authors/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/author/msail/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/tag/msail-tech-talk/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/talk/prasad_210324/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/talk/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/tags/</loc>
+    <lastmod>2024-03-21T19:00:00-04:00</lastmod>
+  </url><url>
+    <loc>https://MSAIL.github.io/talk/bnn_041222/</loc>
     <lastmod>2022-04-12T18:00:00-04:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/binarized-neural-networks/</loc>
     <lastmod>2022-04-12T18:00:00-04:00</lastmod>
   </url><url>
-    <loc>https://MSAIL.github.io/</loc>
-    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://MSAIL.github.io/author/msail/</loc>
-    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
-  </url><url>
     <loc>https://MSAIL.github.io/tag/neural-networks/</loc>
-    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://MSAIL.github.io/talk/</loc>
-    <lastmod>2022-04-12T18:00:00-04:00</lastmod>
-  </url><url>
-    <loc>https://MSAIL.github.io/tags/</loc>
     <lastmod>2022-04-12T18:00:00-04:00</lastmod>
   </url><url>
     <loc>https://MSAIL.github.io/tag/computer-vision/</loc>
