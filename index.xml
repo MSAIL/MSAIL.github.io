@@ -1734,34 +1734,6 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
     </item>
     
     <item>
-      <title>Education</title>
-      <link>https://MSAIL.github.io/education/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://MSAIL.github.io/education/</guid>
-      <description>&lt;p&gt;MSAIL provides different tracks for students of all levels. Explore past material at your own leisure or consider participating in live education sessions taught by our members.&lt;/p&gt;
-&lt;br&gt;
-&lt;h2 id=&#34;tracks&#34;&gt;Tracks&lt;/h2&gt;
-&lt;h4 id=&#34;introduction-to-ml-in-computer-vision&#34;&gt;Introduction to ML in Computer Vision&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;Learn the basics of machine learning&lt;/li&gt;
-&lt;li&gt;Learn about CNNs (Convolutional Neural Networks)&lt;/li&gt;
-&lt;li&gt;Meeting time: 6:30-7:30pm at NUB 1567&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;Learn reinforcement learning from scratch with our curated curriculum.&lt;/li&gt;
-&lt;li&gt;Unique to all major CS/ML clubs&lt;/li&gt;
-&lt;li&gt;Meeting time: 7-8pm at NUB 1567&lt;/li&gt;
-&lt;/ul&gt;
-&lt;br&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;previous-material&#34;&gt;Previous Material&lt;/h2&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://MSAIL.github.io/previous_material/&#34;&gt;Winter 2021 Education&lt;/a&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Joining MSAIL</title>
       <link>https://MSAIL.github.io/join/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1774,6 +1746,25 @@ This MSAIL discussion focused predominantly on three questions addressed in the 
 &lt;h2 id=&#34;leaving-msail&#34;&gt;Leaving MSAIL&lt;/h2&gt;
 &lt;p&gt;If you later wish to leave, simply go to the 
 &lt;a href=&#34;https://mcommunity.umich.edu/#group:Michigan%20Student%20AI%20Lab&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MCommunity&lt;/a&gt; page and click &amp;ldquo;Resign&amp;rdquo;, which will be in the top left corner in place of &amp;ldquo;Join Group&amp;rdquo; in the above photo.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>ML DIscussion</title>
+      <link>https://MSAIL.github.io/education/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://MSAIL.github.io/education/</guid>
+      <description>&lt;p&gt;Building a community to debate all the exciting news from novel models, to disruptful applications, to potential regulation. Hone your presentation skills on challenging topics with optional paper presentations&lt;/p&gt;
+&lt;br&gt;
+&lt;h4 id=&#34;meeting-times&#34;&gt;Meeting Times&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Thursday from 7:00 - 8:00 at NUB 1567&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;previous-material&#34;&gt;Previous Material&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://MSAIL.github.io/previous_material/&#34;&gt;Winter 2021&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
