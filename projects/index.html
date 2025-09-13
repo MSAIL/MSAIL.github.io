@@ -7,820 +7,128 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic 4.8.0">
 
-  
-
-  
-  
-
-  
-  
-  
-  
-  
-    
-    
-    
-  
-  
-
   <meta name="author" content="MSAIL">
+  <meta name="description" content="MSAIL Projects">
 
-  
-  
-  
-    
-  
-  <meta name="description" content="Winter 2024: Building MLP (Multi-layer Perceptron) from scratch using Python Learn how to use python Learn about various machine learning techniques (Perceptron, GD) Have more questions? Contact msail-admin@umich.edu! Meeting time: Projects 7-8pm at NUB 1567 Fall 2023: Car accident prediction Learn how to predict the next car accident in a specific area of the U.">
-
-  
   <link rel="alternate" hreflang="en-us" href="https://MSAIL.github.io/projects/">
 
-  
-
-
-
-
-
-
-
-  
-
-
-
-
-  
-  
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-
-  
-  
-  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <meta name="theme-color" content="#00274c">
-  
 
-  
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
 
-  
-  
-  
-  
-    
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha256-FMvZuGapsJLjouA6k7Eo2lusoAX9i0ShlWFG6qt7SLc=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
-
-    
-    
-    
-      
-    
-    
-      
-      
-        
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
-        
-      
-    
-
-    
-
-    
-
-    
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-        
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-      
-
-      
-      
-
-      
-    
-
-  
-
-  
-  
-  
-    
-      
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Raleway:wght@300&display=swap">
-    
-  
-
-  
-  
-  
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" crossorigin="anonymous" async></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Open+Sans&family=Raleway:wght@300&display=swap">
   <link rel="stylesheet" href="/css/academic.css">
-
-  
-
-
-
-
-  
-
-
-  
-  
-
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="https://msail.github.io/logo-M.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hu375f79164c84f854e796aee07b5a9104_39302_192x192_fill_lanczos_center_3.png">
-
   <link rel="canonical" href="https://MSAIL.github.io/projects/">
 
-  
-  
-  
-  
-  
-  
-  
-    
-  
-  
   <meta property="twitter:card" content="summary_large_image">
-  
   <meta property="og:site_name" content="MSAIL">
   <meta property="og:url" content="https://MSAIL.github.io/projects/">
   <meta property="og:title" content="Projects | MSAIL">
-  <meta property="og:description" content="Winter 2024: Building MLP (Multi-layer Perceptron) from scratch using Python Learn how to use python Learn about various machine learning techniques (Perceptron, GD) Have more questions? Contact msail-admin@umich.edu! Meeting time: Projects 7-8pm at NUB 1567 Fall 2023: Car accident prediction Learn how to predict the next car accident in a specific area of the U."><meta property="og:image" content="https://MSAIL.github.io/media/logo.png">
-  <meta property="twitter:image" content="https://MSAIL.github.io/media/logo.png"><meta property="og:locale" content="en-us">
-  
-    
-    
-  
-
-  
-
-
-
-  
-
-
-  
-
-
-  
-
-
-
-
+  <meta property="og:description" content="Explore current MSAIL projects and initiatives.">
+  <meta property="og:image" content="https://MSAIL.github.io/media/logo.png">
+  <meta property="twitter:image" content="https://MSAIL.github.io/media/logo.png">
+  <meta property="og:locale" content="en-us">
 
   <title>Projects | MSAIL</title>
 
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class=" ">
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents">
 
-  
-  
-  
-  
-    <script>const isSiteThemeDark = false;</script>
-  
-  
+  <script>const isSiteThemeDark = false;</script>
   <script src="/js/load-theme.js"></script>
-
-  <aside class="search-results" id="search">
-  <div class="container">
-    <section class="search-header">
-
-      <div class="row no-gutters justify-content-between mb-3">
-        <div class="col-6">
-          <h1>Search</h1>
-        </div>
-        <div class="col-6 col-search-close">
-          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
-        </div>
-      </div>
-
-      <div id="search-box">
-        
-        
-        
-      </div>
-
-    </section>
-    <section class="section-search-results">
-
-      <div id="search-hits">
-        
-      </div>
-
-    </section>
-  </div>
-</aside>
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
 
-    
     <div class="d-none d-lg-inline-flex">
       <a class="navbar-brand" href="/">MSAIL</a>
     </div>
-    
 
-    
     <button type="button" class="navbar-toggler" data-toggle="collapse"
             data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
     <span><i class="fas fa-bars"></i></span>
     </button>
-    
 
-    
     <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
       <a class="navbar-brand" href="/">MSAIL</a>
     </div>
-    
 
-    
-    
     <div class="navbar-collapse main-menu-item collapse justify-content-end" id="navbar-content">
-
-      
       <ul class="navbar-nav d-md-inline-flex">
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
         <li class="nav-item">
-          <a class="nav-link  active" href="/projects/"><span>Projects</span></a>
+          <a class="nav-link active" href="/projects/"><span>Projects</span></a>
         </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
         <li class="nav-item">
-          <a class="nav-link " href="/resources/"><span>Resources</span></a>
+          <a class="nav-link" href="/resources/"><span>Resources</span></a>
         </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
-        
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
         <li class="nav-item">
-          <a class="nav-link " href="/talk/"><span>Talks</span></a>
+          <a class="nav-link" href="/talk/"><span>Talks</span></a>
         </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
         <li class="nav-item">
-          <a class="nav-link " href="/aboutus/"><span>About Us</span></a>
+          <a class="nav-link" href="/aboutus/"><span>About Us</span></a>
         </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-
-        
-        
-        
-        
-
-        
-          
-            
-            
-          
-          
-        
-
         <li class="nav-item">
-          <a class="nav-link " href="/contact/"><span>Contact</span></a>
+          <a class="nav-link" href="/contact/"><span>Contact</span></a>
         </li>
-
-        
-        
-
-      
-
-        
       </ul>
     </div>
 
-    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
-      
-
-      
-
-      
-
-    </ul>
-
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"></ul>
   </div>
 </nav>
 
-
-
-  <article class="article">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-  
-  
-<div class="article-container pt-3">
-  <h1>Projects</h1>
-
-  
-
-  
-    
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-  
-  
-
-  
-  
-
-</div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-</div>
-
-
+<article class="article">
+  <div class="article-container pt-3">
+    <h1>Projects & Initiatives</h1>
+  </div>
 
   <div class="article-container">
-
     <div class="article-style">
-      <h4 id="winter-2024-building-mlp-multi-layer-perceptron-from-scratch-using-python">Winter 2024: Building MLP (Multi-layer Perceptron) from scratch using Python</h4>
-<ul>
-<li>Learn how to use python</li>
-<li>Learn about various machine learning techniques (Perceptron, GD)</li>
-<li>Have more questions? Contact 
-<a href="mailto:msail-admin@umich.edu">msail-admin@umich.edu</a>!</li>
-<li>Meeting time: Projects 7-8pm at NUB 1567</li>
-</ul>
-<h4 id="fall-2023-car-accident-prediction">Fall 2023: Car accident prediction</h4>
-<ul>
-<li>Learn how to predict the next car accident in a specific area of the U.S.</li>
-<li>You can check out the project material 
-<a href="https://docs.google.com/document/d/1lwHD0Hb50h97z3mJ5uylCEKen8cT61VNl-OxxC5n5IU/edit" target="_blank" rel="noopener">here</a></li>
-<li>Have more questions? Contact kevindw@ or andson@</li>
-</ul>
+
+      <h4 id="transformer-project">Transformer Project</h4>
+      <ul>
+        <li>Replicate the GPT-2 transformer architecture and build into personal project</li>
+        <li>Advanced project, led by <strong>Yuchen Wang</strong></li>
+      </ul>
+
+      <h4 id="cnn-project">CNN Project</h4>
+      <ul>
+        <li>Replicate CNN Architecture from scratch and build into personal project</li>
+        <li>Beginner project, led by <strong>David Smith</strong></li>
+      </ul>
+
+      <h4 id="education">Education</h4>
+      <ul>
+        <!-- <li>Earn certifications from deeplearning.ai</li> -->
+         <li>Earn certifications from <a href="https://www.deeplearning.ai" target="_blank" rel="noopener noreferrer">deeplearning.ai</a></li>
+
+        <li>Open initiative, show up any week, led by <strong>Omkar Nayak</strong></li>
+      </ul>
+
+      <h4 id="ml-news">ML News</h4>
+      <ul>
+        <li>Join in on laid-back paper and machine learning news discussion</li>
+        <li>Open initiative, show up any week, led by <strong>Alex Bowler</strong></li>
+      </ul>
 
     </div>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   </div>
 </article>
 
-      
-
-    
-    
-    
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" integrity="sha512-1+qUtKoh9XZW7j+6LhRMAyOrgSQKenQ4mluTR+cvxXjP1Z54RxZuzstR/H9kgPXQsVB8IW7DMDFUJpzLjvhGSQ==" crossorigin="anonymous"></script>
-
-      
-
-      
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" integrity="sha512-7t8APmYpzEsZP7CYoA7RfMPV9Bb+PJHa9x2WiUnDXZx3XHveuyWUtvNOexhkierl5flZ3tr92dP1mMS+SGlD+A==" crossorigin="anonymous"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/python.min.js"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
-        
-      
-
-    
-
-    
-    
-
-    
-    
-    <script>const code_highlighting = true;</script>
-    
-
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-
-    
-    
-
-    
-    
-
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <script src="/js/academic.min.e7a9a04501a4ddef5a9a9b69c569bc27.js"></script>
-
-    
-
-
-
-
-
-
-  
-  
-  <div class="container">
-    <footer class="site-footer">
-  
-
-  <p class="powered-by">
-    
-  </p>
-
-  
-  
-
-
-
-
-
-
-  <p class="powered-by">
-    
-    Copyright MSAIL 2023. 
-    
-
-    
+<div class="container">
+  <footer class="site-footer">
+    <p class="powered-by">Copyright MSAIL 2023.</p>
     <span class="float-right" aria-hidden="true">
       <a href="#" class="back-to-top">
         <span class="button_icon">
@@ -828,38 +136,19 @@
         </span>
       </a>
     </span>
-    
-  </p>
-</footer>
-
-  </div>
-  
-
-  
-<div id="modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Cite</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <pre><code class="tex hljs"></code></pre>
-      </div>
-      <div class="modal-footer">
-        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
-          <i class="fas fa-copy"></i> Copy
-        </a>
-        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
-          <i class="fas fa-download"></i> Download
-        </a>
-        <div id="modal-error"></div>
-      </div>
-    </div>
-  </div>
+  </footer>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.1.0/instantpage.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/languages/r.min.js"></script>
+<script>const code_highlighting = true;</script>
+<script src="/js/academic.min.e7a9a04501a4ddef5a9a9b69c569bc27.js"></script>
 
 </body>
 </html>
