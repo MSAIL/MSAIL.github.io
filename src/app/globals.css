@@ -290,45 +290,15 @@
 }
 
 /* =============================================================================
-   View transitions + reduced motion (wired to components in the shell layer).
+   Reduced motion — the page transition (rise) and all hover motion collapse.
    ============================================================================= */
-
-/* Default cross-route feel: content crossfades and rises; chrome stays put. */
-::view-transition-old(root) {
-  animation: 180ms var(--ease-standard) both fade-out;
-}
-::view-transition-new(root) {
-  animation: 320ms var(--ease-expo) 60ms both fade-in-rise;
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-  }
-}
-@keyframes fade-in-rise {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(*),
-  ::view-transition-new(*),
-  ::view-transition-group(*) {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
-  }
   *,
   ::before,
   ::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
