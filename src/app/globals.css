@@ -1,171 +1,128 @@
 @import "tailwindcss";
 
 /* =============================================================================
-   MSAIL design tokens  ·  "Structural Editorial" — an AI research lab's annual
-   report rendered in the dark. Dark-mode-first.
+   MSAIL design tokens  ·  "Michigan research-editorial"
+   A serious student AI lab with collegiate color confidence. SINGLE LIGHT THEME.
 
-   Edit DESIGN here, content lives in src/data + MDX. The whole visual language
-   is these tokens: change a value here and it propagates through every utility
-   (bg-canvas, text-maize, font-display, text-h1, ease-expo, …).
+   Identity: U-M Blue #00274C (dominant structural color — real navy fields/bands)
+   + U-M Maize #FFCB05 (bold accent — thick rules, big type accents, highlights)
+   on a warm paper base #F7F4EC. Maize is text ONLY on navy fields.
 
-   Anchors: U-M Navy #00274C (structural base) · U-M Maize #FFCB05 (single sharp
-   accent, used as punctuation — never a fill) · cool navy-derived near-black canvas.
+   Edit DESIGN here; content lives in src/data + (later) MDX.
    ============================================================================= */
 
-/* --- Fonts: one variable grotesk (Archivo, normal + expanded width) + a clean
-       lab mono (IBM Plex Mono). Inlined so utilities point straight at the
-       next/font runtime variables set on <html>. --------------------------- */
 @theme inline {
-  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", "SFMono-Regular", monospace;
 }
 
-/* --- Everything else. Colors are emitted as --color-* on :root so the light
-       theme can override them; dark is the default (no class needed). -------- */
 @theme {
-  /* Surfaces — cool, navy-derived near-black ladder */
-  --color-canvas: #070a0f;
-  --color-canvas-deep: #04060a;
-  --color-surface: #0b0f16;
-  --color-surface-raised: #111726;
+  /* --- Surfaces ----------------------------------------------------------- */
+  --color-paper: #f7f4ec; /* warm paper — the page background */
+  --color-paper-deep: #efeadd; /* slightly deeper warm tone for subtle blocks */
+  --color-paper-raised: #fffdf7; /* lifted card on paper */
 
-  /* Michigan navy — the structural base */
+  /* --- Michigan blue — the dominant structural color ---------------------- */
   --color-navy: #00274c;
-  --color-navy-deep: #001830;
-  --color-navy-tint: #0a3a66;
+  --color-navy-deep: #001a33; /* footer base / navy-on-navy depth */
+  --color-navy-soft: #16395e; /* lifted navy: cards/hover on a navy field */
 
-  /* Michigan maize — the single sharp accent (punctuation only) */
+  /* --- Michigan maize — the bold accent ----------------------------------- */
   --color-maize: #ffcb05;
-  --color-maize-soft: #f0c24a;
-  --color-maize-dim: rgba(255, 203, 5, 0.14);
+  --color-maize-deep: #f0b400; /* maize hover/pressed */
 
-  /* Text */
-  --color-foreground: #eef1f6;
-  --color-on-navy: #f3f6fb;
-  --color-muted: #9aa6b8;
-  --color-faint: #5c677a;
+  /* --- Text --------------------------------------------------------------- */
+  --color-ink: #0a1a2f; /* deep-navy ink — primary text on paper */
+  --color-muted: #44546a; /* secondary text on paper */
+  --color-faint: #6e7c8f; /* meta / eyebrow on paper */
+  --color-on-navy: #f4efe2; /* cream text on navy fields */
+  --color-on-navy-muted: #aec1d6; /* secondary text on navy */
 
-  /* Lines — the signature hairline grid */
-  --color-border: rgba(154, 166, 184, 0.16);
-  --color-border-strong: rgba(154, 166, 184, 0.32);
-  --color-grid: rgba(10, 58, 102, 0.16);
+  /* --- Lines -------------------------------------------------------------- */
+  --color-border: rgba(0, 39, 76, 0.16); /* hairline on paper */
+  --color-border-strong: rgba(0, 39, 76, 0.32);
+  --color-border-on-navy: rgba(244, 239, 226, 0.18); /* hairline on navy */
 
-  /* Signals */
-  --color-ring: #ffcb05;
-  --color-selection: rgba(255, 203, 5, 0.22);
-  --color-positive: #5fd0a6;
-  --color-warning: #e8a13c;
+  /* --- Signals ------------------------------------------------------------ */
+  --color-ring: #00274c;
+  --color-selection-bg: #ffcb05;
+  --color-selection-fg: #00274c;
 
-  /* Type scale — a wide, confident range. Big jumps so each view has one
-     typographic protagonist. Display steps clamp so they never clip on mobile. */
+  /* --- Type scale — Fraunces display (serif) + grotesk text + mono labels.
+         Editorial: confident, high-contrast, generous. ---------------------- */
   --text-eyebrow: 0.75rem;
   --text-eyebrow--line-height: 1.1;
-  --text-eyebrow--letter-spacing: 0.22em;
+  --text-eyebrow--letter-spacing: 0.2em;
   --text-eyebrow--font-weight: 500;
 
   --text-meta: 0.8125rem;
-  --text-meta--line-height: 1.4;
+  --text-meta--line-height: 1.45;
   --text-meta--letter-spacing: 0.02em;
 
-  --text-label: 0.875rem;
+  --text-label: 0.9375rem;
   --text-label--line-height: 1.3;
-  --text-label--letter-spacing: 0.04em;
   --text-label--font-weight: 500;
 
   --text-body: 1.0625rem;
-  --text-body--line-height: 1.6;
+  --text-body--line-height: 1.65;
 
   --text-lead: 1.375rem;
-  --text-lead--line-height: 1.5;
+  --text-lead--line-height: 1.55;
   --text-lead--letter-spacing: -0.005em;
 
-  --text-h3: 1.5rem;
-  --text-h3--line-height: 1.25;
+  --text-h3: 1.75rem;
+  --text-h3--line-height: 1.18;
   --text-h3--letter-spacing: -0.01em;
   --text-h3--font-weight: 600;
 
-  --text-h2: 2.25rem;
-  --text-h2--line-height: 1.12;
-  --text-h2--letter-spacing: -0.02em;
-  --text-h2--font-weight: 700;
+  --text-h2: 2.5rem;
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.014em;
+  --text-h2--font-weight: 600;
 
-  --text-h1: clamp(2.5rem, 6vw, 3.5rem);
+  --text-h1: clamp(2.75rem, 6vw, 4rem);
   --text-h1--line-height: 1.04;
-  --text-h1--letter-spacing: -0.022em;
-  --text-h1--font-weight: 700;
+  --text-h1--letter-spacing: -0.018em;
+  --text-h1--font-weight: 600;
 
-  --text-display: clamp(3rem, 8vw, 5rem);
+  --text-display: clamp(3.25rem, 8vw, 6rem);
   --text-display--line-height: 1;
-  --text-display--letter-spacing: -0.028em;
-  --text-display--font-weight: 800;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 600;
 
-  --text-mega: clamp(3.5rem, 12vw, 7.5rem);
+  --text-mega: clamp(3.75rem, 12vw, 8.5rem);
   --text-mega--line-height: 0.94;
-  --text-mega--letter-spacing: -0.032em;
-  --text-mega--font-weight: 800;
+  --text-mega--letter-spacing: -0.022em;
+  --text-mega--font-weight: 700;
 
-  /* Named spacing — the editorial rhythm (8px base grid) */
+  /* --- Editorial rhythm (8px base) ---------------------------------------- */
   --spacing-gutter: 1.5rem;
-  --spacing-section: 8rem;
+  --spacing-section: 7rem;
   --spacing-section-sm: 4rem;
 
-  /* Page measures */
-  --container-page: 75rem;
-  --container-bleed: 90rem;
-  --container-prose: 42rem;
+  --container-page: 72rem;
+  --container-bleed: 88rem;
+  --container-prose: 40rem;
 
-  /* Near-square radii */
+  /* Near-square radii — editorial color blocks read as crisp rectangles. */
   --radius-sm: 2px;
   --radius-md: 4px;
-  --radius-lg: 6px;
-  --radius-xl: 10px;
+  --radius-lg: 8px;
 
-  /* Motion — precise instrument, never bouncy */
+  /* Restrained motion. */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-
-  --animate-rise: rise 0.5s var(--ease-expo) both;
-  --animate-draw: draw 0.32s cubic-bezier(0.65, 0, 0.35, 1) both;
+  --animate-rise: rise 0.42s var(--ease-expo) both;
 }
 
-/* --- Light theme (secondary). Cool paper + navy ink; brand colors hold. ----- */
-:root[data-theme="light"] {
-  color-scheme: light;
-  --color-canvas: #f1f3f7;
-  --color-canvas-deep: #e6eaf1;
-  --color-surface: #ffffff;
-  --color-surface-raised: #ffffff;
-  --color-navy-tint: #1f5b97;
-  --color-maize-soft: #9a6f06;
-  --color-maize-dim: rgba(255, 203, 5, 0.3);
-  --color-foreground: #07111f;
-  --color-on-navy: #f3f6fb;
-  --color-muted: #475264;
-  --color-faint: #6b7686;
-  --color-border: rgba(0, 39, 76, 0.14);
-  --color-border-strong: rgba(0, 39, 76, 0.26);
-  --color-grid: rgba(0, 39, 76, 0.06);
-}
-
-/* --- Keyframes ------------------------------------------------------------- */
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes draw {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
   }
 }
 
@@ -174,7 +131,7 @@
    ============================================================================= */
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   *,
@@ -189,19 +146,18 @@
   }
 
   body {
-    background-color: var(--color-canvas);
-    color: var(--color-foreground);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: 1.6;
-    font-feature-settings: "ss01", "cv01";
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
-    background-color: var(--color-selection);
-    color: var(--color-foreground);
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-fg);
   }
 
   :focus-visible {
@@ -210,24 +166,29 @@
     border-radius: var(--radius-sm);
   }
 
+  /* On navy fields the navy focus ring is invisible — switch it to maize. */
+  .navy-field :focus-visible {
+    outline-color: var(--color-maize);
+  }
+
   a {
     color: inherit;
     text-decoration: none;
   }
 
-  /* Subtle, on-brand scrollbar */
+  /* Warm, subtle scrollbar tuned to paper. */
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--color-border-strong) transparent;
   }
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--color-border-strong);
     border-radius: 999px;
-    border: 3px solid var(--color-canvas);
+    border: 3px solid var(--color-paper);
   }
   ::-webkit-scrollbar-track {
     background: transparent;
@@ -235,34 +196,44 @@
 }
 
 /* =============================================================================
-   Design-language utilities (composable, keep components clean)
+   Design-language utilities
    ============================================================================= */
 
-/* The wide structural masthead: same Archivo family, expanded width axis. */
-@utility expanded {
-  font-stretch: 125%;
+/* The characterful display serif — Fraunces at maximum optical size for the
+   dramatic high-contrast cut. Pair with text-display / text-h1 / text-mega. */
+@utility font-display {
+  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-variation-settings: "opsz" 144;
 }
 
-/* Mono eyebrow / kicker — the recurring "data-sheet" label voice. */
+/* Mono eyebrow / kicker — typography only; set the color at the call site
+   (text-faint on paper, text-maize / text-on-navy on a navy field). */
 @utility eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-eyebrow);
   line-height: 1.1;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--color-faint);
 }
 
-/* Faint navy graph-paper — engineered coordinate texture, sensed not loud. */
-@utility grid-paper {
-  background-image:
-    linear-gradient(to right, var(--color-grid) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-grid) 1px, transparent 1px);
-  background-size: 2rem 2rem;
+/* A full navy color-block: cream text, navy background. */
+@utility navy-field {
+  background-color: var(--color-navy);
+  color: var(--color-on-navy);
 }
 
-/* Page container: centered measure + responsive gutters. */
+/* The maize highlight: a bold marker behind a word; navy text stays legible.
+   This is how maize "appears" in text on paper (never as a maize text color). */
+@utility maize-highlight {
+  background-color: var(--color-maize);
+  color: var(--color-navy);
+  padding-inline: 0.1em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Centered measure + responsive gutters. */
 @utility container-page {
   width: 100%;
   max-width: var(--container-page);
@@ -270,7 +241,7 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* Wider "bleed" frame that carries hairline rules / margin section numbers. */
+/* Wider "bleed" frame for the editorial grid + masthead. */
 @utility container-bleed {
   width: 100%;
   max-width: var(--container-bleed);
@@ -278,19 +249,8 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* The maize "period": one rationed accent square used as terminal punctuation. */
-@utility maize-period {
-  display: inline-block;
-  width: 0.32em;
-  height: 0.32em;
-  margin-left: 0.18em;
-  vertical-align: baseline;
-  background-color: var(--color-maize);
-  border-radius: 1px;
-}
-
 /* =============================================================================
-   Reduced motion — the page transition (rise) and all hover motion collapse.
+   Reduced motion — page transition (rise) + hover motion collapse.
    ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,

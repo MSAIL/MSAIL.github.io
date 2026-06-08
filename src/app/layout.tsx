@@ -1,30 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { Fraunces, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageTransition } from "@/components/page-transition";
 
-/**
- * No-FOUC theme init: applies a saved "light" choice before first paint. Dark
- * is the default, so the common case needs no work and never flashes.
- */
-const themeInit = `(function(){try{var t=localStorage.getItem('msail-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}else{document.documentElement.removeAttribute('data-theme');}}catch(e){}})();`;
-
-/**
- * One variable grotesk for the whole site. Archivo ships a width axis (wdth
- * 62–125), so the same family covers body text (normal width) and the wide
- * "expanded" display masthead via `font-stretch: 125%` (see the `expanded`
- * utility in globals.css). One family, two voices.
- */
-const archivo = Archivo({
+/** Display: characterful editorial serif, with the optical-size axis enabled so
+ *  big headlines get Fraunces' dramatic high-contrast cut (see globals.css). */
+const fraunces = Fraunces({
   subsets: ["latin"],
-  axes: ["wdth"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-archivo",
+  variable: "--font-fraunces",
 });
 
-/** A genuinely clean lab mono for eyebrows, labels, section numbers, and meta. */
+/** Text: a clean, warm grotesk. */
+const hanken = Hanken_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-hanken",
+});
+
+/** Labels / metadata. */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -59,8 +57,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070a0f",
-  colorScheme: "dark light",
+  themeColor: "#00274c",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -71,14 +69,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${plexMono.variable} h-full antialiased`}
-      suppressHydrationWarning
+      className={`${fraunces.variable} ${hanken.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-sm focus:border focus:border-border focus:bg-surface focus:px-4 focus:py-2 focus:text-label focus:text-foreground"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-sm focus:border focus:border-border focus:bg-paper-raised focus:px-4 focus:py-2 focus:text-label focus:text-ink"
         >
           Skip to content
         </a>

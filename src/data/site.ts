@@ -91,3 +91,29 @@ export const footerColumns: { title: string; links: { label: string; href: strin
     ],
   },
 ];
+
+/**
+ * Homepage hero content. The headline is stored as styled segments so a
+ * maintainer can edit the copy (and which words get the maize highlight / serif
+ * italic) without touching the component.
+ */
+export type HeadlineSegment = { text: string; emphasis?: "highlight" | "italic" };
+
+export const home = {
+  eyebrow: "Michigan Student AI Lab",
+  location: "Ann Arbor, Michigan",
+  stat: "400+ members",
+  headline: [
+    { text: "A " },
+    { text: "student", emphasis: "highlight" },
+    { text: " lab for " },
+    { text: "artificial intelligence", emphasis: "italic" },
+    { text: "." },
+  ] satisfies HeadlineSegment[],
+  lead: site.tagline,
+  pillars: [
+    { index: "01", label: "Research", blurb: "Reading groups and replication projects." },
+    { index: "02", label: "Education", blurb: "Talks, tutorials, and a curated library." },
+    { index: "03", label: "Application", blurb: "Hands-on builds, from CNNs to transformers." },
+  ],
+} as const;

@@ -1,8 +1,8 @@
 /**
- * Shared route scaffold for the shell. Renders a page's masthead (mono section
- * index + maize accent, expanded display title, optional lead) and an explicit
- * "in progress" state with a pulsing maize signal dot. Real page sections will
- * replace the placeholder body later — this only proves the shell across routes.
+ * Shared route scaffold for the shell: a mono section index, a thick maize rule,
+ * an expanded serif title, optional lead, and an explicit "in progress" note.
+ * Real page sections replace the placeholder body later — this only proves the
+ * shell renders consistently across routes.
  */
 export function PlaceholderPage({
   index,
@@ -19,26 +19,17 @@ export function PlaceholderPage({
 }) {
   return (
     <section className="container-bleed flex flex-1 flex-col py-section-sm sm:py-section">
-      <p className="eyebrow">
-        <span className="text-maize">{index}</span>
-        <span className="mx-2 text-border-strong">/</span>
-        {eyebrow}
+      <p className="eyebrow text-faint">
+        {index} — {eyebrow}
       </p>
 
-      <h1 className="expanded mt-5 max-w-[18ch] text-h1 font-bold text-foreground">
-        {title}
-        <span className="maize-period" aria-hidden />
-      </h1>
+      <div className="mt-5 h-1 w-16 bg-maize" />
+
+      <h1 className="font-display mt-7 max-w-[18ch] text-h1 font-semibold text-ink">{title}</h1>
 
       {lead ? <p className="mt-6 max-w-prose text-lead text-muted">{lead}</p> : null}
 
-      <div className="mt-12 flex items-center gap-3 border-t border-border pt-6">
-        <span
-          className="inline-block h-1.5 w-1.5 rounded-full bg-maize motion-safe:animate-pulse"
-          aria-hidden
-        />
-        <p className="eyebrow text-faint">{note}</p>
-      </div>
+      <p className="eyebrow mt-12 border-t border-border pt-6 text-faint">{note}</p>
     </section>
   );
 }
