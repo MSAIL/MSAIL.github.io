@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# internal planning / working docs + agent instructions (not part of the
+# published site; kept locally only)
+ANALYSIS.md
+CONTENT.md
+AGENTS.md
+CLAUDE.md
