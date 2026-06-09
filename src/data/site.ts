@@ -17,7 +17,7 @@ export type NavLink = {
 };
 
 export type Channel = {
-  key: "slack" | "maizepages" | "instagram" | "email";
+  key: "slack" | "maizepages" | "instagram" | "linkedin" | "email";
   label: string;
   /** The human-readable handle/address shown in mono. */
   value: string;
@@ -67,6 +67,12 @@ export const site = {
       label: "Instagram",
       value: "@michiganailab",
       href: "https://www.instagram.com/michiganailab/",
+    },
+    {
+      key: "linkedin",
+      label: "LinkedIn",
+      value: "company/msail1",
+      href: "https://www.linkedin.com/company/msail1/",
     },
     {
       key: "email",
