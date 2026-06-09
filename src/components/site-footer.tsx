@@ -34,12 +34,12 @@ export function SiteFooter() {
           {footerColumns.map((col) => (
             <nav key={col.title} aria-label={col.title} className="flex flex-col gap-4">
               <ColTitle>{col.title}</ColTitle>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-label text-on-navy-muted transition-colors hover:text-maize"
+                      className="flex min-h-11 w-fit min-w-11 items-center text-label text-on-navy-muted transition-colors hover:text-maize"
                     >
                       {link.label}
                     </Link>
@@ -52,7 +52,7 @@ export function SiteFooter() {
           {/* Channels */}
           <div className="flex flex-col gap-4">
             <ColTitle>Connect</ColTitle>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-1">
               {site.channels.map((c) => (
                 <li key={c.key} className="flex flex-col">
                   <a
@@ -60,12 +60,12 @@ export function SiteFooter() {
                     target={c.key === "email" ? undefined : "_blank"}
                     rel="noopener noreferrer"
                     aria-label={channelAriaLabel(c)}
-                    className="flex items-center gap-2 text-label text-on-navy transition-colors hover:text-maize"
+                    className="inline-flex min-h-11 items-center gap-2 text-label text-on-navy transition-colors hover:text-maize"
                   >
                     <ChannelIcon name={c.key} className="h-4 w-4 shrink-0" />
                     {c.label}
                   </a>
-                  <span className="ml-6 font-mono text-meta text-on-navy-muted">{c.value}</span>
+                  <span className="ml-6 -mt-1 font-mono text-meta text-on-navy-muted">{c.value}</span>
                 </li>
               ))}
             </ul>

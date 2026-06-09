@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { site } from "@/data/site";
@@ -38,6 +38,10 @@ function NavLink({ href, label }: { href: string; label: string }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const isActive = useIsActive();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  const close = useCallback(() => setOpen(false), []);
 
   // Lock scroll while the mobile overlay is open.
   useEffect(() => {
@@ -46,6 +50,51 @@ export function SiteHeader() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  // Modal behavior: move focus into the dialog on open, trap Tab inside it,
+  // close on Escape, and restore focus to the trigger on close.
+  useEffect(() => {
+    if (!open) return;
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+    const trigger = triggerRef.current; // persistent header button to restore focus to
+
+    const focusables = () =>
+      Array.from(
+        overlay.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((el) => el.offsetParent !== null);
+
+    focusables()[0]?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        close();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && (active === first || !overlay.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      trigger?.focus();
+    };
+  }, [open, close]);
 
   return (
     <header className="sticky top-0 z-50">
@@ -62,17 +111,23 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <CtaLink href={site.cta.href} className="hidden sm:inline-flex">
-              {site.cta.label}
-              <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-            </CtaLink>
+          <div className="flex items-center gap-2">
+            {/* Wrapper owns `hidden` so it isn't fighting CtaLink's base
+                `inline-flex`; the Join CTA only appears at >= sm. */}
+            <span className="hidden sm:inline-flex">
+              <CtaLink href={site.cta.href}>
+                {site.cta.label}
+                <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </CtaLink>
+            </span>
             <button
+              ref={triggerRef}
               type="button"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border-strong text-ink transition-colors hover:bg-paper-deep lg:hidden"
+              aria-haspopup="dialog"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-border-strong text-ink transition-colors hover:bg-paper-deep lg:hidden"
             >
               <MenuIcon className="h-5 w-5" />
             </button>
@@ -82,15 +137,21 @@ export function SiteHeader() {
 
       {/* Mobile overlay menu */}
       {open ? (
-        <div className="fixed inset-0 z-50 flex flex-col bg-paper lg:hidden">
+        <div
+          ref={overlayRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site menu"
+          className="fixed inset-0 z-50 flex flex-col bg-paper lg:hidden"
+        >
           <div className="h-1 bg-maize" />
           <div className="container-bleed flex h-18 items-center justify-between border-b border-border py-3">
             <Wordmark />
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={close}
               aria-label="Close menu"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-border-strong text-ink transition-colors hover:bg-paper-deep"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-border-strong text-ink transition-colors hover:bg-paper-deep"
             >
               <CloseIcon className="h-5 w-5" />
             </button>
@@ -100,7 +161,7 @@ export function SiteHeader() {
           <nav
             className="container-bleed flex flex-1 flex-col overflow-y-auto py-8"
             aria-label="Mobile"
-            onClick={() => setOpen(false)}
+            onClick={close}
           >
             {site.nav.map((link) => (
               <Link
@@ -119,7 +180,7 @@ export function SiteHeader() {
                 {site.cta.label} MSAIL
                 <ArrowIcon className="h-4 w-4" />
               </CtaLink>
-              <div className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-meta text-muted">
+              <div className="-mx-2 flex flex-wrap font-mono text-meta text-muted">
                 {site.channels.map((c) => (
                   <a
                     key={c.key}
@@ -127,9 +188,9 @@ export function SiteHeader() {
                     target={c.key === "email" ? undefined : "_blank"}
                     rel="noopener noreferrer"
                     aria-label={channelAriaLabel(c)}
-                    className="flex items-center gap-1.5 transition-colors hover:text-ink"
+                    className="inline-flex min-h-11 items-center gap-2 px-2 transition-colors hover:text-ink"
                   >
-                    <ChannelIcon name={c.key} className="h-4 w-4" />
+                    <ChannelIcon name={c.key} className="h-4 w-4 shrink-0" />
                     {c.label}
                   </a>
                 ))}

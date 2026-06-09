@@ -34,7 +34,7 @@ export function CtaLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center gap-2 rounded-sm px-5 py-2.5 text-label font-medium transition-colors duration-200 ease-standard ${VARIANTS[variant]} ${className}`}
+      className={`group inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-5 py-2.5 text-label font-medium transition-colors duration-200 ease-standard ${VARIANTS[variant]} ${className}`}
       {...externalProps}
     >
       {children}

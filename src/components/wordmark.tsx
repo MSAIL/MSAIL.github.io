@@ -20,7 +20,7 @@ export function Wordmark({
     <Link
       href="/"
       aria-label={`${site.name}, home`}
-      className={`group inline-flex flex-col ${className}`}
+      className={`group inline-flex min-h-11 flex-col justify-center ${className}`}
     >
       {/* Mark + wordmark share one centered row, so the M is vertically centered
           against the MSAIL cap line in both the (single-line) header and the
