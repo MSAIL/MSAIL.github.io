@@ -7,6 +7,7 @@ import { site } from "@/data/site";
 import { Wordmark } from "./wordmark";
 import { CtaLink } from "./cta-link";
 import { ArrowIcon, MenuIcon, CloseIcon } from "./icons";
+import { ChannelIcon, channelAriaLabel } from "./channel-icon";
 
 function useIsActive() {
   const pathname = usePathname();
@@ -118,15 +119,17 @@ export function SiteHeader() {
                 {site.cta.label} MSAIL
                 <ArrowIcon className="h-4 w-4" />
               </CtaLink>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-meta text-muted">
+              <div className="flex flex-wrap gap-x-6 gap-y-3 font-mono text-meta text-muted">
                 {site.channels.map((c) => (
                   <a
                     key={c.key}
                     href={c.href}
                     target={c.key === "email" ? undefined : "_blank"}
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-ink"
+                    aria-label={channelAriaLabel(c)}
+                    className="flex items-center gap-1.5 transition-colors hover:text-ink"
                   >
+                    <ChannelIcon name={c.key} className="h-4 w-4" />
                     {c.label}
                   </a>
                 ))}

@@ -3,6 +3,7 @@ import { site, footerColumns } from "@/data/site";
 import { Wordmark } from "./wordmark";
 import { CtaLink } from "./cta-link";
 import { ArrowIcon } from "./icons";
+import { ChannelIcon, channelAriaLabel } from "./channel-icon";
 
 /** Small footer column heading (sans caps, not the old mono kicker pattern). */
 function ColTitle({ children }: { children: React.ReactNode }) {
@@ -58,11 +59,13 @@ export function SiteFooter() {
                     href={c.href}
                     target={c.key === "email" ? undefined : "_blank"}
                     rel="noopener noreferrer"
-                    className="text-label text-on-navy transition-colors hover:text-maize"
+                    aria-label={channelAriaLabel(c)}
+                    className="flex items-center gap-2 text-label text-on-navy transition-colors hover:text-maize"
                   >
+                    <ChannelIcon name={c.key} className="h-4 w-4 shrink-0" />
                     {c.label}
                   </a>
-                  <span className="font-mono text-meta text-on-navy-muted">{c.value}</span>
+                  <span className="ml-6 font-mono text-meta text-on-navy-muted">{c.value}</span>
                 </li>
               ))}
             </ul>
