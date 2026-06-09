@@ -9,12 +9,6 @@
  * Sources of truth: CONTENT.md (live-site inventory) + official U-M brand.
  */
 
-/**
- * Display typeface switch. "bricolage" = Bricolage Grotesque (bold, default),
- * "space" = Space Grotesk. Change this one value and reload to compare.
- */
-export const displayFont: "bricolage" | "space" = "bricolage";
-
 export type NavLink = {
   label: string;
   href: `/${string}`;
@@ -23,7 +17,7 @@ export type NavLink = {
 };
 
 export type Channel = {
-  key: "slack" | "mcommunity" | "email";
+  key: "slack" | "maizepages" | "instagram" | "email";
   label: string;
   /** The human-readable handle/address shown in mono. */
   value: string;
@@ -34,8 +28,8 @@ export const site = {
   name: "MSAIL",
   longName: "Michigan Student Artificial Intelligence Lab",
   university: "University of Michigan",
-  /** First MSAIL events ran in early 2016 (per the legacy event archive). */
-  foundedYear: 2016,
+  /** MSAIL was founded in 2008 (per the founder). */
+  foundedYear: 2008,
 
   tagline: "A student community for AI research at the University of Michigan.",
   mission:
@@ -60,13 +54,19 @@ export const site = {
       key: "slack",
       label: "Slack",
       value: "msail-team",
-      href: "https://join.slack.com/t/msail-team/signup",
+      href: "https://msail-team.slack.com/join/shared_invite/zt-2amxfx9xj-Twwm6uuT1YCuBfKXn62v8Q",
     },
     {
-      key: "mcommunity",
-      label: "MCommunity",
+      key: "maizepages",
+      label: "Maize Pages",
       value: "Michigan Student AI Lab",
-      href: "https://mcommunity.umich.edu",
+      href: "https://maizepages.umich.edu/organization/msail",
+    },
+    {
+      key: "instagram",
+      label: "Instagram",
+      value: "@michiganailab",
+      href: "https://www.instagram.com/michiganailab/",
     },
     {
       key: "email",
@@ -106,5 +106,5 @@ export const home = {
     { label: "Join MSAIL", href: "/join", variant: "primary" as const },
     { label: "Sponsor / work with us", href: "/sponsors", variant: "ghost" as const },
   ],
-  affiliation: ["University of Michigan", "Ann Arbor, Michigan", "Established 2016"],
+  affiliation: ["University of Michigan", "Ann Arbor, Michigan", "Established 2008"],
 } as const;

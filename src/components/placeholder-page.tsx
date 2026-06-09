@@ -7,10 +7,12 @@ export function PlaceholderPage({
   title,
   lead,
   note = "This section is in progress. Content lands here next.",
+  children,
 }: {
   title: string;
   lead?: string;
   note?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <section className="container-bleed flex flex-1 flex-col py-section-sm sm:py-section">
@@ -19,6 +21,8 @@ export function PlaceholderPage({
       <h1 className="font-display mt-7 max-w-[18ch] text-h1 font-extrabold text-ink">{title}</h1>
 
       {lead ? <p className="mt-6 max-w-prose text-lead text-muted">{lead}</p> : null}
+
+      {children}
 
       <p className="mt-12 border-t border-border pt-6 text-meta text-faint">{note}</p>
     </section>

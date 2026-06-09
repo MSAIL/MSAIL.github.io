@@ -8,12 +8,12 @@
    plus U-M Maize #FFCB05 (bold accent: thick rules, big type accents, highlights)
    on a warm paper base #F7F4EC. Maize is text ONLY on navy fields.
 
-   Display face is switchable from the data layer (Bricolage Grotesque by default,
-   Space Grotesk as the alternative). Edit DESIGN here; content lives in src/data.
+   Type: Syne (display headlines + wordmark, used heavy) + Montserrat (body/UI) +
+   IBM Plex Mono (small labels). Edit DESIGN here; content lives in src/data.
    ============================================================================= */
 
 @theme inline {
-  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", "SFMono-Regular", monospace;
 }
 
@@ -77,18 +77,18 @@
   --text-h2--font-weight: 700;
 
   --text-h1: clamp(2.75rem, 6vw, 4.25rem);
-  --text-h1--line-height: 1.01;
-  --text-h1--letter-spacing: -0.026em;
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.02em;
   --text-h1--font-weight: 800;
 
   --text-display: clamp(3.25rem, 8.5vw, 6.5rem);
-  --text-display--line-height: 0.97;
-  --text-display--letter-spacing: -0.032em;
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.022em;
   --text-display--font-weight: 800;
 
   --text-mega: clamp(3.75rem, 13vw, 9rem);
-  --text-mega--line-height: 0.92;
-  --text-mega--letter-spacing: -0.036em;
+  --text-mega--line-height: 0.93;
+  --text-mega--letter-spacing: -0.026em;
   --text-mega--font-weight: 800;
 
   /* --- Editorial rhythm (8px base) ---------------------------------------- */
@@ -195,11 +195,10 @@
    Design-language utilities
    ============================================================================= */
 
-/* The bold display grotesk. Family resolves from --font-display-active, set on
-   <html> from the data layer (Bricolage Grotesque default, Space Grotesk alt). */
+/* The display face: Syne, used heavy, for personality. Falls back to the body
+   grotesk (Montserrat) then the system stack. */
 @utility font-display {
-  font-family: var(--font-display-active, var(--font-bricolage)), var(--font-hanken),
-    system-ui, sans-serif;
+  font-family: var(--font-syne), var(--font-montserrat), system-ui, sans-serif;
 }
 
 /* A full navy color-block: cream text, navy background. */

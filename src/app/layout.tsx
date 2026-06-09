@@ -1,44 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import type { CSSProperties } from "react";
-import { Bricolage_Grotesque, Space_Grotesk, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import { Montserrat, Syne, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import { displayFont } from "@/data/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageTransition } from "@/components/page-transition";
 
-/* Display option A (default): a bold grotesk with real character. Used heavy. */
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  display: "swap",
-  variable: "--font-bricolage",
-});
-
-/* Display option B: the alternative. Flip via `displayFont` in src/data/site.ts. */
-const spaceGrotesk = Space_Grotesk({
+/* Body + UI text: clean, legible, geometric. */
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
+  variable: "--font-montserrat",
 });
 
-/* Text: a clean, warm grotesk. */
-const hanken = Hanken_Grotesk({
+/* Display headlines + the MSAIL wordmark: Syne, used heavy, for personality. */
+const syne = Syne({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-hanken",
+  variable: "--font-syne",
 });
 
-/* Small labels / metadata. */
+/* Small metadata labels. */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   display: "swap",
   variable: "--font-plex-mono",
 });
-
-const displayFamily =
-  displayFont === "space" ? "var(--font-space-grotesk)" : "var(--font-bricolage)";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://msail.github.io"),
@@ -83,8 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${spaceGrotesk.variable} ${hanken.variable} ${plexMono.variable} h-full antialiased`}
-      style={{ "--font-display-active": displayFamily } as CSSProperties}
+      className={`${montserrat.variable} ${syne.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a
