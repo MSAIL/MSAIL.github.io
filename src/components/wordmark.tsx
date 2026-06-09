@@ -20,33 +20,41 @@ export function Wordmark({
     <Link
       href="/"
       aria-label={`${site.name}, home`}
-      className={`group inline-flex items-center gap-3 ${className}`}
+      className={`group inline-flex flex-col ${className}`}
     >
-      <Image
-        src="/msail-mark.png"
-        alt=""
-        width={285}
-        height={285}
-        className="h-10 w-10 shrink-0"
-      />
-      <span className="flex flex-col leading-none">
+      {/* Mark + wordmark share one centered row, so the M is vertically centered
+          against the MSAIL cap line in both the (single-line) header and the
+          (tagline) footer — never floating against the taller two-line block. */}
+      <span className="inline-flex items-center gap-2.5">
+        <Image
+          src="/msail-wordmark-m.png"
+          alt=""
+          width={284}
+          height={235}
+          /* Glyph-trimmed mark sized to the wordmark cap height (Anton ≈ 0.71em
+             of the 1.5rem wordmark ≈ 1.05rem) so it reads as a peer of the
+             letters rather than an oversized square. */
+          className="h-[1.05rem] w-auto shrink-0"
+        />
         <span
-          className={`font-display text-[1.5rem] tracking-[0.06em] ${
+          className={`font-display text-[1.5rem] leading-none tracking-[0.06em] ${
             onNavy ? "text-on-navy" : "text-ink"
           }`}
         >
           {site.name}
         </span>
-        {withTagline ? (
-          <span
-            className={`mt-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.14em] ${
-              onNavy ? "text-on-navy-muted" : "text-faint"
-            }`}
-          >
-            {site.longName}
-          </span>
-        ) : null}
       </span>
+      {withTagline ? (
+        // pl ≈ mark width (1.05rem × 284/235 ≈ 1.27rem) + row gap (0.625rem), so
+        // the tagline starts under the wordmark text, not under the mark.
+        <span
+          className={`mt-1.5 pl-[1.9rem] text-[0.6875rem] font-medium uppercase tracking-[0.14em] ${
+            onNavy ? "text-on-navy-muted" : "text-faint"
+          }`}
+        >
+          {site.longName}
+        </span>
+      ) : null}
     </Link>
   );
 }
