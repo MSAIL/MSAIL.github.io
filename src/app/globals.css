@@ -8,12 +8,12 @@
    plus U-M Maize #FFCB05 (bold accent: thick rules, big type accents, highlights)
    on a warm paper base #F7F4EC. Maize is text ONLY on navy fields.
 
-   Type: Syne (display headlines + wordmark, used heavy) + Montserrat (body/UI) +
-   IBM Plex Mono (small labels). Edit DESIGN here; content lives in src/data.
+   Type: Anton (display headlines + wordmark; display-only, single weight) + Inter
+   (body/UI) + IBM Plex Mono (small labels). Edit DESIGN here; content in src/data.
    ============================================================================= */
 
 @theme inline {
-  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", "SFMono-Regular", monospace;
 }
 
@@ -66,30 +66,32 @@
   --text-lead--line-height: 1.5;
   --text-lead--letter-spacing: -0.005em;
 
-  --text-h3: 1.75rem;
-  --text-h3--line-height: 1.15;
-  --text-h3--letter-spacing: -0.012em;
-  --text-h3--font-weight: 700;
+  /* Anton runs tall and tight, so the display tiers use comfortable line-height
+     and neutral (non-negative) tracking so the tall caps never crowd. */
+  --text-h3: 1.875rem;
+  --text-h3--line-height: 1.18;
+  --text-h3--letter-spacing: 0em;
+  --text-h3--font-weight: 400;
 
-  --text-h2: 2.5rem;
-  --text-h2--line-height: 1.06;
-  --text-h2--letter-spacing: -0.02em;
-  --text-h2--font-weight: 700;
+  --text-h2: 2.625rem;
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: 0em;
+  --text-h2--font-weight: 400;
 
-  --text-h1: clamp(2.75rem, 6vw, 4.25rem);
-  --text-h1--line-height: 1.02;
-  --text-h1--letter-spacing: -0.02em;
-  --text-h1--font-weight: 800;
+  --text-h1: clamp(2.75rem, 6vw, 4.5rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: 0.004em;
+  --text-h1--font-weight: 400;
 
-  --text-display: clamp(3.25rem, 8.5vw, 6.5rem);
-  --text-display--line-height: 0.98;
-  --text-display--letter-spacing: -0.022em;
-  --text-display--font-weight: 800;
+  --text-display: clamp(3.25rem, 8.5vw, 6.75rem);
+  --text-display--line-height: 1.08;
+  --text-display--letter-spacing: 0.006em;
+  --text-display--font-weight: 400;
 
-  --text-mega: clamp(3.75rem, 13vw, 9rem);
-  --text-mega--line-height: 0.93;
-  --text-mega--letter-spacing: -0.026em;
-  --text-mega--font-weight: 800;
+  --text-mega: clamp(3.75rem, 13vw, 9.5rem);
+  --text-mega--line-height: 1.02;
+  --text-mega--letter-spacing: 0.008em;
+  --text-mega--font-weight: 400;
 
   /* --- Editorial rhythm (8px base) ---------------------------------------- */
   --spacing-gutter: 1.5rem;
@@ -195,10 +197,13 @@
    Design-language utilities
    ============================================================================= */
 
-/* The display face: Syne, used heavy, for personality. Falls back to the body
-   grotesk (Montserrat) then the system stack. */
+/* The display face: Anton (display-only, single weight). font-synthesis:none so
+   the bold utility classes elsewhere never synthesize a distorted Anton; it
+   always renders its one true weight. Falls back to Inter then the system stack. */
 @utility font-display {
-  font-family: var(--font-syne), var(--font-montserrat), system-ui, sans-serif;
+  font-family: var(--font-anton), var(--font-inter), system-ui, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
 }
 
 /* A full navy color-block: cream text, navy background. */

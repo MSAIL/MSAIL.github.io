@@ -1,22 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Syne, IBM_Plex_Mono } from "next/font/google";
+import { Inter, Anton, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageTransition } from "@/components/page-transition";
 
-/* Body + UI text: clean, legible, geometric. */
-const montserrat = Montserrat({
+/* Body + UI text: clean, readable. */
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-montserrat",
+  variable: "--font-inter",
 });
 
-/* Display headlines + the MSAIL wordmark: Syne, used heavy, for personality. */
-const syne = Syne({
+/* Display headlines + the MSAIL wordmark: Anton (display-only, single weight). */
+const anton = Anton({
   subsets: ["latin"],
+  weight: "400",
   display: "swap",
-  variable: "--font-syne",
+  variable: "--font-anton",
 });
 
 /* Small metadata labels. */
@@ -70,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${syne.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${anton.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a

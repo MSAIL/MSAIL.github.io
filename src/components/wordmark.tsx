@@ -31,7 +31,7 @@ export function Wordmark({
       />
       <span className="flex flex-col leading-none">
         <span
-          className={`font-display text-[1.45rem] font-extrabold tracking-tight ${
+          className={`font-display text-[1.5rem] tracking-[0.06em] ${
             onNavy ? "text-on-navy" : "text-ink"
           }`}
         >
