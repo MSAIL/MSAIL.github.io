@@ -4,8 +4,15 @@ import { Wordmark } from "./wordmark";
 import { CtaLink } from "./cta-link";
 import { ArrowIcon } from "./icons";
 
+/** Small footer column heading (sans caps, not the old mono kicker pattern). */
+function ColTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-meta font-semibold uppercase tracking-[0.12em] text-maize">{children}</p>
+  );
+}
+
 export function SiteFooter() {
-  // Auto-year (baked at each static build) — never a hardcoded, stale year.
+  // Auto-year (baked at each static build), never a hardcoded, stale year.
   const year = new Date().getFullYear();
 
   return (
@@ -25,7 +32,7 @@ export function SiteFooter() {
           {/* Link columns */}
           {footerColumns.map((col) => (
             <nav key={col.title} aria-label={col.title} className="flex flex-col gap-4">
-              <p className="eyebrow text-maize">{col.title}</p>
+              <ColTitle>{col.title}</ColTitle>
               <ul className="flex flex-col gap-3">
                 {col.links.map((link) => (
                   <li key={link.href}>
@@ -43,7 +50,7 @@ export function SiteFooter() {
 
           {/* Channels */}
           <div className="flex flex-col gap-4">
-            <p className="eyebrow text-maize">Connect</p>
+            <ColTitle>Connect</ColTitle>
             <ul className="flex flex-col gap-3">
               {site.channels.map((c) => (
                 <li key={c.key} className="flex flex-col">
@@ -65,7 +72,7 @@ export function SiteFooter() {
         {/* Colophon */}
         <div className="mt-16 flex flex-col gap-3 border-t border-border-on-navy pt-6 font-mono text-meta text-on-navy-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.name} — {site.longName}
+            © {year} {site.name} · {site.longName}
           </p>
           <p className="uppercase tracking-[0.18em]">
             {site.university} · est. {site.foundedYear}

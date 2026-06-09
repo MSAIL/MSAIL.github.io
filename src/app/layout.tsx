@@ -1,28 +1,35 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
+import type { CSSProperties } from "react";
+import { Bricolage_Grotesque, Space_Grotesk, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { displayFont } from "@/data/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PageTransition } from "@/components/page-transition";
 
-/** Display: characterful editorial serif, with the optical-size axis enabled so
- *  big headlines get Fraunces' dramatic high-contrast cut (see globals.css). */
-const fraunces = Fraunces({
+/* Display option A (default): a bold grotesk with real character. Used heavy. */
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   axes: ["opsz"],
-  style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-fraunces",
+  variable: "--font-bricolage",
 });
 
-/** Text: a clean, warm grotesk. */
+/* Display option B: the alternative. Flip via `displayFont` in src/data/site.ts. */
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-space-grotesk",
+});
+
+/* Text: a clean, warm grotesk. */
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-hanken",
 });
 
-/** Labels / metadata. */
+/* Small labels / metadata. */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
@@ -30,26 +37,33 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
 });
 
+const displayFamily =
+  displayFont === "space" ? "var(--font-space-grotesk)" : "var(--font-bricolage)";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://msail.github.io"),
   title: {
-    default: "MSAIL — Michigan Student AI Lab",
+    default: "MSAIL · Michigan Student Artificial Intelligence Lab",
     template: "%s · MSAIL",
   },
   description:
-    "The Michigan Student AI Lab (MSAIL) is a student organization at the University of Michigan exploring artificial intelligence through education, application, and research.",
+    "The Michigan Student Artificial Intelligence Lab (MSAIL) is a student community for AI research at the University of Michigan.",
   keywords: [
     "MSAIL",
-    "Michigan Student AI Lab",
+    "Michigan Student Artificial Intelligence Lab",
     "University of Michigan",
     "artificial intelligence",
     "machine learning",
     "student organization",
   ],
+  icons: {
+    icon: "/msail-mark.png",
+    apple: "/msail-mark.png",
+  },
   openGraph: {
-    title: "MSAIL — Michigan Student AI Lab",
+    title: "MSAIL · Michigan Student Artificial Intelligence Lab",
     description:
-      "A student organization at the University of Michigan exploring AI through education, application, and research.",
+      "A student community for AI research at the University of Michigan.",
     url: "https://msail.github.io",
     siteName: "MSAIL",
     type: "website",
@@ -69,7 +83,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${hanken.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${spaceGrotesk.variable} ${hanken.variable} ${plexMono.variable} h-full antialiased`}
+      style={{ "--font-display-active": displayFamily } as CSSProperties}
     >
       <body className="flex min-h-full flex-col">
         <a

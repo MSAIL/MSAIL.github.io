@@ -1,4 +1,4 @@
-/** Minimal inline icons — stroke uses currentColor so they inherit text color. */
+/** Minimal inline icons. Stroke uses currentColor so they inherit text color. */
 
 type IconProps = { className?: string };
 

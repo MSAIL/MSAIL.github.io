@@ -1,10 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/data/site";
-import { BlockM } from "./block-m";
 
 /**
- * The MSAIL identity: block-M mark + serif wordmark. `tone="cream"` adapts it
- * for placement on a navy field (footer); default `ink` is for paper.
+ * The MSAIL identity: the real circuit-M logo mark + the wordmark. `tone="cream"`
+ * adapts the text for placement on a navy field (footer); default `ink` for paper.
  */
 export function Wordmark({
   className = "",
@@ -19,13 +19,19 @@ export function Wordmark({
   return (
     <Link
       href="/"
-      aria-label={`${site.name} — home`}
+      aria-label={`${site.name}, home`}
       className={`group inline-flex items-center gap-3 ${className}`}
     >
-      <BlockM variant={onNavy ? "bare" : "tile"} className="h-9 w-9 shrink-0" />
+      <Image
+        src="/msail-mark.png"
+        alt=""
+        width={285}
+        height={285}
+        className="h-10 w-10 shrink-0"
+      />
       <span className="flex flex-col leading-none">
         <span
-          className={`font-display text-[1.4rem] font-semibold tracking-tight ${
+          className={`font-display text-[1.45rem] font-extrabold tracking-tight ${
             onNavy ? "text-on-navy" : "text-ink"
           }`}
         >
@@ -33,7 +39,7 @@ export function Wordmark({
         </span>
         {withTagline ? (
           <span
-            className={`mt-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.18em] ${
+            className={`mt-1.5 text-[0.6875rem] font-medium uppercase tracking-[0.14em] ${
               onNavy ? "text-on-navy-muted" : "text-faint"
             }`}
           >

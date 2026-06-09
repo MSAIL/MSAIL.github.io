@@ -6,10 +6,8 @@ export const metadata: Metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <PlaceholderPage
-      index="01"
-      eyebrow="About"
       title="About MSAIL"
-      lead="Who we are, our admin team, and faculty mentors — a student organization devoted to artificial intelligence at the University of Michigan."
+      lead="Who we are, our admin team, and faculty mentors. A student organization devoted to artificial intelligence at the University of Michigan."
     />
   );
 }

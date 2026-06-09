@@ -106,13 +106,10 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 data-active={isActive(link.href)}
-                className="group flex items-baseline gap-4 border-b border-border py-5"
+                className="group flex flex-col gap-1 border-b border-border py-5"
               >
-                <span className="font-mono text-meta text-muted">{link.index}</span>
-                <span className="flex flex-col">
-                  <span className="font-display text-h3 font-semibold text-ink">{link.label}</span>
-                  <span className="mt-1 text-meta text-faint">{link.blurb}</span>
-                </span>
+                <span className="font-display text-h3 font-bold text-ink">{link.label}</span>
+                <span className="text-meta text-faint">{link.blurb}</span>
               </Link>
             ))}
 

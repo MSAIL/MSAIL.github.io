@@ -4,11 +4,12 @@
    MSAIL design tokens  ·  "Michigan research-editorial"
    A serious student AI lab with collegiate color confidence. SINGLE LIGHT THEME.
 
-   Identity: U-M Blue #00274C (dominant structural color — real navy fields/bands)
-   + U-M Maize #FFCB05 (bold accent — thick rules, big type accents, highlights)
+   Identity: U-M Blue #00274C (dominant structural color, real navy fields/bands)
+   plus U-M Maize #FFCB05 (bold accent: thick rules, big type accents, highlights)
    on a warm paper base #F7F4EC. Maize is text ONLY on navy fields.
 
-   Edit DESIGN here; content lives in src/data + (later) MDX.
+   Display face is switchable from the data layer (Bricolage Grotesque by default,
+   Space Grotesk as the alternative). Edit DESIGN here; content lives in src/data.
    ============================================================================= */
 
 @theme inline {
@@ -18,23 +19,23 @@
 
 @theme {
   /* --- Surfaces ----------------------------------------------------------- */
-  --color-paper: #f7f4ec; /* warm paper — the page background */
+  --color-paper: #f7f4ec; /* warm paper, the page background */
   --color-paper-deep: #efeadd; /* slightly deeper warm tone for subtle blocks */
   --color-paper-raised: #fffdf7; /* lifted card on paper */
 
-  /* --- Michigan blue — the dominant structural color ---------------------- */
+  /* --- Michigan blue, the dominant structural color ----------------------- */
   --color-navy: #00274c;
   --color-navy-deep: #001a33; /* footer base / navy-on-navy depth */
   --color-navy-soft: #16395e; /* lifted navy: cards/hover on a navy field */
 
-  /* --- Michigan maize — the bold accent ----------------------------------- */
+  /* --- Michigan maize, the bold accent ------------------------------------ */
   --color-maize: #ffcb05;
   --color-maize-deep: #f0b400; /* maize hover/pressed */
 
   /* --- Text --------------------------------------------------------------- */
-  --color-ink: #0a1a2f; /* deep-navy ink — primary text on paper */
+  --color-ink: #0a1a2f; /* deep-navy ink, primary text on paper */
   --color-muted: #44546a; /* secondary text on paper */
-  --color-faint: #6e7c8f; /* meta / eyebrow on paper */
+  --color-faint: #6e7c8f; /* meta on paper */
   --color-on-navy: #f4efe2; /* cream text on navy fields */
   --color-on-navy-muted: #aec1d6; /* secondary text on navy */
 
@@ -48,13 +49,8 @@
   --color-selection-bg: #ffcb05;
   --color-selection-fg: #00274c;
 
-  /* --- Type scale — Fraunces display (serif) + grotesk text + mono labels.
-         Editorial: confident, high-contrast, generous. ---------------------- */
-  --text-eyebrow: 0.75rem;
-  --text-eyebrow--line-height: 1.1;
-  --text-eyebrow--letter-spacing: 0.2em;
-  --text-eyebrow--font-weight: 500;
-
+  /* --- Type scale. Bold grotesk display + clean grotesk text + mono labels.
+         Confident, heavy, tight tracking on the big sizes. ------------------- */
   --text-meta: 0.8125rem;
   --text-meta--line-height: 1.45;
   --text-meta--letter-spacing: 0.02em;
@@ -67,33 +63,33 @@
   --text-body--line-height: 1.65;
 
   --text-lead: 1.375rem;
-  --text-lead--line-height: 1.55;
+  --text-lead--line-height: 1.5;
   --text-lead--letter-spacing: -0.005em;
 
   --text-h3: 1.75rem;
-  --text-h3--line-height: 1.18;
-  --text-h3--letter-spacing: -0.01em;
-  --text-h3--font-weight: 600;
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.012em;
+  --text-h3--font-weight: 700;
 
   --text-h2: 2.5rem;
-  --text-h2--line-height: 1.08;
-  --text-h2--letter-spacing: -0.014em;
-  --text-h2--font-weight: 600;
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2--font-weight: 700;
 
-  --text-h1: clamp(2.75rem, 6vw, 4rem);
-  --text-h1--line-height: 1.04;
-  --text-h1--letter-spacing: -0.018em;
-  --text-h1--font-weight: 600;
+  --text-h1: clamp(2.75rem, 6vw, 4.25rem);
+  --text-h1--line-height: 1.01;
+  --text-h1--letter-spacing: -0.026em;
+  --text-h1--font-weight: 800;
 
-  --text-display: clamp(3.25rem, 8vw, 6rem);
-  --text-display--line-height: 1;
-  --text-display--letter-spacing: -0.02em;
-  --text-display--font-weight: 600;
+  --text-display: clamp(3.25rem, 8.5vw, 6.5rem);
+  --text-display--line-height: 0.97;
+  --text-display--letter-spacing: -0.032em;
+  --text-display--font-weight: 800;
 
-  --text-mega: clamp(3.75rem, 12vw, 8.5rem);
-  --text-mega--line-height: 0.94;
-  --text-mega--letter-spacing: -0.022em;
-  --text-mega--font-weight: 700;
+  --text-mega: clamp(3.75rem, 13vw, 9rem);
+  --text-mega--line-height: 0.92;
+  --text-mega--letter-spacing: -0.036em;
+  --text-mega--font-weight: 800;
 
   /* --- Editorial rhythm (8px base) ---------------------------------------- */
   --spacing-gutter: 1.5rem;
@@ -104,7 +100,7 @@
   --container-bleed: 88rem;
   --container-prose: 40rem;
 
-  /* Near-square radii — editorial color blocks read as crisp rectangles. */
+  /* Near-square radii: editorial color blocks read as crisp rectangles. */
   --radius-sm: 2px;
   --radius-md: 4px;
   --radius-lg: 8px;
@@ -166,7 +162,7 @@
     border-radius: var(--radius-sm);
   }
 
-  /* On navy fields the navy focus ring is invisible — switch it to maize. */
+  /* On navy fields the navy focus ring is invisible, so switch it to maize. */
   .navy-field :focus-visible {
     outline-color: var(--color-maize);
   }
@@ -199,22 +195,11 @@
    Design-language utilities
    ============================================================================= */
 
-/* The characterful display serif — Fraunces at maximum optical size for the
-   dramatic high-contrast cut. Pair with text-display / text-h1 / text-mega. */
+/* The bold display grotesk. Family resolves from --font-display-active, set on
+   <html> from the data layer (Bricolage Grotesque default, Space Grotesk alt). */
 @utility font-display {
-  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  font-variation-settings: "opsz" 144;
-}
-
-/* Mono eyebrow / kicker — typography only; set the color at the call site
-   (text-faint on paper, text-maize / text-on-navy on a navy field). */
-@utility eyebrow {
-  font-family: var(--font-mono);
-  font-size: var(--text-eyebrow);
-  line-height: 1.1;
-  letter-spacing: 0.2em;
-  font-weight: 500;
-  text-transform: uppercase;
+  font-family: var(--font-display-active, var(--font-bricolage)), var(--font-hanken),
+    system-ui, sans-serif;
 }
 
 /* A full navy color-block: cream text, navy background. */
@@ -224,11 +209,11 @@
 }
 
 /* The maize highlight: a bold marker behind a word; navy text stays legible.
-   This is how maize "appears" in text on paper (never as a maize text color). */
+   This is how maize appears in text on paper (never as a maize text color). */
 @utility maize-highlight {
   background-color: var(--color-maize);
   color: var(--color-navy);
-  padding-inline: 0.1em;
+  padding-inline: 0.14em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
@@ -250,7 +235,7 @@
 }
 
 /* =============================================================================
-   Reduced motion — page transition (rise) + hover motion collapse.
+   Reduced motion: page transition (rise) + hover motion collapse.
    ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
