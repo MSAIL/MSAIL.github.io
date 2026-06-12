@@ -7,7 +7,7 @@ import { learningConcepts, agingSections, resourcesMeta } from "@/data/resources
 export const metadata: Metadata = {
   title: "Resources",
   description:
-    "MSAIL's curated AI/ML learning library — foundational courses in deep learning, computer vision, NLP, and reinforcement learning.",
+    "The MSAIL learning library: courses and guides for deep learning, computer vision, NLP, and reinforcement learning.",
 };
 
 export default function ResourcesPage() {
@@ -45,7 +45,7 @@ export default function ResourcesPage() {
         <section className="flex flex-col gap-5">
           <SectionHeading>More in the library</SectionHeading>
           <p className="max-w-prose text-meta text-faint">
-            These live-site sections are being refreshed before they&rsquo;re carried over.
+            These sections from the old library are being updated and will return soon.
           </p>
           <ul className="flex flex-col">
             {agingSections.map((s) => (

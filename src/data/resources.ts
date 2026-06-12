@@ -20,25 +20,25 @@ export const learningConcepts: ResourceGroup[] = [
   {
     title: "Intro to Deep Learning",
     items: [
-      { label: "fast.ai — Practical Deep Learning", href: "https://course.fast.ai/" },
-      { label: "EECS 498/598 — Deep Learning for Computer Vision (U-M)", href: "https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/" },
-      { label: "CS231n — Convolutional Neural Networks (Stanford)", href: "https://cs231n.stanford.edu/" },
+      { label: "fast.ai: Practical Deep Learning", href: "https://course.fast.ai/" },
+      { label: "EECS 498/598: Deep Learning for Computer Vision (U-M)", href: "https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/" },
+      { label: "CS231n: Convolutional Neural Networks (Stanford)", href: "https://cs231n.stanford.edu/" },
     ],
   },
   {
     title: "Computer Vision",
     items: [
-      { label: "EECS 442 — Computer Vision (U-M)", href: "https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2020/schedule.html" },
+      { label: "EECS 442: Computer Vision (U-M)", href: "https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2020/schedule.html" },
       { label: "Awesome Computer Vision", href: "https://github.com/jbhuang0604/awesome-computer-vision#readme" },
     ],
   },
   {
     title: "Natural Language Processing",
     items: [
-      { label: "CS224n — NLP with Deep Learning (Stanford)", href: "https://web.stanford.edu/class/cs224n/index.html#schedule" },
-      { label: "EECS 598 — NLP with Deep Learning (U-M)", href: "https://web.eecs.umich.edu/~wangluxy/courses/eecs598_fa2020/eecs598_fa2020.html" },
+      { label: "CS224n: NLP with Deep Learning (Stanford)", href: "https://web.stanford.edu/class/cs224n/index.html#schedule" },
+      { label: "EECS 598: NLP with Deep Learning (U-M)", href: "https://web.eecs.umich.edu/~wangluxy/courses/eecs598_fa2020/eecs598_fa2020.html" },
       { label: "Awesome NLP", href: "https://github.com/keon/awesome-nlp" },
-      { label: "NLP Notes — Jacob Eisenstein", href: "https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf" },
+      { label: "NLP Notes: Jacob Eisenstein", href: "https://github.com/jacobeisenstein/gt-nlp-class/blob/master/notes/eisenstein-nlp-notes.pdf" },
       { label: "Jay Alammar's Blog", href: "http://jalammar.github.io/" },
       { label: "The Annotated Transformer", href: "https://nlp.seas.harvard.edu/2018/04/03/attention.html" },
       { label: "Attention Is All You Need", href: "https://arxiv.org/abs/1706.03762" },
@@ -47,12 +47,12 @@ export const learningConcepts: ResourceGroup[] = [
   {
     title: "Reinforcement Learning",
     items: [
-      { label: "CS 285 — Deep RL (UC Berkeley)", href: "http://rail.eecs.berkeley.edu/deeprlcourse/" },
-      { label: "CS 234 — Reinforcement Learning (Stanford)", href: "https://www.youtube.com/watch?v=FgzM3zpZ55o" },
+      { label: "CS 285: Deep RL (UC Berkeley)", href: "http://rail.eecs.berkeley.edu/deeprlcourse/" },
+      { label: "CS 234: Reinforcement Learning (Stanford)", href: "https://www.youtube.com/watch?v=FgzM3zpZ55o" },
       { label: "Spinning Up in Deep RL (OpenAI)", href: "https://spinningup.openai.com/en/latest/" },
       { label: "Awesome RL", href: "https://github.com/aikorea/awesome-rl" },
-      { label: "Sutton & Barto — Reinforcement Learning (2nd ed.)", href: "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf" },
-      { label: "Lilian Weng — Lil'Log (RL)", href: "https://lilianweng.github.io/tags/reinforcement-learning/" },
+      { label: "Sutton & Barto: Reinforcement Learning (2nd ed.)", href: "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf" },
+      { label: "Lilian Weng: Lil'Log (RL)", href: "https://lilianweng.github.io/tags/reinforcement-learning/" },
     ],
   },
 ];
@@ -73,7 +73,7 @@ export const agingSections: SectionStub[] = [
   },
   {
     title: "Medium / Blog Articles",
-    summary: "Curated intro, CV, and NLP article picks.",
+    summary: "Intro, CV, and NLP article picks.",
     flag: flag("stale", 'Live section marked "under construction" — finish or drop before publishing.'),
   },
   {
@@ -84,12 +84,12 @@ export const agingSections: SectionStub[] = [
 ];
 
 export const resourcesMeta: { intro: string; flag: Flag; note: string } = {
-  intro: "A curated library for MSAIL members — foundational courses, campus involvement, conferences, and the meta-skills of doing research.",
+  intro: "A library for MSAIL members: foundational courses, campus involvement, conferences, and advice on doing research.",
   flag: flag(
     "verified",
     "Learning Concepts links verified from the live page; later sections need a date/link refresh.",
   ),
   /** User-facing footnote for the resources page (the flag note stays internal). */
   note:
-    "Spotted a dead link, or have a resource worth adding? Email msail-admin@umich.edu.",
+    "Found a dead link, or have something to add? Email msail-admin@umich.edu.",
 };

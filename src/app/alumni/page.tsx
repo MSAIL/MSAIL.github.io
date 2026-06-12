@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageShell } from "@/components/page-shell";
-import { AwaitingNotice } from "@/components/content-blocks";
 import { alumni, alumniMeta } from "@/data/alumni";
 
 export const metadata: Metadata = {
   title: "Alumni",
   description:
-    "MSAIL alumni since 2008 — past members who went on to research and industry across AI and machine learning.",
+    "Past members of MSAIL, the Michigan Student Artificial Intelligence Lab, going back to 2008.",
 };
 
 /** "Robert Aung" -> "RA"; fallback tile for anyone without a portrait. */
@@ -43,17 +42,10 @@ export default function AlumniPage() {
             <div className="flex flex-col">
               <span className="text-body font-semibold text-ink">{a.name}</span>
               <span className="text-meta text-muted">{a.term}</span>
-              {a.outcome ? <span className="text-meta text-faint">{a.outcome}</span> : null}
             </div>
           </li>
         ))}
       </ul>
-
-      <div className="mt-12">
-        <AwaitingNotice label="Where they went — coming soon">
-          {alumniMeta.outcomesNotice}
-        </AwaitingNotice>
-      </div>
     </PageShell>
   );
 }

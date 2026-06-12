@@ -5,14 +5,14 @@ import { ConnectLinks } from "@/components/connect-links";
 export const metadata: Metadata = {
   title: "Join",
   description:
-    "Join MSAIL: find the Michigan Student AI Lab on Maize Pages and hop into the Slack. Everyone is welcome, regardless of background.",
+    "How to join MSAIL: the Slack workspace, Maize Pages, and our other channels. Everyone is welcome.",
 };
 
 export default function JoinPage() {
   return (
     <PageShell
       title="Join MSAIL"
-      lead="The fastest ways in are the MSAIL Slack and Maize Pages — or follow along on the channels below. Everyone is welcome, regardless of background."
+      lead="Join the MSAIL Slack and find us on Maize Pages, or follow us on the channels below. Everyone is welcome."
     >
       <ConnectLinks />
     </PageShell>

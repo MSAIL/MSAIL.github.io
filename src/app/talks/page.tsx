@@ -5,7 +5,7 @@ import { talksArchive, talksMeta } from "@/data/talks";
 export const metadata: Metadata = {
   title: "Talks",
   description:
-    "The MSAIL speaker-series archive (2020–2024): researchers, students, and guests on the ideas shaping modern AI.",
+    "An archive of the talks MSAIL hosted from 2020 to 2024.",
 };
 
 // Group by year (desc); undated talks come last.
@@ -18,7 +18,7 @@ export default function TalksPage() {
   return (
     <PageShell
       title="Talks & Speaker Series"
-      lead={`An archive of MSAIL talks (${talksMeta.span}) — researchers, students, and guests on the ideas shaping modern AI.`}
+      lead="An archive of the talks MSAIL hosted from 2020 to 2024."
       note={talksMeta.note}
     >
       <div className="mt-12 flex flex-col gap-12">

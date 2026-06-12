@@ -65,8 +65,7 @@ export const talksArchive: Talk[] = [
   { title: "Using Transformers for Vision", speaker: "Andrew Awad and Drake Svoboda", year: null, slug: "image-worth-16x16-words" },
 ];
 
-export const talksMeta: { span: string; flag: Flag; note: string } = {
-  span: "2020\u20132024",
+export const talksMeta: { flag: Flag; note: string } = {
   flag: flag(
     "verified",
     "Titles + speakers verified from the live-site archive. Dates are year-only " +
@@ -74,6 +73,5 @@ export const talksMeta: { span: string; flag: Flag; note: string } = {
       "series appears paused after early 2024.",
   ),
   /** User-facing footnote for the talks page (the flag note stays internal). */
-  note:
-    "The speaker series is on a break \u2014 join the Slack to hear first when talks resume.",
+  note: "The speaker series is on a break. Join the Slack to hear when talks resume.",
 };

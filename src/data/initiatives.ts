@@ -21,8 +21,8 @@ export const initiativesMeta: { flag: Flag; notice: string } = {
   flag: flag("awaiting", "New initiatives incoming. " + AWAITING_REFRESH),
   /** User-facing copy for the placeholder (the flag note stays internal). */
   notice:
-    "This term's projects and reading groups are being finalized. Join the " +
-    "Slack to hear about them first.",
+    "We're putting together this term's projects and reading groups. Join " +
+    "the Slack to hear about them first.",
 };
 
 /** Outgoing live initiatives — STALE; carry-forward reference only. */

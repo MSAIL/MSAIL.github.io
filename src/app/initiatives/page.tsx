@@ -6,14 +6,14 @@ import { initiativesMeta } from "@/data/initiatives";
 export const metadata: Metadata = {
   title: "Initiatives",
   description:
-    "MSAIL projects, reading groups, and hands-on tracks — from replicating architectures to laid-back paper discussions.",
+    "The projects and reading groups MSAIL runs at the University of Michigan.",
 };
 
 export default function InitiativesPage() {
   return (
     <PageShell
       title="Projects & Initiatives"
-      lead="The projects, reading groups, and hands-on tracks you can join this term — from replicating architectures to laid-back paper discussions."
+      lead="The projects and reading groups you can join this term."
     >
       <div className="mt-10">
         <AwaitingNotice label="New initiatives incoming">

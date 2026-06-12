@@ -45,7 +45,7 @@ export const site = {
     { label: "About", href: "/about", blurb: "Who we are, our team, and faculty mentors." },
     { label: "Initiatives", href: "/initiatives", blurb: "Projects and groups you can join this term." },
     { label: "Talks", href: "/talks", blurb: "Our speaker series and talk archive." },
-    { label: "Resources", href: "/resources", blurb: "A curated AI/ML learning library." },
+    { label: "Resources", href: "/resources", blurb: "Our AI/ML learning library." },
     { label: "Alumni", href: "/alumni", blurb: "Where MSAIL members have gone." },
     { label: "Contact", href: "/contact", blurb: "Reach the admin team." },
   ] satisfies NavLink[],

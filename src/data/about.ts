@@ -51,7 +51,7 @@ export const about = {
     flag: flag("awaiting", "New admin / leadership roster incoming. " + AWAITING_REFRESH),
     /** User-facing copy for the placeholder (the flag note stays internal). */
     notice:
-      "Our leadership team and faculty mentor for this year are being finalized — the full roster will be announced here soon.",
+      "We're finalizing this year's leadership team and faculty mentor. The full roster will be posted here soon.",
   },
 
   /**

@@ -11,6 +11,6 @@ export const sponsorsMeta: { flag: Flag; notice: string } = {
   flag: flag("awaiting", "No sponsors on the live site yet; names/logos pending. " + AWAITING_REFRESH),
   /** User-facing copy for the placeholder (the flag note stays internal). */
   notice:
-    "Sponsorship details are coming together. Interested in partnering? " +
-    "Email msail-admin@umich.edu to start the conversation.",
+    "We're putting sponsorship details together. Interested in partnering? " +
+    "Email msail-admin@umich.edu.",
 };
