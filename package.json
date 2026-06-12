@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "npx -y serve out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "lucide-react": "^1.17.0",

@@ -38,12 +38,25 @@ npm run start    # serve ./out locally (what GitHub Pages will serve)
 
 ## Deploy
 
-Pushes to `main` build and publish `./out` to GitHub Pages via
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). For the root
+```bash
+npm run deploy
+```
+
+That runs [`scripts/deploy.sh`](scripts/deploy.sh): local checks (types, lint,
+build) → push `main` → watch the GitHub Actions run → smoke-test the live
+site. It needs the `gh` CLI authenticated with push access to
+`MSAIL/MSAIL.github.io`.
+
+Plain `git push origin main` deploys too — pushes to `main` build and publish
+`./out` to GitHub Pages via
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml); the script
+just adds the pre-flight checks and post-deploy verification. For the root
 domain, the repo must live at `MSAIL/MSAIL.github.io` with Pages set to
 **GitHub Actions** (Settings → Pages → Build and deployment). There is no
 `basePath`; `trailingSlash: true` emits `/about/index.html`-style paths, and
-`public/.nojekyll` keeps Pages from mangling `_next/` assets.
+`public/.nojekyll` keeps Pages from mangling `_next/` assets. The old Hugo
+site is archived on the `master` branch (tag `hugo-site-final`) — never
+delete either.
 
 ## Checks
 
