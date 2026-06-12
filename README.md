@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MSAIL website
 
-## Getting Started
+The site for the **Michigan Student Artificial Intelligence Lab** (MSAIL) at the
+University of Michigan, built as a fully static export for GitHub Pages at
+<https://msail.github.io>.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router) with `output: "export"` — `next build` emits the
+  whole site as static HTML into `./out`. No server.
+- **Tailwind CSS v4** — design tokens (colors, type scale, spacing) live in
+  [`src/app/globals.css`](src/app/globals.css) under `@theme`.
+- **Typed content layer** — all copy, links, rosters, talks, and resources live
+  in [`src/data/`](src/data/) so future maintainers can edit content without
+  touching React. Each migrated item carries a provenance `Flag`
+  (`verified` / `stale` / `unverified` / `awaiting`) — see
+  [`src/data/content-status.ts`](src/data/content-status.ts). Flag notes are
+  internal; pages render the separate user-facing `notice` strings.
+- **Fonts** — Inter (body), Anton (display, single weight), IBM Plex Mono
+  (labels) via `next/font`.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # dev server at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build & preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build    # static export → ./out
+npm run start    # serve ./out locally (what GitHub Pages will serve)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> `next start` does not work with `output: "export"`; `npm run start` serves
+> the static artifact instead.
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Pushes to `main` build and publish `./out` to GitHub Pages via
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). For the root
+domain, the repo must live at `MSAIL/MSAIL.github.io` with Pages set to
+**GitHub Actions** (Settings → Pages → Build and deployment). There is no
+`basePath`; `trailingSlash: true` emits `/about/index.html`-style paths, and
+`public/.nojekyll` keeps Pages from mangling `_next/` assets.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Checks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npx tsc --noEmit   # types
+npm run lint       # eslint
+```

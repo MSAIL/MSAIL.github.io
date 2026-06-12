@@ -17,10 +17,15 @@ export type ContentStatus =
   /** Intentionally empty — fresh content is incoming from Matthew. */
   | "awaiting";
 
+/**
+ * INTERNAL ONLY. `note` is maintainer-facing provenance — never render it in
+ * page JSX. Pages show the separate, user-facing `notice` strings that the
+ * data files export alongside their flags.
+ */
 export type Flag = { status: ContentStatus; note: string };
 
-/** Standard placeholder copy for sections whose real content is incoming. */
-export const AWAITING_MATTHEW =
-  "Awaiting fresh content from Matthew — this refresh is in progress.";
+/** Standard internal note for sections whose real content is incoming. */
+export const AWAITING_REFRESH =
+  "Fresh content is incoming from org leadership — this refresh is in progress.";
 
 export const flag = (status: ContentStatus, note: string): Flag => ({ status, note });

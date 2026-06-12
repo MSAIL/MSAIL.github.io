@@ -3,7 +3,8 @@ import { site, footerColumns } from "@/data/site";
 import { Wordmark } from "./wordmark";
 import { CtaLink } from "./cta-link";
 import { ArrowIcon } from "./icons";
-import { ChannelIcon, channelAriaLabel } from "./channel-icon";
+import { ChannelIcon, channelAriaLabel, channelLinkProps } from "./channel-icon";
+import { Year } from "./year";
 
 /** Small footer column heading (sans caps, not the old mono kicker pattern). */
 function ColTitle({ children }: { children: React.ReactNode }) {
@@ -13,7 +14,8 @@ function ColTitle({ children }: { children: React.ReactNode }) {
 }
 
 export function SiteFooter() {
-  // Auto-year (baked at each static build), never a hardcoded, stale year.
+  // Build-time year as the prerendered value; <Year> refreshes it client-side
+  // so the colophon stays current even without a rebuild.
   const year = new Date().getFullYear();
 
   return (
@@ -57,8 +59,7 @@ export function SiteFooter() {
                 <li key={c.key} className="flex flex-col">
                   <a
                     href={c.href}
-                    target={c.key === "email" ? undefined : "_blank"}
-                    rel="noopener noreferrer"
+                    {...channelLinkProps(c)}
                     aria-label={channelAriaLabel(c)}
                     className="inline-flex min-h-11 items-center gap-2 text-label text-on-navy transition-colors hover:text-maize"
                   >
@@ -75,7 +76,7 @@ export function SiteFooter() {
         {/* Colophon */}
         <div className="mt-16 flex flex-col gap-3 border-t border-border-on-navy pt-6 font-mono text-meta text-on-navy-muted sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.name} · {site.longName}
+            © <Year initial={year} /> {site.name} · {site.longName}
           </p>
           <p className="uppercase tracking-[0.18em]">
             {site.university} · est. {site.foundedYear}

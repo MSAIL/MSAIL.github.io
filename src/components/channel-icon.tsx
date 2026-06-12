@@ -33,8 +33,20 @@ export function ChannelIcon({ name, className = "h-5 w-5" }: { name: string; cla
   );
 }
 
-/** Accessible label for a channel link, e.g. "MSAIL on Instagram". */
+/** Every channel except email opens in a new tab. Single source for the rule. */
+export function isExternalChannel(c: Channel): boolean {
+  return c.key !== "email";
+}
+
+/** target/rel props for a channel link; rel only applies when a new tab opens. */
+export function channelLinkProps(c: Channel) {
+  return isExternalChannel(c)
+    ? ({ target: "_blank", rel: "noopener noreferrer" } as const)
+    : {};
+}
+
+/** Accessible label for a channel link, e.g. "MSAIL on Instagram (opens in a new tab)". */
 export function channelAriaLabel(c: Channel): string {
   if (c.key === "email") return `Email the ${site.name} admin team`;
-  return `${site.name} on ${c.label}`;
+  return `${site.name} on ${c.label} (opens in a new tab)`;
 }

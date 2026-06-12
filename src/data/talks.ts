@@ -25,8 +25,9 @@ export type Talk = {
 };
 
 export const talksArchive: Talk[] = [
-  { title: "MSAIL TECH TALK w/ Kiran Prasad", speaker: "Kiran Prasad", year: 2024, slug: "prasad_210324" },
-  { title: "MSAIL TECH TALK w/ Wesley Tian", speaker: "Wesley Tian", year: 2024, slug: "wesleytian_240324" },
+  // Live-archive titles were all-caps "MSAIL TECH TALK w/ …"; normalized for the site.
+  { title: "MSAIL Tech Talk with Kiran Prasad", speaker: "Kiran Prasad", year: 2024, slug: "prasad_210324" },
+  { title: "MSAIL Tech Talk with Wesley Tian", speaker: "Wesley Tian", year: 2024, slug: "wesleytian_240324" },
   { title: "An Overview of Attention and Transformer Mechanisms for NLP", speaker: "Nisreen Bahrainwala", year: 2022, slug: "attention_031522" },
   { title: "An Overview of Binarized Neural Networks", speaker: "Timothy Baker", year: 2022, slug: "bnn_041222" },
   { title: "Concrete Problems in AI Safety", speaker: "Ashwin Sreevatsa", year: 2022, slug: "aisafety_012522" },
@@ -64,12 +65,15 @@ export const talksArchive: Talk[] = [
   { title: "Using Transformers for Vision", speaker: "Andrew Awad and Drake Svoboda", year: null, slug: "image-worth-16x16-words" },
 ];
 
-export const talksMeta: { span: string; flag: Flag } = {
-  span: "2020 \u2013 2024",
+export const talksMeta: { span: string; flag: Flag; note: string } = {
+  span: "2020\u20132024",
   flag: flag(
     "verified",
     "Titles + speakers verified from the live-site archive. Dates are year-only " +
       "(slug-encoded, inconsistent format); slides/recordings not yet linked; " +
       "series appears paused after early 2024.",
   ),
+  /** User-facing footnote for the talks page (the flag note stays internal). */
+  note:
+    "The speaker series is on a break \u2014 join the Slack to hear first when talks resume.",
 };

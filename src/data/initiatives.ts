@@ -1,5 +1,5 @@
 import type { Flag } from "./content-status";
-import { flag, AWAITING_MATTHEW } from "./content-status";
+import { flag, AWAITING_REFRESH } from "./content-status";
 
 /**
  * Projects & Initiatives (CONTENT.md §1.3) — a 🚩 PRIORITY refresh target.
@@ -17,8 +17,12 @@ export type Initiative = {
   lead: string;
 };
 
-export const initiativesMeta: { flag: Flag } = {
-  flag: flag("awaiting", "New initiatives incoming. " + AWAITING_MATTHEW),
+export const initiativesMeta: { flag: Flag; notice: string } = {
+  flag: flag("awaiting", "New initiatives incoming. " + AWAITING_REFRESH),
+  /** User-facing copy for the placeholder (the flag note stays internal). */
+  notice:
+    "This term's projects and reading groups are being finalized. Join the " +
+    "Slack to hear about them first.",
 };
 
 /** Outgoing live initiatives — STALE; carry-forward reference only. */

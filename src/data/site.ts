@@ -9,6 +9,9 @@
  * Sources of truth: CONTENT.md (live-site inventory) + official U-M brand.
  */
 
+import type { Flag } from "./content-status";
+import { flag } from "./content-status";
+
 export type NavLink = {
   label: string;
   href: `/${string}`;
@@ -22,6 +25,8 @@ export type Channel = {
   /** The human-readable handle/address shown in mono. */
   value: string;
   href: string;
+  /** Internal provenance for the link (never rendered). */
+  flag?: Flag;
 };
 
 export const site = {
@@ -48,13 +53,21 @@ export const site = {
   /** The single primary call-to-action, the real join funnel. */
   cta: { label: "Join", href: "/join" as const },
 
-  /** Real channels only (no socials; none exist yet, per CONTENT.md §1.11/§3). */
+  /**
+   * Every real MSAIL channel. Instagram + LinkedIn postdate the CONTENT.md
+   * inventory (which found no socials on the old live site); Maize Pages
+   * replaced the old MCommunity link as the org-directory channel.
+   */
   channels: [
     {
       key: "slack",
       label: "Slack",
       value: "msail-team",
       href: "https://msail-team.slack.com/join/shared_invite/zt-2amxfx9xj-Twwm6uuT1YCuBfKXn62v8Q",
+      flag: flag(
+        "unverified",
+        "Shared invite added 2026-06-09; Slack bot-walls automated checks. Confirm the invite is set to never expire (Slack admin → invitations), or swap in a no-expiry link.",
+      ),
     },
     {
       key: "maizepages",
@@ -107,7 +120,8 @@ export const footerColumns: { title: string; links: { label: string; href: strin
 export const home = {
   acronym: "MSAIL",
   headline: "Michigan Student Artificial Intelligence Lab",
-  subline: "A student community for AI research at the University of Michigan.",
+  subline: site.tagline, // single source of truth: the site-wide tagline
+
   ctas: [
     { label: "Join MSAIL", href: "/join", variant: "primary" as const },
     { label: "Sponsor / work with us", href: "/sponsors", variant: "ghost" as const },

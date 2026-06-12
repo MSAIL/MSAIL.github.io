@@ -5,16 +5,14 @@
  */
 
 export function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="font-display text-h3 font-bold text-ink">{children}</h2>
-  );
+  return <h2 className="font-display text-h3 text-ink">{children}</h2>;
 }
 
 /** A tasteful placeholder for content that's intentionally not landed yet. */
 export function AwaitingNotice({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="rounded-sm border border-dashed border-border-strong bg-paper-deep px-5 py-5">
-      <p className="text-meta font-semibold uppercase tracking-[0.12em] text-maize-deep">
+      <p className="text-meta font-semibold uppercase tracking-[0.12em] text-navy">
         {label}
       </p>
       <p className="mt-2 max-w-prose text-body text-muted">{children}</p>

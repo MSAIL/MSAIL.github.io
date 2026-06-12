@@ -25,7 +25,7 @@
 
   /* --- Michigan blue, the dominant structural color ----------------------- */
   --color-navy: #00274c;
-  --color-navy-deep: #001a33; /* footer base / navy-on-navy depth */
+  --color-navy-deep: #001a33; /* reserved: extra-dark navy for navy-on-navy depth (currently unused; the footer uses --color-navy via .navy-field) */
   --color-navy-soft: #16395e; /* lifted navy: cards/hover on a navy field */
 
   /* --- Michigan maize, the bold accent ------------------------------------ */
@@ -35,7 +35,7 @@
   /* --- Text --------------------------------------------------------------- */
   --color-ink: #0a1a2f; /* deep-navy ink, primary text on paper */
   --color-muted: #44546a; /* secondary text on paper */
-  --color-faint: #6e7c8f; /* meta on paper */
+  --color-faint: #596779; /* meta on paper — 5.25:1 on paper, 4.8:1 on paper-deep (AA at 13px) */
   --color-on-navy: #f4efe2; /* cream text on navy fields */
   --color-on-navy-muted: #aec1d6; /* secondary text on navy */
 
@@ -67,7 +67,9 @@
   --text-lead--letter-spacing: -0.005em;
 
   /* Anton runs tall and tight, so the display tiers use comfortable line-height
-     and neutral (non-negative) tracking so the tall caps never crowd. */
+     and neutral (non-negative) tracking so the tall caps never crowd.
+     (h2 and mega are defined-but-unused tiers of the ramp; first use deserves a
+     visual review.) */
   --text-h3: 1.875rem;
   --text-h3--line-height: 1.18;
   --text-h3--letter-spacing: 0em;
@@ -101,6 +103,9 @@
   --container-page: 72rem;
   --container-bleed: 88rem;
   --container-prose: 40rem;
+  /* Unset Tailwind's deprecated 65ch default so `max-w-prose` falls through to
+     --container-prose above (otherwise the 40rem token is silently dead). */
+  --max-width-prose: initial;
 
   /* Near-square radii: editorial color blocks read as crisp rectangles. */
   --radius-sm: 2px;
@@ -141,6 +146,9 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
+    /* Reserve the scrollbar gutter so the mobile-menu scroll lock doesn't
+       reflow the page on classic-scrollbar platforms. */
+    scrollbar-gutter: stable;
   }
 
   body {

@@ -1,5 +1,4 @@
-import type { Flag } from "./content-status";
-import { flag, AWAITING_MATTHEW } from "./content-status";
+import { flag, AWAITING_REFRESH } from "./content-status";
 
 /**
  * About page content. Sources: live homepage "What is MSAIL?" + the live
@@ -32,7 +31,12 @@ export const about = {
     flag: flag("unverified", 'Live "over 400 members" figure — confirm it still holds this year.'),
   },
 
-  /** Faculty mentor per the live About page; re-confirm with the incoming roster. */
+  /**
+   * Faculty mentor per the live About page. UNVERIFIED for this year (and the
+   * "Assistant Professor" rank may be stale by now), so the page withholds it
+   * alongside the roster until the incoming team confirms it. Do not render
+   * `person` until the flag is resolved to "verified".
+   */
   facultyMentor: {
     person: {
       name: "Dr. Wei Hu",
@@ -44,7 +48,10 @@ export const about = {
 
   /** The live team — intentionally a placeholder until the new roster lands. */
   roster: {
-    flag: flag("awaiting", "New admin / leadership roster incoming. " + AWAITING_MATTHEW),
+    flag: flag("awaiting", "New admin / leadership roster incoming. " + AWAITING_REFRESH),
+    /** User-facing copy for the placeholder (the flag note stays internal). */
+    notice:
+      "Our leadership team and faculty mentor for this year are being finalized — the full roster will be announced here soon.",
   },
 
   /**
@@ -70,9 +77,3 @@ export const about = {
 } as const;
 
 export type About = typeof about;
-export const _aboutFlags: Flag[] = [
-  about.membership.flag,
-  about.facultyMentor.flag,
-  about.roster.flag,
-  about.outgoingRoster.flag,
-];

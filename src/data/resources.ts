@@ -52,7 +52,7 @@ export const learningConcepts: ResourceGroup[] = [
       { label: "Spinning Up in Deep RL (OpenAI)", href: "https://spinningup.openai.com/en/latest/" },
       { label: "Awesome RL", href: "https://github.com/aikorea/awesome-rl" },
       { label: "Sutton & Barto — Reinforcement Learning (2nd ed.)", href: "https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf" },
-      { label: "Lilian Weng — Lil'Log (RL)", href: "https://lilianweng.github.io/lil-log/tag/reinforcement-learning" },
+      { label: "Lilian Weng — Lil'Log (RL)", href: "https://lilianweng.github.io/tags/reinforcement-learning/" },
     ],
   },
 ];
@@ -83,10 +83,13 @@ export const agingSections: SectionStub[] = [
   },
 ];
 
-export const resourcesMeta: { intro: string; flag: Flag } = {
+export const resourcesMeta: { intro: string; flag: Flag; note: string } = {
   intro: "A curated library for MSAIL members — foundational courses, campus involvement, conferences, and the meta-skills of doing research.",
   flag: flag(
     "verified",
     "Learning Concepts links verified from the live page; later sections need a date/link refresh.",
   ),
+  /** User-facing footnote for the resources page (the flag note stays internal). */
+  note:
+    "Spotted a dead link, or have a resource worth adding? Email msail-admin@umich.edu.",
 };

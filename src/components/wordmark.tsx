@@ -21,23 +21,27 @@ export function Wordmark({
   className = "",
   tone = "ink",
   withTagline = false,
+  onClick,
 }: {
   className?: string;
   tone?: "ink" | "cream";
   withTagline?: boolean;
+  onClick?: () => void;
 }) {
   const onNavy = tone === "cream";
   return (
     <Link
       href="/"
       aria-label={`${site.name}, home`}
+      onClick={onClick}
       className={`group grid min-h-11 grid-cols-[auto_1fr] content-center items-center gap-x-[0.6rem] gap-y-1 ${className}`}
     >
       <Image
         src="/msail-wordmark-m.png"
         alt=""
-        width={284}
-        height={235}
+        width={96}
+        height={80}
+        loading="eager"
         className="h-[1.6rem] w-auto translate-y-[0.03em] self-center"
       />
       <span

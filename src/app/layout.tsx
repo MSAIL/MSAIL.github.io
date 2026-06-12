@@ -20,10 +20,10 @@ const anton = Anton({
   variable: "--font-anton",
 });
 
-/* Small metadata labels. */
+/* Small metadata labels. Only 400 is ever rendered; don't ship unused weights. */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "400",
   display: "swap",
   variable: "--font-plex-mono",
 });
@@ -44,18 +44,48 @@ export const metadata: Metadata = {
     "machine learning",
     "student organization",
   ],
-  icons: {
-    icon: "/msail-mark.png",
-    apple: "/msail-mark.png",
+  // Icons come from the src/app/icon.png + apple-icon.png file conventions.
+  // "./" resolves against each route's own pathname (with the trailing slash
+  // from trailingSlash: true), so every page gets a correct canonical + og:url
+  // — and og:title/twitter:title derive from each page's templated <title>.
+  alternates: {
+    canonical: "./",
   },
   openGraph: {
-    title: "MSAIL · Michigan Student Artificial Intelligence Lab",
     description:
       "A student community for AI research at the University of Michigan.",
-    url: "https://msail.github.io",
+    url: "./",
     siteName: "MSAIL",
     type: "website",
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MSAIL — Michigan Student Artificial Intelligence Lab",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+  },
+};
+
+/** Organization schema for search engines (rendered once in the root layout). */
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Michigan Student Artificial Intelligence Lab",
+  alternateName: "MSAIL",
+  url: "https://msail.github.io",
+  logo: "https://msail.github.io/msail-mark.png",
+  email: "msail-admin@umich.edu",
+  foundingDate: "2008",
+  sameAs: [
+    "https://www.instagram.com/michiganailab/",
+    "https://www.linkedin.com/company/msail1/",
+    "https://maizepages.umich.edu/organization/msail",
+  ],
 };
 
 export const viewport: Viewport = {
@@ -81,10 +111,15 @@ export default function RootLayout({
           Skip to content
         </a>
         <SiteHeader />
-        <main id="main" className="flex flex-1 flex-col">
+        {/* tabIndex lets the skip link actually move focus here. */}
+        <main id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">
           <PageTransition>{children}</PageTransition>
         </main>
         <SiteFooter />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </body>
     </html>
   );

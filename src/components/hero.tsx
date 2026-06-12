@@ -9,13 +9,11 @@ export function Hero() {
       <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10">
         {/* Left: confident, left-aligned, full-name headline */}
         <div className="lg:col-span-7">
-          <h1 className="font-display text-display font-extrabold text-ink">{home.headline}</h1>
+          <h1 className="font-display text-display text-ink">{home.headline}</h1>
 
           {/* The acronym, tied to the full name with the one maize highlight. */}
           <p className="mt-6">
-            <span className="maize-highlight font-display text-h3 font-extrabold">
-              {home.acronym}
-            </span>
+            <span className="maize-highlight font-display text-h3">{home.acronym}</span>
           </p>
 
           <p className="mt-7 max-w-prose text-lead text-muted">{home.subline}</p>
@@ -35,14 +33,16 @@ export function Hero() {
         {/* Right: navy color-block identity panel with the real logo mark */}
         <aside className="navy-field relative flex flex-col gap-7 p-8 lg:col-span-4 lg:col-start-9">
           <div className="absolute left-0 top-0 h-1 w-20 bg-maize" />
+          {/* Decorative: the panel already names MSAIL in text right below. */}
           <Image
             src="/msail-mark.png"
-            alt="MSAIL logo"
-            width={285}
-            height={285}
+            alt=""
+            width={240}
+            height={240}
+            loading="eager"
             className="h-20 w-20"
           />
-          <p className="font-display text-h3 font-bold text-on-navy">{site.name}</p>
+          <p className="font-display text-h3 text-on-navy">{site.name}</p>
           <div className="h-px w-full bg-border-on-navy" />
           <ul className="flex flex-col gap-2">
             {home.affiliation.map((line) => (

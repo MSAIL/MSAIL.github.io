@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/placeholder-page";
+import { PageShell } from "@/components/page-shell";
 import { ConnectLinks } from "@/components/connect-links";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Reach the MSAIL admin team at msail-admin@umich.edu, or find us on Slack, Maize Pages, Instagram, and LinkedIn.",
+};
 
 export default function ContactPage() {
   return (
-    <PlaceholderPage
+    <PageShell
       title="Contact"
-      lead="Reach the MSAIL admin team at msail-admin@umich.edu, or find us on Slack, Maize Pages, and Instagram."
+      lead="Reach the MSAIL admin team at msail-admin@umich.edu, or find us on Slack, Maize Pages, Instagram, and LinkedIn."
     >
       <ConnectLinks />
-    </PlaceholderPage>
+    </PageShell>
   );
 }
