@@ -84,7 +84,7 @@ export const agingSections: SectionStub[] = [
 ];
 
 export const resourcesMeta: { intro: string; flag: Flag; note: string } = {
-  intro: "A library for MSAIL members: foundational courses, campus involvement, conferences, and advice on doing research.",
+  intro: "The courses and guides MSAIL members recommend.",
   flag: flag(
     "verified",
     "Learning Concepts links verified from the live page; later sections need a date/link refresh.",

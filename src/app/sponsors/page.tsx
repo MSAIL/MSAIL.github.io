@@ -13,10 +13,10 @@ export default function SponsorsPage() {
   return (
     <PageShell
       title="Sponsor MSAIL"
-      lead="Partner with one of the largest student AI communities at the University of Michigan. Reach hundreds of students working in AI."
+      lead="Reach hundreds of Michigan students who build and research AI."
     >
       <div className="mt-10">
-        <AwaitingNotice label="Sponsorship details coming soon">
+        <AwaitingNotice label="Sponsorship details incoming">
           {sponsorsMeta.notice}
         </AwaitingNotice>
       </div>

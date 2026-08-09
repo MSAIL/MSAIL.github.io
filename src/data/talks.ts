@@ -73,5 +73,5 @@ export const talksMeta: { flag: Flag; note: string } = {
       "series appears paused after early 2024.",
   ),
   /** User-facing footnote for the talks page (the flag note stays internal). */
-  note: "The speaker series is on a break. Join the Slack to hear when talks resume.",
+  note: "New talks are paused for now. Join the Slack to hear when they resume.",
 };

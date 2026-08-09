@@ -15,7 +15,7 @@ function useIsActive() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 }
 
-/** Desktop nav item with a thick maize underline that draws in on hover / active. */
+/** Desktop nav item: quiet capsule text, navy when active or hovered. */
 function NavLink({ href, label }: { href: string; label: string }) {
   const isActive = useIsActive();
   const active = isActive(href);
@@ -24,20 +24,16 @@ function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       aria-current={active ? "page" : undefined}
       data-active={active}
-      className="group relative px-3 py-2 text-label text-muted transition-colors duration-200 hover:text-ink data-[active=true]:text-ink"
+      className="rounded-full px-3.5 py-1.5 text-label text-ink-2 transition-colors duration-150 hover:bg-navy/5 hover:text-navy data-[active=true]:font-semibold data-[active=true]:text-navy"
     >
       {label}
-      <span
-        className={`pointer-events-none absolute inset-x-3 -bottom-0.5 h-0.5 origin-left bg-maize transition-transform duration-300 ease-expo ${
-          active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-        }`}
-      />
     </Link>
   );
 }
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isActive = useIsActive();
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -55,6 +51,98 @@ export function SiteHeader() {
     setPrevPathname(pathname);
     setOpen(false);
   }
+
+  // The glass bar earns its bottom hairline only once content scrolls under it.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Real Liquid Glass refraction (Chromium only): a displacement map shaped to
+  // the capsule's bezel bends whatever scrolls beneath the island, exactly the
+  // technique behind iOS 26's material. The map is a capsule SDF: neutral gray
+  // in the center, outward-pointing displacement ramping up across a ~16px rim.
+  // Other engines keep the CSS blur/saturate fallback (backdrop-filter: url()
+  // is Chromium-only in practice; Firefox parses it and applies nothing).
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+    type UAData = { brands?: { brand: string }[] };
+    const uaBrands =
+      (navigator as Navigator & { userAgentData?: UAData }).userAgentData?.brands ?? [];
+    const isChromium =
+      uaBrands.some((b) => /chromium/i.test(b.brand)) ||
+      "chrome" in window; // brands can be empty; window.chrome covers Chrome/Edge
+    if (!isChromium) return;
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("width", "0");
+    svg.setAttribute("height", "0");
+    svg.setAttribute("aria-hidden", "true");
+    svg.style.position = "absolute";
+    svg.innerHTML =
+      '<filter id="msail-lens" x="0%" y="0%" width="100%" height="100%">' +
+      '<feImage result="map"/>' +
+      '<feDisplacementMap in="SourceGraphic" in2="map" xChannelSelector="R" yChannelSelector="G" scale="58" result="disp"/>' +
+      '<feGaussianBlur in="disp" stdDeviation="3" result="soft"/>' +
+      '<feColorMatrix in="soft" type="saturate" values="1.9"/>' +
+      "</filter>";
+    document.body.appendChild(svg);
+    const feImage = svg.querySelector("feImage")!;
+
+    const build = () => {
+      const w = Math.round(bar.offsetWidth);
+      const h = Math.round(bar.offsetHeight);
+      if (!w || !h) return;
+      const c = document.createElement("canvas");
+      c.width = w;
+      c.height = h;
+      const ctx = c.getContext("2d")!;
+      const img = ctx.createImageData(w, h);
+      const r = h / 2;
+      const bez = Math.min(16, r);
+      for (let py = 0; py < h; py++) {
+        for (let px = 0; px < w; px++) {
+          const cx = Math.min(Math.max(px, r), w - r);
+          const vx = px - cx;
+          const vy = py - h / 2;
+          const d = Math.hypot(vx, vy);
+          const inFromEdge = r - d;
+          let R = 128;
+          let G = 128;
+          if (inFromEdge > 0 && inFromEdge < bez && d > 1e-3) {
+            const m = Math.pow(1 - inFromEdge / bez, 1.6);
+            R = 128 + (vx / d) * m * 127;
+            G = 128 + (vy / d) * m * 127;
+          }
+          const o = (py * w + px) * 4;
+          img.data[o] = R;
+          img.data[o + 1] = G;
+          img.data[o + 2] = 128;
+          img.data[o + 3] = 255;
+        }
+      }
+      ctx.putImageData(img, 0, 0);
+      feImage.setAttribute("href", c.toDataURL());
+      feImage.setAttribute("width", String(w));
+      feImage.setAttribute("height", String(h));
+      bar.style.backdropFilter = "url(#msail-lens)";
+      (bar.style as CSSStyleDeclaration & { webkitBackdropFilter?: string }).webkitBackdropFilter =
+        "url(#msail-lens)";
+    };
+    build();
+    const ro = new ResizeObserver(build);
+    ro.observe(bar);
+    return () => {
+      ro.disconnect();
+      svg.remove();
+      bar.style.backdropFilter = "";
+      (bar.style as CSSStyleDeclaration & { webkitBackdropFilter?: string }).webkitBackdropFilter =
+        "";
+    };
+  }, []);
 
   // The menu trigger only exists below lg; if the viewport grows past it while
   // the menu is open (resize / rotation), the overlay turns invisible but would
@@ -145,42 +233,38 @@ export function SiteHeader() {
   }, [open, close]);
 
   return (
-    <header className="sticky top-0 z-50">
-      {/* The collegiate maize rule across the very top. */}
-      <div className="h-1 bg-maize" />
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3">
+      <div
+        ref={barRef}
+        data-scrolled={scrolled}
+        className="glass-island pointer-events-auto flex h-12 items-center gap-1 rounded-full pl-4 pr-1.5"
+      >
+        <Wordmark className="mr-2" />
 
-      <div ref={barRef} className="border-b border-border bg-paper/85 backdrop-blur-md">
-        <div className="container-bleed flex h-18 items-center justify-between gap-6 py-3">
-          <Wordmark />
+        <nav className="hidden items-center lg:flex" aria-label="Primary">
+          {site.nav.map((link) => (
+            <NavLink key={link.href} href={link.href} label={link.label} />
+          ))}
+        </nav>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
-            {site.nav.map((link) => (
-              <NavLink key={link.href} href={link.href} label={link.label} />
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            {/* Wrapper owns `hidden` so it isn't fighting CtaLink's base
-                `inline-flex`; the Join CTA only appears at >= sm. */}
-            <span className="hidden sm:inline-flex">
-              <CtaLink href={site.cta.href}>
-                {site.cta.label}
-                <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-              </CtaLink>
-            </span>
-            <button
-              ref={triggerRef}
-              type="button"
-              onClick={() => setOpen(true)}
-              aria-label="Open menu"
-              aria-expanded={open}
-              aria-haspopup="dialog"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-border-strong text-ink transition-colors hover:bg-paper-deep lg:hidden"
-            >
-              <MenuIcon className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
+        {/* Wrapper owns `hidden` so it isn't fighting CtaLink's base
+            `inline-flex`; the Join CTA only appears at >= sm. */}
+        <span className="ml-2 hidden sm:inline-flex">
+          <CtaLink href={site.cta.href} variant="navy" className="!min-h-9 !px-4 !py-1">
+            {site.cta.label}
+          </CtaLink>
+        </span>
+        <button
+          ref={triggerRef}
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy transition-colors duration-150 hover:bg-navy/5 lg:hidden"
+        >
+          <MenuIcon className="h-5 w-5" />
+        </button>
       </div>
 
       {/* Mobile overlay menu */}
@@ -190,16 +274,15 @@ export function SiteHeader() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-50 flex flex-col bg-paper lg:hidden"
+          className="overlay-ground pointer-events-auto fixed inset-0 z-50 flex flex-col lg:hidden"
         >
-          <div className="h-1 bg-maize" />
-          <div className="container-bleed flex h-18 items-center justify-between border-b border-border py-3">
+          <div className="container-bleed flex h-14 items-center justify-between border-b border-border">
             <Wordmark onClick={close} />
             <button
               type="button"
               onClick={close}
               aria-label="Close menu"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-sm border border-border-strong text-ink transition-colors hover:bg-paper-deep"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy transition-colors duration-150 hover:bg-navy/5"
             >
               <CloseIcon className="h-5 w-5" />
             </button>
@@ -220,10 +303,10 @@ export function SiteHeader() {
                   onClick={close}
                   aria-current={active ? "page" : undefined}
                   data-active={active}
-                  className="group flex flex-col gap-1 border-b border-border py-5 data-[active=true]:border-l-4 data-[active=true]:border-l-maize data-[active=true]:pl-4"
+                  className="flex flex-col gap-1 border-b border-border py-5 data-[active=true]:text-navy"
                 >
-                  <span className="font-display text-h3 text-ink">{link.label}</span>
-                  <span className="text-meta text-faint">{link.blurb}</span>
+                  <span className="font-display text-h3 text-navy">{link.label}</span>
+                  <span className="text-meta text-ink-3">{link.blurb}</span>
                 </Link>
               );
             })}
@@ -233,7 +316,7 @@ export function SiteHeader() {
                 {site.cta.label} MSAIL
                 <ArrowIcon className="h-4 w-4" />
               </CtaLink>
-              <div className="-mx-2 flex flex-wrap font-mono text-meta text-muted">
+              <div className="-mx-2 flex flex-wrap text-label text-ink-2">
                 {site.channels.map((c) => (
                   <a
                     key={c.key}
@@ -241,7 +324,7 @@ export function SiteHeader() {
                     onClick={close}
                     {...channelLinkProps(c)}
                     aria-label={channelAriaLabel(c)}
-                    className="inline-flex min-h-11 items-center gap-2 px-2 transition-colors hover:text-ink"
+                    className="inline-flex min-h-11 items-center gap-2 px-2 transition-colors duration-150 hover:text-navy"
                   >
                     <ChannelIcon name={c.key} className="h-4 w-4 shrink-0" />
                     {c.label}

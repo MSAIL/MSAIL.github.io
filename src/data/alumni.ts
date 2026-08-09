@@ -39,7 +39,7 @@ export const alumniMeta: { intro: string; photosFlag: Flag } = {
   // Verified live copy (lightly tightened).
   intro:
     "MSAIL dates back to 2008, with a long line of members who went on to do " +
-    "great things across research and industry. Are you a past member? Let the " +
+    "great things in the tech industry. Are you a past member? Let the " +
     "admin team know and we'll feature you here.",
   photosFlag: flag(
     "verified",

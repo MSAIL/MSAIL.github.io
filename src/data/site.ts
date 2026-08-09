@@ -47,7 +47,6 @@ export const site = {
     { label: "Talks", href: "/talks", blurb: "Our speaker series and talk archive." },
     { label: "Resources", href: "/resources", blurb: "Our AI/ML learning library." },
     { label: "Alumni", href: "/alumni", blurb: "Where MSAIL members have gone." },
-    { label: "Contact", href: "/contact", blurb: "Reach the admin team." },
   ] satisfies NavLink[],
 
   /** The single primary call-to-action, the real join funnel. */
@@ -108,23 +107,21 @@ export const footerColumns: { title: string; links: { label: string; href: strin
       { label: "Join MSAIL", href: site.cta.href },
       { label: "Sponsor us", href: "/sponsors" },
       { label: "Alumni", href: "/alumni" },
-      { label: "Contact", href: "/contact" },
     ],
   },
 ];
 
 /**
- * Homepage hero. The full name is the headline; the MSAIL acronym is tied to it
- * with a maize highlight. One concrete subline, then two CTAs.
+ * Homepage hero. A short serif headline over the live rectified-flow figure,
+ * one concrete subline, then two CTAs (solid maize primary + glass secondary).
  */
 export const home = {
-  acronym: "MSAIL",
-  headline: "Michigan Student Artificial Intelligence Lab",
-  subline: site.tagline, // single source of truth: the site-wide tagline
+  headline: "Michigan Student AI Lab",
+  subline:
+    "Reading groups, build-from-scratch projects, and a 37-talk archive, run by students at the University of Michigan since 2008.",
 
   ctas: [
-    { label: "Join MSAIL", href: "/join", variant: "primary" as const },
-    { label: "Sponsor / work with us", href: "/sponsors", variant: "ghost" as const },
+    { label: "Join MSAIL", href: "/join", variant: "maize" as const },
+    { label: "See past talks", href: "/talks", variant: "outline" as const },
   ],
-  affiliation: ["University of Michigan", "Ann Arbor, Michigan", "Established 2008"],
 } as const;

@@ -27,21 +27,21 @@ export default function AlumniPage() {
                 alt={`Portrait of ${a.name}`}
                 width={320}
                 height={320}
-                className="h-28 w-28 rounded-sm object-cover"
+                className="h-28 w-28 rounded-lg object-cover"
               />
             ) : (
               /* No portrait on file for this person — show initials, never a
                  stand-in photo. */
               <div
                 aria-hidden
-                className="flex h-28 w-28 items-center justify-center rounded-sm bg-paper-deep font-display text-h3 text-faint"
+                className="flex h-28 w-28 items-center justify-center rounded-lg bg-tile font-display text-h3 text-ink-3"
               >
                 {initials(a.name)}
               </div>
             )}
             <div className="flex flex-col">
               <span className="text-body font-semibold text-ink">{a.name}</span>
-              <span className="text-meta text-muted">{a.term}</span>
+              <span className="text-meta text-ink-2">{a.term}</span>
             </div>
           </li>
         ))}

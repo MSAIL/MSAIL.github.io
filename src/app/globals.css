@@ -1,132 +1,128 @@
 @import "tailwindcss";
 
 /* =============================================================================
-   MSAIL design tokens  ·  "Michigan research-editorial"
-   A serious student AI lab with collegiate color confidence. SINGLE LIGHT THEME.
+   MSAIL design tokens  ·  "Rectified Light"
+   A white optical bench. SINGLE LIGHT THEME.
 
-   Identity: U-M Blue #00274C (dominant structural color, real navy fields/bands)
-   plus U-M Maize #FFCB05 (bold accent: thick rules, big type accents, highlights)
-   on a warm paper base #F7F4EC. Maize is text ONLY on navy fields.
+   The homepage's live rectified-flow figure supplies the page's saturated
+   color; everything around it is navy ink on cool white. Depth comes from
+   navy-tinted hairlines + layered navy-tinted shadows (never pure black),
+   and liquid glass exists ONLY where the simulation shines through it
+   (nav, canvas HUD chips, one hero pill). Interior surfaces are honest
+   solids. Maize is a fill color, never thin text on white.
 
-   Type: Anton (display headlines + wordmark; display-only, single weight) + Inter
-   (body/UI) + IBM Plex Mono (small labels). Edit DESIGN here; content in src/data.
+   Type: Satoshi, and only Satoshi (variable 300 to 900; headings 600, the
+   wordmark at 900 wearing the sunset gradient).
+   Edit DESIGN here; content lives in src/data.
    ============================================================================= */
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", "SFMono-Regular", monospace;
+  --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 @theme {
-  /* --- Surfaces ----------------------------------------------------------- */
-  --color-paper: #f7f4ec; /* warm paper, the page background */
-  --color-paper-deep: #efeadd; /* slightly deeper warm tone for subtle blocks */
-  --color-paper-raised: #fffdf7; /* lifted card on paper */
+  /* --- Grounds. Two planes only: white and one navy-tinted near-white. ---- */
+  --color-page: #ffffff;
+  --color-tile: #f5f7f9; /* ≈ color-mix(in srgb, #00274C 4%, white) */
+  --color-well: #fcfdff; /* embedded figure / canvas wells */
 
-  /* --- Michigan blue, the dominant structural color ----------------------- */
+  /* --- Michigan navy: the display ink AND the structural fill ------------- */
   --color-navy: #00274c;
-  --color-navy-deep: #001a33; /* reserved: extra-dark navy for navy-on-navy depth (currently unused; the footer uses --color-navy via .navy-field) */
-  --color-navy-soft: #16395e; /* lifted navy: cards/hover on a navy field */
+  --color-navy-soft: #16395e; /* lifted navy: hover on navy fields */
 
-  /* --- Michigan maize, the bold accent ------------------------------------ */
+  /* --- Michigan maize: fills only (1.57:1 on white — never thin text) ----- */
   --color-maize: #ffcb05;
   --color-maize-deep: #f0b400; /* maize hover/pressed */
+  --color-gold-ink: #8a6d00; /* the rare gold-colored word (4.6:1 on white) */
 
-  /* --- Text --------------------------------------------------------------- */
-  --color-ink: #0a1a2f; /* deep-navy ink, primary text on paper */
-  --color-muted: #44546a; /* secondary text on paper */
-  --color-faint: #596779; /* meta on paper — 5.25:1 on paper, 4.8:1 on paper-deep (AA at 13px) */
-  --color-on-navy: #f4efe2; /* cream text on navy fields */
-  --color-on-navy-muted: #aec1d6; /* secondary text on navy */
+  /* --- Ink scale on white -------------------------------------------------- */
+  --color-ink: #1a2733; /* body text; #000 is banned */
+  --color-ink-2: #5b6770; /* secondary */
+  --color-ink-3: #8a94a0; /* captions, whispering */
+  --color-on-navy: #eaf0f6;
+  --color-on-navy-muted: #9db4cb;
 
-  /* --- Lines -------------------------------------------------------------- */
-  --color-border: rgba(0, 39, 76, 0.16); /* hairline on paper */
-  --color-border-strong: rgba(0, 39, 76, 0.32);
-  --color-border-on-navy: rgba(244, 239, 226, 0.18); /* hairline on navy */
+  /* --- Lines: always navy-tinted, never neutral gray ----------------------- */
+  --color-border: rgba(0, 39, 76, 0.1);
+  --color-border-strong: rgba(0, 39, 76, 0.22);
+  --color-border-on-navy: rgba(234, 240, 246, 0.16);
 
-  /* --- Signals ------------------------------------------------------------ */
+  /* --- Signals ------------------------------------------------------------- */
   --color-ring: #00274c;
   --color-selection-bg: #ffcb05;
   --color-selection-fg: #00274c;
 
-  /* --- Type scale. Bold grotesk display + clean grotesk text + mono labels.
-         Confident, heavy, tight tracking on the big sizes. ------------------- */
-  --text-meta: 0.8125rem;
-  --text-meta--line-height: 1.45;
-  --text-meta--letter-spacing: 0.02em;
+  /* --- Type ramp. Tracking follows the measured Apple curve: positive at
+         small sizes, crossing zero near 40px, negative at display sizes. --- */
+  --text-meta: 0.8125rem; /* 13px — mono metadata, captions */
+  --text-meta--line-height: 1.5;
+  --text-meta--letter-spacing: 0.01em;
 
-  --text-label: 0.9375rem;
-  --text-label--line-height: 1.3;
+  --text-label: 0.9375rem; /* 15px — UI labels, nav */
+  --text-label--line-height: 1.35;
   --text-label--font-weight: 500;
+  --text-label--letter-spacing: 0.002em;
 
-  --text-body: 1.0625rem;
-  --text-body--line-height: 1.65;
+  --text-body: 1.0625rem; /* 17px — Satoshi body */
+  --text-body--line-height: 1.47;
+  --text-body--letter-spacing: -0.008em;
 
-  --text-lead: 1.375rem;
+  --text-lead: 1.3125rem; /* 21px — page leads */
   --text-lead--line-height: 1.5;
-  --text-lead--letter-spacing: -0.005em;
+  --text-lead--letter-spacing: -0.008em;
 
-  /* Anton runs tall and tight, so the display tiers use comfortable line-height
-     and neutral (non-negative) tracking so the tall caps never crowd.
-     (h2 and mega are defined-but-unused tiers of the ramp; first use deserves a
-     visual review.) */
-  --text-h3: 1.875rem;
-  --text-h3--line-height: 1.18;
-  --text-h3--letter-spacing: 0em;
-  --text-h3--font-weight: 400;
+  --text-h4: 1.375rem; /* 22px — Satoshi 600 card/list titles */
+  --text-h4--line-height: 1.25;
+  --text-h4--font-weight: 600;
+  --text-h4--letter-spacing: 0.005em;
 
-  --text-h2: 2.625rem;
+  --text-h3: 1.75rem; /* 28px — serif 400 section heads */
+  --text-h3--line-height: 1.2;
+  --text-h3--font-weight: 600;
+  --text-h3--letter-spacing: -0.008em;
+
+  --text-h2: clamp(1.875rem, 3.2vw + 1rem, 2.5rem); /* 40px — serif 400 */
   --text-h2--line-height: 1.12;
-  --text-h2--letter-spacing: 0em;
-  --text-h2--font-weight: 400;
+  --text-h2--font-weight: 600;
+  --text-h2--letter-spacing: -0.012em;
 
-  --text-h1: clamp(2.25rem, 7vw, 4.5rem);
-  --text-h1--line-height: 1.1;
-  --text-h1--letter-spacing: 0.004em;
-  --text-h1--font-weight: 400;
+  --text-h1: clamp(2.375rem, 5.5vw, 3.5rem); /* serif 400 page titles */
+  --text-h1--line-height: 1.08;
+  --text-h1--font-weight: 600;
+  --text-h1--letter-spacing: -0.018em;
 
-  --text-display: clamp(2.5rem, 8vw, 6.75rem);
-  --text-display--line-height: 1.08;
-  --text-display--letter-spacing: 0.006em;
-  --text-display--font-weight: 400;
+  --text-display: clamp(2.75rem, 6.5vw, 4.75rem); /* homepage only */
+  --text-display--line-height: 1.05;
+  --text-display--font-weight: 600;
+  --text-display--letter-spacing: -0.022em;
 
-  --text-mega: clamp(3.75rem, 13vw, 9.5rem);
-  --text-mega--line-height: 1.02;
-  --text-mega--letter-spacing: 0.008em;
-  --text-mega--font-weight: 400;
-
-  /* --- Editorial rhythm (8px base) ---------------------------------------- */
+  /* --- Rhythm (8px base) --------------------------------------------------- */
   --spacing-gutter: 1.5rem;
-  --spacing-section: 7rem;
-  --spacing-section-sm: 4rem;
+  --spacing-section: 8rem;
+  --spacing-section-sm: 4.5rem;
 
   --container-page: 72rem;
   --container-bleed: 88rem;
-  --container-prose: 40rem;
-  /* Unset Tailwind's deprecated 65ch default so `max-w-prose` falls through to
-     --container-prose above (otherwise the 40rem token is silently dead). */
+  --container-prose: 42rem;
   --max-width-prose: initial;
 
-  /* Near-square radii: editorial color blocks read as crisp rectangles. */
-  --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 8px;
+  /* --- Radius ramp: grows with element size -------------------------------- */
+  --radius-sm: 6px; /* small controls */
+  --radius-md: 10px; /* inputs, chips */
+  --radius-lg: 18px; /* cards */
+  --radius-xl: 28px; /* hero media, glass card */
 
-  /* Restrained motion. */
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  /* --- Shadows: 2–3 layers, blur ≈ 2× offset, navy-tinted, alpha ≤ .08 ---- */
+  --shadow-card:
+    0 1px 1px rgba(0, 39, 76, 0.02), 0 4px 8px rgba(0, 39, 76, 0.04),
+    0 16px 32px rgba(0, 39, 76, 0.06);
+  --shadow-pop:
+    0 1px 1px rgba(0, 39, 76, 0.02), 0 4px 8px rgba(0, 39, 76, 0.04),
+    0 16px 32px rgba(0, 39, 76, 0.06), 0 24px 48px rgba(0, 39, 76, 0.08);
+
+  /* --- Motion: functional states only -------------------------------------- */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
-  --animate-rise: rise 0.42s var(--ease-expo) both;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* =============================================================================
@@ -146,19 +142,80 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    /* Reserve the scrollbar gutter so the mobile-menu scroll lock doesn't
-       reflow the page on classic-scrollbar platforms. */
     scrollbar-gutter: stable;
+    /* No elastic gap in Chromium: the root refuses to rubber-band at all. */
+    overscroll-behavior: none;
+    /* Engines that still bounce (Safari) reveal this: a real blue, not
+       something that reads as white. */
+    background-color: #b9cdeb;
+  }
+
+  /* Rubber-band armor: fixed strips parked just beyond the viewport. When
+     macOS elastic overscroll translates the page, these ride into view, so
+     the bounce shows the theme's edge colors instead of the base color. */
+  html::before,
+  html::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 40vh;
+    z-index: -2;
+    pointer-events: none;
+  }
+  html::before {
+    top: -40vh;
+    background: linear-gradient(135deg, #dfe9f8, #e9eef5 60%, #eef0ef);
+  }
+  html::after {
+    bottom: -40vh;
+    background: linear-gradient(135deg, #f0ecdd, #f7ecca);
   }
 
   body {
-    background-color: var(--color-paper);
+    position: relative; /* anchors the ::before resin field to the document */
+    overscroll-behavior: none;
+    background-color: transparent;
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: 1.65;
+    line-height: 1.47;
+    letter-spacing: -0.008em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* The resin field: washes anchored to the DOCUMENT (they scroll away with
+     the page, new ones surfacing as you go). Laid down the page at irregular
+     intervals, alternating sides, with occasional hue swaps so no two screens
+     repeat. Sections with their own background paint over it locally; pages
+     shorter than the sequence simply crop it. */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(860px 660px at 15% -60px, rgba(43, 108, 176, 0.75), transparent 64%),
+      radial-gradient(820px 620px at 85% -40px, rgba(255, 203, 5, 0.8), transparent 62%),
+      radial-gradient(1050px 560px at 50% -100px, rgba(63, 191, 212, 0.48), transparent 66%),
+      radial-gradient(760px 640px at 4% 420px, rgba(169, 198, 232, 0.65), transparent 70%),
+      radial-gradient(740px 620px at 96% 480px, rgba(242, 223, 160, 0.68), transparent 70%),
+      radial-gradient(840px 680px at 8% 1050px, rgba(63, 191, 212, 0.52), transparent 68%),
+      radial-gradient(780px 640px at 94% 1200px, rgba(255, 203, 5, 0.58), transparent 66%),
+      radial-gradient(860px 720px at 3% 1900px, rgba(43, 108, 176, 0.6), transparent 68%),
+      radial-gradient(740px 620px at 97% 2150px, rgba(242, 223, 160, 0.62), transparent 70%),
+      radial-gradient(820px 680px at 12% 2800px, rgba(255, 203, 5, 0.55), transparent 66%),
+      radial-gradient(840px 680px at 90% 3100px, rgba(43, 108, 176, 0.58), transparent 68%),
+      radial-gradient(780px 640px at 6% 3900px, rgba(63, 191, 212, 0.5), transparent 68%),
+      radial-gradient(800px 660px at 94% 4200px, rgba(255, 203, 5, 0.6), transparent 66%),
+      radial-gradient(860px 680px at 20% 4900px, rgba(169, 198, 232, 0.58), transparent 70%),
+      radial-gradient(820px 660px at 80% 5300px, rgba(242, 223, 160, 0.65), transparent 68%),
+      radial-gradient(760px 600px at 10% 5900px, rgba(43, 108, 176, 0.45), transparent 68%),
+      radial-gradient(720px 580px at 88% 6300px, rgba(255, 203, 5, 0.5), transparent 66%),
+      radial-gradient(800px 620px at 30% 6900px, rgba(63, 191, 212, 0.4), transparent 68%),
+      linear-gradient(160deg, #dfe9f8 0%, #e9eef5 30%, #f2edda 68%, #f7ecca 100%);
   }
 
   ::selection {
@@ -172,7 +229,7 @@
     border-radius: var(--radius-sm);
   }
 
-  /* On navy fields the navy focus ring is invisible, so switch it to maize. */
+  /* On navy fields the navy focus ring is invisible; switch it to maize. */
   .navy-field :focus-visible {
     outline-color: var(--color-maize);
   }
@@ -182,19 +239,18 @@
     text-decoration: none;
   }
 
-  /* Warm, subtle scrollbar tuned to paper. */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--color-border-strong) transparent;
+    scrollbar-color: rgba(0, 39, 76, 0.28) transparent;
   }
   ::-webkit-scrollbar {
     width: 11px;
     height: 11px;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--color-border-strong);
+    background-color: rgba(0, 39, 76, 0.28);
     border-radius: 999px;
-    border: 3px solid var(--color-paper);
+    border: 3px solid var(--color-page);
   }
   ::-webkit-scrollbar-track {
     background: transparent;
@@ -205,29 +261,18 @@
    Design-language utilities
    ============================================================================= */
 
-/* The display face: Anton (display-only, single weight). font-synthesis:none so
-   the bold utility classes elsewhere never synthesize a distorted Anton; it
-   always renders its one true weight. Falls back to Inter then the system stack. */
+/* Display voice: the same Satoshi as body, at heading weight — one voice
+   site-wide. */
 @utility font-display {
-  font-family: var(--font-anton), var(--font-inter), system-ui, sans-serif;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-synthesis: none;
 }
 
-/* A full navy color-block: cream text, navy background. */
+/* A full navy color-block ("ink island"): the page's dark mass. */
 @utility navy-field {
   background-color: var(--color-navy);
   color: var(--color-on-navy);
-}
-
-/* The maize highlight: a bold marker behind a word; navy text stays legible.
-   This is how maize appears in text on paper (never as a maize text color). */
-@utility maize-highlight {
-  background-color: var(--color-maize);
-  color: var(--color-navy);
-  padding-inline: 0.14em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 
 /* Centered measure + responsive gutters. */
@@ -238,7 +283,7 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* Wider "bleed" frame for the editorial grid + masthead. */
+/* Wider bleed frame for the hero + shell chrome. */
 @utility container-bleed {
   width: 100%;
   max-width: var(--container-bleed);
@@ -247,7 +292,426 @@
 }
 
 /* =============================================================================
-   Reduced motion: page transition (rise) + hover motion collapse.
+   Liquid glass. Budget (hard cap): the nav bar, the hero's secondary pill,
+   and the simulation HUD chips/card. Interior surfaces stay solid.
+   ============================================================================= */
+
+/* The floating island nav: one glass capsule, detached from the page edges
+   (the Dynamic Island grammar). The wet look is three layers: a nearly-clear
+   fill with heavy saturation of whatever is behind it, a directional specular
+   streak (::before, one implied light source), and a faint prismatic rim
+   (::after) — refraction at the bezel, not frosted resin. */
+.glass-island {
+  position: relative;
+  isolation: isolate;
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.06), 0 10px 30px rgba(0, 39, 76, 0.12),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 14px -8px rgba(0, 39, 76, 0.18);
+  transition: background-color 150ms linear;
+}
+.glass-island[data-scrolled="true"] {
+  background: rgba(255, 255, 255, 0.14);
+}
+.glass-island::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(100deg, transparent 6%, rgba(255, 255, 255, 0.6) 16%, transparent 30%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent 48%);
+}
+.glass-island::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(43, 108, 176, 0.35),
+    rgba(123, 95, 214, 0.28) 30%,
+    rgba(199, 93, 138, 0.26) 50%,
+    rgba(232, 115, 78, 0.26) 66%,
+    rgba(255, 203, 5, 0.32)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+/* Pill button material (the hero's secondary CTA). Same wet stack, smaller. */
+.glass-pill {
+  position: relative;
+  isolation: isolate;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-backdrop-filter: blur(16px) saturate(190%);
+  backdrop-filter: blur(16px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.1), 0 6px 18px rgba(0, 39, 76, 0.1),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -5px 10px -6px rgba(0, 39, 76, 0.16);
+  transition: background-color 120ms var(--ease-out);
+}
+.glass-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(43, 108, 176, 0.3),
+    rgba(123, 95, 214, 0.24) 35%,
+    rgba(232, 115, 78, 0.24) 68%,
+    rgba(255, 203, 5, 0.28)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.glass-pill:active {
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.1), inset 0 1px 3px rgba(0, 39, 76, 0.1);
+}
+
+/* Small chips sitting ON the simulation canvas (dataset switcher). */
+.glass-chip {
+  border-radius: 999px;
+  padding: 0.375rem 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.002em;
+  color: var(--color-navy);
+  background: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  backdrop-filter: blur(14px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.08), 0 4px 12px rgba(0, 39, 76, 0.07),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -3px 6px -4px rgba(0, 39, 76, 0.14);
+  transition: background-color 120ms var(--ease-out);
+  cursor: pointer;
+}
+.glass-chip:hover {
+  background: rgba(255, 255, 255, 0.78);
+}
+.glass-chip[aria-pressed="true"] {
+  background: var(--color-navy);
+  color: #fff;
+  border-color: var(--color-navy);
+}
+/* The active chip carries the one maize mark in the HUD. */
+.glass-chip[aria-pressed="true"]::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-maize);
+  vertical-align: 0.06em;
+}
+
+/* The one glass card (hero HUD caption). */
+.glass-card {
+  position: relative;
+  isolation: isolate;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(26px) saturate(185%);
+  backdrop-filter: blur(26px) saturate(185%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 12px 40px rgba(0, 39, 76, 0.12), 0 2px 6px rgba(0, 39, 76, 0.06),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 14px -8px rgba(0, 39, 76, 0.16);
+}
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(43, 108, 176, 0.28),
+    rgba(123, 95, 214, 0.22) 34%,
+    rgba(199, 93, 138, 0.2) 52%,
+    rgba(255, 203, 5, 0.26) 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+/* Fallback ladder: no backdrop-filter → near-opaque; reduced transparency
+   preference → same. */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-island,
+  .glass-pill,
+  .glass-chip,
+  .glass-card {
+    background: rgba(255, 255, 255, 0.94);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-island,
+  .glass-pill,
+  .glass-chip,
+  .glass-card {
+    background: rgba(255, 255, 255, 0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* =============================================================================
+   One-off devices, each allowed exactly once per page.
+   ============================================================================= */
+
+/* The wordmark's fill: the same sunset walk the Block M wears, clipped into
+   the varsity letterforms. */
+.wordmark-gradient {
+  filter: drop-shadow(0 0.5px 1px rgba(0, 39, 76, 0.18));
+  background-image: linear-gradient(
+    90deg,
+    #00274c,
+    #154a86 18%,
+    #2b6cb0 32%,
+    #7b5fd6 45%,
+    #c75d8a 55%,
+    #e8734e 65%,
+    #f0a000 80%,
+    #ffcb05
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The glass cut of the wordmark: the sunset walk lightened toward frost,
+   with a white top-light sheen clipped into the letterforms — quiet next to
+   the saturated grain M, unmistakably the same colors. */
+.wordmark-glass {
+  filter: drop-shadow(0 1px 1.5px rgba(0, 39, 76, 0.22));
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.03) 52%, rgba(255, 255, 255, 0.1)),
+    linear-gradient(
+      90deg,
+      #264767,
+      #386598 18%,
+      #4b82bc 32%,
+      #8f77dc 45%,
+      #cf759c 55%,
+      #eb8869 65%,
+      #f2ae26 80%,
+      #ffd32a
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Headshot placeholder: the sunset as an avatar, initials on top. Swapped
+   for real photos when the team confirms them. */
+.avatar-fallback {
+  background: linear-gradient(135deg, #154a86, #7b5fd6 40%, #c75d8a 58%, #e8734e 74%, #f0a000);
+}
+
+/* The mobile menu overlay wears the same ground as the page. */
+.overlay-ground {
+  background-color: #e9eef5;
+  background-image: linear-gradient(160deg, #dfe9f8 0%, #e9eef5 30%, #f2edda 68%, #f7ecca 100%);
+}
+
+/* Every pill button on the site is glass; the tint carries the identity.
+   Maize stays the primary action, navy the chrome action, clear the rest. */
+.btn-glass {
+  position: relative;
+  isolation: isolate;
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.08), 0 6px 18px rgba(0, 39, 76, 0.1),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -5px 10px -6px rgba(0, 39, 76, 0.16);
+  transition: background-color 120ms var(--ease-out), box-shadow 120ms var(--ease-out);
+}
+.btn-glass:active {
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.08), inset 0 1px 3px rgba(0, 39, 76, 0.12);
+}
+.btn-glass-maize {
+  background: rgba(255, 203, 5, 0.55);
+  color: var(--color-navy);
+}
+.btn-glass-maize:hover {
+  background: rgba(255, 203, 5, 0.75);
+}
+.btn-glass-navy {
+  background: rgba(0, 39, 76, 0.82);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.btn-glass-navy:hover {
+  background: rgba(0, 39, 76, 0.92);
+}
+.btn-glass-clear {
+  background: rgba(255, 255, 255, 0.34);
+  color: var(--color-navy);
+}
+.btn-glass-clear:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* The explainer island: a glass capsule that unfolds into the full
+   walkthrough. Height animates via the 0fr -> 1fr grid trick; the corner
+   radius relaxes from pill to panel as it opens. */
+.island-panel {
+  width: 100%;
+  max-width: 46rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 1px 2px rgba(0, 39, 76, 0.06), 0 10px 30px rgba(0, 39, 76, 0.1),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -8px 14px -8px rgba(0, 39, 76, 0.16);
+  transform: translateZ(0);
+  will-change: transform;
+  transition: background-color 180ms var(--ease-out);
+}
+.island-panel.island-open {
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.island-trigger {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.75rem;
+  border-radius: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-navy);
+  cursor: pointer;
+}
+.island-chevron {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform 300ms var(--ease-out);
+}
+.island-chevron-open {
+  transform: rotate(180deg);
+}
+.island-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms var(--ease-out);
+}
+.island-open .island-body {
+  grid-template-rows: 1fr;
+}
+.island-inner {
+  overflow: hidden;
+  contain: content;
+}
+
+/* The prismatic hairline under the hero — the second (and last) place the
+   spectral ramp exists outside the simulation. */
+.prism-rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #154a86 12%,
+    #2b6cb0 28%,
+    #7b5fd6 42%,
+    #c75d8a 54%,
+    #e8734e 66%,
+    #f0a000 82%,
+    transparent
+  );
+}
+
+/* The simulation's t-scrubber. */
+.flow-scrub {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 24px;
+  background: transparent;
+  cursor: pointer;
+}
+.flow-scrub::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(0, 39, 76, 0.18);
+}
+.flow-scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--color-navy);
+  box-shadow: 0 1px 3px rgba(0, 39, 76, 0.25);
+}
+.flow-scrub::-moz-range-track {
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(0, 39, 76, 0.18);
+}
+.flow-scrub::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid var(--color-navy);
+  box-shadow: 0 1px 3px rgba(0, 39, 76, 0.25);
+}
+
+/* =============================================================================
+   Reduced motion: collapse every transition/animation to an instant swap.
+   (The FlowField engine separately renders its static final frame.)
    ============================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -15,7 +15,6 @@ const routes = [
   "/alumni/",
   "/sponsors/",
   "/join/",
-  "/contact/",
   "/constitution/",
 ];
 

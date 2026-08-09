@@ -1,26 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Anton, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { PageTransition } from "@/components/page-transition";
 
-/* Body + UI text: clean, readable. */
-const inter = Inter({
-  subsets: ["latin"],
+/* UI + body text: Satoshi (Fontshare), self-hosted variable font 300–900. */
+const satoshi = localFont({
+  src: "./fonts/Satoshi-Variable.woff2",
+  weight: "300 900",
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-satoshi",
 });
 
-/* Display headlines + the MSAIL wordmark: Anton (display-only, single weight). */
-const anton = Anton({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-anton",
-});
-
-/* Small metadata labels. Only 400 is ever rendered; don't ship unused weights. */
+/* Metadata labels only. Only 400 is ever rendered; don't ship unused weights. */
 const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: "400",
@@ -78,7 +71,7 @@ const organizationJsonLd = {
   name: "Michigan Student Artificial Intelligence Lab",
   alternateName: "MSAIL",
   url: "https://msail.github.io",
-  logo: "https://msail.github.io/msail-mark.png",
+  logo: "https://msail.github.io/msail-logo.png",
   email: "msail-admin@umich.edu",
   foundingDate: "2008",
   sameAs: [
@@ -89,7 +82,7 @@ const organizationJsonLd = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#00274c",
+  themeColor: "#ffffff",
   colorScheme: "light",
 };
 
@@ -101,19 +94,21 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${anton.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${satoshi.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-sm focus:border focus:border-border focus:bg-paper-raised focus:px-4 focus:text-label focus:text-ink"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-sm focus:border focus:border-border focus:bg-page focus:px-4 focus:text-label focus:text-ink"
         >
           Skip to content
         </a>
         <SiteHeader />
-        {/* tabIndex lets the skip link actually move focus here. */}
-        <main id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">
-          <PageTransition>{children}</PageTransition>
+        {/* tabIndex lets the skip link actually move focus here. The top
+            padding clears the floating island nav; the homepage hero pulls
+            itself back up under it so the canvas reaches the very top. */}
+        <main id="main" tabIndex={-1} className="flex flex-1 flex-col pt-20 outline-none">
+          {children}
         </main>
         <SiteFooter />
         <script

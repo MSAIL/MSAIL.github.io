@@ -1,4 +1,4 @@
-import { flag, AWAITING_REFRESH } from "./content-status";
+import { flag } from "./content-status";
 
 /**
  * About page content. Sources: live homepage "What is MSAIL?" + the live
@@ -10,7 +10,7 @@ import { flag, AWAITING_REFRESH } from "./content-status";
  * "awaiting Matthew" placeholder for the live team, while the OUTGOING roster is
  * preserved here (flagged stale) so nothing is lost in the swap.
  */
-export type Person = { name: string; role: string; email: string };
+export type Person = { name: string; role: string; email: string; linkedin?: string; website?: string };
 
 export const about = {
   /** Verified live mission copy (lightly tightened). */
@@ -19,11 +19,9 @@ export const about = {
     "We strive to spread our passion for AI throughout the University of Michigan " +
     "student body, regardless of demographic or academic standing.",
 
-  /** Verified: the live About page; founded 2008 is confirmed on the Alumni page. */
+  /** Founded 2008 is confirmed on the live Alumni page; the activities are the live site's own list. */
   history:
-    "Founded in 2008, MSAIL has grown into one of the largest student AI " +
-    "communities at the University of Michigan, running talks, reading groups, " +
-    "and hands-on projects across research and industry.",
+    "Founded in 2008, MSAIL runs talks, reading groups, and student projects.",
 
   /** Live copy claims "over 400 members" — kept but unverified for this year. */
   membership: {
@@ -46,12 +44,29 @@ export const about = {
     flag: flag("unverified", "Live faculty mentor; re-confirm alongside the incoming roster."),
   },
 
-  /** The live team — intentionally a placeholder until the new roster lands. */
+  /**
+   * The Fall 2026 leadership team, from Matthew McClure's roster sheet
+   * (Drive folder "Fall 2026", sheet last modified 2026-07-31). Emails are
+   * published only where the sheet lists one; phone numbers are never
+   * published. Headshots exist in the folder but are intentionally held
+   * back until the team confirms them.
+   */
   roster: {
-    flag: flag("awaiting", "New admin / leadership roster incoming. " + AWAITING_REFRESH),
-    /** User-facing copy for the placeholder (the flag note stays internal). */
-    notice:
-      "We're finalizing this year's leadership team and faculty mentor. The full roster will be posted here soon.",
+    flag: flag(
+      "verified",
+      "Fall 2026 admins per Matthew's roster sheet (2026-07-31). Headshots on hold; Usman Ghani's role not listed in the sheet.",
+    ),
+    term: "Fall 2026",
+    people: [
+      { name: "Matthew McClure", role: "President", email: "mattai@umich.edu" },
+      { name: "Santosh Desai", role: "Project Lead", email: "" },
+      { name: "Dmitriy Ivkov", role: "Project Lead", email: "" },
+      { name: "Shamanth Shastry", role: "Industry Project Lead", email: "sshamant@umich.edu" },
+      { name: "Sofiya Goncharova", role: "ML News Lead", email: "sogon@umich.edu" },
+      { name: "Srinitya Pamulapati", role: "Communications & Finance", email: "" },
+      { name: "Sanat Gupta", role: "Website", email: "sanatt@umich.edu", website: "https://thesanatgupta.com" },
+      { name: "Usman Ghani", role: "Admin", email: "" },
+    ] as Person[],
   },
 
   /**

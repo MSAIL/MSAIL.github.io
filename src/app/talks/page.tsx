@@ -17,7 +17,7 @@ const undated = talksArchive.filter((t) => t.year === null);
 export default function TalksPage() {
   return (
     <PageShell
-      title="Talks & Speaker Series"
+      title="Talks"
       lead="An archive of the talks MSAIL hosted from 2020 to 2024."
       note={talksMeta.note}
     >
@@ -26,14 +26,12 @@ export default function TalksPage() {
           ...(undated.length ? [{ key: "undated", label: "Date unconfirmed", talks: undated }] : [])].map(
           (group) => (
             <section key={group.key} className="flex flex-col gap-5">
-              <h2 className="font-display text-h3 text-ink">
-                <span className="maize-highlight">{group.label}</span>
-              </h2>
+              <h2 className="font-display text-h3 text-navy">{group.label}</h2>
               <ul className="flex flex-col">
                 {group.talks.map((t) => (
                   <li key={t.slug} className="flex flex-col gap-1 border-t border-border py-4">
                     <span className="text-body font-semibold text-ink">{t.title}</span>
-                    <span className="text-meta text-muted">{t.speaker}</span>
+                    <span className="text-meta text-ink-3">{t.speaker}</span>
                   </li>
                 ))}
               </ul>

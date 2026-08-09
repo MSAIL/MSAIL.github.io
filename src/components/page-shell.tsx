@@ -1,7 +1,7 @@
 /**
- * Shared route scaffold for every content page: a thick maize rule, a bold
- * display title, an optional lead, the page body, and an optional small
- * footnote (only rendered when a page passes one).
+ * Shared route scaffold for every content page: a serif display title, an
+ * optional lead, the page body, and an optional small footnote (only rendered
+ * when a page passes one).
  */
 export function PageShell({
   title,
@@ -15,17 +15,15 @@ export function PageShell({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="container-bleed flex flex-1 flex-col py-section-sm sm:py-section">
-      <div className="h-1 w-20 bg-maize" />
+    <section className="container-page flex flex-1 flex-col py-section-sm sm:py-24">
+      <h1 className="font-display max-w-[22ch] text-h1 text-navy">{title}</h1>
 
-      <h1 className="font-display mt-7 max-w-[18ch] text-h1 text-ink">{title}</h1>
-
-      {lead ? <p className="mt-6 max-w-prose text-lead text-muted">{lead}</p> : null}
+      {lead ? <p className="mt-5 max-w-prose text-lead text-ink-2">{lead}</p> : null}
 
       {children}
 
       {note ? (
-        <p className="mt-12 border-t border-border pt-6 text-meta text-faint">{note}</p>
+        <p className="mt-14 border-t border-border pt-5 text-meta text-ink-3">{note}</p>
       ) : null}
     </section>
   );

@@ -20,7 +20,7 @@ function ExternalLink({ link }: { link: InitiativeLink }) {
       className="group inline-flex min-h-11 items-center gap-1.5 text-label font-medium text-navy hover:underline"
     >
       {link.label}
-      <ArrowIcon className="h-3.5 w-3.5 shrink-0 -rotate-45 transition-transform group-hover:translate-x-0.5" />
+      <ArrowIcon className="h-3.5 w-3.5 shrink-0 -rotate-45" />
     </a>
   );
 }
@@ -29,17 +29,17 @@ export default function InitiativesPage() {
   return (
     <PageShell
       title="Projects & Initiatives"
-      lead="The projects and reading groups you can join this term."
+      lead="The projects and reading groups MSAIL runs, plus the ML Discussion archive."
     >
       <div className="mt-12 flex flex-col gap-14">
         <section className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
           {initiatives.items.map((item) => (
             <article key={item.name} className="flex flex-col gap-2 border-t border-border pt-5">
-              <h2 className="font-display text-h3 text-ink">{item.name}</h2>
-              <p className="font-mono text-meta uppercase tracking-[0.12em] text-faint">
+              <h2 className="font-display text-h3 text-navy">{item.name}</h2>
+              <p className="text-meta text-ink-3">
                 {item.level} · led by {item.lead}
               </p>
-              <p className="max-w-prose text-body text-muted">{item.description}</p>
+              <p className="max-w-prose text-body text-ink-2">{item.description}</p>
               {item.links.length ? (
                 <p className="flex flex-wrap gap-x-5">
                   {item.links.map((l) => (
@@ -57,7 +57,7 @@ export default function InitiativesPage() {
 
         <section className="flex flex-col gap-6">
           <SectionHeading>ML Discussion: {mlDiscussionArchive.term} material</SectionHeading>
-          <p className="max-w-prose text-body text-muted">{mlDiscussionArchive.intro}</p>
+          <p className="max-w-prose text-body text-ink-2">{mlDiscussionArchive.intro}</p>
           <ul className="flex flex-col">
             {mlDiscussionArchive.lessons.map((lesson) => (
               <li

@@ -6,11 +6,9 @@ import { ArrowIcon } from "./icons";
 import { ChannelIcon, channelAriaLabel, channelLinkProps } from "./channel-icon";
 import { Year } from "./year";
 
-/** Small footer column heading (sans caps, not the old mono kicker pattern). */
+/** Small footer column heading. */
 function ColTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="text-meta font-semibold uppercase tracking-[0.12em] text-maize">{children}</p>
-  );
+  return <p className="text-meta text-ink-3">{children}</p>;
 }
 
 export function SiteFooter() {
@@ -19,16 +17,16 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="navy-field border-t-4 border-maize">
+    <footer className="border-t border-border">
       <div className="container-bleed py-section-sm">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
           {/* Identity + CTA */}
           <div className="flex flex-col items-start gap-6">
-            <Wordmark tone="cream" withTagline />
-            <p className="max-w-xs text-meta text-on-navy-muted">{site.tagline}</p>
-            <CtaLink href={site.cta.href} variant="maize">
+            <Wordmark withTagline />
+            <p className="max-w-xs text-meta text-ink-2">{site.tagline}</p>
+            <CtaLink href={site.cta.href}>
               {site.cta.label} MSAIL
-              <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+              <ArrowIcon className="h-4 w-4" />
             </CtaLink>
           </div>
 
@@ -41,7 +39,7 @@ export function SiteFooter() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="flex min-h-11 w-fit min-w-11 items-center text-label text-on-navy-muted transition-colors hover:text-maize"
+                      className="flex min-h-11 w-fit min-w-11 items-center text-label text-ink-2 transition-colors duration-150 hover:text-navy"
                     >
                       {link.label}
                     </Link>
@@ -61,12 +59,12 @@ export function SiteFooter() {
                     href={c.href}
                     {...channelLinkProps(c)}
                     aria-label={channelAriaLabel(c)}
-                    className="inline-flex min-h-11 items-center gap-2 text-label text-on-navy transition-colors hover:text-maize"
+                    className="inline-flex min-h-11 items-center gap-2 text-label text-ink transition-colors duration-150 hover:text-navy"
                   >
                     <ChannelIcon name={c.key} className="h-4 w-4 shrink-0" />
                     {c.label}
                   </a>
-                  <span className="ml-6 -mt-1 font-mono text-meta text-on-navy-muted">{c.value}</span>
+                  <span className="-mt-1 ml-6 text-meta text-ink-3">{c.value}</span>
                 </li>
               ))}
             </ul>
@@ -74,12 +72,12 @@ export function SiteFooter() {
         </div>
 
         {/* Colophon */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-border-on-navy pt-6 font-mono text-meta text-on-navy-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-border pt-6 text-meta text-ink-3 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © <Year initial={year} /> {site.name} · {site.longName}
           </p>
-          <p className="uppercase tracking-[0.18em]">
-            {site.university} · est. {site.foundedYear}
+          <p>
+            {site.university} · Since {site.foundedYear}
           </p>
         </div>
       </div>

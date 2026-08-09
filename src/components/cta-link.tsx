@@ -1,23 +1,25 @@
 import Link from "next/link";
 
-type Variant = "primary" | "ghost" | "maize";
+type Variant = "maize" | "navy" | "outline" | "glass";
 
 /**
- * Shell call-to-action.
- * - primary : navy fill, cream text (the default action on paper)
- * - ghost   : hairline outline, ink text (secondary on paper)
- * - maize   : bold maize fill, navy text (for use on navy fields)
+ * Shell call-to-action, always a glass pill; the tint carries the identity.
+ * - maize   : maize glass, navy text: THE primary action
+ * - navy    : navy glass, white text: compact chrome actions (nav Join)
+ * - outline : clear glass, navy text: secondary everywhere
+ * - glass   : alias of outline (kept for call sites)
  */
 const VARIANTS: Record<Variant, string> = {
-  primary: "bg-navy text-on-navy hover:bg-navy-soft",
-  ghost: "border border-border-strong text-ink hover:border-ink hover:bg-paper-deep",
-  maize: "bg-maize text-navy font-semibold hover:bg-maize-deep",
+  maize: "btn-glass btn-glass-maize font-semibold",
+  navy: "btn-glass btn-glass-navy",
+  outline: "btn-glass btn-glass-clear",
+  glass: "btn-glass btn-glass-clear",
 };
 
 export function CtaLink({
   href,
   children,
-  variant = "primary",
+  variant = "maize",
   external = false,
   className = "",
   onClick,
@@ -29,15 +31,13 @@ export function CtaLink({
   className?: string;
   onClick?: () => void;
 }) {
-  const externalProps = external
-    ? { target: "_blank", rel: "noopener noreferrer" }
-    : {};
+  const externalProps = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
   return (
     <Link
       href={href}
       onClick={onClick}
-      className={`group inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-5 py-2.5 text-label font-medium transition-colors duration-200 ease-standard ${VARIANTS[variant]} ${className}`}
+      className={`group inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-label font-medium transition-colors duration-150 ease-standard ${VARIANTS[variant]} ${className}`}
       {...externalProps}
     >
       {children}

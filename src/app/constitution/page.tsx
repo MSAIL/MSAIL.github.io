@@ -27,7 +27,7 @@ export default function ConstitutionPage() {
             {constitutionTerminology.map((t) => (
               <div key={t.term} className="flex gap-3">
                 <dt className="font-semibold text-ink">{t.term}:</dt>
-                <dd className="text-body text-muted">{t.definition}</dd>
+                <dd className="text-body text-ink-2">{t.definition}</dd>
               </div>
             ))}
           </dl>
@@ -38,7 +38,7 @@ export default function ConstitutionPage() {
             <SectionHeading>{article.heading}</SectionHeading>
             <div className="flex flex-col gap-4 border-t border-border pt-4">
               {article.paragraphs.map((p) => (
-                <p key={p.slice(0, 40)} className="text-body text-muted">
+                <p key={p.slice(0, 40)} className="text-body text-ink-2">
                   {p}
                 </p>
               ))}
