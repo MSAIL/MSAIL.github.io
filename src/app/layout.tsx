@@ -82,7 +82,9 @@ const organizationJsonLd = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  // Every route opens on the ink band, so the browser chrome (iOS Safari
+  // bars, Android address bar) blends with the night ground, not against it.
+  themeColor: "#06294d",
   colorScheme: "light",
 };
 

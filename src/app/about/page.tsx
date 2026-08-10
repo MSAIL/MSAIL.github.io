@@ -25,7 +25,7 @@ export default function AboutPage() {
             off until re-confirmed. */}
         <section className="flex flex-col gap-6">
           <SectionHeading>Leadership, {about.roster.term}</SectionHeading>
-          <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
             {about.roster.people.map((p) => {
               const initials = p.name
                 .split(/\s+/)

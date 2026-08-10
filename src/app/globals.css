@@ -147,7 +147,10 @@
     overscroll-behavior: none;
     /* Engines that still bounce (Safari) reveal this: a real blue, not
        something that reads as white. */
-    background-color: #b9cdeb;
+    /* Every page now opens AND closes on the ink ground, so anything that
+       peeks past the document edges (iOS rubber-band, which ignores
+       overscroll-behavior) must be night, not day. */
+    background-color: #04223f;
   }
 
   /* Rubber-band armor: fixed strips parked just beyond the viewport. When
@@ -165,11 +168,11 @@
   }
   html::before {
     top: -40vh;
-    background: linear-gradient(135deg, #dfe9f8, #e9eef5 60%, #eef0ef);
+    background: linear-gradient(135deg, #06294d, #04223f 60%);
   }
   html::after {
     bottom: -40vh;
-    background: linear-gradient(135deg, #f0ecdd, #f7ecca);
+    background: linear-gradient(135deg, #03203f, #021833);
   }
 
   body {
