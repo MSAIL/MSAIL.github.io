@@ -594,18 +594,10 @@
 .glass-island[data-ink="true"]::before {
   opacity: 0;
 }
-/* The hero island keeps a WHISPER of glare on ink (the CTA pills carry a
-   top-light sheen; a fully matte capsule reads dead beside them): the
-   streak survives at low opacity, blurred soft, clipped by the capsule. */
-.glass-island-ink {
-  overflow: hidden;
-}
+/* On ink the hero island carries no streak at all — its glare is the
+   top-light inset on the rim alone, matching the CTA pills. */
 .glass-island-ink::before {
-  opacity: 0.45;
-  filter: blur(6px);
-  background:
-    linear-gradient(100deg, transparent 6%, rgba(255, 255, 255, 0.5) 15%, transparent 25%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent 48%);
+  display: none;
 }
 
 /* The hero island floats on the water below: a slow bob and a gentle
