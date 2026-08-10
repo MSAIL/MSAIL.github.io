@@ -386,32 +386,58 @@ export class FlowEngine {
       dst[2 * a + 1] = targets[2 * b + 1];
       if (dstCls && cls) dstCls[a] = cls[b];
     }
-    const chunk = N;
-    const maxSweeps = 60 * N;
-    for (let done = 0; done < maxSweeps; done += chunk) {
+    // The 2-opt uncross sweeps do NOT run here: a synchronous convergence
+    // loop blocked the main thread ~50ms per (re)pairing — the click hitch.
+    // They run frame-sliced in the loop instead (runOptSlice), which is
+    // sound because the final image is invariant to WHICH grain lands on
+    // which target; only the transport paths differ.
+    return { dst, dstCls };
+  }
+
+  /** Frame-sliced 2-opt: a few milliseconds of uncross sweeps per frame
+      during early transport. Each accepted swap exchanges two grains'
+      TARGETS, so every target-derived attribute (color bucket, drift-field
+      phases) swaps along with it — at small t the visible correction is a
+      few pixels, and past mid-transport the sweep is retired outright. */
+  private optActive = false;
+  private runOptSlice(budgetMs: number): void {
+    const N = this.N;
+    const from = this.from;
+    const dst = this.dst;
+    const t0 = performance.now();
+    do {
       let accepted = 0;
-      for (let k = 0; k < chunk; k++) {
+      for (let k = 0; k < 4096; k++) {
         const i = (this.rand() * N) | 0;
         const j = (this.rand() * N) | 0;
         if (i === j) continue;
-        const ax = from[2 * i], ay = from[2 * i + 1];
-        const bx = from[2 * j], by = from[2 * j + 1];
-        const px = dst[2 * i], py = dst[2 * i + 1];
-        const qx = dst[2 * j], qy = dst[2 * j + 1];
         // Delta form: sign of the change needs only the cross terms.
-        const delta = (ax - bx) * (px - qx) + (ay - by) * (py - qy);
+        const delta =
+          (from[2 * i] - from[2 * j]) * (dst[2 * i] - dst[2 * j]) +
+          (from[2 * i + 1] - from[2 * j + 1]) * (dst[2 * i + 1] - dst[2 * j + 1]);
         if (delta < 0) {
-          dst[2 * i] = qx; dst[2 * i + 1] = qy;
-          dst[2 * j] = px; dst[2 * j + 1] = py;
-          if (dstCls) {
-            const tc = dstCls[i]; dstCls[i] = dstCls[j]; dstCls[j] = tc;
+          let tf = dst[2 * i]; dst[2 * i] = dst[2 * j]; dst[2 * j] = tf;
+          tf = dst[2 * i + 1]; dst[2 * i + 1] = dst[2 * j + 1]; dst[2 * j + 1] = tf;
+          const tb = this.bucketOf[i]; this.bucketOf[i] = this.bucketOf[j]; this.bucketOf[j] = tb;
+          tf = this.drfSinA[i]; this.drfSinA[i] = this.drfSinA[j]; this.drfSinA[j] = tf;
+          tf = this.drfCosA[i]; this.drfCosA[i] = this.drfCosA[j]; this.drfCosA[j] = tf;
+          tf = this.drfSinB[i]; this.drfSinB[i] = this.drfSinB[j]; this.drfSinB[j] = tf;
+          tf = this.drfCosB[i]; this.drfCosB[i] = this.drfCosB[j]; this.drfCosB[j] = tf;
+          tf = this.drfSinC[i]; this.drfSinC[i] = this.drfSinC[j]; this.drfSinC[j] = tf;
+          tf = this.drfCosC[i]; this.drfCosC[i] = this.drfCosC[j]; this.drfCosC[j] = tf;
+          tf = this.drfSinD[i]; this.drfSinD[i] = this.drfSinD[j]; this.drfSinD[j] = tf;
+          tf = this.drfCosD[i]; this.drfCosD[i] = this.drfCosD[j]; this.drfCosD[j] = tf;
+          if (this.lastCls) {
+            const tc = this.lastCls[i]; this.lastCls[i] = this.lastCls[j]; this.lastCls[j] = tc;
           }
           accepted++;
         }
       }
-      if (accepted < chunk * 0.03) break;
-    }
-    return { dst, dstCls };
+      if (accepted < 4096 * 0.03) {
+        this.optActive = false;
+        return;
+      }
+    } while (performance.now() - t0 < budgetMs);
   }
 
   /** Recompute per-particle colors + stagger delays for the CURRENT pairing. */
@@ -550,6 +576,7 @@ export class FlowEngine {
     this.resetDynamics();
     this.T = this.reduced ? 1 : 0;
     this.playing = !this.reduced;
+    this.optActive = !this.reduced; // uncrossing happens across the first frames
     this.t0 = performance.now();
     this.wake();
   }
@@ -567,6 +594,7 @@ export class FlowEngine {
     this.resetDynamics();
     this.T = this.reduced ? 1 : 0;
     this.playing = !this.reduced;
+    this.optActive = !this.reduced;
     this.t0 = performance.now();
     this.wake();
   }
@@ -632,6 +660,13 @@ export class FlowEngine {
 
     const e = this.T;
     const settled = !this.playing && e >= 1 && !this.reduced;
+    // Frame-sliced uncrossing: 3ms a frame while the transport is young;
+    // past halfway a swap would visibly bend a nearly-arrived path, and the
+    // destination image doesn't depend on it, so the sweep retires.
+    if (this.optActive) {
+      if (!this.playing || e >= 0.5) this.optActive = false;
+      else this.runOptSlice(3);
+    }
     // The halo waits for the M: hidden through transport, then a slow fade-in
     // once the grains have landed. Replay/scrub snaps it away quickly.
     const formed = !this.playing && e >= 1;
@@ -756,10 +791,11 @@ export class FlowEngine {
       if (record && hasRibbon) {
         this.trail[base + nextHead * 2] = x;
         this.trail[base + nextHead * 2 + 1] = y;
-        // Full comets during transport; long-lived ribbons at equilibrium so
-        // the drift visibly draws its streamlines (8 decimated points ≈ 24
-        // frames of history).
-        const cap = this.playing ? TRAIL : this.N > 40000 ? 6 : 8;
+        // Comets during transport (shorter than the full ring: the last
+        // third of a 32-frame tail was the most expensive stroke geometry
+        // of the heaviest frames); long-lived ribbons at equilibrium so
+        // the drift visibly draws its streamlines.
+        const cap = this.playing ? (this.W < 640 ? 14 : 24) : this.N > 40000 ? 6 : 8;
         if (this.trailLen[rRow] < cap) this.trailLen[rRow]++;
         else if (this.trailLen[rRow] > cap) this.trailLen[rRow]--;
       } else if (!this.playing && !settled && hasRibbon && this.trailLen[rRow] > 0) {
@@ -876,6 +912,7 @@ export function FlowField({
   const rangeRef = useRef<HTMLInputElement>(null);
   const tReadRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef<HTMLSpanElement>(null);
+  const hudRef = useRef<HTMLDivElement>(null);
   const engineRef = useRef<FlowEngine | null>(null);
   const [sampleCount, setSampleCount] = useState<number | null>(null);
   // Phones get the halo's lite filter: the full chain's 13px aura blur runs
@@ -902,6 +939,7 @@ export function FlowField({
     engine.darkGround = darkRef.current;
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let hudTimer = 0;
     engine.onTick = (t, playing) => {
       if (rangeRef.current) rangeRef.current.value = String(Math.round(t * 1000));
       if (tReadRef.current) tReadRef.current.textContent = t.toFixed(2);
@@ -909,8 +947,45 @@ export function FlowField({
         stateRef.current.textContent = playing
           ? "transporting"
           : "equilibrium (langevin + solenoidal drift)";
+      // While the canvas animates under it, the HUD's backdrop blur would
+      // re-rasterize every frame (~8fps of transport budget); CSS swaps it
+      // to a near-opaque fill for those seconds. The glass returns a beat
+      // AFTER landing so its one-time re-raster misses the landing frame,
+      // which already pays for the halo's first paint.
+      const hud = hudRef.current;
+      if (hud) {
+        if (playing) {
+          window.clearTimeout(hudTimer);
+          if (hud.dataset.playing !== "true") hud.dataset.playing = "true";
+        } else if (hud.dataset.playing !== "false") {
+          window.clearTimeout(hudTimer);
+          hudTimer = window.setTimeout(() => {
+            hud.dataset.playing = "false";
+          }, 700);
+        }
+      }
     };
     setSampleCount(engine.N);
+
+    // Warm the goo filter's GPU pipeline while the page is still loading:
+    // its first rasterization measured ~150ms, which otherwise lands on the
+    // exact frame the M settles and the halo begins its fade-in.
+    const wctx = water.getContext("2d");
+    if (wctx) {
+      // Full-coverage warm draw: blur cost is per covered tile, so a token
+      // corner rect would leave most of the surface cold.
+      wctx.save();
+      wctx.setTransform(1, 0, 0, 1, 0, 0);
+      wctx.fillStyle = "#fff";
+      wctx.fillRect(0, 0, water.width, water.height);
+      wctx.restore();
+    }
+    water.style.opacity = "0.004";
+    const warmTimer = window.setTimeout(() => {
+      // Only stand down if the engine hasn't already taken the reins
+      // (reduced-motion shows the halo immediately).
+      if (water.style.opacity === "0.004") water.style.opacity = "0";
+    }, 450);
 
     // Boot: noise immediately (the frame is never empty), then the mark.
     engine.setDataset("noise");
@@ -949,6 +1024,8 @@ export function FlowField({
     wrap.addEventListener("pointerleave", onLeave);
 
     return () => {
+      window.clearTimeout(warmTimer);
+      window.clearTimeout(hudTimer);
       ro.disconnect();
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
@@ -1022,6 +1099,7 @@ export function FlowField({
       {/* The one glass caption card. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-end p-4 sm:p-6">
         <div
+          ref={hudRef}
           className={`glass-card pointer-events-auto hidden w-[23rem] flex-col px-5 py-4 text-[11px] leading-relaxed md:flex ${
             dark ? "glass-card-ink text-on-navy-muted" : "text-ink-2"
           }`}
