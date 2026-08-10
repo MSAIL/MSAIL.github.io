@@ -5,8 +5,8 @@ import { site } from "@/data/site";
  * The MSAIL identity lockup: the name set in Graduate (the varsity block
  * letterface) wearing the sunset gradient — the same navy→violet→gold walk
  * the Block M wears. `withTagline` adds the full org name under it (footer).
- * The `tone` prop only affects the tagline; the gradient carries its own
- * color on any ground.
+ * `tone="cream"` swaps in the dark-ground cut of the gradient and mutes the
+ * tagline for navy surfaces.
  */
 export function Wordmark({
   className = "",
@@ -27,7 +27,9 @@ export function Wordmark({
       onClick={onClick}
       className={`group flex min-h-11 w-fit flex-col items-start justify-center gap-y-1 ${className}`}
     >
-      <span className="wordmark-glass text-[1.1875rem] font-black leading-none tracking-[0.015em]">
+      <span
+        className={`${onNavy ? "wordmark-glass-dark" : "wordmark-glass"} text-[1.1875rem] font-black leading-none tracking-[0.015em]`}
+      >
         {site.name}
       </span>
       {withTagline ? (

@@ -232,7 +232,8 @@
   }
 
   /* On navy fields the navy focus ring is invisible; switch it to maize. */
-  .navy-field :focus-visible {
+  .navy-field :focus-visible,
+  .ground-ink :focus-visible {
     outline-color: var(--color-maize);
   }
 
@@ -314,7 +315,10 @@
     0 1px 2px rgba(0, 39, 76, 0.06), 0 10px 30px rgba(0, 39, 76, 0.12),
     inset 0 1.5px 1px rgba(255, 255, 255, 0.95),
     inset 0 -8px 14px -8px rgba(0, 39, 76, 0.18);
-  transition: background-color 150ms linear;
+  transition:
+    background-color 150ms linear,
+    border-color 350ms ease,
+    box-shadow 350ms ease;
 }
 .glass-island[data-scrolled="true"] {
   background: rgba(255, 255, 255, 0.14);
@@ -478,6 +482,17 @@
   mask-composite: exclude;
 }
 
+/* The caption card's ink-ground cut: same glass, smoked. Declared after
+   .glass-card so the shared class order settles the override. */
+.glass-card-ink {
+  background: rgba(2, 20, 40, 0.35);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow:
+    0 12px 40px rgba(0, 8, 18, 0.4), 0 2px 6px rgba(0, 8, 18, 0.2),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.28),
+    inset 0 -8px 14px -8px rgba(0, 8, 18, 0.4);
+}
+
 /* Fallback ladder: no backdrop-filter → near-opaque; reduced transparency
    preference → same. */
 @supports not (backdrop-filter: blur(1px)) {
@@ -558,6 +573,31 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent 48%);
 }
 
+/* On ink grounds the island glass runs quieter: white glare and white rim
+   both read as smudges on navy, so the streak goes entirely and the sunset
+   ::after edge draws the capsule alone. Applies to the nav while it floats
+   over an ink band (data-ink) and to islands that live on ink. */
+.glass-island[data-ink="true"],
+.glass-island-ink {
+  border-color: transparent;
+  box-shadow:
+    0 10px 30px rgba(0, 8, 18, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.16),
+    inset 0 -8px 14px -8px rgba(0, 8, 18, 0.3);
+}
+/* The nav crosses light and ink bands while scrolling, so its glare fades
+   rather than snapping; the hero island lives on ink permanently and just
+   drops its streak outright. */
+.glass-island::before {
+  transition: opacity 350ms ease;
+}
+.glass-island[data-ink="true"]::before {
+  opacity: 0;
+}
+.glass-island-ink::before {
+  display: none;
+}
+
 /* The hero island floats on the water below: a slow bob and a gentle
    tilt-and-shear running at incommensurate periods, so the combined drift
    never visibly repeats. Bob and sway live on nested elements — composing
@@ -587,6 +627,45 @@
   50% {
     transform: rotate(-1.1deg) skewX(-0.5deg);
   }
+}
+
+/* The ink ground: the resin field's dark counterpart. Deep navy with the
+   same sunset hues glowing faintly from the corners, so dark sections read
+   as the same material after dusk, not a different site. */
+.ground-ink {
+  background-color: #03203f;
+  background-image:
+    radial-gradient(900px 620px at 12% -5%, rgba(43, 108, 176, 0.32), transparent 64%),
+    radial-gradient(820px 560px at 88% 4%, rgba(123, 95, 214, 0.2), transparent 66%),
+    radial-gradient(780px 560px at 86% 102%, rgba(240, 160, 0, 0.13), transparent 62%),
+    radial-gradient(700px 520px at 5% 98%, rgba(199, 93, 138, 0.12), transparent 64%),
+    linear-gradient(160deg, #06294d, #03203f 46%, #021833);
+}
+
+/* The wordmark's dark-ground cut: same sunset walk, frosted toward light so
+   every letter clears the navy behind it. */
+.wordmark-glass-dark {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.42),
+      rgba(255, 255, 255, 0.08) 52%,
+      rgba(255, 255, 255, 0.16)
+    ),
+    linear-gradient(
+      90deg,
+      #9db8d6,
+      #7fa7d4 18%,
+      #a9c6e8 32%,
+      #c3aef2 45%,
+      #eba9c8 55%,
+      #f6b291 65%,
+      #ffd022 80%,
+      #ffcb05
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Headshot placeholder: the sunset as an avatar, initials on top. Swapped
@@ -625,6 +704,101 @@
 }
 .btn-glass-maize:hover {
   background: rgba(255, 203, 5, 0.75);
+}
+/* On ink grounds the translucent maize muddies to olive over the navy behind
+   it; the fill must run near-solid there. */
+.ground-ink .btn-glass-maize {
+  background: rgba(255, 203, 5, 0.88);
+}
+.ground-ink .btn-glass-maize:hover {
+  background: rgba(255, 211, 42, 0.96);
+}
+/* The clear pill's white-wash fill goes muddy over navy: run it as a frost
+   outline instead. */
+.ground-ink .btn-glass-clear {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-on-navy);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+.ground-ink .btn-glass-clear:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+/* The explainer as an ink bubble island: same quiet smoked glass as the
+   other islands on the night stretch, frost text inside. No backdrop-filter:
+   the ground behind it is flat navy (blur adds nothing), and blurring while
+   the open/close height animates re-rasterizes the backdrop every frame —
+   that was the whole lag. */
+/* Compound selectors on purpose: these must beat the base .island-panel
+   rules that are declared later in the file. */
+.island-panel.island-panel-ink {
+  /* Same frost-glass recipe as .ground-ink .btn-glass-clear, so the capsule
+     and the CTA pills above it read as one material. */
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.38);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow:
+    0 1px 2px rgba(0, 8, 18, 0.2), 0 10px 30px rgba(0, 8, 18, 0.3),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -8px 14px -8px rgba(0, 8, 18, 0.3);
+}
+.island-panel.island-panel-ink:not(.island-open):hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.island-panel.island-panel-ink.island-open {
+  background: rgba(255, 255, 255, 0.16);
+}
+.island-panel-ink .island-trigger {
+  color: var(--color-on-navy);
+}
+
+/* The night stretch dissolves instead of ending: its ink paint lives on a
+   ::before whose mask fades out over the last stretch, letting the real
+   resin field rise through — no faked seam color to mismatch. */
+.ground-ink.ground-ink-fade {
+  position: relative;
+  isolation: isolate;
+  background: none;
+}
+.ground-ink-fade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #03203f;
+  /* No bottom-corner washes on the fading variant: they tinted the ground
+     behind the explainer capsule, and the dissolve reveals the real field's
+     color anyway. Pure navy until the melt. */
+  background-image:
+    radial-gradient(900px 620px at 12% -5%, rgba(43, 108, 176, 0.32), transparent 64%),
+    radial-gradient(820px 560px at 88% 4%, rgba(123, 95, 214, 0.2), transparent 66%),
+    linear-gradient(160deg, #06294d, #03203f 46%, #021833);
+  /* Smoothstep-eased dissolve: a linear alpha ramp reads as a hard-edged
+     band; these stops approximate an S-curve so the ink thins impercept-
+     ibly at first, lets go through the middle, and feathers out at the end.
+     The span stays SHORTER than the padding below the explainer island, so
+     the capsule always sits on solid ink. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 210px),
+    rgba(0, 0, 0, 0.94) calc(100% - 175px),
+    rgba(0, 0, 0, 0.78) calc(100% - 137px),
+    rgba(0, 0, 0, 0.5) calc(100% - 98px),
+    rgba(0, 0, 0, 0.22) calc(100% - 60px),
+    rgba(0, 0, 0, 0.06) calc(100% - 26px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 calc(100% - 210px),
+    rgba(0, 0, 0, 0.94) calc(100% - 175px),
+    rgba(0, 0, 0, 0.78) calc(100% - 137px),
+    rgba(0, 0, 0, 0.5) calc(100% - 98px),
+    rgba(0, 0, 0, 0.22) calc(100% - 60px),
+    rgba(0, 0, 0, 0.06) calc(100% - 26px),
+    transparent 100%
+  );
 }
 .btn-glass-navy {
   background: rgba(0, 39, 76, 0.82);
@@ -697,6 +871,14 @@
 .island-inner {
   overflow: hidden;
   contain: content;
+  /* The text lets go FASTER than the capsule collapses (and arrives a beat
+     after it opens), so copy never lingers over a closing box. */
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+.island-open .island-inner {
+  opacity: 1;
+  transition: opacity 220ms ease-out 70ms;
 }
 
 /* The prismatic hairline under the hero — the second (and last) place the
@@ -752,6 +934,13 @@
   background: #fff;
   border: 1.5px solid var(--color-navy);
   box-shadow: 0 1px 3px rgba(0, 39, 76, 0.25);
+}
+/* Ink-ground scrub: the navy track disappears on navy, so it goes frost. */
+.flow-scrub-ink::-webkit-slider-runnable-track {
+  background: rgba(234, 240, 246, 0.28);
+}
+.flow-scrub-ink::-moz-range-track {
+  background: rgba(234, 240, 246, 0.28);
 }
 
 /* =============================================================================

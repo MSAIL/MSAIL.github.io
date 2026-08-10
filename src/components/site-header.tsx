@@ -15,7 +15,8 @@ function useIsActive() {
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(href + "/");
 }
 
-/** Desktop nav item: quiet capsule text, navy when active or hovered. */
+/** Desktop nav item: quiet capsule text, navy when active or hovered; runs
+    frost while the bar floats over an ink band (group data-ink). */
 function NavLink({ href, label }: { href: string; label: string }) {
   const isActive = useIsActive();
   const active = isActive(href);
@@ -24,7 +25,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       aria-current={active ? "page" : undefined}
       data-active={active}
-      className="rounded-full px-3.5 py-1.5 text-label text-ink-2 transition-colors duration-150 hover:bg-navy/5 hover:text-navy data-[active=true]:font-semibold data-[active=true]:text-navy"
+      className="rounded-full px-3.5 py-1.5 text-label text-ink-2 transition-colors duration-150 hover:bg-navy/5 hover:text-navy data-[active=true]:font-semibold data-[active=true]:text-navy group-data-[ink=true]:text-on-navy-muted group-data-[ink=true]:hover:bg-white/10 group-data-[ink=true]:hover:text-on-navy group-data-[ink=true]:data-[active=true]:text-on-navy"
     >
       {label}
     </Link>
@@ -34,6 +35,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [overInk, setOverInk] = useState(false);
   const pathname = usePathname();
   const isActive = useIsActive();
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -52,13 +54,33 @@ export function SiteHeader() {
     setOpen(false);
   }
 
-  // The glass bar earns its bottom hairline only once content scrolls under it.
+  // The glass bar earns its bottom hairline only once content scrolls under
+  // it, and runs frost text while ANY ink band (page top, hero stretch, the
+  // talks band, the footer) is under the bar. A band may end in a dissolve
+  // zone (attribute value = fade height in px): the theme flips where the
+  // ink is still solid, not where it has already melted into the light
+  // field. Re-bound per route: each page mounts its own bands.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const bands = Array.from(document.querySelectorAll<HTMLElement>("[data-nav-ink]"));
+    const NAV_BOTTOM = 76;
+    const onScroll = () => {
+      setScrolled(window.scrollY > 8);
+      setOverInk(
+        bands.some((band) => {
+          const fade = parseInt(band.dataset.navInk || "", 10) || 0;
+          const r = band.getBoundingClientRect();
+          return r.top < NAV_BOTTOM && r.bottom - fade > NAV_BOTTOM;
+        }),
+      );
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [pathname]);
 
   // Real Liquid Glass refraction (Chromium only): a displacement map shaped to
   // the capsule's bezel bends whatever scrolls beneath the island, exactly the
@@ -237,9 +259,10 @@ export function SiteHeader() {
       <div
         ref={barRef}
         data-scrolled={scrolled}
-        className="glass-island pointer-events-auto flex h-12 items-center gap-1 rounded-full pl-4 pr-1.5"
+        data-ink={overInk}
+        className="glass-island group pointer-events-auto flex h-12 items-center gap-1 rounded-full pl-4 pr-1.5"
       >
-        <Wordmark className="mr-2" />
+        <Wordmark className="mr-2" tone={overInk ? "cream" : "ink"} />
 
         <nav className="hidden items-center lg:flex" aria-label="Primary">
           {site.nav.map((link) => (
@@ -261,7 +284,7 @@ export function SiteHeader() {
           aria-label="Open menu"
           aria-expanded={open}
           aria-haspopup="dialog"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy transition-colors duration-150 hover:bg-navy/5 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-navy transition-colors duration-150 hover:bg-navy/5 group-data-[ink=true]:text-on-navy group-data-[ink=true]:hover:bg-white/10 lg:hidden"
         >
           <MenuIcon className="h-5 w-5" />
         </button>

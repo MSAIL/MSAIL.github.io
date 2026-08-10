@@ -50,10 +50,23 @@ const M_RAMP: RGB[] = [
   [240, 160, 0],
   [255, 203, 5],
 ];
-function ramp(u: number): RGB {
-  const v = Math.min(0.9999, Math.max(0, u)) * (M_RAMP.length - 1);
+/* On the ink ground the walk must stay LIGHTER than the navy behind it, or
+   the M's left leg vanishes into the page. Same walk, frosted: the stops
+   match .wordmark-glass-dark so the mark and wordmark stay one identity. */
+const M_RAMP_INK: RGB[] = [
+  [157, 184, 214],
+  [127, 167, 212],
+  [169, 198, 232],
+  [195, 174, 242],
+  [235, 169, 200],
+  [246, 178, 145],
+  [255, 208, 34],
+  [255, 203, 5],
+];
+function ramp(stops: RGB[], u: number): RGB {
+  const v = Math.min(0.9999, Math.max(0, u)) * (stops.length - 1);
   const i = v | 0;
-  return mix(M_RAMP[i], M_RAMP[i + 1], v - i);
+  return mix(stops[i], stops[i + 1], v - i);
 }
 
 function mix(a: RGB, b: RGB, f: number): RGB {
@@ -122,6 +135,9 @@ export class FlowEngine {
 
   visible = true; // maintained by the component's IntersectionObserver
   reduced = false;
+  /** Set before the first setDataset when the figure sits on an ink ground:
+      swaps the sunset ramp for its frosted cut and lightens the σ rings. */
+  darkGround = false;
   duration = 2800;
   fitBox: FitBox | null = null;
   onTick: ((t: number, playing: boolean) => void) | null = null;
@@ -416,13 +432,18 @@ export class FlowEngine {
       for (let s = 0; s < 4; s++) buckets.push(mix(GOLD, DEEP_GOLD, s / 3));
       for (let i = 0; i < N; i++) this.bucketOf[i] = cls[i] * 4 + ((this.rand() * 4) | 0);
     } else if (this.dstIsNoise) {
-      for (let s = 0; s < 4; s++) buckets.push(mix(SLATE, [110, 124, 144], s / 3));
+      if (this.darkGround) {
+        for (let s = 0; s < 4; s++) buckets.push(mix([150, 170, 198], [198, 210, 228], s / 3));
+      } else {
+        for (let s = 0; s < 4; s++) buckets.push(mix(SLATE, [110, 124, 144], s / 3));
+      }
       for (let i = 0; i < N; i++) this.bucketOf[i] = (this.rand() * 4) | 0;
     } else {
       // The Block M: 48 dithered steps of the sunset ramp — smooth navy→gold
       // by target x, with the vivid violet/rose/coral bridge at the seam.
       const NB = 48;
-      for (let b = 0; b < NB; b++) buckets.push(ramp((b + 0.5) / NB));
+      const stops = this.darkGround ? M_RAMP_INK : M_RAMP;
+      for (let b = 0; b < NB; b++) buckets.push(ramp(stops, (b + 0.5) / NB));
       let minx = 1e9, maxx = -1e9;
       for (let i = 0; i < N; i++) {
         minx = Math.min(minx, this.dst[2 * i]);
@@ -637,7 +658,9 @@ export class FlowEngine {
     if (this.noiseStats) {
       const { cx, cy, sigma } = this.noiseStats;
       p.lineWidth = 1;
-      p.strokeStyle = `rgba(0,39,76,${(0.07 * e).toFixed(3)})`;
+      p.strokeStyle = this.darkGround
+        ? `rgba(234,240,246,${(0.12 * e).toFixed(3)})`
+        : `rgba(0,39,76,${(0.07 * e).toFixed(3)})`;
       for (let k = 1; k <= 3; k++) {
         p.beginPath();
         p.arc(cx, cy, sigma * k, 0, 6.2832);
@@ -821,9 +844,12 @@ export class FlowEngine {
 export function FlowField({
   className = "",
   fitBox,
+  dark = false,
 }: {
   className?: string;
   fitBox?: FitBox;
+  /** Render for an ink ground: frosted M ramp + dark-glass HUD. */
+  dark?: boolean;
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const ptsRef = useRef<HTMLCanvasElement>(null);
@@ -834,6 +860,7 @@ export function FlowField({
   const engineRef = useRef<FlowEngine | null>(null);
   const [sampleCount, setSampleCount] = useState<number | null>(null);
   const fitBoxRef = useRef(fitBox);
+  const darkRef = useRef(dark);
 
   // Keep the engine's fit box in sync with the prop (post-render, per the
   // refs rule; in practice the hero passes a constant).
@@ -850,6 +877,7 @@ export function FlowField({
 
     const engine = new FlowEngine(pts, water);
     engineRef.current = engine;
+    engine.darkGround = darkRef.current;
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     engine.onTick = (t, playing) => {
@@ -953,7 +981,11 @@ export function FlowField({
 
       {/* The one glass caption card. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-end p-4 sm:p-6">
-        <div className="glass-card pointer-events-auto hidden w-[23rem] flex-col px-5 py-4 text-[11px] leading-relaxed text-ink-2 md:flex">
+        <div
+          className={`glass-card pointer-events-auto hidden w-[23rem] flex-col px-5 py-4 text-[11px] leading-relaxed md:flex ${
+            dark ? "glass-card-ink text-on-navy-muted" : "text-ink-2"
+          }`}
+        >
           <p>rectified flow · {sampleCount ?? "…"} samples</p>
           <p>
             x_t = (1 − t)·x₀ + t·x₁ ·{" "}
@@ -964,13 +996,15 @@ export function FlowField({
           <p>
             state: <span ref={stateRef}>transporting</span>
           </p>
-          <p className="text-ink-3">
+          <p className={dark ? "text-on-navy-muted/80" : "text-ink-3"}>
             coupling: sliced OT + 2-opt (
             <a
               href="https://arxiv.org/abs/2209.03003"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-dotted underline-offset-2 transition-colors duration-150 hover:text-navy"
+              className={`underline decoration-dotted underline-offset-2 transition-colors duration-150 ${
+                dark ? "hover:text-maize" : "hover:text-navy"
+              }`}
             >
               Liu et al. 2022
             </a>
@@ -984,7 +1018,11 @@ export function FlowField({
               aria-label="Replay the transport"
               title="Replay"
               onClick={() => engineRef.current?.replay()}
-              className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/60 bg-white/40 text-navy transition-colors duration-150 hover:bg-white/70"
+              className={`inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border transition-colors duration-150 ${
+                dark
+                  ? "border-white/30 bg-white/15 text-on-navy hover:bg-white/25"
+                  : "border-white/60 bg-white/40 text-navy hover:bg-white/70"
+              }`}
             >
               <svg viewBox="0 0 12 12" className="ml-px h-3 w-3" aria-hidden fill="currentColor">
                 <path d="M2.5 1.4a.6.6 0 0 1 .9-.52l7 4.6a.6.6 0 0 1 0 1.04l-7 4.6a.6.6 0 0 1-.9-.52Z" />
@@ -997,7 +1035,7 @@ export function FlowField({
               max={1000}
               defaultValue={0}
               aria-label="Interpolation time"
-              className="flow-scrub w-full"
+              className={`flow-scrub w-full ${dark ? "flow-scrub-ink" : ""}`}
               onInput={(ev) => engineRef.current?.scrub(Number(ev.currentTarget.value) / 1000)}
             />
           </div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
 import { SectionHeading } from "@/components/content-blocks";
@@ -19,8 +20,9 @@ export default function AboutPage() {
         <p className="max-w-prose text-body text-ink-2">{about.history}</p>
 
         {/* The Fall 2026 team, per Matthew's roster sheet: MDST-style cards.
-            Headshots are on hold, so each card wears a sunset-initials
-            placeholder; the faculty mentor stays off until re-confirmed. */}
+            Cards wear the real headshot where one has been uploaded and the
+            sunset-initials placeholder otherwise; the faculty mentor stays
+            off until re-confirmed. */}
         <section className="flex flex-col gap-6">
           <SectionHeading>Leadership, {about.roster.term}</SectionHeading>
           <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -34,19 +36,31 @@ export default function AboutPage() {
               return (
                 <li
                   key={p.name}
-                  className="flex flex-col items-center gap-3 rounded-xl border border-white/60 bg-white/40 px-5 pb-5 pt-7 text-center shadow-card backdrop-blur-md"
+                  className="flex flex-col overflow-hidden rounded-xl border border-white/60 bg-white/40 text-center shadow-card backdrop-blur-md"
                 >
-                  <div
-                    aria-hidden
-                    className="avatar-fallback flex h-24 w-24 items-center justify-center rounded-full text-[1.75rem] font-bold text-white"
-                  >
-                    {initials}
-                  </div>
-                  <div className="flex flex-col gap-0.5">
+                  {p.photo ? (
+                    // alt stays empty: the name is the very next text node, so
+                    // a screen reader would otherwise announce it twice.
+                    <Image
+                      src={p.photo}
+                      alt=""
+                      width={640}
+                      height={640}
+                      className="aspect-square w-full object-cover"
+                    />
+                  ) : (
+                    <div
+                      aria-hidden
+                      className="avatar-fallback flex aspect-square w-full items-center justify-center text-[3.25rem] font-bold text-white"
+                    >
+                      {initials}
+                    </div>
+                  )}
+                  <div className="flex flex-col gap-0.5 px-4 pt-4">
                     <span className="text-body font-semibold text-ink">{p.name}</span>
                     <span className="text-meta text-ink-2">{p.role}</span>
                   </div>
-                  <div className="flex min-h-9 items-center gap-1">
+                  <div className="flex min-h-9 items-center justify-center gap-1 pb-4">
                     {p.email ? (
                       <a
                         href={`mailto:${p.email}`}

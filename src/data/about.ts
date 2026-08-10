@@ -10,7 +10,15 @@ import { flag } from "./content-status";
  * "awaiting Matthew" placeholder for the live team, while the OUTGOING roster is
  * preserved here (flagged stale) so nothing is lost in the swap.
  */
-export type Person = { name: string; role: string; email: string; linkedin?: string; website?: string };
+export type Person = {
+  name: string;
+  role: string;
+  email: string;
+  linkedin?: string;
+  website?: string;
+  /** Public path under /public, e.g. "/team/usman-ghani.jpg" (384px square, EXIF stripped). */
+  photo?: string;
+};
 
 export const about = {
   /** Verified live mission copy (lightly tightened). */
@@ -48,24 +56,24 @@ export const about = {
    * The Fall 2026 leadership team, from Matthew McClure's roster sheet
    * (Drive folder "Fall 2026", sheet last modified 2026-07-31). Emails are
    * published only where the sheet lists one; phone numbers are never
-   * published. Headshots exist in the folder but are intentionally held
-   * back until the team confirms them.
+   * published. Headshots come from the "Admin Photos" Drive folder as each
+   * admin uploads one; the rest wear initials until theirs lands.
    */
   roster: {
     flag: flag(
       "verified",
-      "Fall 2026 admins per Matthew's roster sheet (2026-07-31). Headshots on hold; Usman Ghani's role not listed in the sheet.",
+      "Fall 2026 admins per Matthew's roster sheet (2026-07-31). Headshots in for Ivkov/Gupta/Ghani (Admin Photos, 2026-08-10); Usman Ghani's role not listed in the sheet.",
     ),
     term: "Fall 2026",
     people: [
       { name: "Matthew McClure", role: "President", email: "mattai@umich.edu" },
       { name: "Santosh Desai", role: "Project Lead", email: "" },
-      { name: "Dmitriy Ivkov", role: "Project Lead", email: "" },
+      { name: "Dmitriy Ivkov", role: "Project Lead", email: "", linkedin: "https://www.linkedin.com/in/dmitriyivkov", photo: "/team/dmitriy-ivkov.jpg" },
       { name: "Shamanth Shastry", role: "Industry Project Lead", email: "sshamant@umich.edu" },
       { name: "Sofiya Goncharova", role: "ML News Lead", email: "sogon@umich.edu" },
       { name: "Srinitya Pamulapati", role: "Communications & Finance", email: "" },
-      { name: "Sanat Gupta", role: "Website", email: "sanatt@umich.edu", website: "https://thesanatgupta.com" },
-      { name: "Usman Ghani", role: "Admin", email: "" },
+      { name: "Sanat Gupta", role: "Website", email: "sanatt@umich.edu", website: "https://thesanatgupta.com", photo: "/team/sanat-gupta.jpg" },
+      { name: "Usman Ghani", role: "Admin", email: "", photo: "/team/usman-ghani.jpg" },
     ] as Person[],
   },
 

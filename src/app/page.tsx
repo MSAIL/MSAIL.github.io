@@ -24,25 +24,33 @@ const SAMPLE_TALKS = SAMPLE_SLUGS.map(
 export default function Home() {
   return (
     <>
-      <Hero />
+      {/* The night stretch: one ink ground from the top of the hero down
+          through the explainer; the mission statement below starts the day.
+          -mt-20 tucks it behind the floating nav to the viewport's edge. */}
+      {/* The dissolve rides mostly inside the explainer section's own bottom
+          padding: pb-24 buys just enough tail that the capsule sits on
+          near-solid ink without pushing the day content down the page. */}
+      <div data-nav-ink="210" className="ground-ink ground-ink-fade -mt-20 pb-24">
+        <Hero />
 
-      {/* First beat below the fold: what this is, and the two doors in. */}
-      <section className="container-page flex flex-col items-center pb-section-sm pt-4 text-center">
-        <p className="max-w-2xl text-lead text-ink-2">{home.subline}</p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {home.ctas.map((cta) => (
-            <CtaLink key={cta.href} href={cta.href} variant={cta.variant}>
-              {cta.label}
-            </CtaLink>
-          ))}
-        </div>
-      </section>
+        {/* First beat below the fold: what this is, and the two doors in. */}
+        <section className="container-page flex flex-col items-center pb-section-sm pt-4 text-center">
+          <p className="max-w-2xl text-lead text-on-navy-muted">{home.subline}</p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {home.ctas.map((cta) => (
+              <CtaLink key={cta.href} href={cta.href} variant={cta.variant}>
+                {cta.label}
+              </CtaLink>
+            ))}
+          </div>
+        </section>
 
-      {/* The one prismatic hairline — the only place the spectral ramp exists
-          outside the simulation. */}
-      <hr className="prism-rule mx-auto w-full max-w-xl" aria-hidden />
+        {/* The one prismatic hairline — the only place the spectral ramp
+            exists outside the simulation. */}
+        <hr className="prism-rule mx-auto w-full max-w-xl" aria-hidden />
 
-      <ExplainerIsland />
+        <ExplainerIsland />
+      </div>
 
       {/* What MSAIL is. Sentence craft, no icon cards. */}
       <section className="container-page pb-section-sm sm:pb-section">
@@ -85,27 +93,29 @@ export default function Home() {
         </ul>
       </section>
 
-      {/* The talk archive, in the site's own light. */}
-      <section className="container-page pb-section-sm sm:pb-section">
-        <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border pb-5">
-          <h2 className="font-display text-h3 text-navy">37 recorded talks, 2020 to 2024</h2>
-        </div>
-        <ul className="grid gap-x-10 sm:grid-cols-2">
-          {SAMPLE_TALKS.map((t) => (
-            <li
-              key={t.slug}
-              className="flex flex-col gap-0.5 border-b border-border py-4"
-            >
-              <span className="text-body font-semibold text-ink">{t.title}</span>
-              <span className="text-meta text-ink-3">{t.speaker}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-8">
-          <CtaLink href="/talks">
-            Browse all 37
-            <ArrowIcon className="h-4 w-4" />
-          </CtaLink>
+      {/* The talk archive, set after dusk: the same resin material, dark. */}
+      <section data-nav-ink className="ground-ink">
+        <div className="container-page py-section-sm sm:py-section">
+          <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border-on-navy pb-5">
+            <h2 className="font-display text-h3 text-on-navy">37 recorded talks, 2020 to 2024</h2>
+          </div>
+          <ul className="grid gap-x-10 sm:grid-cols-2">
+            {SAMPLE_TALKS.map((t) => (
+              <li
+                key={t.slug}
+                className="flex flex-col gap-0.5 border-b border-border-on-navy py-4"
+              >
+                <span className="text-body font-semibold text-on-navy">{t.title}</span>
+                <span className="text-meta text-on-navy-muted">{t.speaker}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            <CtaLink href="/talks">
+              Browse all 37
+              <ArrowIcon className="h-4 w-4" />
+            </CtaLink>
+          </div>
         </div>
       </section>
 

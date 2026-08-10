@@ -13,7 +13,7 @@ export function ExplainerIsland() {
 
   return (
     <section className="container-page flex flex-col items-center py-section-sm sm:py-section">
-      <div className={`island-panel ${open ? "island-open" : ""}`}>
+      <div className={`island-panel island-panel-ink ${open ? "island-open" : ""}`}>
         <button
           type="button"
           aria-expanded={open}
@@ -38,37 +38,37 @@ export function ExplainerIsland() {
         <div className="island-body">
           <div className="island-inner">
             <div className="px-6 pb-7 pt-1 text-left sm:px-9">
-              <p className="max-w-prose text-body text-ink-2">
-                The M is a live <strong>rectified flow</strong>, the core trick
-                behind modern image generators. Three steps:
+              <p className="max-w-prose text-body text-on-navy-muted">
+                The M is a live <strong className="text-on-navy">rectified flow</strong>, the
+                core trick behind modern image generators. Three steps:
               </p>
               <ol className="mt-8 grid gap-x-10 gap-y-7 sm:grid-cols-3">
-                <li className="border-t border-border pt-4">
-                  <h3 className="text-h4 text-navy">1. Start with static.</h3>
-                  <p className="mt-2 text-body text-ink-2">
+                <li className="border-t border-border-on-navy pt-4">
+                  <h3 className="text-h4 text-on-navy">1. Start with static.</h3>
+                  <p className="mt-2 text-body text-on-navy-muted">
                     Every dot is dropped at random. Pure noise: no pattern, no M.
                   </p>
-                  <p className="mt-3 text-meta text-ink-3">x₀ ~ N(0, I)</p>
+                  <p className="mt-3 text-meta text-on-navy-muted/80">x₀ ~ N(0, I)</p>
                 </li>
-                <li className="border-t border-border pt-4">
-                  <h3 className="text-h4 text-navy">2. Give each dot an address.</h3>
-                  <p className="mt-2 text-body text-ink-2">
+                <li className="border-t border-border-on-navy pt-4">
+                  <h3 className="text-h4 text-on-navy">2. Give each dot an address.</h3>
+                  <p className="mt-2 text-body text-on-navy-muted">
                     The M is just a cloud of points. Each noise dot gets matched
                     to one. Nearby dots get nearby addresses, so the paths
                     don&apos;t tangle.
                   </p>
-                  <p className="mt-3 text-meta text-ink-3">coupling: optimal transport</p>
+                  <p className="mt-3 text-meta text-on-navy-muted/80">coupling: optimal transport</p>
                 </li>
-                <li className="border-t border-border pt-4">
-                  <h3 className="text-h4 text-navy">3. Walk straight there.</h3>
-                  <p className="mt-2 text-body text-ink-2">
+                <li className="border-t border-border-on-navy pt-4">
+                  <h3 className="text-h4 text-on-navy">3. Walk straight there.</h3>
+                  <p className="mt-2 text-body text-on-navy-muted">
                     Slide t from 0 to 1 and every dot walks a straight line to
                     its address. Noise becomes the M.
                   </p>
-                  <p className="mt-3 text-meta text-ink-3">x_t = (1 − t)·x₀ + t·x₁</p>
+                  <p className="mt-3 text-meta text-on-navy-muted/80">x_t = (1 − t)·x₀ + t·x₁</p>
                 </li>
               </ol>
-              <p className="mt-8 max-w-prose text-body text-ink-2">
+              <p className="mt-8 max-w-prose text-body text-on-navy-muted">
                 Image generators like Stable Diffusion 3 and Flux run exactly
                 this recipe, with billions of dimensions instead of two and
                 &quot;a photo of a dog&quot; instead of the M. Once the M
