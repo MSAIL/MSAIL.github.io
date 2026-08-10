@@ -97,7 +97,10 @@ export function SiteHeader() {
     const isChromium =
       uaBrands.some((b) => /chromium/i.test(b.brand)) ||
       "chrome" in window; // brands can be empty; window.chrome covers Chrome/Edge
-    if (!isChromium) return;
+    // Real displacement is a desktop luxury: Android Chrome qualifies as
+    // Chromium but cannot afford a per-frame displaced backdrop.
+    const desktopClass = window.matchMedia("(min-width: 64rem) and (hover: hover)").matches;
+    if (!isChromium || !desktopClass) return;
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width", "0");

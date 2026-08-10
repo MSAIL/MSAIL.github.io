@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 /**
  * FlowField — the homepage centerpiece: a rectified-flow transport of samples
@@ -188,13 +188,17 @@ export class FlowEngine {
     this.W = Math.max(1, rect.width);
     this.H = Math.max(1, rect.height);
     // Particle budget scales with area; phones get fewer, desktops cap out.
-    const density = this.W < 640 ? 30 : 19; // phones get a gentler budget
+    const phone = this.W < 640;
+    const density = phone ? 40 : 19; // phones get a much gentler budget
     this.N = Math.max(4000, Math.min(57600, Math.round((this.W * this.H) / density)));
     // Ribbons ride on a subset of grains; the stride keeps stroke geometry
-    // roughly constant as the grain count scales.
-    this.ribbonStride = this.N > 20000 ? 8 : this.N > 10000 ? 4 : 2;
-    // At very high grain counts, trade supersampling for fill rate.
-    const dprCap = this.N > 40000 ? 1.7 : this.N > 20000 ? 1.8 : 2;
+    // roughly constant as the grain count scales. Phones pin the widest
+    // stride outright: the N-tiered rule handed a 10k-grain phone stride 4
+    // (2.5k ribbons), a third of the DESKTOP stroke load on a phone GPU.
+    this.ribbonStride = phone ? 8 : this.N > 20000 ? 8 : this.N > 10000 ? 4 : 2;
+    // At very high grain counts (and on phones, whose DPR-3 panels would
+    // otherwise quadruple the fill), trade supersampling for fill rate.
+    const dprCap = phone ? 1.6 : this.N > 40000 ? 1.7 : this.N > 20000 ? 1.8 : 2;
     const dpr = Math.min(window.devicePixelRatio || 1, dprCap);
     this.ptsCanvas.width = Math.round(this.W * dpr);
     this.ptsCanvas.height = Math.round(this.H * dpr);
@@ -203,7 +207,9 @@ export class FlowEngine {
     this.waterCanvas.width = Math.max(1, Math.round(this.W * this.wScale));
     this.waterCanvas.height = Math.max(1, Math.round(this.H * this.wScale));
     this.wtx.setTransform(this.wScale, 0, 0, this.wScale, 0, 0);
-    this.dotR = this.W < 640 ? 1.3 : 1.45;
+    // Grain size compensates the phone's sparser budget (r ∝ 1/√density
+    // keeps ink coverage constant), so the M reads just as solid.
+    this.dotR = phone ? 1.5 : 1.45;
   }
 
   private dotR = 1.7;
@@ -841,6 +847,19 @@ export class FlowEngine {
 
 /* ------------------------------------------------------------- component */
 
+const LITE_FX_QUERY = "(max-width: 40rem)";
+function subscribeLiteFx(cb: () => void): () => void {
+  const mq = window.matchMedia(LITE_FX_QUERY);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+}
+function getLiteFx(): boolean {
+  return window.matchMedia(LITE_FX_QUERY).matches;
+}
+function getLiteFxServer(): boolean {
+  return false;
+}
+
 export function FlowField({
   className = "",
   fitBox,
@@ -859,6 +878,9 @@ export function FlowField({
   const stateRef = useRef<HTMLSpanElement>(null);
   const engineRef = useRef<FlowEngine | null>(null);
   const [sampleCount, setSampleCount] = useState<number | null>(null);
+  // Phones get the halo's lite filter: the full chain's 13px aura blur runs
+  // at display resolution per water frame, too heavy for phone GPUs.
+  const liteFx = useSyncExternalStore(subscribeLiteFx, getLiteFx, getLiteFxServer);
   const fitBoxRef = useRef(fitBox);
   const darkRef = useRef(dark);
 
@@ -969,13 +991,31 @@ export function FlowField({
               <feMergeNode in="pool" />
             </feMerge>
           </filter>
+          <filter id="water-goo-lite" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="blur" />
+            <feColorMatrix
+              in="blur"
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"
+              result="pool"
+            />
+            <feGaussianBlur in="pool" stdDeviation="6" result="aura" />
+            <feMerge>
+              <feMergeNode in="aura" />
+              <feMergeNode in="pool" />
+            </feMerge>
+          </filter>
         </defs>
       </svg>
       <canvas
         ref={waterRef}
         aria-hidden
         className="absolute inset-0 h-full w-full"
-        style={{ filter: "url(#water-goo)", opacity: 0, transition: "opacity 1600ms ease" }}
+        style={{
+          filter: liteFx ? "url(#water-goo-lite)" : "url(#water-goo)",
+          opacity: 0,
+          transition: "opacity 1600ms ease",
+        }}
       />
       <canvas ref={ptsRef} aria-hidden className="absolute inset-0 h-full w-full" />
 

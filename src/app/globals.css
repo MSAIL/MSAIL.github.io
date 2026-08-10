@@ -607,7 +607,9 @@
    tilt-and-shear running at incommensurate periods, so the combined drift
    never visibly repeats. Bob and sway live on nested elements — composing
    them in one keyframe track would lock their phases together. */
-@media (prefers-reduced-motion: no-preference) {
+/* Desktop-only: a moving backdrop-filtered surface re-samples its blur every
+   frame, which phone GPUs cannot spare. Below lg the island simply rests. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
   .island-bob {
     animation: island-bob 5.6s ease-in-out infinite;
   }
