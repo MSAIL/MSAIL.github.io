@@ -126,8 +126,16 @@ export class FlowEngine {
   fitBox: FitBox | null = null;
   onTick: ((t: number, playing: boolean) => void) | null = null;
 
-  constructor(private ptsCanvas: HTMLCanvasElement) {
+  private wtx: CanvasRenderingContext2D;
+  private waterShown = false;
+  private wScale = 0.3;
+
+  constructor(
+    private ptsCanvas: HTMLCanvasElement,
+    private waterCanvas: HTMLCanvasElement,
+  ) {
     this.ptx = ptsCanvas.getContext("2d")!;
+    this.wtx = waterCanvas.getContext("2d")!;
     if (!FlowEngine.GAUSS) {
       const g = new Float32Array(8192);
       for (let i = 0; i < g.length; i += 2) {
@@ -170,11 +178,15 @@ export class FlowEngine {
     // roughly constant as the grain count scales.
     this.ribbonStride = this.N > 20000 ? 8 : this.N > 10000 ? 4 : 2;
     // At very high grain counts, trade supersampling for fill rate.
-    const dprCap = this.N > 40000 ? 1 : this.N > 20000 ? 1.2 : this.N > 8000 ? 1.5 : 2;
+    const dprCap = this.N > 40000 ? 1.7 : this.N > 20000 ? 1.8 : 2;
     const dpr = Math.min(window.devicePixelRatio || 1, dprCap);
     this.ptsCanvas.width = Math.round(this.W * dpr);
     this.ptsCanvas.height = Math.round(this.H * dpr);
     this.ptx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    // The water pane renders tiny: the goo filter + CSS upscale smooth it.
+    this.waterCanvas.width = Math.max(1, Math.round(this.W * this.wScale));
+    this.waterCanvas.height = Math.max(1, Math.round(this.H * this.wScale));
+    this.wtx.setTransform(this.wScale, 0, 0, this.wScale, 0, 0);
     this.dotR = this.W < 640 ? 1.3 : 1.45;
   }
 
@@ -593,6 +605,15 @@ export class FlowEngine {
 
     const e = this.T;
     const settled = !this.playing && e >= 1 && !this.reduced;
+    // The halo waits for the M: hidden through transport, then a slow fade-in
+    // once the grains have landed. Replay/scrub snaps it away quickly.
+    const formed = !this.playing && e >= 1;
+    if (formed !== this.waterShown) {
+      this.waterShown = formed;
+      const ws = this.waterCanvas.style;
+      ws.transitionDuration = formed ? "1600ms" : "220ms";
+      ws.opacity = formed ? "1" : "0";
+    }
     // Equilibrium renders at a true 30Hz regardless of display refresh rate
     // (a naive every-other-frame skip would still run 60Hz on a 120Hz panel).
     if (settled) {
@@ -636,6 +657,12 @@ export class FlowEngine {
     const NB = this.palette.length;
     const dotPaths: (Path2D | null)[] = new Array(NB).fill(null);
     const trailPaths: (Path2D | null)[] = new Array(NB * 3).fill(null);
+    // The pool only exists once the M has formed (it fades in over the
+    // settled grains), and updates at half the render rate: its motion is
+    // subtle, and skipping it during transport is free speed.
+    const drawWater = formed && (!settled || (this.frameNo & 1) === 0);
+    const waterPath = new Path2D();
+    const waterR = 6; // pool radius per buoy: tight to the edge grains
 
     for (let i = 0; i < this.N; i++) {
       let x: number;
@@ -736,6 +763,7 @@ export class FlowEngine {
         }
       }
 
+      if (drawWater && i % 6 === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
       const dots = (dotPaths[b] ??= new Path2D());
       if (this.N > 40000) {
         // Squares rasterize far cheaper than arcs; invisible at this size.
@@ -747,6 +775,14 @@ export class FlowEngine {
       }
     }
     if (record) this.trailHead = nextHead;
+
+    // The water pane: darker stroke first (survives the alpha threshold as a
+    // baked meniscus rim), then the pool tint. One CSS filter pass total.
+    if (drawWater) {
+      this.wtx.clearRect(0, 0, this.W, this.H);
+      this.wtx.fillStyle = "#ffffff";
+      this.wtx.fill(waterPath);
+    }
 
     // Batched draw: one stroke per (bucket, tier), one fill per bucket.
     p.lineCap = "round";
@@ -791,6 +827,7 @@ export function FlowField({
 }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const ptsRef = useRef<HTMLCanvasElement>(null);
+  const waterRef = useRef<HTMLCanvasElement>(null);
   const rangeRef = useRef<HTMLInputElement>(null);
   const tReadRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef<HTMLSpanElement>(null);
@@ -808,9 +845,10 @@ export function FlowField({
   useEffect(() => {
     const wrap = wrapRef.current;
     const pts = ptsRef.current;
-    if (!wrap || !pts) return;
+    const water = waterRef.current;
+    if (!wrap || !pts || !water) return;
 
-    const engine = new FlowEngine(pts);
+    const engine = new FlowEngine(pts, water);
     engineRef.current = engine;
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -876,12 +914,41 @@ export function FlowField({
       ref={wrapRef}
       className={`relative ${className}`}
       role="img"
-      aria-label="Live figure: samples flow from Gaussian noise into the Block M along straight rectified-flow paths, then shimmer at equilibrium. Click to replay."
-      onPointerDown={(ev) => {
-        // Clicking the figure itself (not the HUD card) replays the transport.
-        if (ev.target instanceof HTMLCanvasElement) engineRef.current?.replay();
-      }}
+      aria-label="Live figure: samples flow from Gaussian noise into the Block M along straight rectified-flow paths, then shimmer at equilibrium."
     >
+      {/* The water pane: grain positions rendered to a low-res underlay and
+          fused by a goo filter into one translucent pool whose boundary is
+          set by the outermost grains. The crisp grains float on top like
+          buoys; the pool edge ripples as edge grains drift. */}
+      <svg width="0" height="0" aria-hidden className="absolute">
+        <defs>
+          <filter id="water-goo" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="blur" />
+            <feColorMatrix
+              in="blur"
+              type="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"
+              result="pool"
+            />
+            {/* Halo: the fused pool, re-blurred and layered beneath itself,
+                becomes a soft luminous aura hugging the M's outline. */}
+            <feGaussianBlur in="pool" stdDeviation="13" result="aura" />
+            <feComponentTransfer in="aura" result="auraSoft">
+              <feFuncA type="linear" slope="1" intercept="0" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode in="auraSoft" />
+              <feMergeNode in="pool" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+      <canvas
+        ref={waterRef}
+        aria-hidden
+        className="absolute inset-0 h-full w-full"
+        style={{ filter: "url(#water-goo)", opacity: 0, transition: "opacity 1600ms ease" }}
+      />
       <canvas ref={ptsRef} aria-hidden className="absolute inset-0 h-full w-full" />
 
       {/* The one glass caption card. */}
@@ -909,16 +976,31 @@ export function FlowField({
             </a>
             )
           </p>
-          <input
-            ref={rangeRef}
-            type="range"
-            min={0}
-            max={1000}
-            defaultValue={0}
-            aria-label="Interpolation time"
-            className="flow-scrub mt-1.5 w-full"
-            onInput={(ev) => engineRef.current?.scrub(Number(ev.currentTarget.value) / 1000)}
-          />
+          {/* Replay lives here, not on the canvas: stray clicks on the figure
+              should never restart the transport. */}
+          <div className="mt-1.5 flex items-center gap-2.5">
+            <button
+              type="button"
+              aria-label="Replay the transport"
+              title="Replay"
+              onClick={() => engineRef.current?.replay()}
+              className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/60 bg-white/40 text-navy transition-colors duration-150 hover:bg-white/70"
+            >
+              <svg viewBox="0 0 12 12" className="ml-px h-3 w-3" aria-hidden fill="currentColor">
+                <path d="M2.5 1.4a.6.6 0 0 1 .9-.52l7 4.6a.6.6 0 0 1 0 1.04l-7 4.6a.6.6 0 0 1-.9-.52Z" />
+              </svg>
+            </button>
+            <input
+              ref={rangeRef}
+              type="range"
+              min={0}
+              max={1000}
+              defaultValue={0}
+              aria-label="Interpolation time"
+              className="flow-scrub w-full"
+              onInput={(ev) => engineRef.current?.scrub(Number(ev.currentTarget.value) / 1000)}
+            />
+          </div>
         </div>
       </div>
     </div>

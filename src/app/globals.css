@@ -202,6 +202,8 @@
       radial-gradient(1050px 560px at 50% -100px, rgba(63, 191, 212, 0.48), transparent 66%),
       radial-gradient(760px 640px at 4% 420px, rgba(169, 198, 232, 0.65), transparent 70%),
       radial-gradient(740px 620px at 96% 480px, rgba(242, 223, 160, 0.68), transparent 70%),
+      radial-gradient(1080px 740px at 50% 420px, rgba(43, 108, 176, 0.45), transparent 70%),
+      radial-gradient(860px 620px at 58% 620px, rgba(63, 191, 212, 0.3), transparent 70%),
       radial-gradient(840px 680px at 8% 1050px, rgba(63, 191, 212, 0.52), transparent 68%),
       radial-gradient(780px 640px at 94% 1200px, rgba(255, 203, 5, 0.58), transparent 66%),
       radial-gradient(860px 720px at 3% 1900px, rgba(43, 108, 176, 0.6), transparent 68%),
@@ -525,7 +527,6 @@
    with a white top-light sheen clipped into the letterforms — quiet next to
    the saturated grain M, unmistakably the same colors. */
 .wordmark-glass {
-  filter: drop-shadow(0 1px 1.5px rgba(0, 39, 76, 0.22));
   background-image:
     linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.03) 52%, rgba(255, 255, 255, 0.1)),
     linear-gradient(
@@ -542,6 +543,46 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* The shared specular streak is cut for the wide nav bar; on the much
+   narrower hero island the same percentage stops paint a band as wide as the
+   wordmark itself. This modifier pulls the highlight into a tighter sliver. */
+.glass-island-tight::before {
+  background:
+    linear-gradient(100deg, transparent 9%, rgba(255, 255, 255, 0.5) 15%, transparent 22%),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent 48%);
+}
+
+/* The hero island floats on the water below: a slow bob and a gentle
+   tilt-and-shear running at incommensurate periods, so the combined drift
+   never visibly repeats. Bob and sway live on nested elements — composing
+   them in one keyframe track would lock their phases together. */
+@media (prefers-reduced-motion: no-preference) {
+  .island-bob {
+    animation: island-bob 5.6s ease-in-out infinite;
+  }
+  .island-sway {
+    animation: island-sway 7.4s ease-in-out infinite;
+  }
+}
+@keyframes island-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes island-sway {
+  0%,
+  100% {
+    transform: rotate(1.1deg) skewX(0.5deg);
+  }
+  50% {
+    transform: rotate(-1.1deg) skewX(-0.5deg);
+  }
 }
 
 /* Headshot placeholder: the sunset as an avatar, initials on top. Swapped

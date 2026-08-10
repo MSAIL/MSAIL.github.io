@@ -18,14 +18,16 @@ export function Hero() {
       {/* The full lockup, tight under the mark: MSAIL in the deco wordmark
           voice, the complete name immediately beneath it. The page's h1. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[4.5%] flex justify-center">
-        <h1 className="flex flex-col items-center">
-          <span className="wordmark-glass text-[2.75rem] font-black leading-none tracking-[0.02em] sm:text-[3.25rem]">
-            MSAIL
-          </span>
-          <span className="mt-2 text-label font-medium tracking-[0.02em] text-ink-2">
-            Michigan Student AI Lab
-          </span>
-        </h1>
+        <div className="island-bob">
+          <h1 className="glass-island glass-island-tight island-sway flex flex-col items-center rounded-full px-14 py-4 sm:px-16 sm:py-5">
+            <span className="wordmark-glass text-[2.75rem] font-black leading-none tracking-[0.02em] sm:text-[3.25rem]">
+              MSAIL
+            </span>
+            <span className="mt-2 text-label font-medium tracking-[0.02em] text-ink-2">
+              Michigan Student AI Lab
+            </span>
+          </h1>
+        </div>
       </div>
     </section>
   );
