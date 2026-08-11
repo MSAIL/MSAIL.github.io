@@ -21,9 +21,10 @@ export function Wordmark({
 }) {
   const onNavy = tone === "cream";
   return (
+    // No aria-label: the visible text IS the accessible name (a label that
+    // omits the tagline fails label-content-name-mismatch).
     <Link
       href="/"
-      aria-label={`${site.name}, home`}
       onClick={onClick}
       className={`group flex min-h-11 w-fit flex-col items-start justify-center gap-y-1 ${className}`}
     >

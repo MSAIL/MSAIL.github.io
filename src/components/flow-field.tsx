@@ -1006,11 +1006,22 @@ export function FlowField({
       if (water.style.opacity === "0.004") water.style.opacity = "0";
     }, 450);
 
-    // Boot: noise immediately (the frame is never empty), then the mark.
-    engine.setDataset("noise");
-    engine.loadMark("/msail-wordmark-m.png", () => {
-      engine.setDataset("blockm");
-    });
+    // Boot once the browser is idle: the initial sample + pair + recolor is
+    // a chunky task, and running it inside the load window was a large slice
+    // of Total Blocking Time. The canvas is blank either way until it runs.
+    const boot = () => {
+      engine.setDataset("noise");
+      engine.loadMark("/msail-wordmark-m.png", () => {
+        engine.setDataset("blockm");
+      });
+    };
+    let idleId = 0;
+    let bootTimer = 0;
+    if (typeof window.requestIdleCallback === "function") {
+      idleId = window.requestIdleCallback(boot, { timeout: 600 });
+    } else {
+      bootTimer = window.setTimeout(boot, 150); // Safari has no rIC
+    }
 
     const ro = new ResizeObserver(() => {
       engine.resize();
@@ -1050,6 +1061,8 @@ export function FlowField({
     wrap.addEventListener("pointerleave", onLeave);
 
     return () => {
+      if (idleId) window.cancelIdleCallback(idleId);
+      window.clearTimeout(bootTimer);
       window.clearTimeout(warmTimer);
       window.clearTimeout(hudTimer);
       ro.disconnect();
