@@ -190,12 +190,12 @@ export class FlowEngine {
     this.W = Math.max(1, rect.width);
     this.H = Math.max(1, rect.height);
     // Particle budget scales with area; phones get fewer, desktops cap out.
-    // The cap sits at 32.4k with grains ~1.33x wider (r ∝ 1/√N keeps ink
-    // coverage constant): indistinguishable at arm's length, ~45% less of
-    // everything per frame.
+    // The cap sits at 21.6k with grains widened to match (r ∝ 1/√N keeps ink
+    // coverage constant), which buys back FULL 2x supersampling — crisp round
+    // grains instead of many blurry ones.
     const phone = this.W < 640;
     const density = phone ? 40 : 19; // phones get a much gentler budget
-    this.N = Math.max(4000, Math.min(32400, Math.round((this.W * this.H) / density)));
+    this.N = Math.max(4000, Math.min(21600, Math.round((this.W * this.H) / density)));
     // Ribbons ride on a subset of grains; the stride keeps stroke geometry
     // roughly constant as the grain count scales. Phones pin the widest
     // stride outright: the N-tiered rule handed a 10k-grain phone stride 4
@@ -203,7 +203,7 @@ export class FlowEngine {
     this.ribbonStride = phone ? 8 : this.N > 20000 ? 8 : this.N > 10000 ? 4 : 2;
     // At very high grain counts (and on phones, whose DPR-3 panels would
     // otherwise quadruple the fill), trade supersampling for fill rate.
-    const dprCap = phone ? 1.6 : this.N > 20000 ? 1.8 : 2;
+    const dprCap = phone ? 1.6 : 2;
     const dpr = Math.min(window.devicePixelRatio || 1, dprCap);
     this.ptsCanvas.width = Math.round(this.W * dpr);
     this.ptsCanvas.height = Math.round(this.H * dpr);
@@ -214,7 +214,7 @@ export class FlowEngine {
     this.wtx.setTransform(this.wScale, 0, 0, this.wScale, 0, 0);
     // Grain size compensates the sparser budgets (r ∝ 1/√density keeps ink
     // coverage constant), so the M reads just as solid.
-    this.dotR = phone ? 1.5 : 1.9;
+    this.dotR = phone ? 1.5 : 2.35;
   }
 
   private dotR = 1.7;
@@ -741,7 +741,7 @@ export class FlowEngine {
     const stepOu = settled && now - this.lastOuStep > 30;
     if (stepOu) this.lastOuStep = now;
     const waterPath = new Path2D();
-    const waterR = 6; // pool radius per buoy: tight to the edge grains
+    const waterR = 5; // pool radius per buoy: tight to the edge grains
 
     for (let i = 0; i < this.N; i++) {
       let x: number;
@@ -847,7 +847,7 @@ export class FlowEngine {
         }
       }
 
-      if (drawWater && i % 4 === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
+      if (drawWater && (i & 1) === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
       const dots = (dotPaths[b] ??= new Path2D());
       if (this.N > 24000) {
         // Squares rasterize far cheaper than arcs; invisible at this size.
@@ -1082,7 +1082,7 @@ export function FlowField({
             <feColorMatrix
               in="blur"
               type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
               result="pool"
             />
             {/* Halo: the fused pool, re-blurred and layered beneath itself,
@@ -1101,7 +1101,7 @@ export function FlowField({
             <feColorMatrix
               in="blur"
               type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
               result="pool"
             />
             <feGaussianBlur in="pool" stdDeviation="6" result="aura" />
