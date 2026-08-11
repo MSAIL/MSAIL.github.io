@@ -12,12 +12,14 @@ export function ConnectLinks() {
     <ul className="mt-10 max-w-prose border-t border-border">
       {site.channels.map((c) => {
         return (
-          <li key={c.key}>
+          <li key={c.key} className="border-b border-border">
+            {/* The hover is an inset rounded wash (navy tint, gutter margins),
+                not a flat white slab running edge to edge. */}
             <a
               href={c.href}
               {...channelLinkProps(c)}
               aria-label={channelAriaLabel(c)}
-              className="group flex items-center gap-4 border-b border-border py-5 transition-colors duration-150 hover:bg-tile"
+              className="group -mx-4 flex items-center gap-4 rounded-2xl px-4 py-5 transition-colors duration-150 hover:bg-navy/5"
             >
               <ChannelIcon
                 name={c.key}

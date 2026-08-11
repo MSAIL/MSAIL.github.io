@@ -77,10 +77,10 @@ export default function Home() {
         </div>
         <ul>
           {initiatives.items.map((item) => (
-            <li key={item.name}>
+            <li key={item.name} className="border-b border-border">
               <Link
                 href="/initiatives"
-                className="grid items-baseline gap-x-8 gap-y-1 border-b border-border py-6 transition-colors duration-150 hover:bg-tile sm:grid-cols-[15rem_1fr_auto]"
+                className="-mx-4 grid items-baseline gap-x-8 gap-y-1 rounded-2xl px-4 py-6 transition-colors duration-150 hover:bg-navy/5 sm:grid-cols-[15rem_1fr_auto]"
               >
                 <h3 className="font-display text-[1.375rem] leading-snug text-navy">
                   {item.name}
