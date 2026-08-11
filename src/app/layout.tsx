@@ -6,10 +6,9 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
-/* Google Analytics 4 measurement ID. Empty string = no analytics script is
-   rendered at all; fill in once the GA property exists (Admin → Data
-   Streams → msail.github.io → Measurement ID, looks like "G-XXXXXXXXXX"). */
-const GA_ID = "";
+/* Google Analytics 4 measurement ID (property "msail.github.io" under the
+   MSAIL account). Empty string = no analytics script is rendered at all. */
+const GA_ID = "G-RJWNYW6P41";
 
 /* UI + body text: Satoshi (Fontshare), self-hosted variable font 300–900. */
 const satoshi = localFont({
