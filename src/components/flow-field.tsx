@@ -771,12 +771,14 @@ export class FlowEngine {
         y += this.ouy[i];
       }
 
-      if (this.pointer.over) {
+      // Minimal cursor nudge: settled only (never competing with transport),
+      // tight radius, a light touch.
+      if (this.pointer.over && settled) {
         const mdx = x - this.pointer.x;
         const mdy = y - this.pointer.y;
         const md2 = mdx * mdx + mdy * mdy;
-        if (md2 < 16900) {
-          const f = Math.exp(-md2 / 6050) * 22;
+        if (md2 < 6400) {
+          const f = Math.exp(-md2 / 2600) * 8;
           const d = Math.sqrt(md2) + 1e-3;
           x += (mdx / d) * f;
           y += (mdy / d) * f;
@@ -1014,10 +1016,17 @@ export function FlowField({
     };
     document.addEventListener("visibilitychange", onVis);
 
+    // The wrap rect is cached: querying it per pointermove forces a layout
+    // pass dozens of times a frame while the cursor crosses the hero.
+    let wrapRect: DOMRect = wrap.getBoundingClientRect();
+    const refreshRect = () => {
+      wrapRect = wrap.getBoundingClientRect();
+    };
+    window.addEventListener("scroll", refreshRect, { passive: true });
+    window.addEventListener("resize", refreshRect);
     const onMove = (ev: PointerEvent) => {
       if (ev.pointerType !== "mouse") return;
-      const r = wrap.getBoundingClientRect();
-      engine.setPointer(ev.clientX - r.left, ev.clientY - r.top, true);
+      engine.setPointer(ev.clientX - wrapRect.left, ev.clientY - wrapRect.top, true);
     };
     const onLeave = () => engine.setPointer(-1e5, -1e5, false);
     wrap.addEventListener("pointermove", onMove);
@@ -1029,6 +1038,8 @@ export function FlowField({
       ro.disconnect();
       io.disconnect();
       document.removeEventListener("visibilitychange", onVis);
+      window.removeEventListener("scroll", refreshRect);
+      window.removeEventListener("resize", refreshRect);
       wrap.removeEventListener("pointermove", onMove);
       wrap.removeEventListener("pointerleave", onLeave);
       engine.destroy();
