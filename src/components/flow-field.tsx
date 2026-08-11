@@ -123,6 +123,8 @@ export class FlowEngine {
 
   private T = 0;
   private lastSettleRender = 0;
+  private lastWaterDraw = 0;
+  private lastOuStep = 0;
   private playing = false;
   private t0 = 0;
   private raf = 0;
@@ -188,9 +190,12 @@ export class FlowEngine {
     this.W = Math.max(1, rect.width);
     this.H = Math.max(1, rect.height);
     // Particle budget scales with area; phones get fewer, desktops cap out.
+    // The cap sits at 32.4k with grains ~1.33x wider (r ∝ 1/√N keeps ink
+    // coverage constant): indistinguishable at arm's length, ~45% less of
+    // everything per frame.
     const phone = this.W < 640;
     const density = phone ? 40 : 19; // phones get a much gentler budget
-    this.N = Math.max(4000, Math.min(57600, Math.round((this.W * this.H) / density)));
+    this.N = Math.max(4000, Math.min(32400, Math.round((this.W * this.H) / density)));
     // Ribbons ride on a subset of grains; the stride keeps stroke geometry
     // roughly constant as the grain count scales. Phones pin the widest
     // stride outright: the N-tiered rule handed a 10k-grain phone stride 4
@@ -198,7 +203,7 @@ export class FlowEngine {
     this.ribbonStride = phone ? 8 : this.N > 20000 ? 8 : this.N > 10000 ? 4 : 2;
     // At very high grain counts (and on phones, whose DPR-3 panels would
     // otherwise quadruple the fill), trade supersampling for fill rate.
-    const dprCap = phone ? 1.6 : this.N > 40000 ? 1.7 : this.N > 20000 ? 1.8 : 2;
+    const dprCap = phone ? 1.6 : this.N > 20000 ? 1.8 : 2;
     const dpr = Math.min(window.devicePixelRatio || 1, dprCap);
     this.ptsCanvas.width = Math.round(this.W * dpr);
     this.ptsCanvas.height = Math.round(this.H * dpr);
@@ -207,9 +212,9 @@ export class FlowEngine {
     this.waterCanvas.width = Math.max(1, Math.round(this.W * this.wScale));
     this.waterCanvas.height = Math.max(1, Math.round(this.H * this.wScale));
     this.wtx.setTransform(this.wScale, 0, 0, this.wScale, 0, 0);
-    // Grain size compensates the phone's sparser budget (r ∝ 1/√density
-    // keeps ink coverage constant), so the M reads just as solid.
-    this.dotR = phone ? 1.5 : 1.45;
+    // Grain size compensates the sparser budgets (r ∝ 1/√density keeps ink
+    // coverage constant), so the M reads just as solid.
+    this.dotR = phone ? 1.5 : 1.9;
   }
 
   private dotR = 1.7;
@@ -677,9 +682,11 @@ export class FlowEngine {
       ws.opacity = formed ? "1" : "0";
     }
     // Equilibrium renders at a true 30Hz regardless of display refresh rate
-    // (a naive every-other-frame skip would still run 60Hz on a 120Hz panel).
+    // (a naive every-other-frame skip would still run 60Hz on a 120Hz panel)
+    // — EXCEPT while the cursor is over the figure: the repel must answer at
+    // full refresh or the interaction itself reads as lag.
     if (settled) {
-      if (now - this.lastSettleRender < 33) {
+      if (!this.pointer.over && now - this.lastSettleRender < 33) {
         this.raf = requestAnimationFrame(this.loop);
         return;
       }
@@ -722,9 +729,17 @@ export class FlowEngine {
     const dotPaths: (Path2D | null)[] = new Array(NB).fill(null);
     const trailPaths: (Path2D | null)[] = new Array(NB * 3).fill(null);
     // The pool only exists once the M has formed (it fades in over the
-    // settled grains), and updates at half the render rate: its motion is
-    // subtle, and skipping it during transport is free speed.
-    const drawWater = formed && (!settled || (this.frameNo & 1) === 0);
+    // settled grains), and updates on its own ~15Hz clock: its motion is
+    // subtle, and its filter chain must not ride along when hovering lifts
+    // the render rate to full refresh.
+    const drawWater = formed && now - this.lastWaterDraw > 66;
+    if (drawWater) this.lastWaterDraw = now;
+    // The shimmer likewise steps on a 30Hz clock, whatever the render rate:
+    // its damping/noise coefficients are tuned for that timestep, and a
+    // faster render must only smooth the cursor repel, not quadruple the
+    // diffusion.
+    const stepOu = settled && now - this.lastOuStep > 30;
+    if (stepOu) this.lastOuStep = now;
     const waterPath = new Path2D();
     const waterR = 6; // pool radius per buoy: tight to the edge grains
 
@@ -749,24 +764,26 @@ export class FlowEngine {
         // because neighboring grains sample the SAME field, the M flows like
         // liquid instead of vibrating like heated molecules.
         // Angle-addition form: all transcendentals hoisted out of the loop.
-        const fx =
-          this.drfSinA[i] * cos14 + this.drfCosA[i] * sin14 +
-          0.6 * (this.drfSinB[i] * cos09 - this.drfCosB[i] * sin09);
-        const fy =
-          this.drfCosC[i] * cos12 + this.drfSinC[i] * sin12 +
-          0.6 * (this.drfCosD[i] * cos11 - this.drfSinD[i] * sin11);
-        this.ouvx[i] =
-          this.ouvx[i] * 0.92 + fx * 0.14 - this.oux[i] * 0.03 + this.gauss() * 0.04;
-        this.ouvy[i] =
-          this.ouvy[i] * 0.92 + fy * 0.14 - this.ouy[i] * 0.03 + this.gauss() * 0.04;
-        const sp2 = this.ouvx[i] * this.ouvx[i] + this.ouvy[i] * this.ouvy[i];
-        if (sp2 > 1.5625) {
-          const f = 1.25 / Math.sqrt(sp2);
-          this.ouvx[i] *= f;
-          this.ouvy[i] *= f;
+        if (stepOu) {
+          const fx =
+            this.drfSinA[i] * cos14 + this.drfCosA[i] * sin14 +
+            0.6 * (this.drfSinB[i] * cos09 - this.drfCosB[i] * sin09);
+          const fy =
+            this.drfCosC[i] * cos12 + this.drfSinC[i] * sin12 +
+            0.6 * (this.drfCosD[i] * cos11 - this.drfSinD[i] * sin11);
+          this.ouvx[i] =
+            this.ouvx[i] * 0.92 + fx * 0.14 - this.oux[i] * 0.03 + this.gauss() * 0.04;
+          this.ouvy[i] =
+            this.ouvy[i] * 0.92 + fy * 0.14 - this.ouy[i] * 0.03 + this.gauss() * 0.04;
+          const sp2 = this.ouvx[i] * this.ouvx[i] + this.ouvy[i] * this.ouvy[i];
+          if (sp2 > 1.5625) {
+            const f = 1.25 / Math.sqrt(sp2);
+            this.ouvx[i] *= f;
+            this.ouvy[i] *= f;
+          }
+          this.oux[i] += this.ouvx[i];
+          this.ouy[i] += this.ouvy[i];
         }
-        this.oux[i] += this.ouvx[i];
-        this.ouy[i] += this.ouvy[i];
         x += this.oux[i];
         y += this.ouy[i];
       }
@@ -830,9 +847,9 @@ export class FlowEngine {
         }
       }
 
-      if (drawWater && i % 6 === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
+      if (drawWater && i % 4 === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
       const dots = (dotPaths[b] ??= new Path2D());
-      if (this.N > 40000) {
+      if (this.N > 24000) {
         // Squares rasterize far cheaper than arcs; invisible at this size.
         const r = this.radii[i];
         dots.rect(x - r, y - r, r * 2, r * 2);
