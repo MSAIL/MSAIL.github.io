@@ -30,7 +30,10 @@ export default function Home() {
       {/* The dissolve rides mostly inside the explainer section's own bottom
           padding: pb-24 buys just enough tail that the capsule sits on
           near-solid ink without pushing the day content down the page. */}
-      <div data-nav-ink="210" className="ground-ink ground-ink-fade -mt-20 pb-24">
+      {/* z-10: the expanded explainer overhangs this wrapper's bottom edge,
+          and without a raised stacking context the next section would paint
+          on top of it. */}
+      <div data-nav-ink="210" className="ground-ink ground-ink-fade z-10 -mt-20 pb-24">
         <Hero />
 
         {/* First beat below the fold: what this is, and the two doors in. */}

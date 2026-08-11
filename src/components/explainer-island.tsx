@@ -13,7 +13,14 @@ export function ExplainerIsland() {
 
   return (
     <section className="container-page flex flex-col items-center py-section-sm sm:py-section">
-      <div className={`island-panel island-panel-ink ${open ? "island-open" : ""}`}>
+      {/* Fixed-height slot: the panel expands absolutely, floating over the
+          dusk dissolve and the content below instead of shoving the page
+          down. The slot height matches the collapsed capsule, so closed and
+          open cost the page the same layout. */}
+      <div className="relative z-10 h-[3.6rem] w-full max-w-[46rem]">
+        <div
+          className={`island-panel island-panel-ink absolute inset-x-0 top-0 ${open ? "island-open" : ""}`}
+        >
         <button
           type="button"
           aria-expanded={open}
@@ -47,6 +54,7 @@ export function ExplainerIsland() {
               </p>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

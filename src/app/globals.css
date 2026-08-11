@@ -761,8 +761,11 @@
 .island-panel.island-panel-ink:not(.island-open):hover {
   background: rgba(255, 255, 255, 0.18);
 }
+/* Open, the panel floats OVER the dissolve and whatever daylight content
+   sits beneath it, so the glass runs near-solid ink for legibility; the
+   remaining translucency lets the dusk-to-day gradient tint it. */
 .island-panel.island-panel-ink.island-open {
-  background: rgba(255, 255, 255, 0.16);
+  background: rgba(4, 30, 58, 0.9);
 }
 .island-panel-ink .island-trigger {
   color: var(--color-on-navy);
