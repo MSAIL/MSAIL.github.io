@@ -32,13 +32,16 @@ export default function InitiativesPage() {
       lead="The projects and reading groups MSAIL runs, plus the ML Discussion archive."
     >
       <div className="mt-12 flex flex-col gap-14">
-        <section className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+        <section className="flex flex-col gap-6">
+          <SectionHeading>Fall 2026</SectionHeading>
+          <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
           {initiatives.items.map((item) => (
             <article key={item.name} className="flex flex-col gap-2 border-t border-border pt-5">
               <h2 className="font-display text-h3 text-navy">{item.name}</h2>
               <p className="text-meta text-ink-3">
                 {item.level} · led by {item.lead}
               </p>
+              {item.meets ? <p className="text-meta text-ink-3">Meets {item.meets}</p> : null}
               <p className="max-w-prose text-body text-ink-2">{item.description}</p>
               {item.links.length ? (
                 <p className="flex flex-wrap gap-x-5">
@@ -49,9 +52,10 @@ export default function InitiativesPage() {
               ) : null}
             </article>
           ))}
+          </div>
         </section>
 
-        <AwaitingNotice label="New initiatives incoming">
+        <AwaitingNotice label="One more incoming">
           {initiativesMeta.notice}
         </AwaitingNotice>
 

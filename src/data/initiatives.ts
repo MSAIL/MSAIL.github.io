@@ -2,15 +2,11 @@ import type { Flag } from "./content-status";
 import { flag, AWAITING_REFRESH } from "./content-status";
 
 /**
- * Projects & Initiatives, carried over from the live site (CONTENT.md §1.3):
- * the four cards on `/projects/` plus the ML Discussion group's Winter 2021
- * lesson archive from `/education/` and `/previous_material/*` — every link
- * preserved verbatim (Google Slides, Colab notebooks, Drive recordings, one
- * Zoom share link).
- *
- * Still a refresh target: org leadership has new initiatives incoming, and the
- * listed leads are from the outgoing roster. The page renders this set as the
- * published program alongside the "new initiatives incoming" notice.
+ * Projects & Initiatives. The current program comes from Matthew McClure's
+ * "Fall 2026 MSAIL Initiatives" doc in the org Drive; the ML Discussion
+ * group's Winter 2021 lesson archive below it is carried over from the old
+ * site's `/education/` and `/previous_material/*` with every link verbatim
+ * (Google Slides, Colab notebooks, Drive recordings, one Zoom share link).
  */
 export type InitiativeLink = { label: string; href: string };
 
@@ -18,53 +14,69 @@ export type Initiative = {
   name: string;
   description: string;
   level: string;
-  /** Lead as published on the live site (outgoing roster; re-confirm). */
   lead: string;
+  /** Meeting cadence + room, where the lead has settled one. */
+  meets?: string;
   links: InitiativeLink[];
 };
 
 export const initiativesMeta: { flag: Flag; notice: string } = {
-  flag: flag("awaiting", "New initiatives incoming. " + AWAITING_REFRESH),
+  flag: flag("awaiting", "Santosh Desai's project initiative is unscoped in the doc. " + AWAITING_REFRESH),
   /** User-facing copy for the placeholder (the flag note stays internal). */
   notice:
-    "We're putting together this term's projects and reading groups. Join " +
-    "the Slack to hear about them first.",
+    "One more project initiative is being scoped for this term. Join the " +
+    "Slack to hear about it first.",
 };
 
 export const initiatives: { flag: Flag; items: Initiative[] } = {
   flag: flag(
     "verified",
-    "Carried over 2026-06-12 from the live /projects/ page (descriptions lightly tightened). " +
-      "Leads are from the outgoing roster; re-confirm with the incoming team.",
+    "Fall 2026 program per Matthew's initiatives doc (read 2026-08-11; descriptions tightened, " +
+      "tentative schedules marked as such). Santosh Desai's entry is empty in the doc and held back.",
   ),
   items: [
     {
-      name: "Transformer Project",
-      description: "Replicate the GPT-2 transformer architecture and build it into a personal project.",
-      level: "Advanced",
-      lead: "Yuchen Wang",
-      links: [],
-    },
-    {
-      name: "CNN Project",
-      description: "Replicate a CNN architecture from scratch and build it into a personal project.",
-      level: "Beginner",
-      lead: "David Smith",
-      links: [],
-    },
-    {
-      name: "Education",
-      description: "Earn certifications from DeepLearning.AI in a drop-in format.",
-      level: "Open, show up any week",
-      lead: "Omkar Nayak",
-      links: [{ label: "DeepLearning.AI", href: "https://www.deeplearning.ai" }],
-    },
-    {
-      name: "ML News",
+      name: "Competitive Build Initiative",
       description:
-        "Paper and machine learning news discussion, from new models to applications to regulation, with optional presentations.",
+        "Team up with other MSAIL members for AI competitions and long-term hackathons.",
+      level: "Open",
+      lead: "Matthew McClure",
+      meets: "Fridays and Mondays 6 to 8pm, EECS 4440",
+      links: [],
+    },
+    {
+      name: "AI Research Project Team",
+      description:
+        "Join a small team of student researchers working directly with a lab PI, contributing " +
+        "to a real research project from planning to completion. Projects run at least a " +
+        "semester, with two teams planned per term; this fall's tentative partner is the AIMS " +
+        "lab in Nuclear Engineering and Radiological Sciences. Python experience required, " +
+        "research experience not.",
+      level: "Python required",
+      lead: "Shamanth Shastry",
+      meets: "Tuesdays and Thursdays 6 to 8pm, EECS GBL 1761",
+      links: [],
+    },
+    {
+      name: "Model Mining: Alignment & Interp",
+      description:
+        "Hands-on work with language models: extracting the behaviors you want, then using " +
+        "evals and mechanistic interpretability to check alignment and understand what is " +
+        "going on inside. Tentative topics include SFT, DPO, RL, causal steering, evals, and " +
+        "patching. Neural network experience required; LLM or math background helps.",
+      level: "Neural network experience required",
+      lead: "Dmitriy Ivkov",
+      meets: "Tuesdays and Thursdays (tentative)",
+      links: [],
+    },
+    {
+      name: "AI in the News",
+      description:
+        "Regular discussions of what AI is doing out in the world, from scientific papers to " +
+        "news headlines: the highlights and the hogwash.",
       level: "Open, show up any week",
-      lead: "Alexander Bowler",
+      lead: "Sofiya Goncharova",
+      meets: "Wednesday evenings (tentative)",
       links: [],
     },
   ],
