@@ -154,7 +154,12 @@ export class FlowEngine {
       HTML elements — it software-rasterizes the whole goo chain per redraw.
       When set, the halo is composed in-canvas with drawImage bloom instead. */
   softHalo = false;
-  private aux: HTMLCanvasElement | null = null;
+  /** ?perf=1 bisect switches: kill a subsystem wholesale to find which one
+      an engine chokes on. */
+  debugNoWater = false;
+  debugNoTrails = false;
+  private auxA: HTMLCanvasElement | null = null;
+  private auxB: HTMLCanvasElement | null = null;
 
   constructor(
     private ptsCanvas: HTMLCanvasElement,
@@ -216,10 +221,14 @@ export class FlowEngine {
     this.ptsCanvas.width = Math.round(this.W * dpr);
     this.ptsCanvas.height = Math.round(this.H * dpr);
     this.ptx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    // The water pane renders tiny: the goo filter + CSS upscale smooth it.
-    this.waterCanvas.width = Math.max(1, Math.round(this.W * this.wScale));
-    this.waterCanvas.height = Math.max(1, Math.round(this.H * this.wScale));
-    this.wtx.setTransform(this.wScale, 0, 0, this.wScale, 0, 0);
+    // The water pane renders small, but NOT DPR-blind: on a DPR-3 phone a
+    // 0.3x-of-CSS-pixels backing store is one tenth of device resolution,
+    // and without Chromium's goo blur to launder it the upscale shows as
+    // square chunks. Scale the backing by min(dpr, 2) as well.
+    const wPx = this.wScale * Math.min(window.devicePixelRatio || 1, 2);
+    this.waterCanvas.width = Math.max(1, Math.round(this.W * wPx));
+    this.waterCanvas.height = Math.max(1, Math.round(this.H * wPx));
+    this.wtx.setTransform(wPx, 0, 0, wPx, 0, 0);
     // Grain size compensates the sparser budgets (r ∝ 1/√density keeps ink
     // coverage constant), so the M reads just as solid.
     this.dotR = phone ? 1.5 : 2.35;
@@ -685,7 +694,7 @@ export class FlowEngine {
     // then the landing is the forge moment — a fast surge to full brightness
     // that relaxes into the steady halo, like a blade coming off the anvil.
     const formed = !this.playing && e >= 1;
-    const waterTarget = formed ? 2 : this.playing ? 1 : 0;
+    const waterTarget = this.debugNoWater ? 0 : formed ? 2 : this.playing ? 1 : 0;
     if (waterTarget !== this.waterState) {
       this.waterState = waterTarget;
       const ws = this.waterCanvas.style;
@@ -767,8 +776,14 @@ export class FlowEngine {
     // both clocks slower and sample a sparser pool; the sheen forgives it.
     const phoneW = this.W < 640;
     const waterEvery = this.playing ? (phoneW ? 110 : 50) : phoneW ? 100 : 66;
-    const poolMask = phoneW ? 3 : 1; // every 4th grain on phones, every 2nd else
-    const drawWater = (formed || this.playing) && now - this.lastWaterDraw > waterEvery;
+    // Softer engines (softHalo) draw the pool as circles, so they also get
+    // the sparser mask + wider blobs everywhere; the goo path keeps cheap
+    // rects at the denser mask.
+    const poolMask = phoneW || this.softHalo ? 3 : 1;
+    const drawWater =
+      !this.debugNoWater &&
+      (formed || this.playing) &&
+      now - this.lastWaterDraw > waterEvery;
     if (drawWater) this.lastWaterDraw = now;
     // The shimmer likewise steps on a 30Hz clock, whatever the render rate:
     // its damping/noise coefficients are tuned for that timestep, and a
@@ -777,9 +792,10 @@ export class FlowEngine {
     const stepOu = settled && now - this.lastOuStep > 30;
     if (stepOu) this.lastOuStep = now;
     const waterPath = new Path2D();
-    // Pool radius per buoy: tight to the edge grains. Phones sample every
-    // 4th grain, so each buoy carries a wider blob to keep the pool sealed.
-    const waterR = this.W < 640 ? 7.5 : 5;
+    // Pool radius per buoy: tight to the edge grains. Sparse-mask paths
+    // (phones + softHalo engines) carry wider blobs to keep the pool sealed.
+    const waterR = this.W < 640 || this.softHalo ? 7.5 : 5;
+    const poolRound = this.softHalo; // circles upscale to droplets, not chunks
 
     for (let i = 0; i < this.N; i++) {
       let x: number;
@@ -842,7 +858,7 @@ export class FlowEngine {
 
       // Ribbons ride on a strided subset of grains: full trail richness at a
       // fraction of the stroke geometry. The dot bed itself stays fully dense.
-      const hasRibbon = i % this.ribbonStride === 0;
+      const hasRibbon = !this.debugNoTrails && i % this.ribbonStride === 0;
       const rRow = (i / this.ribbonStride) | 0;
       const base = rRow * TRAIL * 2;
       if (record && hasRibbon) {
@@ -885,7 +901,14 @@ export class FlowEngine {
         }
       }
 
-      if (drawWater && (i & poolMask) === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
+      if (drawWater && (i & poolMask) === 0) {
+        if (poolRound) {
+          waterPath.moveTo(x + waterR, y);
+          waterPath.arc(x, y, waterR, 0, 6.2832);
+        } else {
+          waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
+        }
+      }
       const dots = (dotPaths[b] ??= new Path2D());
       if (this.N > 24000 || this.playing) {
         // Squares rasterize far cheaper than arcs: always at ultra counts,
@@ -935,30 +958,45 @@ export class FlowEngine {
     }
   };
 
-  /** Filterless halo for WebKit: minify the pool into a tiny aux canvas and
-      splat it back enlarged — bilinear scaling IS the blur. Two dim splats
-      make the aura, the sharp pool stays on top. Pure drawImage, composited
-      on the GPU on every engine. */
+  /** Filterless halo: blur by resolution pyramid. One-shot 15x+ upscaling
+      shows bilinear's square footprint (Safari made this brutally obvious);
+      halving DOWN twice and doubling UP twice keeps every drawImage step at
+      2x, which every engine's bilinear renders smooth. Pure drawImage, GPU
+      composited everywhere. */
   private bloomInCanvas(): void {
     const wc = this.waterCanvas;
-    if (!this.aux) this.aux = document.createElement("canvas");
-    const aux = this.aux;
-    const aw = Math.max(1, Math.round(wc.width * 0.2));
-    const ah = Math.max(1, Math.round(wc.height * 0.2));
-    if (aux.width !== aw || aux.height !== ah) {
-      aux.width = aw;
-      aux.height = ah;
+    if (!this.auxA) this.auxA = document.createElement("canvas");
+    if (!this.auxB) this.auxB = document.createElement("canvas");
+    const A = this.auxA;
+    const B = this.auxB;
+    const aw = Math.max(1, wc.width >> 1);
+    const ah = Math.max(1, wc.height >> 1);
+    if (A.width !== aw || A.height !== ah) {
+      A.width = aw;
+      A.height = ah;
     }
-    const actx = aux.getContext("2d");
-    if (!actx) return;
-    actx.clearRect(0, 0, aw, ah);
-    actx.drawImage(wc, 0, 0, aw, ah);
+    const bw = Math.max(1, wc.width >> 2);
+    const bh = Math.max(1, wc.height >> 2);
+    if (B.width !== bw || B.height !== bh) {
+      B.width = bw;
+      B.height = bh;
+    }
+    const a = A.getContext("2d");
+    const b = B.getContext("2d");
+    if (!a || !b) return;
+    a.clearRect(0, 0, aw, ah);
+    a.drawImage(wc, 0, 0, aw, ah);
+    b.clearRect(0, 0, bw, bh);
+    b.drawImage(A, 0, 0, bw, bh);
+    // Back up the pyramid: B -> A (2x, smooths), A -> water (2x, smooths).
+    a.clearRect(0, 0, aw, ah);
+    a.drawImage(B, 0, 0, aw, ah);
     const w = this.wtx;
     w.save();
     w.setTransform(1, 0, 0, 1, 0, 0);
-    w.globalAlpha = 0.45;
-    w.drawImage(aux, 0, 0, wc.width, wc.height);
-    w.drawImage(aux, 0, 0, wc.width, wc.height);
+    w.globalAlpha = 0.5;
+    w.drawImage(A, 0, 0, wc.width, wc.height);
+    w.drawImage(A, 0, 0, wc.width, wc.height);
     w.restore();
   }
 
@@ -1039,8 +1077,35 @@ export function FlowField({
     const iosWebKit =
       /iP(hone|od|ad)/.test(navigator.userAgent) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-    engine.softHalo =
-      !isChromium || iosWebKit || new URLSearchParams(window.location.search).has("softhalo");
+    const params = new URLSearchParams(window.location.search);
+    engine.softHalo = !isChromium || iosWebKit || params.has("softhalo");
+    // The bisect rig, runnable on any affected device: ?perf=1 shows a live
+    // fps readout; add water=0 / trails=0 / glass=0 to kill a subsystem and
+    // see which one an engine is choking on.
+    engine.debugNoWater = params.get("water") === "0";
+    engine.debugNoTrails = params.get("trails") === "0";
+    if (params.get("glass") === "0") document.documentElement.dataset.mForming = "true";
+    let perfRaf = 0;
+    let perfEl: HTMLDivElement | null = null;
+    if (params.has("perf")) {
+      perfEl = document.createElement("div");
+      perfEl.style.cssText =
+        "position:fixed;left:8px;bottom:8px;z-index:99;background:#000c;color:#0f6;" +
+        "font:700 16px monospace;padding:6px 10px;border-radius:8px;pointer-events:none";
+      document.body.appendChild(perfEl);
+      let frames = 0;
+      let t0 = performance.now();
+      const tick = (now: number) => {
+        frames++;
+        if (now - t0 >= 1000) {
+          perfEl!.textContent = `${Math.round((frames * 1000) / (now - t0))} fps`;
+          frames = 0;
+          t0 = now;
+        }
+        perfRaf = requestAnimationFrame(tick);
+      };
+      perfRaf = requestAnimationFrame(tick);
+    }
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hudTimer = 0;
@@ -1150,6 +1215,8 @@ export function FlowField({
 
     return () => {
       delete document.documentElement.dataset.mForming;
+      if (perfRaf) cancelAnimationFrame(perfRaf);
+      perfEl?.remove();
       if (idleId) window.cancelIdleCallback(idleId);
       window.clearTimeout(bootTimer);
       window.clearTimeout(warmTimer);
