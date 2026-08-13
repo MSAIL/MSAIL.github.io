@@ -686,15 +686,23 @@ export class FlowEngine {
       const ws = this.waterCanvas.style;
       window.clearTimeout(this.flareTimer);
       if (waterTarget === 2) {
+        // Landing: the goo+halo filter comes back on (warmed at boot) for
+        // the surge to full, then the glow steps DOWN to a clearly dimmer
+        // steady state.
+        ws.filter = this.waterCanvas.dataset.goo ?? "";
         ws.transitionDuration = "260ms";
         ws.opacity = "1";
         this.flareTimer = window.setTimeout(() => {
-          ws.transitionDuration = "1400ms";
-          ws.opacity = "0.85";
+          ws.transitionDuration = "1600ms";
+          ws.opacity = "0.6";
         }, 750);
       } else if (waterTarget === 1) {
+        // Forming: NO filter. The pane is drawn at 0.3 scale and upscaled by
+        // CSS, which alone reads as soft wet blobs; running the filter chain
+        // per transport frame was the whole mobile framerate collapse.
+        ws.filter = "none";
         ws.transitionDuration = "450ms";
-        ws.opacity = "0.3";
+        ws.opacity = "0.26";
       } else {
         ws.transitionDuration = "220ms";
         ws.opacity = "0";
@@ -752,7 +760,7 @@ export class FlowEngine {
     // filter chain doesn't ride along with full-refresh hovering. Phones run
     // both clocks slower and sample a sparser pool; the sheen forgives it.
     const phoneW = this.W < 640;
-    const waterEvery = this.playing ? (phoneW ? 90 : 50) : phoneW ? 100 : 66;
+    const waterEvery = this.playing ? (phoneW ? 110 : 50) : phoneW ? 100 : 66;
     const poolMask = phoneW ? 3 : 1; // every 4th grain on phones, every 2nd else
     const drawWater = (formed || this.playing) && now - this.lastWaterDraw > waterEvery;
     if (drawWater) this.lastWaterDraw = now;
@@ -1153,8 +1161,12 @@ export function FlowField({
       <canvas
         ref={waterRef}
         aria-hidden
+        data-goo={liteFx ? "url(#water-goo-lite)" : "url(#water-goo)"}
         className="absolute inset-0 h-full w-full"
         style={{
+          // The filter is ON initially so the boot warm-draw compiles the
+          // pipeline; the engine strips it during transport and restores it
+          // at the landing flare (reading data-goo above).
           filter: liteFx ? "url(#water-goo-lite)" : "url(#water-goo)",
           opacity: 0,
           transition: "opacity 1600ms ease",
