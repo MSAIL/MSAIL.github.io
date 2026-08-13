@@ -612,39 +612,6 @@
   display: none;
 }
 
-/* The hero island floats on the water below: a slow bob and a gentle
-   tilt-and-shear running at incommensurate periods, so the combined drift
-   never visibly repeats. Bob and sway live on nested elements — composing
-   them in one keyframe track would lock their phases together. */
-/* Desktop-only: a moving backdrop-filtered surface re-samples its blur every
-   frame, which phone GPUs cannot spare. Below lg the island simply rests. */
-@media (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
-  .island-bob {
-    animation: island-bob 5.6s ease-in-out infinite;
-  }
-  .island-sway {
-    animation: island-sway 7.4s ease-in-out infinite;
-  }
-}
-@keyframes island-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-9px);
-  }
-}
-@keyframes island-sway {
-  0%,
-  100% {
-    transform: rotate(1.1deg) skewX(0.5deg);
-  }
-  50% {
-    transform: rotate(-1.1deg) skewX(-0.5deg);
-  }
-}
-
 /* The ink ground: the resin field's dark counterpart. Deep navy with the
    same sunset hues glowing faintly from the corners, so dark sections read
    as the same material after dusk, not a different site. */

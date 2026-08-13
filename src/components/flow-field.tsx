@@ -145,7 +145,10 @@ export class FlowEngine {
   onTick: ((t: number, playing: boolean) => void) | null = null;
 
   private wtx: CanvasRenderingContext2D;
-  private waterShown = false;
+  /** 0 hidden · 1 forming (dim sheen riding the streams) · 2 landed (flare
+      to full, then relax into the steady halo). */
+  private waterState = 0;
+  private flareTimer = 0;
   private wScale = 0.3;
 
   constructor(
@@ -672,14 +675,30 @@ export class FlowEngine {
       if (!this.playing || e >= 0.5) this.optActive = false;
       else this.runOptSlice(3);
     }
-    // The halo waits for the M: hidden through transport, then a slow fade-in
-    // once the grains have landed. Replay/scrub snaps it away quickly.
+    // The liquid lives through the whole transport: a dim sheen wets the
+    // grains while they stream (they read dry without it, phones especially),
+    // then the landing is the forge moment — a fast surge to full brightness
+    // that relaxes into the steady halo, like a blade coming off the anvil.
     const formed = !this.playing && e >= 1;
-    if (formed !== this.waterShown) {
-      this.waterShown = formed;
+    const waterTarget = formed ? 2 : this.playing ? 1 : 0;
+    if (waterTarget !== this.waterState) {
+      this.waterState = waterTarget;
       const ws = this.waterCanvas.style;
-      ws.transitionDuration = formed ? "1600ms" : "220ms";
-      ws.opacity = formed ? "1" : "0";
+      window.clearTimeout(this.flareTimer);
+      if (waterTarget === 2) {
+        ws.transitionDuration = "260ms";
+        ws.opacity = "1";
+        this.flareTimer = window.setTimeout(() => {
+          ws.transitionDuration = "1400ms";
+          ws.opacity = "0.85";
+        }, 750);
+      } else if (waterTarget === 1) {
+        ws.transitionDuration = "450ms";
+        ws.opacity = "0.3";
+      } else {
+        ws.transitionDuration = "220ms";
+        ws.opacity = "0";
+      }
     }
     // Equilibrium renders at a true 30Hz regardless of display refresh rate
     // (a naive every-other-frame skip would still run 60Hz on a 120Hz panel)
@@ -728,11 +747,14 @@ export class FlowEngine {
     const NB = this.palette.length;
     const dotPaths: (Path2D | null)[] = new Array(NB).fill(null);
     const trailPaths: (Path2D | null)[] = new Array(NB * 3).fill(null);
-    // The pool only exists once the M has formed (it fades in over the
-    // settled grains), and updates on its own ~15Hz clock: its motion is
-    // subtle, and its filter chain must not ride along when hovering lifts
-    // the render rate to full refresh.
-    const drawWater = formed && now - this.lastWaterDraw > 66;
+    // The pool redraws on its own clock: ~20Hz during transport so the sheen
+    // tracks the streams, ~15Hz at rest — never at the render rate, so the
+    // filter chain doesn't ride along with full-refresh hovering. Phones run
+    // both clocks slower and sample a sparser pool; the sheen forgives it.
+    const phoneW = this.W < 640;
+    const waterEvery = this.playing ? (phoneW ? 90 : 50) : phoneW ? 100 : 66;
+    const poolMask = phoneW ? 3 : 1; // every 4th grain on phones, every 2nd else
+    const drawWater = (formed || this.playing) && now - this.lastWaterDraw > waterEvery;
     if (drawWater) this.lastWaterDraw = now;
     // The shimmer likewise steps on a 30Hz clock, whatever the render rate:
     // its damping/noise coefficients are tuned for that timestep, and a
@@ -741,7 +763,9 @@ export class FlowEngine {
     const stepOu = settled && now - this.lastOuStep > 30;
     if (stepOu) this.lastOuStep = now;
     const waterPath = new Path2D();
-    const waterR = 5; // pool radius per buoy: tight to the edge grains
+    // Pool radius per buoy: tight to the edge grains. Phones sample every
+    // 4th grain, so each buoy carries a wider blob to keep the pool sealed.
+    const waterR = this.W < 640 ? 7.5 : 5;
 
     for (let i = 0; i < this.N; i++) {
       let x: number;
@@ -847,7 +871,7 @@ export class FlowEngine {
         }
       }
 
-      if (drawWater && (i & 1) === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
+      if (drawWater && (i & poolMask) === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
       const dots = (dotPaths[b] ??= new Path2D());
       if (this.N > 24000) {
         // Squares rasterize far cheaper than arcs; invisible at this size.
@@ -896,6 +920,7 @@ export class FlowEngine {
 
   destroy(): void {
     this.destroyed = true;
+    window.clearTimeout(this.flareTimer);
     if (this.raf) cancelAnimationFrame(this.raf);
   }
 }
