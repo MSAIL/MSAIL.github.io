@@ -690,6 +690,12 @@
   background: linear-gradient(135deg, #154a86, #7b5fd6 40%, #c75d8a 58%, #e8734e 74%, #f0a000);
 }
 
+/* The alumni cut of the same avatar: identical walk, desaturated toward
+   dust, like a print that has been on the wall a while. */
+.avatar-fallback-alumni {
+  background: linear-gradient(135deg, #5d769b, #9b8bc0 40%, #c99aa8 58%, #d9a98c 74%, #d8b878);
+}
+
 /* The mobile menu overlay wears the same ground as the page. */
 .overlay-ground {
   background-color: #e9eef5;
