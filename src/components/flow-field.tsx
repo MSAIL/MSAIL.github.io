@@ -150,6 +150,11 @@ export class FlowEngine {
   private waterState = 0;
   private flareTimer = 0;
   private wScale = 0.3;
+  /** WebKit (all of iOS + Safari) cannot GPU-accelerate SVG url() filters on
+      HTML elements — it software-rasterizes the whole goo chain per redraw.
+      When set, the halo is composed in-canvas with drawImage bloom instead. */
+  softHalo = false;
+  private aux: HTMLCanvasElement | null = null;
 
   constructor(
     private ptsCanvas: HTMLCanvasElement,
@@ -688,8 +693,8 @@ export class FlowEngine {
       if (waterTarget === 2) {
         // Landing: the goo+halo filter comes back on (warmed at boot) for
         // the surge to full, then the glow steps DOWN to a clearly dimmer
-        // steady state.
-        ws.filter = this.waterCanvas.dataset.goo ?? "";
+        // steady state. WebKit gets the in-canvas bloom instead (§softHalo).
+        ws.filter = this.softHalo ? "none" : (this.waterCanvas.dataset.goo ?? "");
         ws.transitionDuration = "260ms";
         ws.opacity = "1";
         this.flareTimer = window.setTimeout(() => {
@@ -901,6 +906,7 @@ export class FlowEngine {
       this.wtx.clearRect(0, 0, this.W, this.H);
       this.wtx.fillStyle = "#ffffff";
       this.wtx.fill(waterPath);
+      if (this.softHalo && this.waterState === 2) this.bloomInCanvas();
     }
 
     // Batched draw: one stroke per (bucket, tier), one fill per bucket.
@@ -928,6 +934,33 @@ export class FlowEngine {
       this.raf = requestAnimationFrame(this.loop);
     }
   };
+
+  /** Filterless halo for WebKit: minify the pool into a tiny aux canvas and
+      splat it back enlarged — bilinear scaling IS the blur. Two dim splats
+      make the aura, the sharp pool stays on top. Pure drawImage, composited
+      on the GPU on every engine. */
+  private bloomInCanvas(): void {
+    const wc = this.waterCanvas;
+    if (!this.aux) this.aux = document.createElement("canvas");
+    const aux = this.aux;
+    const aw = Math.max(1, Math.round(wc.width * 0.2));
+    const ah = Math.max(1, Math.round(wc.height * 0.2));
+    if (aux.width !== aw || aux.height !== ah) {
+      aux.width = aw;
+      aux.height = ah;
+    }
+    const actx = aux.getContext("2d");
+    if (!actx) return;
+    actx.clearRect(0, 0, aw, ah);
+    actx.drawImage(wc, 0, 0, aw, ah);
+    const w = this.wtx;
+    w.save();
+    w.setTransform(1, 0, 0, 1, 0, 0);
+    w.globalAlpha = 0.45;
+    w.drawImage(aux, 0, 0, wc.width, wc.height);
+    w.drawImage(aux, 0, 0, wc.width, wc.height);
+    w.restore();
+  }
 
   destroy(): void {
     this.destroyed = true;
@@ -992,6 +1025,22 @@ export function FlowField({
     const engine = new FlowEngine(pts, water);
     engineRef.current = engine;
     engine.darkGround = darkRef.current;
+    // Chromium is the ONLY engine that GPU-accelerates SVG url() filters on
+    // HTML elements; Safari (all of iOS is WebKit) and Firefox rasterize the
+    // goo chain in software, which is exactly "intensely laggy". Everyone
+    // except real Chromium gets the in-canvas bloom. iOS "Chrome" (CriOS) is
+    // WebKit too, so the iOS check overrides the Chromium sniff.
+    // ?softhalo=1 forces the path anywhere, for side-by-side comparison.
+    type UAData = { brands?: { brand: string }[] };
+    const uaBrands =
+      (navigator as Navigator & { userAgentData?: UAData }).userAgentData?.brands ?? [];
+    const isChromium =
+      uaBrands.some((b) => /chromium/i.test(b.brand)) || "chrome" in window;
+    const iosWebKit =
+      /iP(hone|od|ad)/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    engine.softHalo =
+      !isChromium || iosWebKit || new URLSearchParams(window.location.search).has("softhalo");
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hudTimer = 0;
