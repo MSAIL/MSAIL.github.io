@@ -700,9 +700,10 @@ export class FlowEngine {
         // Forming: NO filter. The pane is drawn at 0.3 scale and upscaled by
         // CSS, which alone reads as soft wet blobs; running the filter chain
         // per transport frame was the whole mobile framerate collapse.
+        // Brightness matches the post-flare steady glow.
         ws.filter = "none";
         ws.transitionDuration = "450ms";
-        ws.opacity = "0.26";
+        ws.opacity = "0.6";
       } else {
         ws.transitionDuration = "220ms";
         ws.opacity = "0";
@@ -881,8 +882,10 @@ export class FlowEngine {
 
       if (drawWater && (i & poolMask) === 0) waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
       const dots = (dotPaths[b] ??= new Path2D());
-      if (this.N > 24000) {
-        // Squares rasterize far cheaper than arcs; invisible at this size.
+      if (this.N > 24000 || this.playing) {
+        // Squares rasterize far cheaper than arcs: always at ultra counts,
+        // and during transport, where motion hides the dot shape entirely
+        // (crisp circles return the frame the M lands).
         const r = this.radii[i];
         dots.rect(x - r, y - r, r * 2, r * 2);
       } else {
@@ -999,22 +1002,25 @@ export function FlowField({
         stateRef.current.textContent = playing
           ? "transporting"
           : "equilibrium (langevin + solenoidal drift)";
-      // While the canvas animates under it, the HUD's backdrop blur would
-      // re-rasterize every frame (~8fps of transport budget); CSS swaps it
-      // to a near-opaque fill for those seconds. The glass returns a beat
-      // AFTER landing so its one-time re-raster misses the landing frame,
-      // which already pays for the halo's first paint.
+      // While the canvas animates under them, every backdrop-filtered glass
+      // surface over the hero (HUD, nav, the MSAIL island) re-rasterizes its
+      // blur on every frame — on phones that is two full blur passes per
+      // frame at DPR 3. CSS swaps them all to near-opaque fills for those
+      // seconds via a root attribute. The glass returns a beat AFTER landing
+      // so its one-time re-raster misses the landing frame, which already
+      // pays for the halo's first paint.
       const hud = hudRef.current;
-      if (hud) {
-        if (playing) {
-          window.clearTimeout(hudTimer);
-          if (hud.dataset.playing !== "true") hud.dataset.playing = "true";
-        } else if (hud.dataset.playing !== "false") {
-          window.clearTimeout(hudTimer);
-          hudTimer = window.setTimeout(() => {
-            hud.dataset.playing = "false";
-          }, 700);
-        }
+      const root = document.documentElement;
+      if (playing) {
+        window.clearTimeout(hudTimer);
+        if (hud && hud.dataset.playing !== "true") hud.dataset.playing = "true";
+        if (root.dataset.mForming !== "true") root.dataset.mForming = "true";
+      } else if (root.dataset.mForming !== "false" || (hud && hud.dataset.playing !== "false")) {
+        window.clearTimeout(hudTimer);
+        hudTimer = window.setTimeout(() => {
+          if (hud) hud.dataset.playing = "false";
+          root.dataset.mForming = "false";
+        }, 700);
       }
     };
     setSampleCount(engine.N);
@@ -1094,6 +1100,7 @@ export function FlowField({
     wrap.addEventListener("pointerleave", onLeave);
 
     return () => {
+      delete document.documentElement.dataset.mForming;
       if (idleId) window.cancelIdleCallback(idleId);
       window.clearTimeout(bootTimer);
       window.clearTimeout(warmTimer);

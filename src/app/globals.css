@@ -585,6 +585,16 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent 48%);
 }
 
+/* While the M is forming, every backdrop-filtered island over the hero
+   canvas would re-rasterize its blur on each animation frame (two full blur
+   passes per frame at phone DPR). They run near-opaque for those seconds;
+   the engine restores the glass a beat after landing. */
+html[data-m-forming="true"] .glass-island {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: rgba(4, 28, 54, 0.88);
+}
+
 /* On ink grounds the island glass runs quieter: white glare and white rim
    both read as smudges on navy, so the streak goes entirely and the sunset
    ::after edge draws the capsule alone. Applies to the nav while it floats
