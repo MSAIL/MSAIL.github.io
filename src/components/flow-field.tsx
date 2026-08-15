@@ -146,10 +146,9 @@ export class FlowEngine {
   onTick: ((t: number, playing: boolean) => void) | null = null;
 
   private wtx: CanvasRenderingContext2D;
-  /** 0 hidden · 1 forming (dim sheen riding the streams) · 2 landed (flare
-      to full, then relax into the steady halo). */
+  /** 0 hidden · 1 forming (dim sheen riding the streams) · 2 landed (surge
+      to the full halo, which is the permanent state). */
   private waterState = 0;
-  private flareTimer = 0;
   private wScale = 0.3;
   /** WebKit (all of iOS + Safari) cannot GPU-accelerate SVG url() filters on
       HTML elements — it software-rasterizes the whole goo chain per redraw.
@@ -785,18 +784,14 @@ export class FlowEngine {
     if (waterTarget !== this.waterState) {
       this.waterState = waterTarget;
       const ws = this.waterCanvas.style;
-      window.clearTimeout(this.flareTimer);
       if (waterTarget === 2) {
-        // Landing: the goo+halo filter comes back on (warmed at boot) for
-        // the surge to full, then the glow steps DOWN to a clearly dimmer
-        // steady state. WebKit gets the in-canvas bloom instead (§softHalo).
+        // Landing: the goo+halo filter comes back on (warmed at boot) and
+        // the halo surges to full brightness — and STAYS there. Full glow is
+        // the standard, per Sanat; no post-flare dim. WebKit gets the
+        // in-canvas bloom instead (§softHalo).
         ws.filter = this.softHalo ? "none" : (this.waterCanvas.dataset.goo ?? "");
         ws.transitionDuration = "260ms";
         ws.opacity = "1";
-        this.flareTimer = window.setTimeout(() => {
-          ws.transitionDuration = "1600ms";
-          ws.opacity = "0.6";
-        }, 750);
       } else if (waterTarget === 1) {
         // Forming: the PANE stays hidden. The sheen is painted straight into
         // the grain canvas each frame (same raster pass as the dots), which
@@ -1126,7 +1121,6 @@ export class FlowEngine {
 
   destroy(): void {
     this.destroyed = true;
-    window.clearTimeout(this.flareTimer);
     if (this.raf) cancelAnimationFrame(this.raf);
   }
 }
