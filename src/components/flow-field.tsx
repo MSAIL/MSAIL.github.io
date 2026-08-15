@@ -119,6 +119,7 @@ export class FlowEngine {
      (log+sqrt+cos) per grain per frame; a large precomputed table with a
      rotating offset is statistically indistinguishable on screen. */
   private static GAUSS: Float32Array | null = null;
+  private static SORT_COUNTS = new Uint32Array(65537);
   private gaussIdx = 0;
 
   private T = 0;
@@ -154,14 +155,30 @@ export class FlowEngine {
       HTML elements — it software-rasterizes the whole goo chain per redraw.
       When set, the halo is composed in-canvas with drawImage bloom instead. */
   softHalo = false;
-  /** ?perf=1 bisect switches: kill a subsystem wholesale to find which one
-      an engine chokes on. */
-  debugNoWater = false;
-  debugNoTrails = false;
   private wPx = 0.3;
   private auxA: HTMLCanvasElement | null = null;
   private auxB: HTMLCanvasElement | null = null;
   private sheenPath: Path2D | null = null;
+
+  /* CSR (compressed sparse row) bucket layout: grain indices grouped by
+     color bucket, and ribbon rows likewise, both built once per pairing by
+     counting sort. The render loop then walks buckets in order and draws
+     into the context's CURRENT path — the frame allocates no Path2D at all
+     (the old design churned ~100 of them per frame, 48 dot buckets + up to
+     144 trail tiers, all garbage by the next frame). */
+  private csrStarts!: Uint32Array;
+  private csrIdx!: Uint32Array;
+  private ribStarts!: Uint32Array;
+  private ribRows!: Uint32Array;
+  /** Per-frame position scratch, filled by the physics pass and read by the
+      bucket-order render pass. */
+  private posX!: Float32Array;
+  private posY!: Float32Array;
+  /** How many grains the render covers. Equals N except in the window
+      between a resize (which changes N) and the next pairing: rendering
+      stale CSR indices past the live data drew ghost grains frozen at
+      pre-resize positions (caught by the verification pass). */
+  private renderN = 0;
 
   constructor(
     private ptsCanvas: HTMLCanvasElement,
@@ -238,6 +255,18 @@ export class FlowEngine {
     // Grain size compensates the sparser budgets (r ∝ 1/√density keeps ink
     // coverage constant), so the M reads just as solid.
     this.dotR = phone ? 1.5 : 2.35;
+    // A resize changes N and possibly ribbonStride while every per-pairing
+    // array (dst, bucketOf, CSR) still holds the OLD population. Clamp the
+    // render to the live intersection and regroup NOW; the next pairing
+    // restores renderN = N. (Skipped before the first dataset exists.)
+    if (this.bucketOf) {
+      this.renderN = Math.min(this.N, this.bucketOf.length);
+      if (!this.posX || this.posX.length < this.renderN) {
+        this.posX = new Float32Array(this.renderN);
+        this.posY = new Float32Array(this.renderN);
+      }
+      this.buildCSR();
+    }
   }
 
   private dotR = 1.7;
@@ -371,7 +400,10 @@ export class FlowEngine {
     }
     const scale = hi > lo ? 65535 / (hi - lo) : 0;
     const q = new Uint16Array(n);
-    const counts = new Uint32Array(65537);
+    // 256KB of histogram, reused across every sort (pairings are frequent
+    // enough on replay-spamming that per-call allocation showed in GC).
+    const counts = FlowEngine.SORT_COUNTS;
+    counts.fill(0);
     for (let i = 0; i < n; i++) {
       const k = ((keys[i] - lo) * scale) | 0;
       q[i] = k;
@@ -552,6 +584,50 @@ export class FlowEngine {
     for (let i = 0; i < N; i++) fromX[i] = this.from[2 * i];
     const order = FlowEngine.sortIdxByKey(fromX, N);
     for (let r = 0; r < N; r++) this.delay[order[r]] = (STAGGER * r) / N;
+
+    if (!this.posX || this.posX.length !== N) {
+      this.posX = new Float32Array(N);
+      this.posY = new Float32Array(N);
+    }
+    this.renderN = N;
+    this.buildCSR();
+  }
+
+  /** Group grains (and ribbon rows) by bucket via counting sort: O(N + NB)
+      time, reused buffers. Rebuilt per pairing, and once more when the
+      frame-sliced 2-opt retires (its swaps exchange buckets; the CSR runs
+      one bucket stale during that half-second, which the dither hides). */
+  private buildCSR(): void {
+    const N = this.renderN;
+    const NB = this.palette.length;
+    const bucketOf = this.bucketOf;
+    if (!this.csrStarts || this.csrStarts.length !== NB + 1) {
+      this.csrStarts = new Uint32Array(NB + 1);
+      this.ribStarts = new Uint32Array(NB + 1);
+    } else {
+      this.csrStarts.fill(0);
+      this.ribStarts.fill(0);
+    }
+    if (!this.csrIdx || this.csrIdx.length !== N) this.csrIdx = new Uint32Array(N);
+    const rows = Math.ceil(N / this.ribbonStride);
+    if (!this.ribRows || this.ribRows.length !== rows) this.ribRows = new Uint32Array(rows);
+    const starts = this.csrStarts;
+    for (let i = 0; i < N; i++) starts[bucketOf[i] + 1]++;
+    for (let b = 0; b < NB; b++) starts[b + 1] += starts[b];
+    // Separate per-bucket cursors keep `starts` immutable as slice heads.
+    const cursor = new Uint32Array(NB);
+    for (let i = 0; i < N; i++) {
+      const b = bucketOf[i];
+      this.csrIdx[starts[b] + cursor[b]++] = i;
+    }
+    const rStarts = this.ribStarts;
+    for (let r = 0; r < rows; r++) rStarts[bucketOf[r * this.ribbonStride] + 1]++;
+    for (let b = 0; b < NB; b++) rStarts[b + 1] += rStarts[b];
+    const rCursor = new Uint32Array(NB);
+    for (let r = 0; r < rows; r++) {
+      const b = bucketOf[r * this.ribbonStride];
+      this.ribRows[rStarts[b] + rCursor[b]++] = r;
+    }
   }
 
   private dstIsNoise = false;
@@ -605,6 +681,7 @@ export class FlowEngine {
     this.T = this.reduced ? 1 : 0;
     this.playing = !this.reduced;
     this.optActive = !this.reduced; // uncrossing happens across the first frames
+    this.sheenPath = null; // never fill the previous transport's sheen
     this.t0 = performance.now();
     this.wake();
   }
@@ -623,6 +700,7 @@ export class FlowEngine {
     this.T = this.reduced ? 1 : 0;
     this.playing = !this.reduced;
     this.optActive = !this.reduced;
+    this.sheenPath = null; // never fill the previous transport's sheen
     this.t0 = performance.now();
     this.wake();
   }
@@ -694,13 +772,16 @@ export class FlowEngine {
     if (this.optActive) {
       if (!this.playing || e >= 0.5) this.optActive = false;
       else this.runOptSlice(3);
+      // Either retirement path (kill switch here, convergence inside the
+      // slice) leaves bucketOf mutated by swaps: regroup the CSR once.
+      if (!this.optActive) this.buildCSR();
     }
     // The liquid lives through the whole transport: a dim sheen wets the
     // grains while they stream (they read dry without it, phones especially),
     // then the landing is the forge moment — a fast surge to full brightness
     // that relaxes into the steady halo, like a blade coming off the anvil.
     const formed = !this.playing && e >= 1;
-    const waterTarget = this.debugNoWater ? 0 : formed ? 2 : this.playing ? 1 : 0;
+    const waterTarget = formed ? 2 : this.playing ? 1 : 0;
     if (waterTarget !== this.waterState) {
       this.waterState = waterTarget;
       const ws = this.waterCanvas.style;
@@ -774,26 +855,19 @@ export class FlowEngine {
     let anyTrail = false;
 
     const NB = this.palette.length;
-    const dotPaths: (Path2D | null)[] = new Array(NB).fill(null);
-    const trailPaths: (Path2D | null)[] = new Array(NB * 3).fill(null);
-    // The pool redraws on its own clock: ~20Hz during transport so the sheen
-    // tracks the streams, ~15Hz at rest — never at the render rate, so the
-    // filter chain doesn't ride along with full-refresh hovering. Phones run
-    // both clocks slower and sample a sparser pool; the sheen forgives it.
     // The water PANE only draws at rest, in lockstep with the 30Hz settle
     // render (its old slower clock made the pool a laggy entity of its own,
     // as Sanat diagnosed) — but never faster, so full-rate hovering doesn't
-    // drag the filter along. During transport the sheen path is rebuilt
-    // every frame and filled into the grain canvas instead — same frame as
-    // the grains, no extra layer.
-    const poolMask = 3; // every 4th grain; the bisect convicted denser pools
-    const drawWater = !this.debugNoWater && formed && now - this.lastWaterDraw > 31;
+    // drag the filter along. During transport the sheen is filled straight
+    // into the grain canvas — same frame as the grains, no extra layer.
+    const poolMask = 3; // every 4th grain; the on-device bisect convicted denser pools
+    const drawWater = formed && now - this.lastWaterDraw > 31;
     if (drawWater) this.lastWaterDraw = now;
-    const inlineSheen = !this.debugNoWater && this.playing;
+    const inlineSheen = this.playing;
     // The sheen path rebuilds every OTHER frame (5k arc commands per frame
     // was measurable) but FILLS every frame — one frame of staleness is
-    // invisible; the old 80ms clock was the visible drag.
-    const rebuildSheen = inlineSheen && (this.frameNo & 1) === 0;
+    // invisible; a slow clock was the visible drag.
+    const rebuildSheen = inlineSheen && ((this.frameNo & 1) === 0 || !this.sheenPath);
     if (rebuildSheen) this.sheenPath = new Path2D();
     // The shimmer likewise steps on a 30Hz clock, whatever the render rate:
     // its damping/noise coefficients are tuned for that timestep, and a
@@ -801,33 +875,48 @@ export class FlowEngine {
     // diffusion.
     const stepOu = settled && now - this.lastOuStep > 30;
     if (stepOu) this.lastOuStep = now;
-    const waterPath = new Path2D();
     // Pool radius per buoy: wide enough to seal the pool at every-4th-grain
     // sampling. Always circles: rects read as square chunks the moment any
-    // upscale or filterless state exposes them.
+    // upscale or filterless state exposes them. The pool accumulates in the
+    // water context's CURRENT path (fill comes after the pass) — no Path2D.
     const waterR = 7.5;
+    const wtx = this.wtx;
+    if (drawWater) wtx.beginPath();
 
-    for (let i = 0; i < this.N; i++) {
+    /* -------- pass 1, grain order: physics + trails + liquid sampling.
+       Positions land in posX/posY for the bucket-order render pass. Field
+       aliases keep the hot loop off repeated property loads. */
+    const N = this.renderN;
+    const posX = this.posX;
+    const posY = this.posY;
+    const dst = this.dst;
+    const from = this.from;
+    const oux = this.oux;
+    const ouy = this.ouy;
+    const ouvx = this.ouvx;
+    const ouvy = this.ouvy;
+    const trail = this.trail;
+    const trailLen = this.trailLen;
+    const stride = this.ribbonStride;
+    const pointerOver = this.pointer.over && settled;
+    const px = this.pointer.x;
+    const py = this.pointer.y;
+    const trailCap = this.playing ? (this.W < 640 ? 14 : 24) : this.N > 40000 ? 6 : 8;
+
+    for (let i = 0; i < N; i++) {
       let x: number;
       let y: number;
       if (settled) {
         // u ≡ 1 at equilibrium: read the anchor directly, skip the lerp and
         // the from/delay streams entirely (~700k flops + 690KB reads/frame).
-        x = this.dst[2 * i];
-        y = this.dst[2 * i + 1];
-      } else {
-        const u = this.particleU(i, e);
-        x = this.from[2 * i] + (this.dst[2 * i] - this.from[2 * i]) * u;
-        y = this.from[2 * i + 1] + (this.dst[2 * i + 1] - this.from[2 * i + 1]) * u;
-      }
-
-      if (settled) {
-        // Non-reversible Langevin: a smooth, slowly-evolving solenoidal drift
-        // field + noise + a weak spring leash. Adding a divergence-free drift
-        // to Langevin dynamics still preserves the target distribution — and
-        // because neighboring grains sample the SAME field, the M flows like
-        // liquid instead of vibrating like heated molecules.
-        // Angle-addition form: all transcendentals hoisted out of the loop.
+        x = dst[2 * i];
+        y = dst[2 * i + 1];
+        // Non-reversible Langevin: a smooth, slowly-evolving solenoidal
+        // drift field + noise + a weak spring leash. Adding a divergence-
+        // free drift to Langevin dynamics still preserves the target
+        // distribution — and because neighboring grains sample the SAME
+        // field, the M flows like liquid instead of vibrating like heated
+        // molecules. Angle-addition form: transcendentals hoisted out.
         if (stepOu) {
           const fx =
             this.drfSinA[i] * cos14 + this.drfCosA[i] * sin14 +
@@ -835,110 +924,72 @@ export class FlowEngine {
           const fy =
             this.drfCosC[i] * cos12 + this.drfSinC[i] * sin12 +
             0.6 * (this.drfCosD[i] * cos11 - this.drfSinD[i] * sin11);
-          this.ouvx[i] =
-            this.ouvx[i] * 0.92 + fx * 0.14 - this.oux[i] * 0.03 + this.gauss() * 0.04;
-          this.ouvy[i] =
-            this.ouvy[i] * 0.92 + fy * 0.14 - this.ouy[i] * 0.03 + this.gauss() * 0.04;
-          const sp2 = this.ouvx[i] * this.ouvx[i] + this.ouvy[i] * this.ouvy[i];
+          ouvx[i] = ouvx[i] * 0.92 + fx * 0.14 - oux[i] * 0.03 + this.gauss() * 0.04;
+          ouvy[i] = ouvy[i] * 0.92 + fy * 0.14 - ouy[i] * 0.03 + this.gauss() * 0.04;
+          const sp2 = ouvx[i] * ouvx[i] + ouvy[i] * ouvy[i];
           if (sp2 > 1.5625) {
             const f = 1.25 / Math.sqrt(sp2);
-            this.ouvx[i] *= f;
-            this.ouvy[i] *= f;
+            ouvx[i] *= f;
+            ouvy[i] *= f;
           }
-          this.oux[i] += this.ouvx[i];
-          this.ouy[i] += this.ouvy[i];
+          oux[i] += ouvx[i];
+          ouy[i] += ouvy[i];
         }
-        x += this.oux[i];
-        y += this.ouy[i];
-      }
-
-      // Minimal cursor nudge: settled only (never competing with transport),
-      // tight radius, a light touch.
-      if (this.pointer.over && settled) {
-        const mdx = x - this.pointer.x;
-        const mdy = y - this.pointer.y;
-        const md2 = mdx * mdx + mdy * mdy;
-        if (md2 < 6400) {
-          const f = Math.exp(-md2 / 2600) * 8;
-          const d = Math.sqrt(md2) + 1e-3;
-          x += (mdx / d) * f;
-          y += (mdy / d) * f;
+        x += oux[i];
+        y += ouy[i];
+        // Minimal cursor nudge: settled only, tight radius, a light touch.
+        if (pointerOver) {
+          const mdx = x - px;
+          const mdy = y - py;
+          const md2 = mdx * mdx + mdy * mdy;
+          if (md2 < 6400) {
+            const f = Math.exp(-md2 / 2600) * 8;
+            const d = Math.sqrt(md2) + 1e-3;
+            x += (mdx / d) * f;
+            y += (mdy / d) * f;
+          }
         }
+      } else {
+        const u = this.particleU(i, e);
+        x = from[2 * i] + (dst[2 * i] - from[2 * i]) * u;
+        y = from[2 * i + 1] + (dst[2 * i + 1] - from[2 * i + 1]) * u;
       }
+      posX[i] = x;
+      posY[i] = y;
 
       // Ribbons ride on a strided subset of grains: full trail richness at a
-      // fraction of the stroke geometry. The dot bed itself stays fully dense.
-      const hasRibbon = !this.debugNoTrails && i % this.ribbonStride === 0;
-      const rRow = (i / this.ribbonStride) | 0;
-      const base = rRow * TRAIL * 2;
-      if (record && hasRibbon) {
-        this.trail[base + nextHead * 2] = x;
-        this.trail[base + nextHead * 2 + 1] = y;
-        // Comets during transport (shorter than the full ring: the last
-        // third of a 32-frame tail was the most expensive stroke geometry
-        // of the heaviest frames); long-lived ribbons at equilibrium so
-        // the drift visibly draws its streamlines.
-        const cap = this.playing ? (this.W < 640 ? 14 : 24) : this.N > 40000 ? 6 : 8;
-        if (this.trailLen[rRow] < cap) this.trailLen[rRow]++;
-        else if (this.trailLen[rRow] > cap) this.trailLen[rRow]--;
-      } else if (!this.playing && !settled && hasRibbon && this.trailLen[rRow] > 0) {
-        this.trailLen[rRow] -= 2;
-        if (this.trailLen[rRow] < 0) this.trailLen[rRow] = 0;
-      }
-      const b = this.bucketOf[i];
-      // Comet trail: three tapering tiers (width + alpha fall off toward the
-      // tail), appended into the bucket's shared Path2D.
-      const len = hasRibbon ? this.trailLen[rRow] : 0;
-      if (len > 2) {
-        anyTrail = true;
-        const seg = Math.max(2, Math.ceil(len / 3));
-        let kCursor = 0;
-        for (let g = 0; g < 3 && kCursor < len; g++) {
-          const key = b * 3 + g;
-          const path = (trailPaths[key] ??= new Path2D());
-          if (g === 0) {
-            path.moveTo(x, y);
-          } else {
-            const slot0 = (headSlot - (kCursor - 1) + TRAIL * 2) % TRAIL;
-            path.moveTo(this.trail[base + slot0 * 2], this.trail[base + slot0 * 2 + 1]);
-          }
-          const kMax = Math.min(len, kCursor + seg);
-          for (let k = kCursor; k < kMax; k++) {
-            const slot = (headSlot - k + TRAIL * 2) % TRAIL;
-            path.lineTo(this.trail[base + slot * 2], this.trail[base + slot * 2 + 1]);
-          }
-          kCursor = kMax;
+      // fraction of the stroke geometry. The dot bed itself stays dense.
+      if (i % stride === 0) {
+        const rRow = (i / stride) | 0;
+        const base = rRow * TRAIL * 2;
+        if (record) {
+          trail[base + nextHead * 2] = x;
+          trail[base + nextHead * 2 + 1] = y;
+          if (trailLen[rRow] < trailCap) trailLen[rRow]++;
+          else if (trailLen[rRow] > trailCap) trailLen[rRow]--;
+        } else if (!this.playing && !settled && trailLen[rRow] > 0) {
+          trailLen[rRow] -= 2;
+          if (trailLen[rRow] < 0) trailLen[rRow] = 0;
         }
+        if (trailLen[rRow] > 2) anyTrail = true;
       }
 
       if (drawWater && (i & poolMask) === 0) {
-        waterPath.moveTo(x + waterR, y);
-        waterPath.arc(x, y, waterR, 0, 6.2832);
+        wtx.moveTo(x + waterR, y);
+        wtx.arc(x, y, waterR, 0, 6.2832);
       }
       if (rebuildSheen && (i & 7) === 0) {
         this.sheenPath!.moveTo(x + 10, y);
         this.sheenPath!.arc(x, y, 10, 0, 6.2832);
       }
-      const dots = (dotPaths[b] ??= new Path2D());
-      if (this.N > 24000 || this.playing) {
-        // Squares rasterize far cheaper than arcs: always at ultra counts,
-        // and during transport, where motion hides the dot shape entirely
-        // (crisp circles return the frame the M lands).
-        const r = this.radii[i];
-        dots.rect(x - r, y - r, r * 2, r * 2);
-      } else {
-        dots.moveTo(x + this.radii[i], y);
-        dots.arc(x, y, this.radii[i], 0, 6.2832);
-      }
     }
     if (record) this.trailHead = nextHead;
 
-    // The water pane: darker stroke first (survives the alpha threshold as a
-    // baked meniscus rim), then the pool tint. One CSS filter pass total.
+    // The water pane, from the path accumulated above.
     if (drawWater) {
-      this.wtx.clearRect(0, 0, this.W, this.H);
-      this.wtx.fillStyle = "#ffffff";
-      this.wtx.fill(waterPath);
+      wtx.clearRect(0, 0, this.W, this.H);
+      wtx.fillStyle = "#ffffff";
+      wtx.fill();
       if (this.softHalo && this.waterState === 2) this.bloomInCanvas();
     }
 
@@ -949,25 +1000,81 @@ export class FlowEngine {
       p.fill(this.sheenPath);
     }
 
-    // Batched draw: one stroke per (bucket, tier), one fill per bucket.
-    p.lineCap = "round";
-    const widths = [2.5, 1.3, 0.6];
-    for (let g = 0; g < 3; g++) {
-      p.lineWidth = widths[g];
-      for (let b = 0; b < NB; b++) {
-        const path = trailPaths[b * 3 + g];
-        if (path) {
-          p.strokeStyle = this.trailPalette[b][g];
-          p.stroke(path);
+    /* -------- pass 2, bucket order via CSR: one beginPath/stroke per
+       (bucket, tier) and one beginPath/fill per bucket, zero allocations.
+       Tier g of a trail of length len covers [g*seg, (g+1)*seg) with
+       seg = ceil(len/3) — the closed form of the old cursor walk. */
+    if (anyTrail) {
+      p.lineCap = "round";
+      const ribStarts = this.ribStarts;
+      const ribRows = this.ribRows;
+      const widths = [2.5, 1.3, 0.6];
+      for (let g = 0; g < 3; g++) {
+        p.lineWidth = widths[g];
+        for (let b = 0; b < NB; b++) {
+          const s = ribStarts[b];
+          const t = ribStarts[b + 1];
+          if (s === t) continue;
+          let drew = false;
+          for (let q = s; q < t; q++) {
+            const rRow = ribRows[q];
+            const len = trailLen[rRow];
+            if (len <= 2) continue;
+            const seg = Math.max(2, Math.ceil(len / 3));
+            const kStart = g * seg;
+            if (kStart >= len) continue;
+            if (!drew) {
+              p.strokeStyle = this.trailPalette[b][g];
+              p.beginPath();
+              drew = true;
+            }
+            const base = rRow * TRAIL * 2;
+            const gi = rRow * stride;
+            if (g === 0) {
+              p.moveTo(posX[gi], posY[gi]);
+            } else {
+              const slot0 = (headSlot - (kStart - 1) + TRAIL * 2) % TRAIL;
+              p.moveTo(trail[base + slot0 * 2], trail[base + slot0 * 2 + 1]);
+            }
+            const kEnd = Math.min(len, kStart + seg);
+            for (let k = kStart; k < kEnd; k++) {
+              const slot = (headSlot - k + TRAIL * 2) % TRAIL;
+              p.lineTo(trail[base + slot * 2], trail[base + slot * 2 + 1]);
+            }
+          }
+          if (drew) p.stroke();
         }
       }
     }
+
+    const csrStarts = this.csrStarts;
+    const csrIdx = this.csrIdx;
+    const radii = this.radii;
+    // Squares rasterize far cheaper than arcs: always at ultra counts, and
+    // during transport, where motion hides the dot shape entirely (crisp
+    // circles return the frame the M lands).
+    const useRect = N > 24000 || this.playing;
     for (let b = 0; b < NB; b++) {
-      const path = dotPaths[b];
-      if (path) {
-        p.fillStyle = this.palette[b];
-        p.fill(path);
+      const s = csrStarts[b];
+      const t = csrStarts[b + 1];
+      if (s === t) continue;
+      p.fillStyle = this.palette[b];
+      p.beginPath();
+      if (useRect) {
+        for (let q = s; q < t; q++) {
+          const i = csrIdx[q];
+          const r = radii[i];
+          p.rect(posX[i] - r, posY[i] - r, r * 2, r * 2);
+        }
+      } else {
+        for (let q = s; q < t; q++) {
+          const i = csrIdx[q];
+          const r = radii[i];
+          p.moveTo(posX[i] + r, posY[i]);
+          p.arc(posX[i], posY[i], r, 0, 6.2832);
+        }
       }
+      p.fill();
     }
 
     if (this.playing || anyTrail || this.pointer.over || settled) {
@@ -1085,7 +1192,6 @@ export function FlowField({
     // goo chain in software, which is exactly "intensely laggy". Everyone
     // except real Chromium gets the in-canvas bloom. iOS "Chrome" (CriOS) is
     // WebKit too, so the iOS check overrides the Chromium sniff.
-    // ?softhalo=1 forces the path anywhere, for side-by-side comparison.
     type UAData = { brands?: { brand: string }[] };
     const uaBrands =
       (navigator as Navigator & { userAgentData?: UAData }).userAgentData?.brands ?? [];
@@ -1094,35 +1200,7 @@ export function FlowField({
     const iosWebKit =
       /iP(hone|od|ad)/.test(navigator.userAgent) ||
       (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-    const params = new URLSearchParams(window.location.search);
-    engine.softHalo = !isChromium || iosWebKit || params.has("softhalo");
-    // The bisect rig, runnable on any affected device: ?perf=1 shows a live
-    // fps readout; add water=0 / trails=0 / glass=0 to kill a subsystem and
-    // see which one an engine is choking on.
-    engine.debugNoWater = params.get("water") === "0";
-    engine.debugNoTrails = params.get("trails") === "0";
-    if (params.get("glass") === "0") document.documentElement.dataset.mForming = "true";
-    let perfRaf = 0;
-    let perfEl: HTMLDivElement | null = null;
-    if (params.has("perf")) {
-      perfEl = document.createElement("div");
-      perfEl.style.cssText =
-        "position:fixed;left:8px;bottom:8px;z-index:99;background:#000c;color:#0f6;" +
-        "font:700 16px monospace;padding:6px 10px;border-radius:8px;pointer-events:none";
-      document.body.appendChild(perfEl);
-      let frames = 0;
-      let t0 = performance.now();
-      const tick = (now: number) => {
-        frames++;
-        if (now - t0 >= 1000) {
-          perfEl!.textContent = `${Math.round((frames * 1000) / (now - t0))} fps`;
-          frames = 0;
-          t0 = now;
-        }
-        perfRaf = requestAnimationFrame(tick);
-      };
-      perfRaf = requestAnimationFrame(tick);
-    }
+    engine.softHalo = !isChromium || iosWebKit;
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hudTimer = 0;
@@ -1232,8 +1310,6 @@ export function FlowField({
 
     return () => {
       delete document.documentElement.dataset.mForming;
-      if (perfRaf) cancelAnimationFrame(perfRaf);
-      perfEl?.remove();
       if (idleId) window.cancelIdleCallback(idleId);
       window.clearTimeout(bootTimer);
       window.clearTimeout(warmTimer);
