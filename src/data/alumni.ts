@@ -17,7 +17,18 @@ export type Alum = {
   photo: string | null;
 };
 
-export const alumni: Alum[] = [
+/** Newest first: a term string's most recent "Season YYYY" wins (Fall
+    outranks Winter within a year — Winter is the early-year semester). */
+function termRank(term: string): number {
+  let best = 0;
+  for (const m of term.matchAll(/(Winter|Fall)\s+(\d{4})/g)) {
+    const rank = Number(m[2]) * 2 + (m[1] === "Fall" ? 1 : 0);
+    if (rank > best) best = rank;
+  }
+  return best;
+}
+
+const alumniRaw: Alum[] = [
   { name: "Robert Aung", term: "Fall 2020", photo: "/alumni/robert-aung.jpg" },
   { name: "Andrew Awad", term: "Winter 2021", photo: "/alumni/andrew-awad.jpg" },
   { name: "Kierra Davis", term: "Winter 2021", photo: "/alumni/kierra-davis.jpg" },
@@ -34,6 +45,10 @@ export const alumni: Alum[] = [
   { name: "Chloe Snyders", term: "Winter 2023", photo: "/alumni/chloe-snyders.jpg" },
   { name: "William Wang", term: "Winter 2024", photo: "/alumni/william-wang.jpg" },
 ];
+
+export const alumni: Alum[] = [...alumniRaw].sort(
+  (a, b) => termRank(b.term) - termRank(a.term),
+);
 
 export const alumniMeta: { intro: string; photosFlag: Flag } = {
   // Verified live copy (lightly tightened).
