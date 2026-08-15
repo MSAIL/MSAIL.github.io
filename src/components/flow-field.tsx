@@ -225,7 +225,10 @@ export class FlowEngine {
     // 0.3x-of-CSS-pixels backing store is one tenth of device resolution,
     // and without Chromium's goo blur to launder it the upscale shows as
     // square chunks. Scale the backing by min(dpr, 2) as well.
-    const wPx = this.wScale * Math.min(window.devicePixelRatio || 1, 2);
+    // dpr capped LOW: x2 quadrupled the pane's pixels and put the liquid
+    // system back at the top of every profile. x1.5 is enough to kill the
+    // chunky upscale without buying the lag back.
+    const wPx = this.wScale * Math.min(window.devicePixelRatio || 1, 1.5);
     this.waterCanvas.width = Math.max(1, Math.round(this.W * wPx));
     this.waterCanvas.height = Math.max(1, Math.round(this.H * wPx));
     this.wtx.setTransform(wPx, 0, 0, wPx, 0, 0);
@@ -775,11 +778,11 @@ export class FlowEngine {
     // filter chain doesn't ride along with full-refresh hovering. Phones run
     // both clocks slower and sample a sparser pool; the sheen forgives it.
     const phoneW = this.W < 640;
-    const waterEvery = this.playing ? (phoneW ? 110 : 50) : phoneW ? 100 : 66;
-    // Softer engines (softHalo) draw the pool as circles, so they also get
-    // the sparser mask + wider blobs everywhere; the goo path keeps cheap
-    // rects at the denser mask.
-    const poolMask = phoneW || this.softHalo ? 3 : 1;
+    const waterEvery = this.playing ? (phoneW ? 110 : 80) : phoneW ? 100 : 80;
+    // Sanat's on-device bisect (water=0) convicted the liquid system on
+    // every engine, so the sparse mask is universal now: every 4th grain,
+    // wider round droplets, ~1/4 of the path commands.
+    const poolMask = 3;
     const drawWater =
       !this.debugNoWater &&
       (formed || this.playing) &&
@@ -792,10 +795,10 @@ export class FlowEngine {
     const stepOu = settled && now - this.lastOuStep > 30;
     if (stepOu) this.lastOuStep = now;
     const waterPath = new Path2D();
-    // Pool radius per buoy: tight to the edge grains. Sparse-mask paths
-    // (phones + softHalo engines) carry wider blobs to keep the pool sealed.
-    const waterR = this.W < 640 || this.softHalo ? 7.5 : 5;
-    const poolRound = this.softHalo; // circles upscale to droplets, not chunks
+    // Pool radius per buoy: wide enough to seal the pool at every-4th-grain
+    // sampling. Always circles: rects read as square chunks the moment any
+    // upscale or filterless state exposes them.
+    const waterR = 7.5;
 
     for (let i = 0; i < this.N; i++) {
       let x: number;
@@ -902,12 +905,8 @@ export class FlowEngine {
       }
 
       if (drawWater && (i & poolMask) === 0) {
-        if (poolRound) {
-          waterPath.moveTo(x + waterR, y);
-          waterPath.arc(x, y, waterR, 0, 6.2832);
-        } else {
-          waterPath.rect(x - waterR, y - waterR, waterR * 2, waterR * 2);
-        }
+        waterPath.moveTo(x + waterR, y);
+        waterPath.arc(x, y, waterR, 0, 6.2832);
       }
       const dots = (dotPaths[b] ??= new Path2D());
       if (this.N > 24000 || this.playing) {
