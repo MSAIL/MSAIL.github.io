@@ -178,6 +178,12 @@ export class FlowEngine {
       stale CSR indices past the live data drew ghost grains frozen at
       pre-resize positions (caught by the verification pass). */
   private renderN = 0;
+  /** Forge-ray geometry, from the destination cloud's bounds: rays sweep
+      out of the landing site while the M condenses. */
+  private rayCX = 0;
+  private rayCY = 0;
+  private rayIn = 0;
+  private rayOut = 0;
 
   constructor(
     private ptsCanvas: HTMLCanvasElement,
@@ -590,6 +596,27 @@ export class FlowEngine {
     }
     this.renderN = N;
     this.buildCSR();
+
+    // Forge-ray geometry: centered on the destination cloud, starting
+    // inside its footprint (the mass hides the ray roots) and reaching
+    // well past its edge.
+    let mnx = Infinity;
+    let mny = Infinity;
+    let mxx = -Infinity;
+    let mxy = -Infinity;
+    for (let i = 0; i < N; i++) {
+      const x = this.dst[2 * i];
+      const y = this.dst[2 * i + 1];
+      if (x < mnx) mnx = x;
+      if (x > mxx) mxx = x;
+      if (y < mny) mny = y;
+      if (y > mxy) mxy = y;
+    }
+    this.rayCX = (mnx + mxx) / 2;
+    this.rayCY = (mny + mxy) / 2;
+    const halfDiag = Math.hypot(mxx - mnx, mxy - mny) / 2 || 1;
+    this.rayIn = halfDiag * 0.35;
+    this.rayOut = halfDiag * 1.55;
   }
 
   /** Group grains (and ribbon rows) by bucket via counting sort: O(N + NB)
@@ -986,6 +1013,32 @@ export class FlowEngine {
       wtx.fillStyle = "#ffffff";
       wtx.fill();
       if (this.softHalo && this.waterState === 2) this.bloomInCanvas();
+    }
+
+    // Forge rays, deepest layer: light spokes sweep out of the landing site
+    // while the M condenses, gathering strength with progress, and die on
+    // the exact frame the halo flares. Two batched strokes, ~30 trig calls.
+    if (inlineSheen) {
+      const NR = 14;
+      const rot = now * 0.00012;
+      const pulseT = now * 0.0016;
+      const rayA = 0.04 + 0.3 * e * e;
+      p.lineCap = "round";
+      for (let tier = 0; tier < 2; tier++) {
+        p.lineWidth = tier === 0 ? 22 : 2.5;
+        p.strokeStyle = `rgba(255,255,255,${(tier === 0 ? rayA * 0.3 : rayA).toFixed(3)})`;
+        p.beginPath();
+        for (let k = 0; k < NR; k++) {
+          const ang = rot + (k * 6.2832) / NR;
+          const s = Math.sin(pulseT + k * 2.399);
+          const len = this.rayIn + (this.rayOut - this.rayIn) * (0.62 + 0.38 * s * s);
+          const ca = Math.cos(ang);
+          const sa = Math.sin(ang);
+          p.moveTo(this.rayCX + ca * this.rayIn, this.rayCY + sa * this.rayIn);
+          p.lineTo(this.rayCX + ca * len, this.rayCY + sa * len);
+        }
+        p.stroke();
+      }
     }
 
     // Forming sheen, painted under the grains in their own raster pass: a
