@@ -158,8 +158,10 @@ export class FlowEngine {
       an engine chokes on. */
   debugNoWater = false;
   debugNoTrails = false;
+  private wPx = 0.3;
   private auxA: HTMLCanvasElement | null = null;
   private auxB: HTMLCanvasElement | null = null;
+  private sheenPath: Path2D | null = null;
 
   constructor(
     private ptsCanvas: HTMLCanvasElement,
@@ -229,6 +231,7 @@ export class FlowEngine {
     // system back at the top of every profile. x1.5 is enough to kill the
     // chunky upscale without buying the lag back.
     const wPx = this.wScale * Math.min(window.devicePixelRatio || 1, 1.5);
+    this.wPx = wPx;
     this.waterCanvas.width = Math.max(1, Math.round(this.W * wPx));
     this.waterCanvas.height = Math.max(1, Math.round(this.H * wPx));
     this.wtx.setTransform(wPx, 0, 0, wPx, 0, 0);
@@ -714,13 +717,13 @@ export class FlowEngine {
           ws.opacity = "0.6";
         }, 750);
       } else if (waterTarget === 1) {
-        // Forming: NO filter. The pane is drawn at 0.3 scale and upscaled by
-        // CSS, which alone reads as soft wet blobs; running the filter chain
-        // per transport frame was the whole mobile framerate collapse.
-        // Brightness matches the post-flare steady glow.
-        ws.filter = "none";
-        ws.transitionDuration = "450ms";
-        ws.opacity = "0.6";
+        // Forming: the PANE stays hidden. The sheen is painted straight into
+        // the grain canvas each frame (same raster pass as the dots), which
+        // is what finally made formation liquid cost roughly nothing — a
+        // second full-screen layer was the cost, however cheaply it was
+        // filled.
+        ws.transitionDuration = "300ms";
+        ws.opacity = "0";
       } else {
         ws.transitionDuration = "220ms";
         ws.opacity = "0";
@@ -777,17 +780,21 @@ export class FlowEngine {
     // tracks the streams, ~15Hz at rest — never at the render rate, so the
     // filter chain doesn't ride along with full-refresh hovering. Phones run
     // both clocks slower and sample a sparser pool; the sheen forgives it.
-    const phoneW = this.W < 640;
-    const waterEvery = this.playing ? (phoneW ? 110 : 80) : phoneW ? 100 : 80;
-    // Sanat's on-device bisect (water=0) convicted the liquid system on
-    // every engine, so the sparse mask is universal now: every 4th grain,
-    // wider round droplets, ~1/4 of the path commands.
-    const poolMask = 3;
-    const drawWater =
-      !this.debugNoWater &&
-      (formed || this.playing) &&
-      now - this.lastWaterDraw > waterEvery;
+    // The water PANE only draws at rest, in lockstep with the 30Hz settle
+    // render (its old slower clock made the pool a laggy entity of its own,
+    // as Sanat diagnosed) — but never faster, so full-rate hovering doesn't
+    // drag the filter along. During transport the sheen path is rebuilt
+    // every frame and filled into the grain canvas instead — same frame as
+    // the grains, no extra layer.
+    const poolMask = 3; // every 4th grain; the bisect convicted denser pools
+    const drawWater = !this.debugNoWater && formed && now - this.lastWaterDraw > 31;
     if (drawWater) this.lastWaterDraw = now;
+    const inlineSheen = !this.debugNoWater && this.playing;
+    // The sheen path rebuilds every OTHER frame (5k arc commands per frame
+    // was measurable) but FILLS every frame — one frame of staleness is
+    // invisible; the old 80ms clock was the visible drag.
+    const rebuildSheen = inlineSheen && (this.frameNo & 1) === 0;
+    if (rebuildSheen) this.sheenPath = new Path2D();
     // The shimmer likewise steps on a 30Hz clock, whatever the render rate:
     // its damping/noise coefficients are tuned for that timestep, and a
     // faster render must only smooth the cursor repel, not quadruple the
@@ -908,6 +915,10 @@ export class FlowEngine {
         waterPath.moveTo(x + waterR, y);
         waterPath.arc(x, y, waterR, 0, 6.2832);
       }
+      if (rebuildSheen && (i & 7) === 0) {
+        this.sheenPath!.moveTo(x + 10, y);
+        this.sheenPath!.arc(x, y, 10, 0, 6.2832);
+      }
       const dots = (dotPaths[b] ??= new Path2D());
       if (this.N > 24000 || this.playing) {
         // Squares rasterize far cheaper than arcs: always at ultra counts,
@@ -929,6 +940,13 @@ export class FlowEngine {
       this.wtx.fillStyle = "#ffffff";
       this.wtx.fill(waterPath);
       if (this.softHalo && this.waterState === 2) this.bloomInCanvas();
+    }
+
+    // Forming sheen, painted under the grains in their own raster pass: a
+    // single translucent union fill (overlaps do not stack inside one path).
+    if (inlineSheen && this.sheenPath) {
+      p.fillStyle = "rgba(255,255,255,0.5)";
+      p.fill(this.sheenPath);
     }
 
     // Batched draw: one stroke per (bucket, tier), one fill per bucket.
