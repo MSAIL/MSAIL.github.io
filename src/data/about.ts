@@ -62,16 +62,16 @@ export const about = {
   roster: {
     flag: flag(
       "verified",
-      "Fall 2026 admins per Matthew's roster sheet (updated 2026-08-10): emails and LinkedIn from the sheet's hyperlinks, headshots from Admin Photos as uploaded. Usman Ghani's role still not listed in the sheet.",
+      "Fall 2026 admins per Matthew's roster sheet (re-read 2026-08-16: Srinitya's email added, Matthew's headshot landed in Admin Photos). Usman Ghani's role still not listed in the sheet.",
     ),
     term: "Fall 2026",
     people: [
-      { name: "Matthew McClure", role: "President", email: "mattai@umich.edu", linkedin: "https://www.linkedin.com/in/matthew-m-9b1043279/" },
+      { name: "Matthew McClure", role: "President", email: "mattai@umich.edu", linkedin: "https://www.linkedin.com/in/matthew-m-9b1043279/", photo: "/team/matthew-mcclure.jpg" },
       { name: "Santosh Desai", role: "Project Lead", email: "" },
       { name: "Dmitriy Ivkov", role: "Project Lead", email: "divkov@umich.edu", linkedin: "https://www.linkedin.com/in/dmitriyivkov", photo: "/team/dmitriy-ivkov.jpg" },
       { name: "Shamanth Shastry", role: "Industry Project Lead", email: "sshamant@umich.edu", linkedin: "https://www.linkedin.com/in/shamanth-shastry-2bb847281/", photo: "/team/shamanth-shastry.jpg" },
       { name: "Sofiya Goncharova", role: "ML News Lead", email: "sogon@umich.edu", photo: "/team/sofiya-goncharova.jpg" },
-      { name: "Srinitya Pamulapati", role: "Communications & Finance", email: "" },
+      { name: "Srinitya Pamulapati", role: "Communications & Finance", email: "srinitya@umich.edu" },
       { name: "Sanat Gupta", role: "Website", email: "sanatt@umich.edu", linkedin: "https://www.linkedin.com/in/sanat-gupta/", website: "https://thesanatgupta.com", photo: "/team/sanat-gupta.jpg" },
       { name: "Usman Ghani", role: "Admin", email: "mghani@umich.edu", linkedin: "https://www.linkedin.com/in/m-ghani/", photo: "/team/usman-ghani.jpg" },
     ] as Person[],

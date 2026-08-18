@@ -31,8 +31,8 @@ export const initiativesMeta: { flag: Flag; notice: string } = {
 export const initiatives: { flag: Flag; items: Initiative[] } = {
   flag: flag(
     "verified",
-    "Fall 2026 program per Matthew's initiatives doc (read 2026-08-11; descriptions tightened, " +
-      "tentative schedules marked as such). Santosh Desai's entry is empty in the doc and held back.",
+    "Fall 2026 program per Matthew's initiatives doc (re-read 2026-08-16; Competitive Build " +
+      "days changed to Friday OR Tuesday). Santosh Desai's entry is still empty and held back.",
   ),
   items: [
     {
@@ -41,7 +41,7 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "Team up with other MSAIL members for AI competitions and long-term hackathons.",
       level: "Open",
       lead: "Matthew McClure",
-      meets: "Fridays and Mondays 6 to 8pm, EECS 4440",
+      meets: "Fridays or Tuesdays 6 to 8pm, EECS 4440",
       links: [],
     },
     {
