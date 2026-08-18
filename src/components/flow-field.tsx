@@ -37,30 +37,16 @@ const BLUE: RGB = [31, 91, 158];
 const GOLD: RGB = [217, 147, 0];
 const DEEP_GOLD: RGB = [233, 168, 0];
 const SLATE: RGB = [84, 98, 118];
-/* The Block M ramp: navy → blue → a vivid violet/rose/coral bridge → amber →
-   maize. Every stop is saturated, so the blue-to-gold crossover never passes
-   through gray or olive — the seam reads as a sunset, not a mixture. */
+/* The Block M: flat U-M maize, no walk (branding call, Aug 2026 — the M and
+   wordmark are solid #ffcb05 everywhere). Depth now comes from grain radii,
+   the gaps between grains, and the halo, not from color. Both entries stay
+   two-stop arrays because ramp() interpolates between neighbors. */
 const M_RAMP: RGB[] = [
-  [0, 39, 76],
-  [21, 74, 134],
-  [43, 108, 176],
-  [123, 95, 214],
-  [199, 93, 138],
-  [232, 115, 78],
-  [240, 160, 0],
+  [255, 203, 5],
   [255, 203, 5],
 ];
-/* On the ink ground the walk must stay LIGHTER than the navy behind it, or
-   the M's left leg vanishes into the page. Same walk, frosted: the stops
-   match .wordmark-glass-dark so the mark and wordmark stay one identity. */
 const M_RAMP_INK: RGB[] = [
-  [157, 184, 214],
-  [127, 167, 212],
-  [169, 198, 232],
-  [195, 174, 242],
-  [235, 169, 200],
-  [246, 178, 145],
-  [255, 208, 34],
+  [255, 203, 5],
   [255, 203, 5],
 ];
 function ramp(stops: RGB[], u: number): RGB {
@@ -139,7 +125,8 @@ export class FlowEngine {
   visible = true; // maintained by the component's IntersectionObserver
   reduced = false;
   /** Set before the first setDataset when the figure sits on an ink ground:
-      swaps the sunset ramp for its frosted cut and lightens the σ rings. */
+      lightens the σ rings and the noise-cloud grays (the M itself is flat
+      maize on both grounds). */
   darkGround = false;
   duration = 2800;
   fitBox: FitBox | null = null;
@@ -530,8 +517,8 @@ export class FlowEngine {
       }
       for (let i = 0; i < N; i++) this.bucketOf[i] = (this.rand() * 4) | 0;
     } else {
-      // The Block M: 48 dithered steps of the sunset ramp — smooth navy→gold
-      // by target x, with the vivid violet/rose/coral bridge at the seam.
+      // The Block M: flat maize. The 48-bucket machinery stays (it costs
+      // nothing and keeps recolor() one code path for every dataset).
       const NB = 48;
       const stops = this.darkGround ? M_RAMP_INK : M_RAMP;
       for (let b = 0; b < NB; b++) buckets.push(ramp(stops, (b + 0.5) / NB));

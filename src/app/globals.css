@@ -12,7 +12,7 @@
    solids. Maize is a fill color, never thin text on white.
 
    Type: Satoshi, and only Satoshi (variable 300 to 900; headings 600, the
-   wordmark at 900 wearing the sunset gradient).
+   wordmark at 900 in flat maize).
    Edit DESIGN here; content lives in src/data.
    ============================================================================= */
 
@@ -530,46 +530,21 @@
    One-off devices, each allowed exactly once per page.
    ============================================================================= */
 
-/* The wordmark's fill: the same sunset walk the Block M wears, clipped into
-   the varsity letterforms. */
+/* The wordmark's fill: flat U-M maize, same as the Block M (branding call,
+   Aug 2026 — no gradient anywhere on the letters). */
 .wordmark-gradient {
   filter: drop-shadow(0 0.5px 1px rgba(0, 39, 76, 0.18));
-  background-image: linear-gradient(
-    90deg,
-    #00274c,
-    #154a86 18%,
-    #2b6cb0 32%,
-    #7b5fd6 45%,
-    #c75d8a 55%,
-    #e8734e 65%,
-    #f0a000 80%,
-    #ffcb05
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffcb05;
 }
 
-/* The glass cut of the wordmark: the sunset walk lightened toward frost,
-   with a white top-light sheen clipped into the letterforms — quiet next to
-   the saturated grain M, unmistakably the same colors. */
+/* The light-ground cut: maize letters can't sit bare on cream (the one
+   doctrine exception the rebrand forces), so they wear the varsity key
+   line — a thin navy stroke. paint-order keeps the fill full-width where
+   supported; elsewhere the stroke insets half a pixel, invisible at 900. */
 .wordmark-glass {
-  background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.03) 52%, rgba(255, 255, 255, 0.1)),
-    linear-gradient(
-      90deg,
-      #264767,
-      #386598 18%,
-      #4b82bc 32%,
-      #8f77dc 45%,
-      #cf759c 55%,
-      #eb8869 65%,
-      #f2ae26 80%,
-      #ffd32a
-    );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffcb05;
+  -webkit-text-stroke: 1.1px rgba(0, 39, 76, 0.9);
+  paint-order: stroke fill;
 }
 
 /* The shared specular streak is cut for the wide nav bar; on the much
@@ -635,30 +610,10 @@ html[data-m-forming="true"] .glass-island {
     linear-gradient(160deg, #06294d, #03203f 46%, #021833);
 }
 
-/* The wordmark's dark-ground cut: same sunset walk, frosted toward light so
-   every letter clears the navy behind it. */
+/* The dark-ground cut: bare flat maize — on navy it needs no key line and
+   no frost. */
 .wordmark-glass-dark {
-  background-image:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.42),
-      rgba(255, 255, 255, 0.08) 52%,
-      rgba(255, 255, 255, 0.16)
-    ),
-    linear-gradient(
-      90deg,
-      #9db8d6,
-      #7fa7d4 18%,
-      #a9c6e8 32%,
-      #c3aef2 45%,
-      #eba9c8 55%,
-      #f6b291 65%,
-      #ffd022 80%,
-      #ffcb05
-    );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #ffcb05;
 }
 
 /* Headshot placeholder: the sunset as an avatar, initials on top. Swapped

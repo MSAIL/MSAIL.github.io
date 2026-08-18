@@ -3,10 +3,10 @@ import { site } from "@/data/site";
 
 /**
  * The MSAIL identity lockup: the name set in Graduate (the varsity block
- * letterface) wearing the sunset gradient — the same navy→violet→gold walk
- * the Block M wears. `withTagline` adds the full org name under it (footer).
- * `tone="cream"` swaps in the dark-ground cut of the gradient and mutes the
- * tagline for navy surfaces.
+ * letterface) in flat U-M maize, matching the Block M. `withTagline` adds
+ * the full org name under it (footer).
+ * `tone="cream"` swaps in the dark-ground cut (bare maize, no key line) and
+ * mutes the tagline for navy surfaces.
  */
 export function Wordmark({
   className = "",
