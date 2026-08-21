@@ -530,21 +530,11 @@
    One-off devices, each allowed exactly once per page.
    ============================================================================= */
 
-/* The wordmark's fill: flat U-M maize, same as the Block M (branding call,
-   Aug 2026 — no gradient anywhere on the letters). */
-.wordmark-gradient {
-  filter: drop-shadow(0 0.5px 1px rgba(0, 39, 76, 0.18));
-  color: #ffcb05;
-}
-
-/* The light-ground cut: maize letters can't sit bare on cream (the one
-   doctrine exception the rebrand forces), so they wear the varsity key
-   line — a thin navy stroke. paint-order keeps the fill full-width where
-   supported; elsewhere the stroke insets half a pixel, invisible at 900. */
+/* The light-ground cut: navy letters, the old lockup's own arrangement —
+   maize is never thin text on light, and an outline reads as a sticker, so
+   on cream the name goes navy and the maize lives in the mark alone. */
 .wordmark-glass {
-  color: #ffcb05;
-  -webkit-text-stroke: 1.1px rgba(0, 39, 76, 0.9);
-  paint-order: stroke fill;
+  color: #00274c;
 }
 
 /* The shared specular streak is cut for the wide nav bar; on the much

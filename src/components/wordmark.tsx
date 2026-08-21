@@ -3,10 +3,9 @@ import { site } from "@/data/site";
 
 /**
  * The MSAIL identity lockup: the name set in Graduate (the varsity block
- * letterface) in flat U-M maize, matching the Block M. `withTagline` adds
- * the full org name under it (footer).
- * `tone="cream"` swaps in the dark-ground cut (bare maize, no key line) and
- * mutes the tagline for navy surfaces.
+ * letterface). On light grounds the name is navy; `tone="cream"` swaps in
+ * flat U-M maize (matching the Block M) and mutes the tagline for navy
+ * surfaces. `withTagline` adds the full org name under it (footer).
  */
 export function Wordmark({
   className = "",

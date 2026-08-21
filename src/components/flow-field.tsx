@@ -1185,6 +1185,18 @@ export function FlowField({
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hudTimer = 0;
+    // If the engine pauses mid-transport (hero scrolled away, tab hidden),
+    // the loop freezes and onTick can never run the post-landing restore —
+    // data-m-forming would pin every glass island dark, sitewide, for as
+    // long as the hero stays off-screen. A paused canvas isn't animating
+    // under the glass, so the pause itself releases it.
+    const releaseGlass = () => {
+      window.clearTimeout(hudTimer);
+      const hud = hudRef.current;
+      const root = document.documentElement;
+      if (hud && hud.dataset.playing !== "false") hud.dataset.playing = "false";
+      if (root.dataset.mForming !== "false") root.dataset.mForming = "false";
+    };
     engine.onTick = (t, playing) => {
       if (rangeRef.current) rangeRef.current.value = String(Math.round(t * 1000));
       if (tReadRef.current) tReadRef.current.textContent = t.toFixed(2);
@@ -1207,10 +1219,7 @@ export function FlowField({
         if (root.dataset.mForming !== "true") root.dataset.mForming = "true";
       } else if (root.dataset.mForming !== "false" || (hud && hud.dataset.playing !== "false")) {
         window.clearTimeout(hudTimer);
-        hudTimer = window.setTimeout(() => {
-          if (hud) hud.dataset.playing = "false";
-          root.dataset.mForming = "false";
-        }, 700);
+        hudTimer = window.setTimeout(releaseGlass, 700);
       }
     };
     setSampleCount(engine.N);
@@ -1262,6 +1271,7 @@ export function FlowField({
     const io = new IntersectionObserver(
       ([entry]) => {
         engine.visible = entry.isIntersecting && !document.hidden;
+        if (!engine.visible) releaseGlass();
         engine.wake();
       },
       { threshold: 0.02 },
@@ -1269,6 +1279,7 @@ export function FlowField({
     io.observe(wrap);
     const onVis = () => {
       engine.visible = !document.hidden;
+      if (!engine.visible) releaseGlass();
       engine.wake();
     };
     document.addEventListener("visibilitychange", onVis);
