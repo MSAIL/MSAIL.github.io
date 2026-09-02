@@ -62,10 +62,10 @@ export const site = {
       key: "slack",
       label: "Slack",
       value: "msail-team",
-      href: "https://msail-team.slack.com/join/shared_invite/zt-2amxfx9xj-Twwm6uuT1YCuBfKXn62v8Q",
+      href: "https://join.slack.com/t/msail-team/shared_invite/zt-48owjqxap-ETAjOVRzeh_kv1yxAvEPRQ",
       flag: flag(
         "unverified",
-        "Shared invite added 2026-06-09; Slack bot-walls automated checks. Confirm the invite is set to never expire (Slack admin → invitations), or swap in a no-expiry link.",
+        "Shared invite replaced 2026-09-01 by Sanat (the 2026-06-09 link had gone stale); Slack bot-walls automated checks. Confirm the invite is set to never expire (Slack admin, invitations), or swap in a no-expiry link.",
       ),
     },
     {
