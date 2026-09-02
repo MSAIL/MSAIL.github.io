@@ -32,7 +32,9 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
   flag: flag(
     "verified",
     "Fall 2026 program per Matthew's initiatives doc (re-read 2026-08-16; Competitive Build " +
-      "days changed to Friday OR Tuesday). Santosh Desai's entry is still empty and held back.",
+      "days changed to Friday OR Tuesday). Sofiya's two entries (ML in the News, the CNN " +
+      "course) come from her own message of 2026-09-01, which supersedes the doc for those. " +
+      "Santosh Desai's entry is still empty and held back.",
   ),
   items: [
     {
@@ -70,13 +72,30 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       links: [],
     },
     {
-      name: "AI in the News",
+      name: "Building a Convolutional Neural Network",
       description:
-        "Regular discussions of what AI is doing out in the world, from scientific papers to " +
-        "news headlines: the highlights and the hogwash.",
+        "Learn how to build a convolutional neural network from the ground up over the course " +
+        "of the semester. This initiative is designed for everyone from beginners with no " +
+        "programming experience to students who already code but have never applied their " +
+        "skills to AI. We'll work through the fundamentals of Python, neural networks, image " +
+        "classification, model training, and evaluation, with each session building toward a " +
+        "final CNN of your own.",
+      level: "Open, no coding experience needed",
+      lead: "Sofiya Goncharova",
+      meets: "Mondays 6 to 7pm, EECS 1008",
+      links: [],
+    },
+    {
+      name: "ML in the News",
+      description:
+        "Come sit in as we break down AI and machine learning concepts through research paper " +
+        "summaries and deep dives of major news stories. Learn more about the technology you " +
+        "either can't get rid of or can't get enough of. Each week, we'll work to better " +
+        "understand the methods, claims, and real-world implications behind new developments " +
+        "in AI.",
       level: "Open, show up any week",
       lead: "Sofiya Goncharova",
-      meets: "Wednesday evenings (tentative)",
+      meets: "Mondays 7 to 8pm, EECS 1008",
       links: [],
     },
   ],

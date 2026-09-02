@@ -8,7 +8,7 @@ import type { InitiativeLink } from "@/data/initiatives";
 export const metadata: Metadata = {
   title: "Initiatives",
   description:
-    "The projects and reading groups MSAIL runs, plus the ML Discussion archive of slides, notebooks, and recordings.",
+    "The projects, courses, and reading groups MSAIL runs, plus the ML Discussion archive of slides, notebooks, and recordings.",
 };
 
 function ExternalLink({ link }: { link: InitiativeLink }) {
@@ -29,7 +29,7 @@ export default function InitiativesPage() {
   return (
     <PageShell
       title="Projects & Initiatives"
-      lead="The projects and reading groups MSAIL runs, plus the ML Discussion archive."
+      lead="The projects, courses, and reading groups MSAIL runs, plus the ML Discussion archive."
     >
       <div className="mt-12 flex flex-col gap-14">
         <section className="flex flex-col gap-6">

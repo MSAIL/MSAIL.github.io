@@ -16,7 +16,7 @@ export type Person = {
   email: string;
   linkedin?: string;
   website?: string;
-  /** Public path under /public, e.g. "/team/usman-ghani.jpg" (384px square, EXIF stripped). */
+  /** Public path under /public, e.g. "/team/usman-ghani.jpg" (640px square jpg, EXIF stripped). */
   photo?: string;
 };
 
@@ -62,7 +62,7 @@ export const about = {
   roster: {
     flag: flag(
       "verified",
-      "Fall 2026 admins per Matthew's roster sheet (re-read 2026-08-26: Srinitya's headshot landed; 7 of 8 have photos, Santosh's still missing). Usman Ghani's role still not listed in the sheet.",
+      "Fall 2026 admins per Matthew's roster sheet (re-read 2026-08-26: Srinitya's headshot landed; 7 of 8 have photos, Santosh's still missing). Sofiya's LinkedIn, site, and replacement headshot came from her directly on 2026-09-01. Usman Ghani's role still not listed in the sheet.",
     ),
     term: "Fall 2026",
     people: [
@@ -70,7 +70,7 @@ export const about = {
       { name: "Santosh Desai", role: "Project Lead", email: "" },
       { name: "Dmitriy Ivkov", role: "Project Lead", email: "divkov@umich.edu", linkedin: "https://www.linkedin.com/in/dmitriyivkov", photo: "/team/dmitriy-ivkov.jpg" },
       { name: "Shamanth Shastry", role: "Industry Project Lead", email: "sshamant@umich.edu", linkedin: "https://www.linkedin.com/in/shamanth-shastry-2bb847281/", photo: "/team/shamanth-shastry.jpg" },
-      { name: "Sofiya Goncharova", role: "ML News Lead", email: "sogon@umich.edu", photo: "/team/sofiya-goncharova.jpg" },
+      { name: "Sofiya Goncharova", role: "ML News Lead", email: "sogon@umich.edu", linkedin: "https://www.linkedin.com/in/sofiya-e-goncharova/", website: "https://sofiyagoncharova.com", photo: "/team/sofiya-goncharova.jpg" },
       { name: "Srinitya Pamulapati", role: "Communications & Finance", email: "srinitya@umich.edu", photo: "/team/srinitya-pamulapati.jpg" },
       { name: "Sanat Gupta", role: "Website", email: "sanatt@umich.edu", linkedin: "https://www.linkedin.com/in/sanat-gupta/", website: "https://thesanatgupta.com", photo: "/team/sanat-gupta.jpg" },
       { name: "Usman Ghani", role: "Admin", email: "mghani@umich.edu", linkedin: "https://www.linkedin.com/in/m-ghani/", photo: "/team/usman-ghani.jpg" },
