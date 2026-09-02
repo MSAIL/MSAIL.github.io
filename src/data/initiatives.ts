@@ -31,10 +31,11 @@ export const initiativesMeta: { flag: Flag; notice: string } = {
 export const initiatives: { flag: Flag; items: Initiative[] } = {
   flag: flag(
     "verified",
-    "Fall 2026 program per Matthew's initiatives doc (re-read 2026-08-16; Competitive Build " +
-      "days changed to Friday OR Tuesday). Sofiya's two entries (ML in the News, the CNN " +
-      "course) come from her own message of 2026-09-01, which supersedes the doc for those. " +
-      "Santosh Desai's entry is still empty and held back.",
+    "Fall 2026 program per Matthew's initiatives doc (re-read 2026-09-02: Shamanth rewrote his " +
+      "section as Industry Project Team, a KPIT automation build, replacing the AIMS-lab " +
+      "research team; Competitive Build days Friday OR Tuesday since 2026-08-16). Sofiya's two " +
+      "entries (ML in the News, the CNN course) come from her own message of 2026-09-01, which " +
+      "supersedes the doc for those. Santosh Desai's entry is still empty and held back.",
   ),
   items: [
     {
@@ -47,13 +48,15 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       links: [],
     },
     {
-      name: "AI Research Project Team",
+      name: "Industry Project Team",
       description:
-        "Join a small team of student researchers working directly with a lab PI, contributing " +
-        "to a real research project from planning to completion. Projects run at least a " +
-        "semester, with two teams planned per term; this fall's tentative partner is the AIMS " +
-        "lab in Nuclear Engineering and Radiological Sciences. Python experience required, " +
-        "research experience not.",
+        "Join a five-person team of student consultants and a project manager, working with " +
+        "industry professionals at the automotive supplier KPIT to build a full-scale automation " +
+        "tool from planning to deployment. Projects run at least a semester and focus on automating testing, safety, " +
+        "or company processes, with extensive full-stack development alongside agentic AI " +
+        "integration. Python experience is required. React, Next.js or Node.js, and database " +
+        "experience are preferred; industry experience is not required. We're looking for " +
+        "balanced teams with both frontend and backend experience.",
       level: "Python required",
       lead: "Shamanth Shastry",
       meets: "Tuesdays and Thursdays 6 to 8pm, EECS GBL 1761",
