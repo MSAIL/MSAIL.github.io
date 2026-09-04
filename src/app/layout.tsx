@@ -116,29 +116,50 @@ export default function RootLayout({
             from globals.css, which is still see-through. */}
         <svg aria-hidden="true" focusable="false" width="0" height="0" className="absolute">
           <defs>
-            <filter id="msail-lens" x="-25%" y="-60%" width="150%" height="220%">
+            {/* Every step lives inside this one filter on purpose. Chrome keeps
+                only the url() when a backdrop-filter list mixes a reference
+                with functions, so a `blur(7px) url(#lens) saturate(215%)`
+                silently collapsed to the bare reference and the capsule lost
+                its blur and saturation entirely. Blur, bend, and saturate are
+                therefore all done here, in order. */}
+            <filter
+              id="msail-lens"
+              x="-25%"
+              y="-60%"
+              width="150%"
+              height="220%"
+              colorInterpolationFilters="sRGB"
+            >
               <feTurbulence
                 type="fractalNoise"
-                baseFrequency="0.003 0.022"
-                numOctaves="1"
+                baseFrequency="0.005 0.014"
+                numOctaves="2"
                 seed="11"
                 result="warp"
               />
-              <feGaussianBlur in="warp" stdDeviation="6" result="softWarp" />
+              <feGaussianBlur in="warp" stdDeviation="4" result="softWarp" />
+              <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="soft" />
               <feDisplacementMap
-                in="SourceGraphic"
+                in="soft"
                 in2="softWarp"
-                scale="22"
+                scale="58"
                 xChannelSelector="R"
                 yChannelSelector="G"
+                result="bent"
               />
+              <feColorMatrix in="bent" type="saturate" values="2.1" result="rich" />
+              <feComponentTransfer in="rich">
+                <feFuncR type="linear" slope="1.04" />
+                <feFuncG type="linear" slope="1.04" />
+                <feFuncB type="linear" slope="1.04" />
+              </feComponentTransfer>
             </filter>
           </defs>
         </svg>
         <style>{`@supports (backdrop-filter: url("#msail-lens")) {
   .glass-island, .glass-pill {
-    -webkit-backdrop-filter: blur(7px) url("#msail-lens") saturate(215%) brightness(1.04);
-    backdrop-filter: blur(7px) url("#msail-lens") saturate(215%) brightness(1.04);
+    -webkit-backdrop-filter: url("#msail-lens");
+    backdrop-filter: url("#msail-lens");
   }
 }
 @media (prefers-reduced-transparency: reduce) {
