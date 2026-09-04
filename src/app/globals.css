@@ -35,10 +35,17 @@
   --color-maize-deep: #f0b400; /* maize hover/pressed */
   --color-gold-ink: #8a6d00; /* the rare gold-colored word (4.6:1 on white) */
 
-  /* --- Ink scale on white -------------------------------------------------- */
+  /* --- Ink scale ------------------------------------------------------------
+     These never sit on white. They sit on the light ground's tinted wash, which
+     at its deepest is around #b4b7ac / #9ebbd8 — far darker than paper. Measured
+     against the wash where text actually lands, the old pair rendered at 3.9:1
+     (secondary) and 2.1:1 (captions), both under the 4.5:1 floor for text this
+     size. Darkened 2026-09-03 so all three tiers clear it; the tiers still step
+     visibly apart. Any future lightening has to be re-measured on the wash, not
+     on white. Dark grounds use --color-on-navy* instead, never these. */
   --color-ink: #1a2733; /* body text; #000 is banned */
-  --color-ink-2: #5b6770; /* secondary */
-  --color-ink-3: #8a94a0; /* captions, whispering */
+  --color-ink-2: #3d4855; /* secondary */
+  --color-ink-3: #4f5a67; /* captions, whispering */
   --color-on-navy: #eaf0f6;
   --color-on-navy-muted: #9db4cb;
 
