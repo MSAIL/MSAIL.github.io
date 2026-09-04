@@ -104,6 +104,49 @@ export default function RootLayout({
       className={`${satoshi.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        {/* The lens that makes the glass refract instead of frost. An SVG
+            displacement map bends whatever is behind the capsule while a very
+            small blur keeps the detail, which is what separates glass from
+            frosting. It lives here, not in globals.css, for two reasons: a
+            `url(#id)` inside an external stylesheet resolves against that
+            stylesheet rather than the document, and keeping the rule beside the
+            filter it names stops one from being deleted without the other.
+            Browsers that reject `url()` inside backdrop-filter (Safari at time
+            of writing) skip the @supports block and keep the plain low blur
+            from globals.css, which is still see-through. */}
+        <svg aria-hidden="true" focusable="false" width="0" height="0" className="absolute">
+          <defs>
+            <filter id="msail-lens" x="-25%" y="-60%" width="150%" height="220%">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.003 0.022"
+                numOctaves="1"
+                seed="11"
+                result="warp"
+              />
+              <feGaussianBlur in="warp" stdDeviation="6" result="softWarp" />
+              <feDisplacementMap
+                in="SourceGraphic"
+                in2="softWarp"
+                scale="22"
+                xChannelSelector="R"
+                yChannelSelector="G"
+              />
+            </filter>
+          </defs>
+        </svg>
+        <style>{`@supports (backdrop-filter: url("#msail-lens")) {
+  .glass-island, .glass-pill {
+    -webkit-backdrop-filter: blur(2px) url("#msail-lens") saturate(180%);
+    backdrop-filter: blur(2px) url("#msail-lens") saturate(180%);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-island, .glass-pill {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}`}</style>
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:inline-flex focus:min-h-11 focus:items-center focus:rounded-sm focus:border focus:border-border focus:bg-page focus:px-4 focus:text-label focus:text-ink"

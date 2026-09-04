@@ -10,14 +10,36 @@ import { flag } from "./content-status";
  */
 export type InitiativeLink = { label: string; href: string };
 
+/**
+ * A room students have to physically find. `code` is what appears on the U-M
+ * schedule and on our posters; `building` is the full name from the Registrar's
+ * own location-abbreviation list (ro.umich.edu/calendars/schedule-of-classes/
+ * locations), checked 2026-09-03. The full name is what the map is asked for,
+ * because a bare code like "ALH 2012" geocodes to nothing. Note the campus
+ * split: EECS, GGBL and CSRB are North Campus, Alice Lloyd is on the Hill.
+ */
+export type Room = { code: string; building: string };
+
 export type Initiative = {
   name: string;
   description: string;
   level: string;
   lead: string;
-  /** Meeting cadence + room, where the lead has settled one. */
-  meets?: string;
+  /** Meeting cadence, where the lead has settled one, e.g. "Fridays 6 to 8pm". */
+  when?: string;
+  room?: Room;
   links: InitiativeLink[];
+};
+
+/** Google Maps directions to a room's building. Works as an app hand-off on phones. */
+export function directionsUrl(room: Room): string {
+  const destination = `${room.building}, University of Michigan, Ann Arbor, MI`;
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
+}
+
+const EECS: Room = {
+  code: "EECS 1008",
+  building: "Electrical Engineering and Computer Science Building",
 };
 
 export const initiatives: { flag: Flag; items: Initiative[] } = {
@@ -41,7 +63,8 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "Team up with other MSAIL members for AI competitions and long-term hackathons.",
       level: "Open",
       lead: "Matthew McClure",
-      meets: "Fridays 6 to 8pm, GGBL 2517",
+      when: "Fridays 6 to 8pm",
+      room: { code: "GGBL 2517", building: "G. G. Brown Laboratory" },
       links: [],
     },
     {
@@ -56,7 +79,8 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "balanced teams with both frontend and backend experience.",
       level: "Python required",
       lead: "Shamanth Shastry",
-      meets: "Tuesdays 6 to 8pm, CSRB 2230",
+      when: "Tuesdays 6 to 8pm",
+      room: { code: "CSRB 2230", building: "Climate and Space Research Building" },
       links: [],
     },
     {
@@ -68,7 +92,8 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "patching. Neural network experience required; LLM or math background helps.",
       level: "Neural network experience required",
       lead: "Dmitriy Ivkov",
-      meets: "Thursdays 6 to 8pm, ALH 2012",
+      when: "Thursdays 6 to 8pm",
+      room: { code: "ALH 2012", building: "Alice Lloyd Hall" },
       links: [],
     },
     // Sofiya's two Monday sessions run back to back in EECS 1008, so they are
@@ -84,7 +109,8 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "in AI.",
       level: "Open, show up any week",
       lead: "Sofiya Goncharova",
-      meets: "Mondays 6 to 7pm, EECS 1008",
+      when: "Mondays 6 to 7pm",
+      room: EECS,
       links: [],
     },
     {
@@ -98,7 +124,8 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "final CNN of your own.",
       level: "Open, no coding experience needed",
       lead: "Sofiya Goncharova",
-      meets: "Mondays 7 to 8pm, EECS 1008",
+      when: "Mondays 7 to 8pm",
+      room: EECS,
       links: [],
     },
   ],

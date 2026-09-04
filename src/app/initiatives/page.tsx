@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
 import { SectionHeading } from "@/components/content-blocks";
 import { ArrowIcon } from "@/components/icons";
-import { initiatives, mlDiscussionArchive } from "@/data/initiatives";
-import type { InitiativeLink } from "@/data/initiatives";
+import { initiatives, mlDiscussionArchive, directionsUrl } from "@/data/initiatives";
+import type { InitiativeLink, Room } from "@/data/initiatives";
 
 export const metadata: Metadata = {
   title: "Initiatives",
@@ -25,6 +25,26 @@ function ExternalLink({ link }: { link: InitiativeLink }) {
   );
 }
 
+/**
+ * The room code, tappable for walking directions. Inline in a sentence rather
+ * than a button: WCAG's target-size rule exempts links set in running text, and
+ * a 44px control here would break the line. The accessible name leads with the
+ * visible code so it still contains the label.
+ */
+function RoomLink({ room }: { room: Room }) {
+  return (
+    <a
+      href={directionsUrl(room)}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Directions to ${room.code}, ${room.building}`}
+      className="underline decoration-dotted underline-offset-2 transition-colors duration-150 hover:text-navy"
+    >
+      {room.code}
+    </a>
+  );
+}
+
 export default function InitiativesPage() {
   return (
     <PageShell
@@ -41,7 +61,17 @@ export default function InitiativesPage() {
               <p className="text-meta text-ink-3">
                 {item.level} · led by {item.lead}
               </p>
-              {item.meets ? <p className="text-meta text-ink-3">Meets {item.meets}</p> : null}
+              {item.when ? (
+                <p className="text-meta text-ink-3">
+                  Meets {item.when}
+                  {item.room ? (
+                    <>
+                      {", "}
+                      <RoomLink room={item.room} />
+                    </>
+                  ) : null}
+                </p>
+              ) : null}
               <p className="max-w-prose text-body text-ink-2">{item.description}</p>
               {item.links.length ? (
                 <p className="flex flex-wrap gap-x-5">
