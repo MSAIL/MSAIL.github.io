@@ -137,8 +137,8 @@ export default function RootLayout({
         </svg>
         <style>{`@supports (backdrop-filter: url("#msail-lens")) {
   .glass-island, .glass-pill {
-    -webkit-backdrop-filter: blur(2px) url("#msail-lens") saturate(180%);
-    backdrop-filter: blur(2px) url("#msail-lens") saturate(180%);
+    -webkit-backdrop-filter: blur(7px) url("#msail-lens") saturate(215%) brightness(1.04);
+    backdrop-filter: blur(7px) url("#msail-lens") saturate(215%) brightness(1.04);
   }
 }
 @media (prefers-reduced-transparency: reduce) {
