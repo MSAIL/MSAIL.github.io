@@ -4,11 +4,11 @@ import { flag } from "./content-status";
  * About page content. Sources: live homepage "What is MSAIL?" + the live
  * `/aboutus/` page (CONTENT.md §1.1–1.2), captured in `../current-site-backup`.
  *
- * The live roster is a 🚩 PRIORITY refresh target — the current site shows
- * "Copyright MSAIL 2023" and a roster that predates this year's team. Per org
- * leadership, a NEW admin/leadership roster is incoming. So the page renders an
- * "awaiting Matthew" placeholder for the live team, while the OUTGOING roster is
- * preserved here (flagged stale) so nothing is lost in the swap.
+ * Two rosters live here. `roster` is the current Fall 2026 team and is what the
+ * page renders. `outgoingRoster` is the pre-refresh team from the old live
+ * site, kept flagged-stale for migration reference only and never rendered.
+ * (The "awaiting Matthew" placeholder this file once described is long gone;
+ * the real roster landed in August 2026.)
  */
 export type Person = {
   name: string;
@@ -62,12 +62,11 @@ export const about = {
   roster: {
     flag: flag(
       "verified",
-      "Fall 2026 admins per Matthew's roster sheet (re-read 2026-08-26: Srinitya's headshot landed; 7 of 8 have photos, Santosh's still missing). Sofiya's LinkedIn, site, and replacement headshot came from her directly on 2026-09-01. Usman Ghani's role still not listed in the sheet.",
+      "Fall 2026 admins per Matthew's roster sheet, MINUS Santosh Desai, removed 2026-09-03 at the president's request; his words were that he does not believe Santosh is able to lead an initiative this semester, so treat the removal as reversible if that changes. The Drive sheet still lists him, so a future sheet re-read must not silently add him back. All 7 remaining admins have headshots. Sofiya's LinkedIn, site, and replacement headshot came from her directly on 2026-09-01. Usman Ghani's role still not listed in the sheet.",
     ),
     term: "Fall 2026",
     people: [
       { name: "Matthew McClure", role: "President", email: "mattai@umich.edu", linkedin: "https://www.linkedin.com/in/matthew-m-9b1043279/", photo: "/team/matthew-mcclure.jpg" },
-      { name: "Santosh Desai", role: "Project Lead", email: "" },
       { name: "Dmitriy Ivkov", role: "Project Lead", email: "divkov@umich.edu", linkedin: "https://www.linkedin.com/in/dmitriyivkov", photo: "/team/dmitriy-ivkov.jpg" },
       { name: "Shamanth Shastry", role: "Industry Project Lead", email: "sshamant@umich.edu", linkedin: "https://www.linkedin.com/in/shamanth-shastry-2bb847281/", photo: "/team/shamanth-shastry.jpg" },
       { name: "Sofiya Goncharova", role: "ML News Lead", email: "sogon@umich.edu", linkedin: "https://www.linkedin.com/in/sofiya-e-goncharova/", website: "https://sofiyagoncharova.com", photo: "/team/sofiya-goncharova.jpg" },

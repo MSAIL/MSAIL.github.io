@@ -1,5 +1,5 @@
 import type { Flag } from "./content-status";
-import { flag, AWAITING_REFRESH } from "./content-status";
+import { flag } from "./content-status";
 
 /**
  * Projects & Initiatives. The current program comes from Matthew McClure's
@@ -20,22 +20,17 @@ export type Initiative = {
   links: InitiativeLink[];
 };
 
-export const initiativesMeta: { flag: Flag; notice: string } = {
-  flag: flag("awaiting", "Santosh Desai's project initiative is unscoped in the doc. " + AWAITING_REFRESH),
-  /** User-facing copy for the placeholder (the flag note stays internal). */
-  notice:
-    "One more project initiative is being scoped for this term. Join the " +
-    "Slack to hear about it first.",
-};
-
 export const initiatives: { flag: Flag; items: Initiative[] } = {
   flag: flag(
     "verified",
-    "Fall 2026 program per Matthew's initiatives doc (re-read 2026-09-02: Shamanth rewrote his " +
-      "section as Industry Project Team, a KPIT automation build, replacing the AIMS-lab " +
-      "research team; Competitive Build days Friday OR Tuesday since 2026-08-16). Sofiya's two " +
-      "entries (ML in the News, the CNN course) come from her own message of 2026-09-01, which " +
-      "supersedes the doc for those. Santosh Desai's entry is still empty and held back.",
+    "Fall 2026 program. DESCRIPTIONS come from Matthew's initiatives doc (Shamanth rewrote his " +
+      "section as the KPIT build on 2026-09-02) and, for Sofiya's two entries, from her own " +
+      "message of 2026-09-01. Every MEETS line was then set by the president's room-and-time " +
+      "message of 2026-09-03, which supersedes both: it swapped Sofiya's Monday pair (she had " +
+      "the CNN course at 6 and ML News at 7), dropped the Industry Project's Thursday session " +
+      "that Shamanth's doc asked for, moved Competitive Build off Tuesday, and firmed up Model " +
+      "Mining's tentative slot. Santosh Desai is not leading an initiative this term, so his " +
+      "held-back entry and the 'one more incoming' notice are both gone.",
   ),
   items: [
     {
@@ -44,7 +39,7 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "Team up with other MSAIL members for AI competitions and long-term hackathons.",
       level: "Open",
       lead: "Matthew McClure",
-      meets: "Fridays or Tuesdays 6 to 8pm, EECS 4440",
+      meets: "Fridays 6 to 8pm, GGBL 2517",
       links: [],
     },
     {
@@ -59,7 +54,7 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "balanced teams with both frontend and backend experience.",
       level: "Python required",
       lead: "Shamanth Shastry",
-      meets: "Tuesdays and Thursdays 6 to 8pm, EECS GBL 1761",
+      meets: "Tuesdays 6 to 8pm, CSRB 2230",
       links: [],
     },
     {
@@ -71,7 +66,7 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "patching. Neural network experience required; LLM or math background helps.",
       level: "Neural network experience required",
       lead: "Dmitriy Ivkov",
-      meets: "Tuesdays and Thursdays (tentative)",
+      meets: "Thursdays 6 to 8pm, ALH 2012",
       links: [],
     },
     {
@@ -85,7 +80,7 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "final CNN of your own.",
       level: "Open, no coding experience needed",
       lead: "Sofiya Goncharova",
-      meets: "Mondays 6 to 7pm, EECS 1008",
+      meets: "Mondays 7 to 8pm, EECS 1008",
       links: [],
     },
     {
@@ -98,7 +93,7 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "in AI.",
       level: "Open, show up any week",
       lead: "Sofiya Goncharova",
-      meets: "Mondays 7 to 8pm, EECS 1008",
+      meets: "Mondays 6 to 7pm, EECS 1008",
       links: [],
     },
   ],

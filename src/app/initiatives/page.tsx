@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
-import { AwaitingNotice, SectionHeading } from "@/components/content-blocks";
+import { SectionHeading } from "@/components/content-blocks";
 import { ArrowIcon } from "@/components/icons";
-import { initiatives, initiativesMeta, mlDiscussionArchive } from "@/data/initiatives";
+import { initiatives, mlDiscussionArchive } from "@/data/initiatives";
 import type { InitiativeLink } from "@/data/initiatives";
 
 export const metadata: Metadata = {
@@ -54,10 +54,6 @@ export default function InitiativesPage() {
           ))}
           </div>
         </section>
-
-        <AwaitingNotice label="One more incoming">
-          {initiativesMeta.notice}
-        </AwaitingNotice>
 
         <section className="flex flex-col gap-6">
           <SectionHeading>ML Discussion: {mlDiscussionArchive.term} material</SectionHeading>
