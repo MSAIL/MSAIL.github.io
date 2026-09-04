@@ -29,11 +29,10 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       "message of 2026-09-03, which supersedes both: it swapped Sofiya's Monday pair (she had " +
       "the CNN course at 6 and ML News at 7), dropped the Industry Project's Thursday session " +
       "that Shamanth's doc asked for, moved Competitive Build off Tuesday, and firmed up Model " +
-      "Mining's tentative slot. Dmitriy was not consulted on that last one and has never been " +
-      "asked, so if a Tuesday session was real it is now invisible. Santosh Desai's held-back " +
-      "entry and the 'one more incoming' notice are both gone, on the president's hedge that " +
-      "he did not believe Santosh could lead one this term; see the note in about.ts, and treat " +
-      "it as reversible.",
+      "Mining's tentative slot, which Dmitriy has not confirmed, so a Tuesday session (if one " +
+      "was intended) is currently unlisted. Santosh Desai's held-back entry and the 'one more " +
+      "incoming' notice are both gone; that request was provisional, so see the note in " +
+      "about.ts and treat it as reversible.",
   ),
   items: [
     {
