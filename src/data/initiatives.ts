@@ -29,8 +29,11 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       "message of 2026-09-03, which supersedes both: it swapped Sofiya's Monday pair (she had " +
       "the CNN course at 6 and ML News at 7), dropped the Industry Project's Thursday session " +
       "that Shamanth's doc asked for, moved Competitive Build off Tuesday, and firmed up Model " +
-      "Mining's tentative slot. Santosh Desai is not leading an initiative this term, so his " +
-      "held-back entry and the 'one more incoming' notice are both gone.",
+      "Mining's tentative slot. Dmitriy was not consulted on that last one and has never been " +
+      "asked, so if a Tuesday session was real it is now invisible. Santosh Desai's held-back " +
+      "entry and the 'one more incoming' notice are both gone, on the president's hedge that " +
+      "he did not believe Santosh could lead one this term; see the note in about.ts, and treat " +
+      "it as reversible.",
   ),
   items: [
     {
@@ -69,6 +72,22 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       meets: "Thursdays 6 to 8pm, ALH 2012",
       links: [],
     },
+    // Sofiya's two Monday sessions run back to back in EECS 1008, so they are
+    // listed in the order you would attend them. They were the other way round
+    // until the president's 2026-09-03 list swapped the hours.
+    {
+      name: "ML in the News",
+      description:
+        "Come sit in as we break down AI and machine learning concepts through research paper " +
+        "summaries and deep dives of major news stories. Learn more about the technology you " +
+        "either can't get rid of or can't get enough of. Each week, we'll work to better " +
+        "understand the methods, claims, and real-world implications behind new developments " +
+        "in AI.",
+      level: "Open, show up any week",
+      lead: "Sofiya Goncharova",
+      meets: "Mondays 6 to 7pm, EECS 1008",
+      links: [],
+    },
     {
       name: "Building a Convolutional Neural Network",
       description:
@@ -81,19 +100,6 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       level: "Open, no coding experience needed",
       lead: "Sofiya Goncharova",
       meets: "Mondays 7 to 8pm, EECS 1008",
-      links: [],
-    },
-    {
-      name: "ML in the News",
-      description:
-        "Come sit in as we break down AI and machine learning concepts through research paper " +
-        "summaries and deep dives of major news stories. Learn more about the technology you " +
-        "either can't get rid of or can't get enough of. Each week, we'll work to better " +
-        "understand the methods, claims, and real-world implications behind new developments " +
-        "in AI.",
-      level: "Open, show up any week",
-      lead: "Sofiya Goncharova",
-      meets: "Mondays 6 to 7pm, EECS 1008",
       links: [],
     },
   ],
