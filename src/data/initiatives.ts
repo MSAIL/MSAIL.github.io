@@ -2,11 +2,18 @@ import type { Flag } from "./content-status";
 import { flag } from "./content-status";
 
 /**
- * Projects & Initiatives. The current program comes from Matthew McClure's
- * "Fall 2026 MSAIL Initiatives" doc in the org Drive; the ML Discussion
- * group's Winter 2021 lesson archive below it is carried over from the old
- * site's `/education/` and `/previous_material/*` with every link verbatim
- * (Google Slides, Colab notebooks, Drive recordings, one Zoom share link).
+ * Projects & Initiatives.
+ *
+ * SOURCE OF TRUTH: this file, plus whatever the leads say directly. The
+ * "Fall 2026 MSAIL Initiatives" Drive doc that the descriptions originally came
+ * from was RETIRED by Matthew on 2026-09-06 ("I don't think there is any point
+ * in maintaining it"). It was a planning scratchpad, and it still contains the
+ * superseded times and rooms, so do not re-read it into this file. Anything new
+ * comes from the lead or the president directly.
+ *
+ * The ML Discussion group's Winter 2021 lesson archive below is carried over
+ * from the old site's `/education/` and `/previous_material/*` with every link
+ * verbatim (Google Slides, Colab notebooks, Drive recordings, one Zoom share).
  */
 export type InitiativeLink = { label: string; href: string };
 
@@ -45,16 +52,16 @@ const EECS: Room = {
 export const initiatives: { flag: Flag; items: Initiative[] } = {
   flag: flag(
     "verified",
-    "Fall 2026 program. DESCRIPTIONS come from Matthew's initiatives doc (Shamanth rewrote his " +
-      "section as the KPIT build on 2026-09-02) and, for Sofiya's two entries, from her own " +
-      "message of 2026-09-01. Every MEETS line was then set by the president's room-and-time " +
-      "message of 2026-09-03, which supersedes both: it swapped Sofiya's Monday pair (she had " +
-      "the CNN course at 6 and ML News at 7), dropped the Industry Project's Thursday session " +
-      "that Shamanth's doc asked for, moved Competitive Build off Tuesday, and firmed up Model " +
-      "Mining's tentative slot, which Dmitriy has not confirmed, so a Tuesday session (if one " +
-      "was intended) is currently unlisted. Santosh Desai's held-back entry and the 'one more " +
-      "incoming' notice are both gone; that request was provisional, so see the note in " +
-      "about.ts and treat it as reversible.",
+    "Fall 2026 program, all five slots CONFIRMED by Matthew on 2026-09-06 after a written " +
+      "query, so do not re-open them without a newer instruction. Descriptions are the leads' " +
+      "own words (Shamanth's KPIT rewrite 2026-09-02; Sofiya's two entries 2026-09-01). Times " +
+      "and rooms are Matthew's list of 2026-09-03 with one correction: he had swapped Sofiya's " +
+      "Monday pair arbitrarily, and on 2026-09-06 deferred to her, so the CNN course is back at " +
+      "6 and ML News at 7 as she originally asked. He separately confirmed the Industry Project " +
+      "is Tuesday only (Shamanth's doc had asked for Thursday too) and Model Mining is Thursday " +
+      "only in ALH 2012, which is on the Hill rather than North Campus. Santosh Desai's entry " +
+      "and the 'one more incoming' notice are gone; see the note in about.ts, where his roster " +
+      "status is still an open question.",
   ),
   items: [
     {
@@ -97,22 +104,9 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       links: [],
     },
     // Sofiya's two Monday sessions run back to back in EECS 1008, so they are
-    // listed in the order you would attend them. They were the other way round
-    // until the president's 2026-09-03 list swapped the hours.
-    {
-      name: "ML in the News",
-      description:
-        "Come sit in as we break down AI and machine learning concepts through research paper " +
-        "summaries and deep dives of major news stories. Learn more about the technology you " +
-        "either can't get rid of or can't get enough of. Each week, we'll work to better " +
-        "understand the methods, claims, and real-world implications behind new developments " +
-        "in AI.",
-      level: "Open, show up any week",
-      lead: "Sofiya Goncharova",
-      when: "Mondays 6 to 7pm",
-      room: EECS,
-      links: [],
-    },
+    // listed in the order you would attend them. This is the order she asked
+    // for on 2026-09-01: Matthew's 2026-09-03 list had reversed the hours, but
+    // he picked that order arbitrarily and deferred to hers on 2026-09-06.
     {
       name: "Building a Convolutional Neural Network",
       description:
@@ -123,6 +117,20 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
         "classification, model training, and evaluation, with each session building toward a " +
         "final CNN of your own.",
       level: "Open, no coding experience needed",
+      lead: "Sofiya Goncharova",
+      when: "Mondays 6 to 7pm",
+      room: EECS,
+      links: [],
+    },
+    {
+      name: "ML in the News",
+      description:
+        "Come sit in as we break down AI and machine learning concepts through research paper " +
+        "summaries and deep dives of major news stories. Learn more about the technology you " +
+        "either can't get rid of or can't get enough of. Each week, we'll work to better " +
+        "understand the methods, claims, and real-world implications behind new developments " +
+        "in AI.",
+      level: "Open, show up any week",
       lead: "Sofiya Goncharova",
       when: "Mondays 7 to 8pm",
       room: EECS,
