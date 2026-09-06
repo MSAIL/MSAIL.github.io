@@ -62,7 +62,7 @@ export const about = {
   roster: {
     flag: flag(
       "verified",
-      "Fall 2026 admins per Matthew's roster sheet, MINUS Santosh Desai, removed 2026-09-03 at the president's request. The request was provisional rather than final, so treat the removal as reversible. OPEN QUESTION: asked the president on 2026-09-03 whether Santosh is off the leadership team entirely or merely not running an initiative; he answered every other question on 2026-09-06 and left this one alone, so it is still unresolved and worth re-asking. The Drive sheet still lists Santosh, so a future sheet re-read must not silently add him back. All 7 remaining admins have headshots. Sofiya's LinkedIn, site, and replacement headshot came from her directly on 2026-09-01. Usman Ghani's role still not listed in the sheet.",
+      "Fall 2026 admins per Matthew's roster sheet, MINUS Santosh Desai, removed 2026-09-03 and confirmed permanent on 2026-09-06, so this is settled and not a pending edit. The Drive admin sheet still lists Santosh, so a future sheet re-read must not add him back. All 7 remaining admins have headshots. Sofiya's LinkedIn, site, and replacement headshot came from her directly on 2026-09-01. Usman Ghani's role still not listed in the sheet.",
     ),
     term: "Fall 2026",
     people: [

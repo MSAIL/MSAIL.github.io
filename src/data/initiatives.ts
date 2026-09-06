@@ -60,8 +60,8 @@ export const initiatives: { flag: Flag; items: Initiative[] } = {
       "6 and ML News at 7 as she originally asked. He separately confirmed the Industry Project " +
       "is Tuesday only (Shamanth's doc had asked for Thursday too) and Model Mining is Thursday " +
       "only in ALH 2012, which is on the Hill rather than North Campus. Santosh Desai's entry " +
-      "and the 'one more incoming' notice are gone; see the note in about.ts, where his roster " +
-      "status is still an open question.",
+      "and the 'one more incoming' notice are gone for good, confirmed 2026-09-06; the Fall " +
+      "2026 program is these five and is not waiting on a sixth.",
   ),
   items: [
     {
