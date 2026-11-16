@@ -82,92 +82,12 @@ export function SiteHeader() {
     };
   }, [pathname]);
 
-  // Real Liquid Glass refraction (Chromium only): a displacement map shaped to
-  // the capsule's bezel bends whatever scrolls beneath the island, exactly the
-  // technique behind iOS 26's material. The map is a capsule SDF: neutral gray
-  // in the center, outward-pointing displacement ramping up across a ~16px rim.
-  // Other engines keep the CSS blur/saturate fallback (backdrop-filter: url()
-  // is Chromium-only in practice; Firefox parses it and applies nothing).
-  useEffect(() => {
-    const bar = barRef.current;
-    if (!bar) return;
-    type UAData = { brands?: { brand: string }[] };
-    const uaBrands =
-      (navigator as Navigator & { userAgentData?: UAData }).userAgentData?.brands ?? [];
-    const isChromium =
-      uaBrands.some((b) => /chromium/i.test(b.brand)) ||
-      "chrome" in window; // brands can be empty; window.chrome covers Chrome/Edge
-    // Real displacement is a desktop luxury: Android Chrome qualifies as
-    // Chromium but cannot afford a per-frame displaced backdrop.
-    const desktopClass = window.matchMedia("(min-width: 64rem) and (hover: hover)").matches;
-    if (!isChromium || !desktopClass) return;
-
-    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("width", "0");
-    svg.setAttribute("height", "0");
-    svg.setAttribute("aria-hidden", "true");
-    svg.style.position = "absolute";
-    svg.innerHTML =
-      '<filter id="msail-lens" x="0%" y="0%" width="100%" height="100%">' +
-      '<feImage result="map"/>' +
-      '<feDisplacementMap in="SourceGraphic" in2="map" xChannelSelector="R" yChannelSelector="G" scale="58" result="disp"/>' +
-      '<feGaussianBlur in="disp" stdDeviation="3" result="soft"/>' +
-      '<feColorMatrix in="soft" type="saturate" values="1.9"/>' +
-      "</filter>";
-    document.body.appendChild(svg);
-    const feImage = svg.querySelector("feImage")!;
-
-    const build = () => {
-      const w = Math.round(bar.offsetWidth);
-      const h = Math.round(bar.offsetHeight);
-      if (!w || !h) return;
-      const c = document.createElement("canvas");
-      c.width = w;
-      c.height = h;
-      const ctx = c.getContext("2d")!;
-      const img = ctx.createImageData(w, h);
-      const r = h / 2;
-      const bez = Math.min(16, r);
-      for (let py = 0; py < h; py++) {
-        for (let px = 0; px < w; px++) {
-          const cx = Math.min(Math.max(px, r), w - r);
-          const vx = px - cx;
-          const vy = py - h / 2;
-          const d = Math.hypot(vx, vy);
-          const inFromEdge = r - d;
-          let R = 128;
-          let G = 128;
-          if (inFromEdge > 0 && inFromEdge < bez && d > 1e-3) {
-            const m = Math.pow(1 - inFromEdge / bez, 1.6);
-            R = 128 + (vx / d) * m * 127;
-            G = 128 + (vy / d) * m * 127;
-          }
-          const o = (py * w + px) * 4;
-          img.data[o] = R;
-          img.data[o + 1] = G;
-          img.data[o + 2] = 128;
-          img.data[o + 3] = 255;
-        }
-      }
-      ctx.putImageData(img, 0, 0);
-      feImage.setAttribute("href", c.toDataURL());
-      feImage.setAttribute("width", String(w));
-      feImage.setAttribute("height", String(h));
-      bar.style.backdropFilter = "url(#msail-lens)";
-      (bar.style as CSSStyleDeclaration & { webkitBackdropFilter?: string }).webkitBackdropFilter =
-        "url(#msail-lens)";
-    };
-    build();
-    const ro = new ResizeObserver(build);
-    ro.observe(bar);
-    return () => {
-      ro.disconnect();
-      svg.remove();
-      bar.style.backdropFilter = "";
-      (bar.style as CSSStyleDeclaration & { webkitBackdropFilter?: string }).webkitBackdropFilter =
-        "";
-    };
-  }, []);
+  // The capsule's refraction is NOT built here. It is the #msail-lens filter in
+  // the root layout, applied by a stylesheet rule so the reduced-transparency
+  // and M-forming overrides can still switch it off. This component used to
+  // build a second #msail-lens of its own and pin it on the bar as an inline
+  // style: the duplicate id meant the browser never rendered it, while the
+  // inline style beat both of those overrides.
 
   // The menu trigger only exists below lg; if the viewport grows past it while
   // the menu is open (resize / rotation), the overlay turns invisible but would

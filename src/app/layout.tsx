@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
@@ -10,20 +9,15 @@ import { SiteFooter } from "@/components/site-footer";
    MSAIL account). Empty string = no analytics script is rendered at all. */
 const GA_ID = "G-RJWNYW6P41";
 
-/* UI + body text: Satoshi (Fontshare), self-hosted variable font 300–900. */
+/* The site's one typeface: Satoshi (Fontshare), self-hosted variable font
+   300–900. There is no second font on purpose. IBM Plex Mono used to load
+   here for metadata labels, and after the labels moved to Satoshi its woff2
+   was still being preloaded on every page for nothing. */
 const satoshi = localFont({
   src: "./fonts/Satoshi-Variable.woff2",
   weight: "300 900",
   display: "swap",
   variable: "--font-satoshi",
-});
-
-/* Metadata labels only. Only 400 is ever rendered; don't ship unused weights. */
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-  variable: "--font-plex-mono",
 });
 
 export const metadata: Metadata = {
@@ -101,7 +95,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${satoshi.variable} ${plexMono.variable} h-full antialiased`}
+      className={`${satoshi.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         {/* The lens that makes the glass refract instead of frost. An SVG
@@ -157,13 +151,13 @@ export default function RootLayout({
           </defs>
         </svg>
         <style>{`@supports (backdrop-filter: url("#msail-lens")) {
-  .glass-island, .glass-pill {
+  .glass-island {
     -webkit-backdrop-filter: url("#msail-lens");
     backdrop-filter: url("#msail-lens");
   }
 }
 @media (prefers-reduced-transparency: reduce) {
-  .glass-island, .glass-pill {
+  .glass-island {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

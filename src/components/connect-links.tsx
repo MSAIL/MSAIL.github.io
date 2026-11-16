@@ -4,7 +4,7 @@ import { ChannelIcon, channelAriaLabel, channelLinkProps } from "./channel-icon"
 
 /**
  * Every MSAIL channel as a tappable list (Slack, Maize Pages, Instagram,
- * LinkedIn, Email). Surfaced on the join and contact pages; data comes from
+ * LinkedIn, Email). Surfaced on the join page; data comes from
  * site.channels.
  */
 export function ConnectLinks() {

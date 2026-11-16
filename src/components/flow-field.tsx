@@ -369,11 +369,6 @@ export class FlowEngine {
   }
 
   /* -------------------------------------------------------------- pairing */
-  /**
-   * Couple current positions to the target cloud: sliced-OT rank pairing on a
-   * random direction, then 2-opt swap sweeps (a swap is accepted only when it
-   * lowers summed squared length, which in 2D always uncrosses two paths).
-   */
   /** O(N) stable counting sort of indices by a Float32 key (16-bit quantized).
       Comparator index sorts measured 20-25ms at 57.6k; this runs ~1ms. Ties
       collapse to the same bucket, which is harmless for rank pairing. */
@@ -695,6 +690,15 @@ export class FlowEngine {
     this.playing = false;
     this.T = Math.min(1, Math.max(0, t));
     this.resetDynamics();
+    // The loop reports only while a transport is playing, so a scrub has to
+    // report itself. Without this the HUD kept the last played value while
+    // the slider moved the figure, and a scrub that cut a transport short
+    // (the slider, or the resize handler's scrub(1)) never delivered the
+    // "stopped" tick that releases data-m-forming, leaving every glass island
+    // opaque until the hero scrolled away. Skipped before the first dataset
+    // exists: the ResizeObserver's initial callback lands before boot, and
+    // reporting t = 1 then would flash "equilibrium" over an empty canvas.
+    if (this.from) this.onTick?.(this.T, false);
     this.wake();
   }
 
@@ -1200,10 +1204,14 @@ export function FlowField({
     engine.onTick = (t, playing) => {
       if (rangeRef.current) rangeRef.current.value = String(Math.round(t * 1000));
       if (tReadRef.current) tReadRef.current.textContent = t.toFixed(2);
+      // Not playing and short of t = 1 only happens when the slider has
+      // parked the figure mid-path: the grains are frozen on their lines.
       if (stateRef.current)
         stateRef.current.textContent = playing
           ? "transporting"
-          : "equilibrium (langevin + solenoidal drift)";
+          : t >= 1
+            ? "equilibrium (langevin + solenoidal drift)"
+            : "paused";
       // While the canvas animates under them, every backdrop-filtered glass
       // surface over the hero (HUD, nav, the MSAIL island) re-rasterizes its
       // blur on every frame — on phones that is two full blur passes per

@@ -57,7 +57,7 @@ export default function InitiativesPage() {
           <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
           {initiatives.items.map((item) => (
             <article key={item.name} className="flex flex-col gap-2 border-t border-border pt-5">
-              <h2 className="font-display text-h3 text-navy">{item.name}</h2>
+              <h3 className="font-display text-h3 text-navy">{item.name}</h3>
               <p className="text-meta text-ink-3">
                 {item.level} · led by {item.lead}
               </p>

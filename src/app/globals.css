@@ -8,8 +8,8 @@
    color; everything around it is navy ink on cool white. Depth comes from
    navy-tinted hairlines + layered navy-tinted shadows (never pure black),
    and liquid glass exists ONLY where the simulation shines through it
-   (nav, canvas HUD chips, one hero pill). Interior surfaces are honest
-   solids. Maize is a fill color, never thin text on white.
+   (nav, the hero's MSAIL island, the caption card). Interior surfaces are
+   honest solids. Maize is a fill color, never thin text on white.
 
    Type: Satoshi, and only Satoshi (variable 300 to 900; headings 600, the
    wordmark at 900 in flat maize).
@@ -242,7 +242,6 @@
   }
 
   /* On navy fields the navy focus ring is invisible; switch it to maize. */
-  .navy-field :focus-visible,
   .ground-ink :focus-visible {
     outline-color: var(--color-maize);
   }
@@ -282,12 +281,6 @@
   font-synthesis: none;
 }
 
-/* A full navy color-block ("ink island"): the page's dark mass. */
-@utility navy-field {
-  background-color: var(--color-navy);
-  color: var(--color-on-navy);
-}
-
 /* Centered measure + responsive gutters. */
 @utility container-page {
   width: 100%;
@@ -305,8 +298,8 @@
 }
 
 /* =============================================================================
-   Liquid glass. Budget (hard cap): the nav bar, the hero's secondary pill,
-   and the simulation HUD chips/card. Interior surfaces stay solid.
+   Liquid glass. Budget (hard cap): the nav bar, the hero's MSAIL island, and
+   the simulation's caption card. Interior surfaces stay solid.
    ============================================================================= */
 
 /* The floating island nav: one glass capsule, detached from the page edges
@@ -385,96 +378,6 @@
   mask-composite: exclude;
 }
 
-/* Pill button material (the hero's secondary CTA). Same wet stack, smaller. */
-.glass-pill {
-  position: relative;
-  isolation: isolate;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  -webkit-backdrop-filter: blur(9px) saturate(220%) brightness(1.04);
-  backdrop-filter: blur(9px) saturate(220%) brightness(1.04);
-  border: 1px solid rgba(255, 255, 255, 0.56);
-  /* Same bezel as the island, scaled to a smaller radius. */
-  box-shadow:
-    0 8px 22px rgba(0, 39, 76, 0.14),
-    inset 0 1.5px 0 rgba(255, 255, 255, 0.88),
-    inset 0 -1.5px 0 rgba(255, 255, 255, 0.44),
-    inset 9px 0 12px -10px rgba(255, 255, 255, 0.98),
-    inset -9px 0 12px -10px rgba(255, 255, 255, 0.98),
-    inset 0 11px 16px -14px rgba(0, 39, 76, 0.5),
-    inset 0 -12px 18px -14px rgba(0, 39, 76, 0.45);
-  transition: background-color 120ms var(--ease-out);
-}
-.glass-pill::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  pointer-events: none;
-  background: linear-gradient(
-    115deg,
-    rgba(43, 108, 176, 0.3),
-    rgba(123, 95, 214, 0.24) 35%,
-    rgba(232, 115, 78, 0.24) 68%,
-    rgba(255, 203, 5, 0.28)
-  );
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: exclude;
-}
-.glass-pill:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-.glass-pill:active {
-  box-shadow:
-    0 1px 2px rgba(0, 39, 76, 0.1), inset 0 1px 3px rgba(0, 39, 76, 0.1);
-}
-
-/* Small chips sitting ON the simulation canvas (dataset switcher). */
-.glass-chip {
-  border-radius: 999px;
-  padding: 0.375rem 0.875rem;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.002em;
-  color: var(--color-navy);
-  background: rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(10px) saturate(195%);
-  backdrop-filter: blur(10px) saturate(195%);
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  box-shadow:
-    0 1px 2px rgba(0, 39, 76, 0.08), 0 4px 12px rgba(0, 39, 76, 0.07),
-    inset 0 1px 0.5px rgba(255, 255, 255, 0.5),
-    inset 0 -3px 6px -4px rgba(0, 39, 76, 0.14);
-  transition: background-color 120ms var(--ease-out);
-  cursor: pointer;
-}
-.glass-chip:hover {
-  background: rgba(255, 255, 255, 0.34);
-}
-.glass-chip[aria-pressed="true"] {
-  background: var(--color-navy);
-  color: #fff;
-  border-color: var(--color-navy);
-}
-/* The active chip carries the one maize mark in the HUD. */
-.glass-chip[aria-pressed="true"]::before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin-right: 0.45rem;
-  border-radius: 50%;
-  background: var(--color-maize);
-  vertical-align: 0.06em;
-}
-
 /* The one glass card (hero HUD caption). */
 .glass-card {
   position: relative;
@@ -539,16 +442,12 @@
    preference → same. */
 @supports not (backdrop-filter: blur(1px)) {
   .glass-island,
-  .glass-pill,
-  .glass-chip,
   .glass-card {
     background: rgba(255, 255, 255, 0.94);
   }
 }
 @media (prefers-reduced-transparency: reduce) {
   .glass-island,
-  .glass-pill,
-  .glass-chip,
   .glass-card {
     background: rgba(255, 255, 255, 0.96);
     -webkit-backdrop-filter: none;
@@ -565,19 +464,6 @@
    on cream the name goes navy and the maize lives in the mark alone. */
 .wordmark-glass {
   color: #00274c;
-}
-
-/* The shared specular streak is cut for the wide nav bar; on the much
-   narrower hero island the same percentage stops paint a band as wide as the
-   wordmark itself. This modifier pulls the highlight into a tighter sliver. */
-.glass-island-tight {
-  overflow: hidden; /* the blurred streak must not spill past the capsule */
-}
-.glass-island-tight::before {
-  filter: blur(6px);
-  background:
-    linear-gradient(100deg, transparent 6%, rgba(255, 255, 255, 0.5) 15%, transparent 25%),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent 48%);
 }
 
 /* While the M is forming, every backdrop-filtered island over the hero
