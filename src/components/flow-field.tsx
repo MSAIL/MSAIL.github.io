@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import type { FlowEngineGL } from "./flow-field-gl";
 
 /**
  * FlowField — the homepage centerpiece: a rectified-flow transport of samples
@@ -18,6 +19,14 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
  * trail fade, pointer lens, equilibrium shimmer) AND the canvas is on-screen
  * in a visible tab. prefers-reduced-motion: transitions jump to t=1, no
  * trails, no shimmer.
+ *
+ * Two engines draw it. FlowEngineGL (flow-field-gl.ts) is the default: the
+ * transport runs in a vertex shader, the Langevin step in transform
+ * feedback, and the coupling (iterated sliced OT + 2-opt) in a worker. The
+ * Canvas 2D FlowEngine in this file is what the paragraphs above describe
+ * line for line; it takes over where WebGL2 is missing or fails, and
+ * ?engine=2d forces it. The component at the bottom picks one and names the
+ * coupling that ran in the caption.
  */
 
 export type FlowDataset = "noise" | "moons" | "spirals" | "blockm";
@@ -26,6 +35,26 @@ export type FlowDataset = "noise" | "moons" | "spirals" | "blockm";
     only — below 900px containers the full canvas is used). Lets the hero
     keep the figure clear of the headline block. */
 export type FitBox = { x0: number; y0: number; x1: number; y1: number };
+
+/** What the component needs from an engine. Two implement it: FlowEngineGL
+    (WebGL2, flow-field-gl.ts) and the Canvas 2D FlowEngine below, which is
+    the fallback wherever WebGL2 is missing or gives out. */
+export interface HeroEngine {
+  N: number;
+  visible: boolean;
+  reduced: boolean;
+  darkGround: boolean;
+  fitBox: FitBox | null;
+  onTick: ((t: number, playing: boolean) => void) | null;
+  resize(): void;
+  setPointer(x: number, y: number, over: boolean): void;
+  loadMark(src: string, onReady?: () => void): void;
+  setDataset(key: FlowDataset): void;
+  replay(): void;
+  scrub(t: number): void;
+  wake(): void;
+  destroy(): void;
+}
 
 /* ---------------------------------------------------------------- palette */
 /* Duplicated from the CSS tokens (canvas can't read custom props cheaply
@@ -1131,6 +1160,27 @@ function getLiteFxServer(): boolean {
   return false;
 }
 
+/* Which engine draws the figure. ?engine=gl or ?engine=2d in the URL
+   overrides the default, so the two can be compared on one build. The
+   server render does not know the URL and draws no canvas at all. */
+type EngineKind = "gl" | "2d";
+const DEFAULT_ENGINE: EngineKind = "gl";
+function subscribeNever(): () => void {
+  return () => {};
+}
+function getRequestedEngine(): EngineKind {
+  const q = new URLSearchParams(window.location.search).get("engine");
+  return q === "gl" || q === "2d" ? q : DEFAULT_ENGINE;
+}
+function getRequestedEngineServer(): EngineKind | null {
+  return null;
+}
+/* The caption names the coupling that actually ran. */
+const COUPLING: Record<EngineKind, string> = {
+  gl: "iterated sliced OT + 2-opt",
+  "2d": "sliced OT + 2-opt",
+};
+
 export function FlowField({
   className = "",
   fitBox,
@@ -1148,8 +1198,43 @@ export function FlowField({
   const tReadRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef<HTMLSpanElement>(null);
   const hudRef = useRef<HTMLDivElement>(null);
-  const engineRef = useRef<FlowEngine | null>(null);
+  const glRef = useRef<HTMLCanvasElement>(null);
+  const engineRef = useRef<HeroEngine | null>(null);
   const [sampleCount, setSampleCount] = useState<number | null>(null);
+  // WebGL2 where it works; the Canvas 2D engine if it is missing, fails to
+  // start, or loses its context later (the GL engine reports any of those).
+  const requested = useSyncExternalStore(subscribeNever, getRequestedEngine, getRequestedEngineServer);
+  const [glFailed, setGlFailed] = useState(false);
+  const kind: EngineKind | null =
+    requested === null ? null : requested === "gl" && !glFailed ? "gl" : "2d";
+  // The GL engine is its own chunk, and nothing above the fold waits on it,
+  // so it is requested once the browser is idle: asked for during hydration
+  // it sat in front of first paint on a slow connection (Lighthouse's
+  // simulated LCP moved from 2.5 s to 3.0 s). A failed fetch is one more way
+  // to fall back.
+  const [GLEngine, setGLEngine] = useState<typeof FlowEngineGL | null>(null);
+  useEffect(() => {
+    if (kind !== "gl") return;
+    let live = true;
+    const load = () => {
+      import("./flow-field-gl").then(
+        (m) => live && setGLEngine(() => m.FlowEngineGL),
+        () => live && setGlFailed(true),
+      );
+    };
+    let idleId = 0;
+    let timer = 0;
+    if (typeof window.requestIdleCallback === "function") {
+      idleId = window.requestIdleCallback(load, { timeout: 600 });
+    } else {
+      timer = window.setTimeout(load, 150); // Safari has no rIC
+    }
+    return () => {
+      live = false;
+      if (idleId) window.cancelIdleCallback(idleId);
+      window.clearTimeout(timer);
+    };
+  }, [kind]);
   // Phones get the halo's lite filter: the full chain's 13px aura blur runs
   // at display resolution per water frame, too heavy for phone GPUs.
   const liteFx = useSyncExternalStore(subscribeLiteFx, getLiteFx, getLiteFxServer);
@@ -1165,27 +1250,61 @@ export function FlowField({
 
   useEffect(() => {
     const wrap = wrapRef.current;
-    const pts = ptsRef.current;
-    const water = waterRef.current;
-    if (!wrap || !pts || !water) return;
+    if (!wrap || !kind) return;
 
-    const engine = new FlowEngine(pts, water);
+    let engine: HeroEngine;
+    let warmTimer = 0;
+    if (kind === "gl") {
+      const canvas = glRef.current;
+      if (!canvas || !GLEngine) return;
+      const gle = new GLEngine(canvas);
+      gle.onFail = () => setGlFailed(true);
+      engine = gle;
+    } else {
+      const pts = ptsRef.current;
+      const water = waterRef.current;
+      if (!pts || !water) return;
+      const e2d = new FlowEngine(pts, water);
+      // The user-agent sniff below serves only this fallback engine: the GL
+      // engine draws one halo for every browser. Chromium is the ONLY engine
+      // that GPU-accelerates SVG url() filters on HTML elements; Safari (all
+      // of iOS is WebKit) and Firefox rasterize the goo chain in software,
+      // which is exactly "intensely laggy". Everyone except real Chromium
+      // gets the in-canvas bloom. iOS "Chrome" (CriOS) is WebKit too, so the
+      // iOS check overrides the Chromium sniff.
+      type UAData = { brands?: { brand: string }[] };
+      const uaBrands =
+        (navigator as Navigator & { userAgentData?: UAData }).userAgentData?.brands ?? [];
+      const isChromium =
+        uaBrands.some((b) => /chromium/i.test(b.brand)) || "chrome" in window;
+      const iosWebKit =
+        /iP(hone|od|ad)/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+      e2d.softHalo = !isChromium || iosWebKit;
+
+      // Warm the goo filter's GPU pipeline while the page is still loading:
+      // its first rasterization measured ~150ms, which otherwise lands on the
+      // exact frame the M settles and the halo begins its fade-in.
+      const wctx = water.getContext("2d");
+      if (wctx) {
+        // Full-coverage warm draw: blur cost is per covered tile, so a token
+        // corner rect would leave most of the surface cold.
+        wctx.save();
+        wctx.setTransform(1, 0, 0, 1, 0, 0);
+        wctx.fillStyle = "#fff";
+        wctx.fillRect(0, 0, water.width, water.height);
+        wctx.restore();
+      }
+      water.style.opacity = "0.004";
+      warmTimer = window.setTimeout(() => {
+        // Only stand down if the engine hasn't already taken the reins
+        // (reduced-motion shows the halo immediately).
+        if (water.style.opacity === "0.004") water.style.opacity = "0";
+      }, 450);
+      engine = e2d;
+    }
     engineRef.current = engine;
     engine.darkGround = darkRef.current;
-    // Chromium is the ONLY engine that GPU-accelerates SVG url() filters on
-    // HTML elements; Safari (all of iOS is WebKit) and Firefox rasterize the
-    // goo chain in software, which is exactly "intensely laggy". Everyone
-    // except real Chromium gets the in-canvas bloom. iOS "Chrome" (CriOS) is
-    // WebKit too, so the iOS check overrides the Chromium sniff.
-    type UAData = { brands?: { brand: string }[] };
-    const uaBrands =
-      (navigator as Navigator & { userAgentData?: UAData }).userAgentData?.brands ?? [];
-    const isChromium =
-      uaBrands.some((b) => /chromium/i.test(b.brand)) || "chrome" in window;
-    const iosWebKit =
-      /iP(hone|od|ad)/.test(navigator.userAgent) ||
-      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-    engine.softHalo = !isChromium || iosWebKit;
     engine.fitBox = fitBoxRef.current ?? null;
     engine.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let hudTimer = 0;
@@ -1206,11 +1325,15 @@ export function FlowField({
       if (tReadRef.current) tReadRef.current.textContent = t.toFixed(2);
       // Not playing and short of t = 1 only happens when the slider has
       // parked the figure mid-path: the grains are frozen on their lines.
+      // Under prefers-reduced-motion nothing moves at t = 1 either, so the
+      // caption must not claim the Langevin shimmer.
       if (stateRef.current)
         stateRef.current.textContent = playing
           ? "transporting"
           : t >= 1
-            ? "equilibrium (langevin + solenoidal drift)"
+            ? engine.reduced
+              ? "at rest (reduced motion)"
+              : "equilibrium (langevin + solenoidal drift)"
             : "paused";
       // While the canvas animates under them, every backdrop-filtered glass
       // surface over the hero (HUD, nav, the MSAIL island) re-rasterizes its
@@ -1231,26 +1354,6 @@ export function FlowField({
       }
     };
     setSampleCount(engine.N);
-
-    // Warm the goo filter's GPU pipeline while the page is still loading:
-    // its first rasterization measured ~150ms, which otherwise lands on the
-    // exact frame the M settles and the halo begins its fade-in.
-    const wctx = water.getContext("2d");
-    if (wctx) {
-      // Full-coverage warm draw: blur cost is per covered tile, so a token
-      // corner rect would leave most of the surface cold.
-      wctx.save();
-      wctx.setTransform(1, 0, 0, 1, 0, 0);
-      wctx.fillStyle = "#fff";
-      wctx.fillRect(0, 0, water.width, water.height);
-      wctx.restore();
-    }
-    water.style.opacity = "0.004";
-    const warmTimer = window.setTimeout(() => {
-      // Only stand down if the engine hasn't already taken the reins
-      // (reduced-motion shows the halo immediately).
-      if (water.style.opacity === "0.004") water.style.opacity = "0";
-    }, 450);
 
     // Boot once the browser is idle: the initial sample + pair + recolor is
     // a chunky task, and running it inside the load window was a large slice
@@ -1324,71 +1427,80 @@ export function FlowField({
       engine.destroy();
       engineRef.current = null;
     };
-  }, []);
+  }, [kind, GLEngine]);
 
   return (
     <div
       ref={wrapRef}
       className={`relative ${className}`}
+      data-engine={kind ?? undefined}
       role="img"
       aria-label="Live figure: samples flow from Gaussian noise into the Block M along straight rectified-flow paths, then shimmer at equilibrium."
     >
-      {/* The water pane: grain positions rendered to a low-res underlay and
-          fused by a goo filter into one translucent pool whose boundary is
-          set by the outermost grains. The crisp grains float on top like
-          buoys; the pool edge ripples as edge grains drift. */}
-      <svg width="0" height="0" aria-hidden className="absolute">
-        <defs>
-          <filter id="water-goo" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="blur" />
-            <feColorMatrix
-              in="blur"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
-              result="pool"
-            />
-            {/* Halo: the fused pool, re-blurred and layered beneath itself,
-                becomes a soft luminous aura hugging the M's outline. */}
-            <feGaussianBlur in="pool" stdDeviation="13" result="aura" />
-            <feComponentTransfer in="aura" result="auraSoft">
-              <feFuncA type="linear" slope="1" intercept="0" />
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode in="auraSoft" />
-              <feMergeNode in="pool" />
-            </feMerge>
-          </filter>
-          <filter id="water-goo-lite" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="blur" />
-            <feColorMatrix
-              in="blur"
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
-              result="pool"
-            />
-            <feGaussianBlur in="pool" stdDeviation="6" result="aura" />
-            <feMerge>
-              <feMergeNode in="aura" />
-              <feMergeNode in="pool" />
-            </feMerge>
-          </filter>
-        </defs>
-      </svg>
-      <canvas
-        ref={waterRef}
-        aria-hidden
-        data-goo={liteFx ? "url(#water-goo-lite)" : "url(#water-goo)"}
-        className="absolute inset-0 h-full w-full"
-        style={{
-          // The filter is ON initially so the boot warm-draw compiles the
-          // pipeline; the engine strips it during transport and restores it
-          // at the landing flare (reading data-goo above).
-          filter: liteFx ? "url(#water-goo-lite)" : "url(#water-goo)",
-          opacity: 0,
-          transition: "opacity 1600ms ease",
-        }}
-      />
-      <canvas ref={ptsRef} aria-hidden className="absolute inset-0 h-full w-full" />
+      {/* WebGL2: one canvas carries the halo, the trails and the grains. */}
+      {kind === "gl" && (
+        <canvas ref={glRef} aria-hidden className="absolute inset-0 h-full w-full" />
+      )}
+      {kind === "2d" && (
+        <>
+          {/* The water pane: grain positions rendered to a low-res underlay and
+              fused by a goo filter into one translucent pool whose boundary is
+              set by the outermost grains. The crisp grains float on top like
+              buoys; the pool edge ripples as edge grains drift. */}
+          <svg width="0" height="0" aria-hidden className="absolute">
+            <defs>
+              <filter id="water-goo" colorInterpolationFilters="sRGB">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="blur" />
+                <feColorMatrix
+                  in="blur"
+                  type="matrix"
+                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
+                  result="pool"
+                />
+                {/* Halo: the fused pool, re-blurred and layered beneath itself,
+                    becomes a soft luminous aura hugging the M's outline. */}
+                <feGaussianBlur in="pool" stdDeviation="13" result="aura" />
+                <feComponentTransfer in="aura" result="auraSoft">
+                  <feFuncA type="linear" slope="1" intercept="0" />
+                </feComponentTransfer>
+                <feMerge>
+                  <feMergeNode in="auraSoft" />
+                  <feMergeNode in="pool" />
+                </feMerge>
+              </filter>
+              <filter id="water-goo-lite" colorInterpolationFilters="sRGB">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3.2" result="blur" />
+                <feColorMatrix
+                  in="blur"
+                  type="matrix"
+                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -10"
+                  result="pool"
+                />
+                <feGaussianBlur in="pool" stdDeviation="6" result="aura" />
+                <feMerge>
+                  <feMergeNode in="aura" />
+                  <feMergeNode in="pool" />
+                </feMerge>
+              </filter>
+            </defs>
+          </svg>
+          <canvas
+            ref={waterRef}
+            aria-hidden
+            data-goo={liteFx ? "url(#water-goo-lite)" : "url(#water-goo)"}
+            className="absolute inset-0 h-full w-full"
+            style={{
+              // The filter is ON initially so the boot warm-draw compiles the
+              // pipeline; the engine strips it during transport and restores it
+              // at the landing flare (reading data-goo above).
+              filter: liteFx ? "url(#water-goo-lite)" : "url(#water-goo)",
+              opacity: 0,
+              transition: "opacity 1600ms ease",
+            }}
+          />
+          <canvas ref={ptsRef} aria-hidden className="absolute inset-0 h-full w-full" />
+        </>
+      )}
 
       {/* The one glass caption card. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-end p-4 sm:p-6">
@@ -1409,7 +1521,7 @@ export function FlowField({
             state: <span ref={stateRef}>transporting</span>
           </p>
           <p className={dark ? "text-on-navy-muted/80" : "text-ink-3"}>
-            coupling: sliced OT + 2-opt (
+            coupling: {COUPLING[kind ?? DEFAULT_ENGINE]} (
             <a
               href="https://arxiv.org/abs/2209.03003"
               target="_blank"
