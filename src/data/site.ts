@@ -11,6 +11,7 @@
 
 import type { Flag } from "./content-status";
 import { flag } from "./content-status";
+import { talksArchive } from "./talks";
 
 export type NavLink = {
   label: string;
@@ -62,10 +63,10 @@ export const site = {
       key: "slack",
       label: "Slack",
       value: "msail-team",
-      href: "https://join.slack.com/t/msail-team/shared_invite/zt-48owjqxap-ETAjOVRzeh_kv1yxAvEPRQ",
+      href: "https://join.slack.com/t/msail-team/shared_invite/zt-4guf3p89z-lPCl1BVoZEG0cMBygVYLhw",
       flag: flag(
-        "unverified",
-        "Shared invite replaced 2026-09-01 by Sanat (the 2026-06-09 link had gone stale); Slack bot-walls automated checks. Confirm the invite is set to never expire (Slack admin, invitations), or swap in a no-expiry link.",
+        "verified",
+        "EXPIRES 2026-12-16: that is the expiry Slack reported for this invite when it was checked signed-out on 2026-11-16 (it loads the join page). Swapped in that day by Sanat because the 2026-09-01 link was dead on the live site; the 2026-06-09 link before it had gone stale too. Replace this one with a link whose expiry is set to Never (Slack: Invite people, Edit link settings). To test a link, open it in a private window: a dead one says \"This link is no longer active\". curl gets a 403 either way, and a browser already signed in to the workspace is redirected past the error.",
       ),
     },
     {
@@ -118,7 +119,7 @@ export const footerColumns: { title: string; links: { label: string; href: strin
 export const home = {
   headline: "Michigan Student AI Lab",
   subline:
-    "Reading groups, build-from-scratch projects, and a 37-talk archive, run by students at the University of Michigan since 2008.",
+    `Reading groups, build-from-scratch projects, and a ${talksArchive.length}-talk archive, run by students at the University of Michigan since 2008.`,
 
   ctas: [
     { label: "Join MSAIL", href: "/join", variant: "maize" as const },

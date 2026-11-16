@@ -151,11 +151,17 @@ export const mlDiscussionArchive: {
   term: "Winter 2021",
   intro:
     "Material from the discussion group's Winter 2021 lesson series: slides, " +
-    "notebooks, and recordings, as the group posted them.",
+    "notebooks, and recordings, as the group posted them. The slides and " +
+    "recordings open with a U-M Google account.",
   flag: flag(
     "verified",
     "Carried over 2026-06-12 from /previous_material/* with every link verbatim. " +
-      "Drive/Zoom recordings may require U-M or org-account access; not independently playable-checked.",
+      "Every link opened 2026-11-16: signed out, the Google Slides decks and Drive " +
+      "recordings stop at a Google login; signed in with a umich account they all open. " +
+      "Two lessons were dropped that day because nothing they linked to exists any more: " +
+      "\"Regression, Part 1 (Theory and Implementation)\" (slides 410, Colab 404, Zoom " +
+      "\"This recording does not exist\") and \"Regression, Part 2 (Application)\" (Colab " +
+      "404). Their old URLs are in git history before that date.",
   ),
   // Chronological (the live index listed newest first).
   lessons: [
@@ -166,20 +172,6 @@ export const mlDiscussionArchive: {
         { label: "Colab notebook", href: "https://colab.research.google.com/drive/1Cein0r-J9N2vX1xh24cRLEHgBkJx3p7w?authuser=1#scrollTo=ubgi9PVZDDgU" },
         { label: "Linear algebra primer", href: "https://builtin.com/data-science/basic-linear-algebra-deep-learning" },
         { label: "Python basics (Kaggle)", href: "https://www.kaggle.com/learn/python" },
-      ],
-    },
-    {
-      title: "Regression, Part 1 (Theory and Implementation)",
-      links: [
-        { label: "Slides", href: "https://docs.google.com/presentation/d/1VHWuE_lqbKnDKZ8HKbVcLArbe8cMWKsd_61FY4FTn-E/edit?usp=sharing" },
-        { label: "Colab notebook", href: "https://colab.research.google.com/drive/18MoSHNwUnEKwvokZAZA1AcLc6AJ3Bs81?usp=sharing" },
-        { label: "Recording (Zoom)", href: "https://umich.zoom.us/rec/share/94fSO_w_AT68Td2e0Qr_kckIVBepdNLecMn5mTvFOH994JWIkKSZLl3u9xpFr6J6.oj49dWOJeBFBzPA2" },
-      ],
-    },
-    {
-      title: "Regression, Part 2 (Application)",
-      links: [
-        { label: "Colab notebook", href: "https://colab.research.google.com/drive/12nmYKp5IcUdUiZmrHaUK7YsUu1vIOXkj?usp=sharing" },
       ],
     },
     {

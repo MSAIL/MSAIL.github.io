@@ -8,7 +8,7 @@ import { home, site } from "@/data/site";
 import { initiatives } from "@/data/initiatives";
 import { talksArchive } from "@/data/talks";
 
-/** Six talks that show the archive's range, picked from the real 37. */
+/** Six talks that show the archive's range, picked from the real archive. */
 const SAMPLE_SLUGS = [
   "alphafold_2_092021",
   "aisafety_012522",
@@ -100,7 +100,9 @@ export default function Home() {
       <section data-nav-ink className="ground-ink">
         <div className="container-page py-section-sm sm:py-section">
           <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-border-on-navy pb-5">
-            <h2 className="font-display text-h3 text-on-navy">37 recorded talks, 2020 to 2024</h2>
+            <h2 className="font-display text-h3 text-on-navy">
+              {talksArchive.length} recorded talks, 2020 to 2024
+            </h2>
           </div>
           <ul className="grid gap-x-10 sm:grid-cols-2">
             {SAMPLE_TALKS.map((t) => (
@@ -115,7 +117,7 @@ export default function Home() {
           </ul>
           <div className="mt-8">
             <CtaLink href="/talks">
-              Browse all 37
+              Browse all {talksArchive.length}
               <ArrowIcon className="h-4 w-4" />
             </CtaLink>
           </div>

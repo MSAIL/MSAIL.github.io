@@ -15,20 +15,27 @@ import { flag } from "./content-status";
 export type Resource = { label: string; href: string };
 export type ResourceGroup = { title: string; items: Resource[] };
 
-/** VERIFIED, evergreen — carried forward in full from the live page. */
+/**
+ * VERIFIED, evergreen — carried forward in full from the live page.
+ *
+ * Link check 2026-11-16: every href below answered 200 except the two that
+ * lived under web.eecs.umich.edu/~justincj/, which is gone entirely (the whole
+ * directory 404s). EECS 498/598 now points at the official Michigan Online
+ * lecture playlist (22 lectures) and EECS 442 at the course's current home.
+ */
 export const learningConcepts: ResourceGroup[] = [
   {
     title: "Intro to Deep Learning",
     items: [
       { label: "fast.ai: Practical Deep Learning", href: "https://course.fast.ai/" },
-      { label: "EECS 498/598: Deep Learning for Computer Vision (U-M)", href: "https://web.eecs.umich.edu/~justincj/teaching/eecs498/FA2020/" },
+      { label: "EECS 498/598: Deep Learning for Computer Vision (U-M lectures)", href: "https://www.youtube.com/playlist?list=PL5-TkQAfAZFbzxjBHtzdVCWE0Zbhomg7r" },
       { label: "CS231n: Convolutional Neural Networks (Stanford)", href: "https://cs231n.stanford.edu/" },
     ],
   },
   {
     title: "Computer Vision",
     items: [
-      { label: "EECS 442: Computer Vision (U-M)", href: "https://web.eecs.umich.edu/~justincj/teaching/eecs442/WI2020/schedule.html" },
+      { label: "EECS 442: Computer Vision (U-M)", href: "https://eecs442.github.io/" },
       { label: "Awesome Computer Vision", href: "https://github.com/jbhuang0604/awesome-computer-vision#readme" },
     ],
   },
