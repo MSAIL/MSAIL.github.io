@@ -1366,7 +1366,12 @@ export function FlowField({
     };
     let idleId = 0;
     let bootTimer = 0;
-    if (typeof window.requestIdleCallback === "function") {
+    if (kind === "gl") {
+      // Its chunk was already requested from an idle callback, and its boot
+      // leaves the sampling and pairing to the worker: waiting for idle a
+      // second time only delayed the figure (two 150 ms timers on Safari).
+      boot();
+    } else if (typeof window.requestIdleCallback === "function") {
       idleId = window.requestIdleCallback(boot, { timeout: 600 });
     } else {
       bootTimer = window.setTimeout(boot, 150); // Safari has no rIC
