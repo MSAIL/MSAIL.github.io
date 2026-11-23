@@ -53,7 +53,7 @@ export default function InitiativesPage() {
     >
       <div className="mt-12 flex flex-col gap-14">
         <section className="flex flex-col gap-6">
-          <SectionHeading>Fall 2026</SectionHeading>
+          <SectionHeading>{initiatives.term}</SectionHeading>
           <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
           {initiatives.items.map((item) => (
             <article key={item.name} className="flex flex-col gap-2 border-t border-border pt-5">

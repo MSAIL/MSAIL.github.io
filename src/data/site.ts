@@ -34,6 +34,8 @@ export const site = {
   name: "MSAIL",
   longName: "Michigan Student Artificial Intelligence Lab",
   university: "University of Michigan",
+  /** Canonical origin: GitHub Pages, served from the domain root. */
+  url: "https://msail.github.io",
   /** MSAIL was founded in 2008 (per the founder). */
   foundedYear: 2008,
 

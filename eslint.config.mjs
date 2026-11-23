@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Agent worktrees and tooling state (gitignored). A worktree under
+    // .claude/worktrees carries its own .next build, which made `npm run lint`
+    // (and so `npm run deploy`) report thousands of errors from minified code.
+    ".claude/**",
   ]),
 ]);
 

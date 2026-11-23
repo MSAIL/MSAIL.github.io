@@ -1,0 +1,38 @@
+# MSAIL, the Michigan Student Artificial Intelligence Lab
+# https://msail.github.io
+#
+# Every crawler is welcome, search and AI alike: we want students who ask an
+# assistant about AI at the University of Michigan to find us.
+#
+# For language models and agents:
+#   https://msail.github.io/llms.txt       short Markdown index of the site
+#   https://msail.github.io/llms-full.txt  every page's content in one Markdown file
+#   https://msail.github.io/msail.json     the same content as JSON
+#
+# Content-Signal is the Content Signals Policy (contentsignals.org): search,
+# answering a user's question, and model training are all allowed.
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# AI crawlers and agents, named so the intent is explicit. Same rules as above.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: Amazonbot
+User-agent: CCBot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+Sitemap: https://msail.github.io/sitemap.xml

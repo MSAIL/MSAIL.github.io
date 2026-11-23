@@ -49,7 +49,9 @@ const EECS: Room = {
   building: "Electrical Engineering and Computer Science Building",
 };
 
-export const initiatives: { flag: Flag; items: Initiative[] } = {
+export const initiatives: { term: string; flag: Flag; items: Initiative[] } = {
+  /** The term these items run in; the page heading and the agent files read it. */
+  term: "Fall 2026",
   flag: flag(
     "verified",
     "Fall 2026 program, all five slots CONFIRMED by Matthew on 2026-09-06 after a written " +

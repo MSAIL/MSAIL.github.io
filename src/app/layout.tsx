@@ -4,6 +4,8 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { AgentTools } from "@/components/agent-tools";
+import { organizationGraph } from "@/lib/agent-index";
 
 /* Google Analytics 4 measurement ID (property "msail.github.io" under the
    MSAIL account). Empty string = no analytics script is rendered at all. */
@@ -42,6 +44,12 @@ export const metadata: Metadata = {
   // — and og:title/twitter:title derive from each page's templated <title>.
   alternates: {
     canonical: "./",
+    // Machine-readable copies of the whole site, for agents that look for an
+    // alternate representation before parsing HTML.
+    types: {
+      "text/markdown": "/llms-full.txt",
+      "application/json": "/msail.json",
+    },
   },
   openGraph: {
     description:
@@ -63,22 +71,10 @@ export const metadata: Metadata = {
   },
 };
 
-/** Organization schema for search engines (rendered once in the root layout). */
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Michigan Student Artificial Intelligence Lab",
-  alternateName: "MSAIL",
-  url: "https://msail.github.io",
-  logo: "https://msail.github.io/msail-logo.png",
-  email: "msail-admin@umich.edu",
-  foundingDate: "2008",
-  sameAs: [
-    "https://www.instagram.com/michiganailab/",
-    "https://www.linkedin.com/company/msail1/",
-    "https://maizepages.umich.edu/organization/msail",
-  ],
-};
+/* The schema.org graph (Organization + WebSite), built from src/data by the
+   same module that writes llms.txt and msail.json. "<" is escaped so no
+   string in the data can close the script element early. */
+const jsonLd = JSON.stringify(organizationGraph()).replace(/</g, "\\u003c");
 
 export const viewport: Viewport = {
   // Every route opens on the ink band, so the browser chrome (iOS Safari
@@ -176,9 +172,10 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <AgentTools />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd }}
         />
         {/* lazyOnload: analytics has no business inside the load window — as
             afterInteractive, gtag's 170KB eval was a chunk of our TBT. */}

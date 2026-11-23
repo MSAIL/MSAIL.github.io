@@ -102,7 +102,7 @@ fi
 # --- smoke-test production ----------------------------------------------------
 say "Smoke-testing $SITE"
 fail=0 unreachable=0 total=0
-for path in / /about/ /talks/ /resources/ /alumni/ /constitution/ /join/ /sitemap.xml /robots.txt /aboutus/; do
+for path in / /about/ /talks/ /resources/ /alumni/ /constitution/ /join/ /sitemap.xml /robots.txt /aboutus/ /llms.txt /llms-full.txt /msail.json; do
   total=$((total + 1))
   code=$(curl -s -o /dev/null -m 20 -w '%{http_code}' "$SITE$path") || code="000"
   printf '  %-16s %s\n' "$path" "$code"
