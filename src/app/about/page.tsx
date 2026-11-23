@@ -2,20 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/page-metadata";
 import { SectionHeading } from "@/components/content-blocks";
 import { ArrowIcon, GlobeIcon } from "@/components/icons";
 import { ChannelIcon } from "@/components/channel-icon";
 import { about } from "@/data/about";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "What MSAIL is: a student organization devoted to AI research at the University of Michigan, founded in 2008.",
-};
+export const metadata: Metadata = pageMetadata("about");
 
 export default function AboutPage() {
   return (
-    <PageShell title="About MSAIL" lead={about.mission}>
+    <PageShell page="about">
       <div className="mt-10 flex flex-col gap-10">
         <p className="max-w-prose text-body text-ink-2">{about.history}</p>
 

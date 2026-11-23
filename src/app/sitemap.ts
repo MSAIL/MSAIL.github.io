@@ -1,23 +1,19 @@
 import type { MetadataRoute } from "next";
+import { pageOrder, pages } from "@/data/pages";
+import { site } from "@/data/site";
+import { contentDate } from "@/lib/content-dates";
 
 // Required for metadata routes under output: "export".
 export const dynamic = "force-static";
 
-const BASE = "https://msail.github.io";
-
-/** Every public route, with the trailing slashes GitHub Pages serves. */
-const routes = [
-  "/",
-  "/about/",
-  "/initiatives/",
-  "/talks/",
-  "/resources/",
-  "/alumni/",
-  "/sponsors/",
-  "/join/",
-  "/constitution/",
-];
-
+/**
+ * Every public page, with the trailing slashes GitHub Pages serves. lastmod
+ * is the last commit that changed what the page shows (src/lib/content-dates),
+ * and is left out rather than guessed when git history is unavailable.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((path) => ({ url: `${BASE}${path}` }));
+  return pageOrder.map((key) => {
+    const lastModified = contentDate(key);
+    return { url: `${site.url}${pages[key].path}`, ...(lastModified ? { lastModified } : {}) };
+  });
 }

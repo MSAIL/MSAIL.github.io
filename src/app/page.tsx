@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Hero } from "@/components/hero";
+import { PageJsonLd } from "@/components/page-json-ld";
 import { ExplainerIsland } from "@/components/explainer-island";
 import { CtaLink } from "@/components/cta-link";
 import { ArrowIcon } from "@/components/icons";
@@ -24,6 +25,7 @@ const SAMPLE_TALKS = SAMPLE_SLUGS.map(
 export default function Home() {
   return (
     <>
+      <PageJsonLd page="home" />
       {/* The night stretch: one ink ground from the top of the hero down
           through the explainer; the mission statement below starts the day.
           -mt-20 tucks it behind the floating nav to the viewport's edge. */}
@@ -58,12 +60,7 @@ export default function Home() {
       {/* What MSAIL is. Sentence craft, no icon cards. */}
       <section className="container-page pb-section-sm sm:pb-section">
         <p className="font-display max-w-[30ch] text-h2 text-navy">{site.mission}</p>
-        <p className="mt-8 max-w-prose text-body text-ink-2">
-          MSAIL was founded in 2008. During the semester we run reading groups and
-          project teams; since 2020 the speaker series has hosted University of
-          Michigan faculty, PhD researchers, and engineering teams from Bloomberg,
-          ProQuest, and Datature.
-        </p>
+        <p className="mt-8 max-w-prose text-body text-ink-2">{home.story}</p>
       </section>
 
       {/* Initiatives as an index, not cards. */}

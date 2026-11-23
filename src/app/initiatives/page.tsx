@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/page-metadata";
 import { SectionHeading } from "@/components/content-blocks";
 import { ArrowIcon } from "@/components/icons";
 import { initiatives, mlDiscussionArchive, directionsUrl } from "@/data/initiatives";
 import type { InitiativeLink, Room } from "@/data/initiatives";
 
-export const metadata: Metadata = {
-  title: "Initiatives",
-  description:
-    "The projects, courses, and reading groups MSAIL runs, plus the ML Discussion archive of slides, notebooks, and recordings.",
-};
+export const metadata: Metadata = pageMetadata("initiatives");
 
 function ExternalLink({ link }: { link: InitiativeLink }) {
   return (
@@ -47,10 +44,7 @@ function RoomLink({ room }: { room: Room }) {
 
 export default function InitiativesPage() {
   return (
-    <PageShell
-      title="Projects & Initiatives"
-      lead="The projects, courses, and reading groups MSAIL runs, plus the ML Discussion archive."
-    >
+    <PageShell page="initiatives">
       <div className="mt-12 flex flex-col gap-14">
         <section className="flex flex-col gap-6">
           <SectionHeading>{initiatives.term}</SectionHeading>

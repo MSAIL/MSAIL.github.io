@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "npx -y serve out",
     "lint": "eslint",
+    "check:agents": "node scripts/check-agent-files.mjs",
     "deploy": "bash scripts/deploy.sh"
   },
   "overrides": {

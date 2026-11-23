@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/page-metadata";
 import { talksArchive, talksMeta } from "@/data/talks";
 
-export const metadata: Metadata = {
-  title: "Talks",
-  description:
-    "An archive of the talks MSAIL hosted from 2020 to 2024.",
-};
+export const metadata: Metadata = pageMetadata("talks");
 
 // Group by year (desc); undated talks come last.
 const years = Array.from(new Set(talksArchive.map((t) => t.year)))
@@ -16,11 +13,7 @@ const undated = talksArchive.filter((t) => t.year === null);
 
 export default function TalksPage() {
   return (
-    <PageShell
-      title="Talks"
-      lead="An archive of the talks MSAIL hosted from 2020 to 2024."
-      note={talksMeta.note}
-    >
+    <PageShell page="talks" note={talksMeta.note}>
       <div className="mt-12 flex flex-col gap-12">
         {[...years.map((y) => ({ key: String(y), label: String(y), talks: talksArchive.filter((t) => t.year === y) })),
           ...(undated.length ? [{ key: "undated", label: "Date unconfirmed", talks: undated }] : [])].map(

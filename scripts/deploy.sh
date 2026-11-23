@@ -55,6 +55,9 @@ npm run lint
 say "Building"
 npm run build
 
+say "Checking agent files"
+npm run check:agents
+
 # --- push (triggers the Pages workflow), or re-dispatch the same commit ------
 # baseline_id: newest run that existed BEFORE we trigger anything, so the poll
 # below can't latch onto a previous run for the same commit.

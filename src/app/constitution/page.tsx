@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/page-metadata";
 import { SectionHeading } from "@/components/content-blocks";
 import {
   constitutionArticles,
@@ -7,19 +8,11 @@ import {
   constitutionTerminology,
 } from "@/data/constitution";
 
-export const metadata: Metadata = {
-  title: "Constitution",
-  description:
-    "MSAIL governance: the constitution of the Michigan Student Artificial Intelligence Lab.",
-};
+export const metadata: Metadata = pageMetadata("constitution");
 
 export default function ConstitutionPage() {
   return (
-    <PageShell
-      title="MSAIL Governance: A Brief Constitution"
-      lead="The governing document of the Michigan Student Artificial Intelligence Lab."
-      note={constitutionMeta.note}
-    >
+    <PageShell page="constitution" note={constitutionMeta.note}>
       <div className="mt-12 flex max-w-prose flex-col gap-10">
         <section className="flex flex-col gap-4">
           <SectionHeading>Terminology</SectionHeading>

@@ -1,28 +1,37 @@
 import type { SiteData } from "@/lib/agent-index";
+import type { AgentToolName } from "@/lib/agent-tool-names";
 
 /**
  * The WebMCP tools themselves (see agent-tools.tsx). Every tool is read-only
  * and answers from /msail.json, the same generated file agents can fetch
  * directly, so the tools never disagree with the site.
+ *
+ * Checked against Chrome 157's implementation through the DevTools WebMCP
+ * domain: registerTool(tool, { signal }) registers, aborting the signal
+ * unregisters, and a duplicate name throws InvalidStateError.
  */
 
 type TextResult = { content: { type: "text"; text: string }[] };
 
 type AgentTool = {
-  name: string;
+  name: AgentToolName;
+  title: string;
   description: string;
   inputSchema: Record<string, unknown>;
   annotations: { readOnlyHint: boolean };
   execute: (input: Record<string, unknown>) => Promise<TextResult>;
 };
 
-/** The draft has shipped both shapes: per-tool registration and a whole-context call. */
 type ModelContext = {
-  registerTool?: (tool: AgentTool) => unknown;
+  registerTool: (tool: AgentTool, options?: { signal?: AbortSignal }) => unknown;
+  /** Earlier drafts and some polyfills unregister by name instead of by signal. */
   unregisterTool?: (name: string) => unknown;
-  provideContext?: (context: { tools: AgentTool[] }) => unknown;
-  clearContext?: () => unknown;
 };
+
+function findModelContext(): ModelContext | undefined {
+  const onDocument = (document as Document & { modelContext?: ModelContext }).modelContext;
+  return onDocument ?? (navigator as Navigator & { modelContext?: ModelContext }).modelContext;
+}
 
 let cache: Promise<SiteData> | null = null;
 function load(): Promise<SiteData> {
@@ -47,6 +56,7 @@ const READ_ONLY = { readOnlyHint: true };
 const TOOLS: AgentTool[] = [
   {
     name: "msail_join",
+    title: "How to join MSAIL",
     description:
       "How to join MSAIL, the Michigan Student AI Lab at the University of Michigan: the Slack invite link, the Maize Pages listing, Instagram, LinkedIn and the contact email. Any U-M student can join.",
     inputSchema: NO_INPUT,
@@ -58,16 +68,18 @@ const TOOLS: AgentTool[] = [
   },
   {
     name: "msail_initiatives",
+    title: "This term's MSAIL initiatives",
     description:
-      "This term's MSAIL projects, courses and reading groups: name, level, lead, meeting time, room with a walking-directions link, and related links.",
+      "This term's MSAIL projects, courses and reading groups: name, level, lead, meeting day and time (structured, Ann Arbor time), room with a walking-directions link, and related links.",
     inputSchema: NO_INPUT,
     annotations: READ_ONLY,
     execute: async () => reply((await load()).initiatives),
   },
   {
     name: "msail_search_talks",
+    title: "Search MSAIL's talk archive",
     description:
-      "Search MSAIL's archive of recorded talks (2020 to 2024) by words in the title or speaker name, optionally limited to one year. With no filters it returns every talk.",
+      "Search MSAIL's archive of talks (2020 to 2024) by words in the title or speaker name, optionally limited to one year. With no filters it returns every talk.",
     inputSchema: {
       type: "object",
       properties: {
@@ -95,6 +107,7 @@ const TOOLS: AgentTool[] = [
   },
   {
     name: "msail_leadership",
+    title: "MSAIL's leadership team",
     description:
       "MSAIL's current leadership team: names, roles, email addresses, and LinkedIn or personal sites where published.",
     inputSchema: NO_INPUT,
@@ -103,8 +116,9 @@ const TOOLS: AgentTool[] = [
   },
   {
     name: "msail_resources",
+    title: "MSAIL's learning resources",
     description:
-      "MSAIL's recommended courses and guides for learning AI: deep learning, computer vision, natural language processing and reinforcement learning.",
+      "MSAIL's recommended courses and guides for learning AI, starting with what it suggests first: deep learning, computer vision, natural language processing and reinforcement learning.",
     inputSchema: NO_INPUT,
     annotations: READ_ONLY,
     execute: async () => reply((await load()).resources),
@@ -113,40 +127,31 @@ const TOOLS: AgentTool[] = [
 
 /** Registers the tools and returns the matching cleanup. */
 export function registerAgentTools(): () => void {
-  const mc = (navigator as Navigator & { modelContext?: ModelContext }).modelContext;
-  if (!mc) return () => {};
+  const mc = findModelContext();
+  if (!mc || typeof mc.registerTool !== "function") return () => {};
 
-  if (typeof mc.registerTool === "function") {
-    const registered: string[] = [];
-    for (const tool of TOOLS) {
+  const controller = new AbortController();
+  const registered: AgentToolName[] = [];
+  for (const tool of TOOLS) {
+    try {
+      const pending = mc.registerTool(tool, { signal: controller.signal });
+      // Some implementations return a promise; a rejection there is the same
+      // "already registered" case as a synchronous throw.
+      if (pending instanceof Promise) pending.catch(() => {});
+      registered.push(tool.name);
+    } catch {
+      // Already registered by an earlier mount, or rejected by the browser.
+    }
+  }
+
+  return () => {
+    controller.abort();
+    for (const name of registered) {
       try {
-        mc.registerTool(tool);
-        registered.push(tool.name);
+        mc.unregisterTool?.(name);
       } catch {
-        // Already registered by an earlier mount, or rejected by the agent.
+        // Already gone.
       }
     }
-    return () => {
-      for (const name of registered) {
-        try {
-          mc.unregisterTool?.(name);
-        } catch {
-          // The agent may already have dropped it.
-        }
-      }
-    };
-  }
-
-  if (typeof mc.provideContext === "function") {
-    mc.provideContext({ tools: TOOLS });
-    return () => {
-      try {
-        mc.clearContext?.();
-      } catch {
-        // Nothing to clear.
-      }
-    };
-  }
-
-  return () => {};
+  };
 }

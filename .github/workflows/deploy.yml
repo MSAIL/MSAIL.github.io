@@ -28,6 +28,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: the sitemap and page JSON-LD date each page by the
+          # last commit that changed its content, which a shallow clone can't.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -35,6 +39,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+      - run: npm run check:agents
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

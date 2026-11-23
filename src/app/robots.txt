@@ -8,6 +8,12 @@
 #   https://msail.github.io/llms.txt       short Markdown index of the site
 #   https://msail.github.io/llms-full.txt  every page's content in one Markdown file
 #   https://msail.github.io/msail.json     the same content as JSON
+#   <any page URL>index.html.md            one page as Markdown
+#   https://msail.github.io/.well-known/ard.json  Agentic Resource Discovery manifest
+#
+# The ARD manifest is found through /.well-known/ard.json and <link rel="ard">.
+# ARD's optional "Agentmap:" robots directive is left out on purpose:
+# Lighthouse's robots.txt validator rejects it as an unknown directive.
 #
 # Content-Signal is the Content Signals Policy (contentsignals.org): search,
 # answering a user's question, and model training are all allowed.

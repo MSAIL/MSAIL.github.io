@@ -122,6 +122,9 @@ export const home = {
   headline: "Michigan Student AI Lab",
   subline:
     `Reading groups, build-from-scratch projects, and a ${talksArchive.length}-talk archive, run by students at the University of Michigan since 2008.`,
+  /** The paragraph under the homepage mission statement; also in the agent files. */
+  story:
+    "MSAIL was founded in 2008. During the semester we run reading groups and project teams; since 2020 the speaker series has hosted University of Michigan faculty, PhD researchers, and engineering teams from Bloomberg, ProQuest, and Datature.",
 
   ctas: [
     { label: "Join MSAIL", href: "/join", variant: "maize" as const },

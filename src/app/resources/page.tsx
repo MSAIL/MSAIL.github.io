@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { pageMetadata } from "@/lib/page-metadata";
 import { SectionHeading } from "@/components/content-blocks";
 import { ArrowIcon } from "@/components/icons";
 import { learningConcepts, agingSections, resourcesMeta } from "@/data/resources";
 
-export const metadata: Metadata = {
-  title: "Resources",
-  description:
-    "The MSAIL learning library: courses and guides for deep learning, computer vision, NLP, and reinforcement learning.",
-};
+export const metadata: Metadata = pageMetadata("resources");
 
 export default function ResourcesPage() {
   return (
-    <PageShell title="Resources" lead={resourcesMeta.intro} note={resourcesMeta.note}>
+    <PageShell page="resources" note={resourcesMeta.note}>
       <div className="mt-12 flex flex-col gap-12">
         <section className="flex flex-col gap-8">
           <SectionHeading>Start here</SectionHeading>

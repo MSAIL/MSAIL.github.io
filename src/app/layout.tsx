@@ -5,7 +5,10 @@ import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AgentTools } from "@/components/agent-tools";
-import { organizationGraph } from "@/lib/agent-index";
+import { jsonLdHtml, organizationGraph } from "@/lib/agent-index";
+import { sharedOpenGraph } from "@/lib/page-metadata";
+import { pages } from "@/data/pages";
+import { site } from "@/data/site";
 
 /* Google Analytics 4 measurement ID (property "msail.github.io" under the
    MSAIL account). Empty string = no analytics script is rendered at all. */
@@ -23,13 +26,12 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://msail.github.io"),
+  metadataBase: new URL(site.url),
   title: {
-    default: "MSAIL · Michigan Student Artificial Intelligence Lab",
+    default: pages.home.title,
     template: "%s · MSAIL",
   },
-  description:
-    "MSAIL, the Michigan Student Artificial Intelligence Lab, is a student AI and machine learning club at the University of Michigan in Ann Arbor, with reading groups, project teams and a talk archive. Open to every U-M student.",
+  description: pages.home.description,
   keywords: [
     "MSAIL",
     "Michigan Student Artificial Intelligence Lab",
@@ -40,41 +42,40 @@ export const metadata: Metadata = {
   ],
   // Icons come from the src/app/icon.png + apple-icon.png file conventions.
   // "./" resolves against each route's own pathname (with the trailing slash
-  // from trailingSlash: true), so every page gets a correct canonical + og:url
-  // — and og:title/twitter:title derive from each page's templated <title>.
+  // from trailingSlash: true), so every page gets its own canonical, og:url
+  // and Markdown alternate, and og:title/twitter:title derive from each page's
+  // templated <title>. Content pages set their description through
+  // pageMetadata(), which repeats sharedOpenGraph because Next replaces nested
+  // metadata objects instead of merging them.
   alternates: {
     canonical: "./",
-    // Machine-readable copies of the whole site, for agents that look for an
-    // alternate representation before parsing HTML.
     types: {
-      "text/markdown": "/llms-full.txt",
+      "text/markdown": "./index.html.md",
       "application/json": "/msail.json",
     },
   },
-  openGraph: {
-    description:
-      "A student AI and machine learning club at the University of Michigan in Ann Arbor, open to every U-M student.",
-    url: "./",
-    siteName: "MSAIL",
-    type: "website",
-    images: [
-      {
-        url: "/og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "MSAIL: Michigan Student Artificial Intelligence Lab",
-      },
-    ],
+  // Search and answer engines may quote as much of a page as they need.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
+  openGraph: { ...sharedOpenGraph, description: pages.home.description },
   twitter: {
     card: "summary_large_image",
   },
 };
 
-/* The schema.org graph (Organization + WebSite), built from src/data by the
-   same module that writes llms.txt and msail.json. "<" is escaped so no
-   string in the data can close the script element early. */
-const jsonLd = JSON.stringify(organizationGraph()).replace(/</g, "\\u003c");
+/* The site-wide schema.org graph (Organization + WebSite), built from
+   src/data by the module that writes llms.txt and msail.json. Each page adds
+   its own graph (WebPage type, breadcrumbs) through PageShell. */
+const jsonLd = jsonLdHtml(organizationGraph());
 
 export const viewport: Viewport = {
   // Every route opens on the ink band, so the browser chrome (iOS Safari
@@ -94,6 +95,8 @@ export default function RootLayout({
       className={`${satoshi.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        {/* ARD discovery link; React hoists it into <head>. */}
+        <link rel="ard" type="application/json" href="/.well-known/ard.json" />
         {/* The lens that makes the glass refract instead of frost. An SVG
             displacement map bends whatever is behind the capsule while a very
             small blur keeps the detail, which is what separates glass from

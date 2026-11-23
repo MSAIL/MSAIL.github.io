@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageShell } from "@/components/page-shell";
-import { alumni, alumniMeta } from "@/data/alumni";
+import { pageMetadata } from "@/lib/page-metadata";
+import { alumni } from "@/data/alumni";
 
-export const metadata: Metadata = {
-  title: "Alumni",
-  description:
-    "Past members of MSAIL, the Michigan Student Artificial Intelligence Lab, going back to 2008.",
-};
+export const metadata: Metadata = pageMetadata("alumni");
 
 /** "Robert Aung" -> "RA"; fallback tile for anyone without a portrait. */
 function initials(name: string): string {
@@ -17,7 +14,7 @@ function initials(name: string): string {
 
 export default function AlumniPage() {
   return (
-    <PageShell title="Alumni" lead={alumniMeta.intro}>
+    <PageShell page="alumni">
       {/* Same card skeleton and grid as the About page's leadership cards, in
           an archival register: warmer glass, portraits toned like older
           prints, and the sunset avatar faded for anyone without a photo. */}
