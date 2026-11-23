@@ -77,7 +77,16 @@ export function SiteFooter() {
             © <Year initial={year} /> {site.name} · {site.longName}
           </p>
           <p>
-            {site.university} · Since {site.foundedYear}
+            {site.university} · Since {site.foundedYear} ·{" "}
+            {/* Plain body link on purpose: fetch tools that turn pages into
+                Markdown drop <head>, so the rel=alternate links never reach
+                them. This is how such an agent finds the machine copies. */}
+            <a
+              href="/llms.txt"
+              className="underline decoration-dotted underline-offset-2 transition-colors duration-150 hover:text-maize"
+            >
+              For AI agents
+            </a>
           </p>
         </div>
       </div>

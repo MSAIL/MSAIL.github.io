@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s · MSAIL",
   },
   description:
-    "The Michigan Student Artificial Intelligence Lab (MSAIL) is a student community for AI research at the University of Michigan.",
+    "MSAIL, the Michigan Student Artificial Intelligence Lab, is a student AI and machine learning club at the University of Michigan in Ann Arbor, with reading groups, project teams and a talk archive. Open to every U-M student.",
   keywords: [
     "MSAIL",
     "Michigan Student Artificial Intelligence Lab",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     description:
-      "A student community for AI research at the University of Michigan.",
+      "A student AI and machine learning club at the University of Michigan in Ann Arbor, open to every U-M student.",
     url: "./",
     siteName: "MSAIL",
     type: "website",

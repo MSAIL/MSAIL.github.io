@@ -35,6 +35,8 @@ function channel(key: Channel["key"]) {
 }
 
 const adminEmail = channel("email").value;
+/** The shorter name the hero and Maize Pages use; agents should treat it as the same org. */
+const ALT_NAME = "Michigan Student AI Lab";
 
 const talkYears = Array.from(new Set(talksArchive.map((t) => t.year)))
   .filter((y): y is number => y !== null)
@@ -44,9 +46,9 @@ const talkSpan = `${Math.min(...talkYears)} to ${Math.max(...talkYears)}`;
 const summary = () =>
   `${site.longName} (${site.name}) is a student organization at the ${site.university} ` +
   `in Ann Arbor, founded in ${site.foundedYear} and devoted to artificial intelligence ` +
-  `research. Students run reading groups and project teams, and the club keeps an archive ` +
-  `of ${talksArchive.length} recorded talks from ${talkSpan}. Any University of Michigan ` +
-  `student can join.`;
+  `research. Students run reading groups and project teams, and the site archives the ` +
+  `${talksArchive.length} talks the club hosted from ${talkSpan}. Any University of ` +
+  `Michigan student can join.`;
 
 const PAGES = [
   {
@@ -72,12 +74,12 @@ const PAGES = [
   {
     path: "/talks/",
     title: "Talks",
-    summary: `All ${talksArchive.length} recorded talks from ${talkSpan} by year, with speakers. ${talksMeta.note}`,
+    summary: `All ${talksArchive.length} talks ${site.name} hosted from ${talkSpan}, by year, with speakers. ${talksMeta.note}`,
   },
   {
     path: "/resources/",
     title: "Resources",
-    summary: `Courses and guides: ${learningConcepts.map((g) => g.title).join(", ")}.`,
+    summary: `Where to start learning AI ("Start here": ${learningConcepts.map((g) => g.title).join(", ")}), plus older library sections being updated.`,
   },
   {
     path: "/alumni/",
@@ -109,7 +111,8 @@ export function siteData() {
     city: "Ann Arbor, Michigan, USA",
     founded: site.foundedYear,
     eligibility: "Open to every University of Michigan student.",
-    updated: today(),
+    /** When these files were generated. Each section names the term or date it is current for. */
+    generated: today(),
     join: {
       howTo:
         `Join the Slack workspace, the most active channel, with the invite link below, ` +
@@ -155,6 +158,7 @@ export function siteData() {
     },
     talks: {
       note: talksMeta.note,
+      hosted: talkSpan,
       count: talksArchive.length,
       items: talksArchive.map((t) => ({ title: t.title, speaker: t.speaker, year: t.year })),
     },
@@ -172,6 +176,7 @@ export function siteData() {
     },
     sponsors: { notice: sponsorsMeta.notice },
     constitution: {
+      lastAmended: constitutionMeta.lastUpdated,
       terminology: constitutionTerminology,
       articles: constitutionArticles,
       note: constitutionMeta.note,
@@ -202,14 +207,16 @@ export function llmsTxt(): string {
     "",
     `- Join: the Slack workspace is the most active channel. Invite link: ${slack.href}`,
     `- Also on Maize Pages (${maize.href}), Instagram ${instagram.value} (${instagram.href}) and LinkedIn (${linkedin.href}). Email: ${adminEmail}`,
+    `- Names used: ${site.longName}, ${ALT_NAME}, ${site.name}`,
     `- ${initiatives.term} initiatives: ${initiatives.items
       .map((i) => (i.when ? `${i.name} (${i.when})` : i.name))
       .join("; ")}`,
     `- Leadership, ${about.roster.term}: ${about.roster.people
       .map((p) => `${p.name} (${p.role})`)
       .join(", ")}`,
-    `- Talks: ${talksMeta.note} The archive holds ${talksArchive.length} talks from ${talkSpan}.`,
-    `- This file, llms-full.txt and msail.json are generated from the site's own data on every deploy. Last built ${today()}.`,
+    `- New to AI: the Resources page says to start with ${learningConcepts[0].title}: ${learningConcepts[0].items.map((r) => r.label).join("; ")}`,
+    `- Talks: ${talksMeta.note} The site lists the ${talksArchive.length} talks ${site.name} hosted from ${talkSpan}.`,
+    `- Freshness: initiatives and leadership are for ${initiatives.term}; the talk archive covers ${talkSpan}; the constitution was last amended ${constitutionMeta.lastUpdated}. This file, llms-full.txt and msail.json are regenerated from the site's data on every deploy (last ${today()}).`,
     "",
     "## Pages",
     "",
@@ -237,7 +244,7 @@ export function llmsFullTxt(): string {
     "",
     `> ${summary()}`,
     "",
-    `Source: ${site.url}, generated from the site's data (built ${today()}). Short index: ${url("/llms.txt")}. JSON: ${url("/msail.json")}.`,
+    `Source: ${site.url}, regenerated from the site's data on every deploy (last ${today()}). Each section names the term or date it is current for. Short index: ${url("/llms.txt")}. JSON: ${url("/msail.json")}.`,
     "",
   );
 
@@ -286,12 +293,12 @@ export function llmsFullTxt(): string {
     push(`### ${year ?? "Date unconfirmed"}`, "", ...group.map((t) => `- ${t.title}, ${t.speaker}`), "");
   }
 
-  push("## Resources", "", ...para(resourcesMeta.intro));
+  push("## Resources", "", ...para(resourcesMeta.intro), "### Start here", "");
   for (const g of learningConcepts) {
-    push(`### ${g.title}`, "", ...g.items.map((r) => `- [${r.label}](${r.href})`), "");
+    push(`#### ${g.title}`, "", ...g.items.map((r) => `- [${r.label}](${r.href})`), "");
   }
   push(
-    "### Being updated",
+    "### More in the library (being updated, no links yet)",
     "",
     ...agingSections.map((s) => `- ${s.title}: ${s.summary}`),
     "",
@@ -304,6 +311,7 @@ export function llmsFullTxt(): string {
   push(
     "## Constitution",
     "",
+    ...para(constitutionMeta.note),
     "### Terminology",
     "",
     ...constitutionTerminology.map((t) => `- ${t.term}: ${t.definition}`),
@@ -312,8 +320,6 @@ export function llmsFullTxt(): string {
   for (const a of constitutionArticles) {
     push(`### ${a.heading}`, "", ...a.paragraphs.flatMap((p) => [p, ""]));
   }
-  push(...para(constitutionMeta.note));
-
   return out.join("\n");
 }
 
@@ -331,7 +337,7 @@ export function organizationGraph() {
         "@type": "Organization",
         "@id": orgId,
         name: site.longName,
-        alternateName: [site.name, "Michigan Student AI Lab"],
+        alternateName: [site.name, ALT_NAME],
         url: site.url,
         logo: url("/msail-logo.png"),
         image: url("/og.jpg"),
@@ -364,7 +370,6 @@ export function organizationGraph() {
         member: about.roster.people.map((p) => ({
           "@type": "OrganizationRole",
           roleName: p.role,
-          startDate: about.roster.term,
           member: {
             "@type": "Person",
             name: p.name,

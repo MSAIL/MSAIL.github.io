@@ -49,3 +49,17 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+      # IndexNow tells Bing (whose index Copilot and other assistants search),
+      # Yandex, Naver, Seznam and Yep which URLs just changed, so they recrawl
+      # now instead of whenever they next pass by. public/da749e524e7e9d9308e81e2b7694ae6c.txt proves
+      # we own the host. A failed ping never fails the deploy.
+      - name: Notify IndexNow
+        continue-on-error: true
+        env:
+          KEY: da749e524e7e9d9308e81e2b7694ae6c
+          SITE: https://msail.github.io
+        run: |
+          urls=$( { curl -fsS "$SITE/sitemap.xml" | grep -o '<loc>[^<]*' | sed 's/<loc>//'; printf '%s\n' "$SITE/llms.txt" "$SITE/llms-full.txt" "$SITE/msail.json"; } | jq -R . | jq -s . )
+          jq -n --arg key "$KEY" --arg site "$SITE" --argjson urls "$urls" \
+            '{host: ($site | sub("^https://"; "")), key: $key, keyLocation: ($site + "/" + $key + ".txt"), urlList: $urls}' \
+            | curl -sS -X POST https://api.indexnow.org/indexnow -H 'Content-Type: application/json; charset=utf-8' --data-binary @- -o /dev/null -w 'IndexNow answered %{http_code}\n'
